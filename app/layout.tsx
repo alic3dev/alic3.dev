@@ -1,4 +1,5 @@
-import './globals.css'
+import './globals.scss'
+
 import type { Metadata } from 'next'
 import { Exo_2 } from 'next/font/google'
 
@@ -13,7 +14,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}): JSX.Element {
   return (
     <html lang="en">
       <body className={bodyFont.className}>{children}</body>
