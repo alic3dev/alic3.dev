@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  align-items: baseline;
+
+  & > * {
+    flex: 1;
+
+    &:first-child {
+      flex: 0;
+    }
+  }
+}

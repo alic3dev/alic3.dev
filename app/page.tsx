@@ -1,9 +1,9 @@
-export default function Home() {
+import Header from '@/components/Header'
+
+export default function Home(): JSX.Element {
   return (
     <main>
-      <div>
-        <h1>alic3</h1>
-      </div>
+      <Header />
     </main>
   )
 }
