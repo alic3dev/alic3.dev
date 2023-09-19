@@ -1,6 +1,11 @@
 @use '@/styles/utils/colors';
 
 .title {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+
   display: flex;
   align-items: baseline;
 
@@ -12,7 +17,7 @@
   &:focus,
   &:hover {
     text-decoration: none;
-    color: colors.$foreground;
+    color: colors.$textlight;
   }
 }
 
@@ -20,13 +25,6 @@
   padding-left: 4rem;
   font-size: 8rem;
   font-weight: 300;
-
-  /* background: -webkit-linear-gradient(#f00 0%, #666 10%, colors.$background 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  text-shadow: 0px 0px 17px #200; */
   letter-spacing: -1em;
 }
 

@@ -4,15 +4,22 @@ html,
 body {
   width: 100%;
   height: 100%;
-  color: colors.$foreground;
-  background: linear-gradient(
-    to bottom right,
-    colors.$dark-red,
-    colors.$background,
-    colors.$dark-blue
-  );
+  color: colors.$text;
+  // background: linear-gradient(
+  //   to bottom right,
+  //   colors.$dark-red,
+  //   colors.$background,
+  //   colors.$dark-blue
+  // );
+
+  background: colors.$base;
   font-size: 10px;
   text-rendering: optimizeLegibility;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 4rem 8rem;
 }

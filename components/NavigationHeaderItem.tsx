@@ -11,21 +11,12 @@ export const NavigationHeaderItem: React.FC<{
   location: ValidLocation
   currentLocation?: ValidLocation
   navigateToLocation: (location: ValidLocation) => void
-}> = ({ align, location, currentLocation, navigateToLocation }) => {
+  children?: React.ReactNode
+}> = ({ align, location, currentLocation, navigateToLocation, children }) => {
   const isActive = React.useMemo<boolean>(
     () => location === currentLocation && currentLocation !== undefined,
     [location, currentLocation]
   )
-
-  const className = React.useMemo<string>(
-    () =>
-      `${styles['navigation-header-item']} ${isActive && styles['active']} ${
-        align === 'right' && styles['align-right']
-      }`,
-    [isActive, align]
-  )
-
-  const href = React.useMemo<string>(() => `#${location}`, [location])
 
   const onClick = React.useCallback<React.MouseEventHandler>(
     (event) => {
@@ -36,9 +27,19 @@ export const NavigationHeaderItem: React.FC<{
   )
 
   return (
-    <a className={className} onClick={onClick} href={href}>
-      {location}
-    </a>
+    <span
+      className={`${styles['navigation-header-item-wrapper']} ${
+        isActive && styles['active']
+      } ${align === 'right' && styles['align-right']}`}
+    >
+      <a
+        className={styles['navigation-header-item']}
+        onClick={onClick}
+        href={`#${location}`}
+      >
+        {children || location}
+      </a>
+    </span>
   )
 }
 

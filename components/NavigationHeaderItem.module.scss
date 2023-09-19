@@ -1,48 +1,40 @@
+@use 'sass:color';
 @use '@/styles/utils/colors';
 
 @keyframes addborder {
   0% {
-    color: #aaa;
-    border: 2px solid rgba(255, 255, 255, 0);
+    color: colors.$subtext1;
+    border: 2px solid rgba(colors.$text, 0);
   }
   100% {
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 1);
-  }
-}
-
-@keyframes addafterborder {
-  0% {
-    border: 2px solid rgba(255, 0, 255, 0);
-  }
-  100% {
-    border: 2px solid rgba(255, 0, 255, 0.2);
+    color: colors.$text;
+    border: 2px solid rgba(colors.$text, 1);
   }
 }
 
 @keyframes addbeforeborder {
   0% {
-    border: 2px solid rgba(255, 0, 255, 0);
+    border: 2px solid rgba(colors.$mauve, 0);
   }
   100% {
-    border: 2px solid rgba(255, 0, 255, 0.1);
+    border: 2px solid rgba(colors.$mauve, 1);
   }
 }
 
 .navigation-header-item {
   position: relative;
+  z-index: 1;
 
-  margin-left: 1rem;
-  margin-right: 1rem;
+  background: colors.$base;
+
   padding: 0.5rem;
 
   border: 2px solid transparent;
   border-radius: 2px;
 
   font-size: 2rem;
-
-  text-shadow: -11px -11px 0px rgba(255, 0, 0, 0);
   text-transform: capitalize;
+
   cursor: pointer;
 
   &:active,
@@ -51,60 +43,51 @@
   &:focus,
   &:hover {
     text-decoration: none;
-    color: #aaa;
+    color: colors.$subtext0;
   }
 
   &:hover {
-    color: #ccc;
+    color: colors.$subtext1;
+    transition: color 200ms ease-in-out;
   }
+}
+
+.navigation-header-item-wrapper {
+  position: relative;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
 
   &::before {
     content: '';
     position: absolute;
-    left: -17px;
+    left: -8px;
     right: 8px;
-    top: -17px;
-    bottom: 8px;
-    border: 2px solid rgba(255, 0, 0, 0);
+    top: -15px;
+    bottom: 1px;
+
+    border: 2px solid rgba(colors.$mauve, 0);
     border-radius: 2px;
+
     pointer-events: none;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: -11px;
-    right: 2px;
-    top: -10px;
-    bottom: 4px;
-    border: 2px solid rgba(255, 0, 0, 0);
-    border-radius: 2px;
-    pointer-events: none;
+  &.active {
+    .navigation-header-item {
+      cursor: default;
+
+      animation: addborder 400ms ease-in-out 1 forwards 50ms;
+    }
+
+    &::before {
+      animation: addbeforeborder 400ms ease-in-out 1 forwards 100ms;
+    }
   }
 
   &.align-right {
     &::before {
-      right: -17px;
+      right: -8px;
       left: 8px;
-    }
-
-    &::after {
-      right: -11px;
-      left: 2px;
-    }
-  }
-
-  &.active {
-    cursor: default;
-
-    animation: addborder 400ms ease-in-out 1 forwards 50ms;
-
-    &::before {
-      animation: addbeforeborder 300ms ease-in-out 1 forwards 200ms;
-    }
-
-    &::after {
-      animation: addafterborder 400ms ease-in-out 1 forwards 100ms;
     }
   }
 }
