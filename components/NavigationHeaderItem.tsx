@@ -30,7 +30,7 @@ export const NavigationHeaderItem: React.FC<{
     <span
       className={`${styles['navigation-header-item-wrapper']} ${
         isActive && styles['active']
-      } ${align === 'right' && styles['align-right']}`}
+      } ${align === 'right' ? styles['align-right'] : ''}`}
     >
       <a
         className={styles['navigation-header-item']}
