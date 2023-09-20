@@ -10,14 +10,12 @@ export const metadata: Metadata = {
   description: '0u0\\',
 }
 
-export default function RootLayout({
+export const RootFunction: React.FC = ({
   children,
-}: {
-  children: React.ReactNode
-}): JSX.Element {
-  return (
-    <html lang="en">
-      <body className={bodyFont.className}>{children}</body>
-    </html>
-  )
-}
+}: React.PropsWithChildren): JSX.Element => (
+  <html lang="en">
+    <body className={bodyFont.className}>{children}</body>
+  </html>
+)
+
+export default RootFunction
