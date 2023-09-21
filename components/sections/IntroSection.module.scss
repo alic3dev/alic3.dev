@@ -1,0 +1,47 @@
+@use '@/styles/utils/colors';
+
+.next {
+  position: absolute;
+  left: 50%;
+  bottom: 4rem;
+
+  width: 4rem;
+
+  padding: 2rem;
+
+  transform: translateX(-4rem);
+
+  opacity: 0.6;
+
+  &,
+  &:hover {
+    transition: opacity 200ms ease-in-out;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 2rem;
+    height: 0.5rem;
+
+    background: colors.$text;
+
+    border-radius: 5px;
+  }
+
+  &::before {
+    transform: translate(calc(-50% - 0.5rem), -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(calc(-50% + 0.5rem + 1px), -50%) rotate(-45deg);
+  }
+}
