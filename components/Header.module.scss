@@ -1,9 +1,33 @@
 .header {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: baseline;
 
+  top: 4rem;
+  left: 8rem;
+  right: 8rem;
+
   & > * {
     flex: 1;
+  }
+}
+
+.navigation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem;
+  padding-right: 4rem;
+}
+
+.navigation-header-spacer {
+  flex: 100%;
+}
+
+@media (max-width: 900px) {
+  .header {
+    left: 2rem;
+    right: 2rem;
   }
 }

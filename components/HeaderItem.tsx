@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from './NavigationHeaderItem.module.scss'
+import styles from './HeaderItem.module.scss'
 
 import { ValidLocation } from '@/utils/validLocations'
 

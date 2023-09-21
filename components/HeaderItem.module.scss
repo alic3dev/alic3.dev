@@ -25,8 +25,6 @@
   position: relative;
   z-index: 1;
 
-  background: colors.$base;
-
   padding: 0.5rem;
 
   border: 2px solid transparent;
@@ -74,6 +72,8 @@
 
   &.active {
     .navigation-header-item {
+      background: colors.$base;
+
       cursor: default;
 
       animation: addborder 400ms ease-in-out 1 forwards 50ms;
