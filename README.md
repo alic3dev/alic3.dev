@@ -1,5 +1,5 @@
 A website for  
-🕷️&nbsp;&nbsp;&nbsp;Alic3&nbsp;&nbsp;&nbsp;🫀
+🫀&nbsp;&nbsp;&nbsp;Alic3&nbsp;&nbsp;&nbsp;🕷️
 
 # alic3.dev
 
