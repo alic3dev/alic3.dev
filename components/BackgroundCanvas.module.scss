@@ -36,11 +36,11 @@
   opacity: 0;
 
   transform: translate(-50%, -50%);
-  transition: opacity 2500ms ease-in-out;
 
   animation: rotate 90s linear 0s infinite;
 
   &.active {
-    opacity: 0.1;
+    transition: opacity 2500ms ease-in-out;
+    opacity: 0.25;
   }
 }

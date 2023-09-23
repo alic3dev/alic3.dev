@@ -9,10 +9,13 @@ body {
   color: colors.$text;
   // background: linear-gradient(
   //   to bottom right,
-  //   colors.$dark-red,
+  //   colors.$dark-blue,
   //   colors.$background,
   //   colors.$dark-blue
   // );
+  // background-repeat: no-repeat;
+
+  background: linear-gradient(to bottom, colors.$background, colors.$base);
 
   background: colors.$base;
   font-size: 10px;
