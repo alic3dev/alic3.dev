@@ -16,8 +16,10 @@ export const Title: React.FC = () => {
         >
           A
         </span>
-        l<span className={styles['title-main-middle']}>i</span>c
-        <span className={styles['title-main-end']}>3</span>
+        <span className={styles['title-no-click']}>
+          l<span className={styles['title-main-middle']}>i</span>c
+          <span className={styles['title-main-end']}>3</span>
+        </span>
       </div>
       <div className={styles['title-secondary']} aria-hidden="true">
         L<span className={styles['title-emphasis']}>I</span>C3
