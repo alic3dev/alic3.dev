@@ -6,10 +6,12 @@
   left: 50%;
   transform: translateX(-50%);
 
+  user-select: none;
+}
+
+.title-header {
   display: flex;
   align-items: baseline;
-
-  user-select: none;
 
   &:active,
   &:visited,

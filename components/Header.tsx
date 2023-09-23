@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <Title />
 
-      <div className={styles['navigation-header']}>
+      <nav className={styles['navigation-header']}>
         <HeaderItem
           location="home"
           currentLocation={currentLocation}
@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
-      </div>
+      </nav>
     </header>
   )
 }
