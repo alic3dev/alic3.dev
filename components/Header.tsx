@@ -26,7 +26,11 @@ export const Header: React.FC = () => {
   const navigateToLocation = React.useCallback(
     (location: ValidLocation): void => {
       setCurrentLocation(location)
-      window.location.hash = `#${location}`
+
+      const sectionElement = document.getElementById(location)
+      if (sectionElement) sectionElement.scrollIntoView({ behavior: 'smooth' })
+
+      history.replaceState({}, '', `#${location}`)
     },
     []
   )
