@@ -1,13 +1,15 @@
-import ExperienceSection from '@/components/sections/ExperienceSection'
-import IntroSection from '@/components/sections/IntroSection'
+'use client'
 
-export { ExperienceSection, IntroSection }
+import WorkSection from '@/components/sections/WorkSection'
+import HomeSection from '@/components/sections/HomeSection'
+
+export { WorkSection, HomeSection }
 
 const sections: {
   [section: string]: React.FC
 } = {
-  ExperienceSection,
-  IntroSection,
+  WorkSection,
+  HomeSection,
 }
 
 export default sections
