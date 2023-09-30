@@ -9,8 +9,8 @@ export default function Section({
   children,
 }: React.PropsWithChildren<{ name: ValidLocation }>): JSX.Element {
   return (
-    <section id={name} className={styles.section}>
-      {children}
+    <section id={name !== 'home' ? name : undefined} className={styles.section}>
+      <div className={styles['section-container']}>{children}</div>
     </section>
   )
 }

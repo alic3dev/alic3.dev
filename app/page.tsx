@@ -4,7 +4,7 @@ import Header from '@/components/Header'
 import { WorkSection, HomeSection } from '@/components/sections'
 
 export const Home: React.FC = (): JSX.Element => (
-  <main>
+  <main id="home">
     <BackgroundCanvas />
     <Header />
 
