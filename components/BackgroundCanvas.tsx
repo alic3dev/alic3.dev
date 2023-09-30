@@ -69,38 +69,7 @@ export default function BackgroundCanvas() {
 
     if (!ctx) return onContinueRender()
 
-    // ctx.clearRect(
-    //   -canvasValuesRef.current.size / 2,
-    //   -canvasValuesRef.current.size / 2,
-    //   canvasValuesRef.current.size,
-    //   canvasValuesRef.current.size
-    // )
-
     ctx.rotate(time * (Math.PI / 180))
-
-    // ctx.beginPath()
-    // ctx.arc(0, window.innerHeight / 2, 100, 0, 2 * Math.PI)
-    // ctx.arc(
-    //   -window.innerWidth / 10,
-    //   window.innerHeight / 2 - window.innerHeight / 10,
-    //   100,
-    //   0,
-    //   2 * Math.PI
-    // )
-    // ctx.arc(0, 0, 100, 0, 2 * Math.PI)
-    // ctx.arc(100, -50, 100, 0, 2 * Math.PI)
-    // ctx.arc(-100, 50, 100, 0, 2 * Math.PI)
-    // ctx.arc(50, -100, 100, 0, 2 * Math.PI)
-    // ctx.arc(-50, 100, 100, 0, 2 * Math.PI)
-    // ctx.arc(0, -window.innerHeight / 2, 100, 0, 2 * Math.PI)
-    // ctx.arc(
-    //   window.innerWidth / 10,
-    //   -window.innerHeight / 2 + window.innerHeight / 10,
-    //   100,
-    //   0,
-    //   2 * Math.PI
-    // )
-    // ctx.stroke()
 
     const invBlueAm = Math.random() * 195 + 60
     const blueAm = Math.random() * 32 + 223
