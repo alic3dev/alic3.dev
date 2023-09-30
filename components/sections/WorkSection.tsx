@@ -162,6 +162,11 @@ export default function WorkSection(): JSX.Element {
                             ? 'Expand description'
                             : 'Minimize description'
                         }
+                        title={
+                          minimized
+                            ? 'Expand description'
+                            : 'Minimize description'
+                        }
                       >
                         {minimized ? '+' : '-'}
                       </button>
@@ -175,13 +180,21 @@ export default function WorkSection(): JSX.Element {
                         <div
                           className={styles['work-item-position-technologies']}
                         >
-                          <span
+                          <div
                             className={
                               styles['work-item-position-technologies-intro']
                             }
                           >
-                            stack | tech
-                          </span>
+                            <span
+                              className={
+                                styles[
+                                  'work-item-position-technologies-intro-text'
+                                ]
+                              }
+                            >
+                              stack | tech
+                            </span>
+                          </div>
                           {position.technologies.map((technology) => (
                             <div
                               key={technology}
