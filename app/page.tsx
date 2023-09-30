@@ -6,10 +6,11 @@ import { WorkSection, HomeSection } from '@/components/sections'
 export const Home: React.FC = (): JSX.Element => (
   <main id="home">
     <BackgroundCanvas />
-    <Header />
 
     <HomeSection />
     <WorkSection />
+
+    <Header />
   </main>
 )
 

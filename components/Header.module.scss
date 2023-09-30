@@ -1,15 +1,36 @@
+@use '@/styles/utils/colors';
+
 .header {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: baseline;
 
-  top: 4rem;
-  left: 8rem;
-  right: 8rem;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  padding: 3rem 8rem;
+
+  z-index: 10;
 
   & > * {
     flex: 1;
   }
+}
+
+.header-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: transparentize(colors.$mantle, 0.1);
+  backdrop-filter: blur(4px);
+
+  border-bottom: 1px solid transparentize(colors.$pink, 0.8);
+
+  box-shadow: 0 -5px 10px colors.$crust;
 }
 
 .navigation-header {

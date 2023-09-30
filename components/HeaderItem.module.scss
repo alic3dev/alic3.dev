@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '@/styles/utils/colors';
 
 @keyframes addborder {
@@ -16,12 +15,29 @@
   }
 }
 
-@keyframes addbeforeborder {
+@keyframes addBeforeborder {
   0% {
-    border: 2px solid rgba(colors.$mauve, 0);
+    border: 1px solid rgba(colors.$mauve, 0);
+    border-bottom: none;
+    border-right: none;
   }
   100% {
-    border: 2px solid rgba(colors.$mauve, 1);
+    border: 1px solid rgba(colors.$mauve, 1);
+    border-bottom: none;
+    border-right: none;
+  }
+}
+
+@keyframes addAfterborder {
+  0% {
+    border: 1px solid rgba(colors.$text, 0);
+    border-bottom: none;
+    border-right: none;
+  }
+  100% {
+    border: 1px solid rgba(colors.$text, 1);
+    border-bottom: none;
+    border-right: none;
   }
 }
 
@@ -68,7 +84,25 @@
     top: -15px;
     bottom: 1px;
 
-    border: 2px solid rgba(colors.$mauve, 0);
+    border: 1px solid rgba(colors.$mauve, 0);
+    border-bottom: none;
+    border-right: none;
+    border-radius: 2px;
+
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: 4px;
+    top: -10px;
+    bottom: -3px;
+
+    border: 2px solid rgba(colors.$text, 0);
+    border-bottom: none;
+    border-right: none;
     border-radius: 2px;
 
     pointer-events: none;
@@ -76,22 +110,17 @@
 
   &.active {
     .navigation-header-item {
-      background: colors.$base;
-
       cursor: default;
 
       animation: addborder 400ms ease-in-out 1 forwards 50ms;
     }
 
     &::before {
-      animation: addbeforeborder 400ms ease-in-out 1 forwards 100ms;
+      animation: addBeforeborder 400ms ease-in-out 1 forwards 100ms;
     }
-  }
 
-  &.align-right {
-    &::before {
-      right: -8px;
-      left: 8px;
+    &::after {
+      animation: addAfterborder 400ms ease-in-out 1 forwards 200ms;
     }
   }
 }
