@@ -1,11 +1,16 @@
 'use client'
 
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 
 import Section from './Section'
 import styles from './HomeSection.module.scss'
 
 export default function HomeSection(): JSX.Element {
+  const onNextClick = React.useCallback<
+    React.MouseEventHandler<HTMLAnchorElement>
+  >((event) => {
+    const workSectionElement: HTMLElement | null =
+      document.getElementById('work')
 
     if (workSectionElement)
       workSectionElement.scrollIntoView({ behavior: 'smooth' })
@@ -21,6 +26,7 @@ export default function HomeSection(): JSX.Element {
         onClick={onNextClick}
         className={styles.next}
         aria-label="Next section"
+        title="Next section"
         href="#work"
       />
     </Section>
