@@ -1,7 +1,7 @@
-import './globals.scss'
-
 import type { Metadata } from 'next'
 import { Exo_2 } from 'next/font/google'
+
+import './globals.scss'
 
 const bodyFont = Exo_2({ subsets: ['latin'] })
 

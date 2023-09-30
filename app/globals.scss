@@ -7,17 +7,8 @@ body {
   height: 100%;
   min-height: 100%;
   color: colors.$text;
-  // background: linear-gradient(
-  //   to bottom right,
-  //   colors.$dark-blue,
-  //   colors.$background,
-  //   colors.$dark-blue
-  // );
-  // background-repeat: no-repeat;
+  background-color: colors.$base;
 
-  background: linear-gradient(to bottom, colors.$background, colors.$base);
-
-  background: colors.$base;
   font-size: 10px;
   text-rendering: optimizeLegibility;
   padding: 0;
@@ -50,7 +41,17 @@ a {
   &:hover,
   &:active {
     color: colors.$subtext1;
-
     transition: color 200ms ease-in-out;
   }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
 }
