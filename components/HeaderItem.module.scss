@@ -5,10 +5,14 @@
   0% {
     color: colors.$subtext1;
     border: 2px solid rgba(colors.$text, 0);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
   }
   100% {
     color: colors.$text;
     border: 2px solid rgba(colors.$text, 1);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
   }
 }
 
