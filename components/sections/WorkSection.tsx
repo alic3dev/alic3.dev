@@ -1,12 +1,9 @@
 'use client'
 
 import Section from './Section'
-
-export const WorkSection: React.FC = (): JSX.Element => {
+export default function WorkSection(): JSX.Element {
   return (
     <Section name="work">
     </Section>
   )
 }
-
-export default WorkSection

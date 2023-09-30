@@ -9,7 +9,7 @@ import Title from '@/components/Title'
 
 import { validLocations, ValidLocation } from '@/utils/validLocations'
 
-export const Header: React.FC = () => {
+export default function Header() {
   const [currentLocation, setCurrentLocation] = React.useState<
     ValidLocation | undefined
   >()
@@ -72,5 +72,3 @@ export const Header: React.FC = () => {
     </header>
   )
 }
-
-export default Header

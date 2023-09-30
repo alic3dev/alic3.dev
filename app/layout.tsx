@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   description: '0u0\\',
 }
 
-export const RootFunction: React.FC = ({
+export default function RootFunction({
   children,
-}: React.PropsWithChildren): JSX.Element => (
-  <html lang="en">
-    <body className={bodyFont.className}>{children}</body>
-  </html>
-)
-
-export default RootFunction
+}: React.PropsWithChildren): JSX.Element {
+  return (
+    <html lang="en">
+      <body className={bodyFont.className}>{children}</body>
+    </html>
+  )
+}

@@ -7,7 +7,7 @@ import styles from './Title.module.scss'
 
 const titleMainStartFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
-export const Title: React.FC = () => {
+export default function Title(): JSX.Element {
   return (
     <h1 className={styles.title}>
       <a className={styles['title-header']} href="/">
@@ -29,5 +29,3 @@ export const Title: React.FC = () => {
     </h1>
   )
 }
-
-export default Title

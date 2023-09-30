@@ -6,13 +6,19 @@ import styles from './HeaderItem.module.scss'
 
 import { ValidLocation } from '@/utils/validLocations'
 
-export const NavigationHeaderItem: React.FC<{
+export default function NavigationHeaderItem({
+  align,
+  location,
+  currentLocation,
+  navigateToLocation,
+  children,
+}: {
   align?: 'right'
   location: ValidLocation
   currentLocation?: ValidLocation
   navigateToLocation: (location: ValidLocation) => void
   children?: React.ReactNode
-}> = ({ align, location, currentLocation, navigateToLocation, children }) => {
+}): JSX.Element {
   const isActive = React.useMemo<boolean>(
     () => location === currentLocation && currentLocation !== undefined,
     [location, currentLocation]
@@ -42,5 +48,3 @@ export const NavigationHeaderItem: React.FC<{
     </span>
   )
 }
-
-export default NavigationHeaderItem

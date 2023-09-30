@@ -5,9 +5,7 @@ import React, { MouseEventHandler } from 'react'
 import Section from './Section'
 import styles from './HomeSection.module.scss'
 
-export const HomeSection: React.FC = (): JSX.Element => {
-  const onNextClick = React.useCallback<MouseEventHandler>((event) => {
-    const workSectionElement = document.getElementById('work')
+export default function HomeSection(): JSX.Element {
 
     if (workSectionElement)
       workSectionElement.scrollIntoView({ behavior: 'smooth' })
@@ -28,5 +26,3 @@ export const HomeSection: React.FC = (): JSX.Element => {
     </Section>
   )
 }
-
-export default HomeSection

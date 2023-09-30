@@ -11,7 +11,7 @@ interface CanvasValues {
   animationFrame: number
 }
 
-export const BackgroundCanvas: React.FC = () => {
+export default function BackgroundCanvas() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const canvasValuesRef = React.useRef<CanvasValues>({
     size: 0,
@@ -194,5 +194,3 @@ export const BackgroundCanvas: React.FC = () => {
     </div>
   )
 }
-
-export default BackgroundCanvas
