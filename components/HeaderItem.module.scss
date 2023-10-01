@@ -116,11 +116,11 @@
     }
 
     &::before {
-      animation: addBeforeborder 400ms ease-in-out 1 forwards 100ms;
+      animation: addBeforeborder 400ms ease-in-out 1 forwards 200ms;
     }
 
     &::after {
-      animation: addAfterborder 400ms ease-in-out 1 forwards 200ms;
+      animation: addAfterborder 400ms ease-in-out 1 forwards 100ms;
     }
   }
 }
