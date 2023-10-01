@@ -16,7 +16,9 @@ body {
   box-sizing: border-box;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -25,7 +27,10 @@ main {
   min-height: 100%;
 }
 
-a {
+a,
+button,
+input[type='reset'],
+input[type='submit'] {
   color: colors.$subtext0;
 
   text-decoration: none;
@@ -54,4 +59,42 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+}
+
+a.button,
+button,
+input[type='reset'],
+input[type='submit'] {
+  display: inline-block;
+
+  margin: 0;
+  margin-left: 50%;
+  padding-top: 1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 1rem;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-bottom: 1px solid colors.$mauve;
+
+  transition: color 300ms ease-in-out, background 150ms ease-in-out,
+    border-bottom 150ms ease-in-out, opacity 200ms ease-in-out;
+  transform: translateX(-50%);
+
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid darken(colors.$mauve, 5%);
+
+    transition: color 300ms ease-in-out, background 150ms ease-in-out,
+      border-bottom 150ms ease-in-out, opacity 200ms ease-in-out;
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid darken(colors.$mauve, 10%);
+  }
 }

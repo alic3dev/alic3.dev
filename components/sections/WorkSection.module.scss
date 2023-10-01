@@ -109,19 +109,17 @@ button.work-item-position-info-toggle-minimize {
   height: 2rem;
   width: 3rem;
 
+  padding: 0;
+  margin: 0;
+
   background: none;
-  border: none;
+  border-bottom: none;
 
-  color: colors.$text;
   font-size: 2rem;
-
-  cursor: pointer;
 
   line-height: 0;
 
   opacity: 0.3;
-
-  transition: opacity 200ms ease-in-out;
 
   &.minimized {
     opacity: 0.5;
@@ -291,37 +289,6 @@ button.work-item-position-info-toggle-minimize {
   margin-bottom: 5rem;
 
   opacity: 0.3;
-}
-
-.resume-link {
-  display: inline-block;
-
-  margin-left: 50%;
-  padding-top: 1rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-  padding-bottom: 1rem;
-
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid colors.$mauve;
-
-  transition: color 300ms ease-in-out, background 150ms ease-in-out,
-    border-bottom 150ms ease-in-out;
-  transform: translateX(-50%);
-
-  &:hover,
-  &:active {
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid darken(colors.$mauve, 5%);
-
-    transition: color 300ms ease-in-out, background 150ms ease-in-out,
-      border-bottom 150ms ease-in-out;
-  }
-
-  &:active {
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid darken(colors.$mauve, 10%);
-  }
 }
 
 .resume-link-extension {
