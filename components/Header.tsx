@@ -89,10 +89,10 @@ export default function Header() {
     []
   )
 
-  React.useEffect((): void => {
-    if (currentLocation) history.replaceState({}, '', `#${currentLocation}`)
-    else history.replaceState({}, '', '')
-  }, [currentLocation])
+  // React.useEffect((): void => {
+  //   if (currentLocation) history.replaceState({}, '', `#${currentLocation}`)
+  //   else history.replaceState({}, '', '')
+  // }, [currentLocation])
 
   return (
     <header className={styles.header}>
