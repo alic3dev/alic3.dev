@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: '0u0\\',
 }
 
-export default function RootFunction({
+export default function RootLayout({
   children,
 }: React.PropsWithChildren): JSX.Element {
   return (

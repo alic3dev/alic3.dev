@@ -3,15 +3,15 @@ import Header from '@/components/Header'
 
 import { WorkSection, HomeSection } from '@/components/sections'
 
-export const Home: React.FC = (): JSX.Element => (
-  <main id="home">
-    <BackgroundCanvas />
+export default function RootPage(): JSX.Element {
+  return (
+    <main id="home">
+      <BackgroundCanvas />
 
-    <HomeSection />
-    <WorkSection />
+      <HomeSection />
+      <WorkSection />
 
-    <Header />
-  </main>
-)
-
-export default Home
+      <Header />
+    </main>
+  )
+}

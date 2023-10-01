@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import RootFunction from '@/app/layout'
+import RootLayout from '@/app/layout'
 
 import '@/app/globals.scss'
 
@@ -9,6 +9,4 @@ export const metadata: Metadata = {
   description: '🂡🂱🃁🃑T0🂡🂱🃁🃑R🂡🂱🃁🃑4T🂡🂱🃁🃑',
 }
 
-export { RootFunction }
-
-export default RootFunction
+export default RootLayout
