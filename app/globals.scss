@@ -61,6 +61,96 @@ h6 {
   padding: 0;
 }
 
+label {
+  position: relative;
+  display: block;
+
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    background: colors.$mantle;
+
+    border: 1px solid colors.$crust;
+    border-radius: 10px;
+
+    color: colors.$text;
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      outline: 1px solid colors.$mauve;
+      outline-offset: -1px;
+    }
+
+    &:autofill,
+    &:-internal-autofill-selected,
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      background: red;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: colors.$text;
+      transition: background-color 5000s ease-in-out 0s;
+      box-shadow: inset 0 0 20px 20px transparentize(colors.$blue, 0.8);
+    }
+  }
+
+  textarea {
+    height: 12rem;
+    resize: none;
+  }
+
+  textarea + .textarea-counter {
+    position: absolute;
+    bottom: 3rem;
+    right: 1rem;
+
+    opacity: 0.2;
+  }
+
+  input[type='checkbox'] {
+    margin-bottom: 2rem;
+  }
+}
+
+fieldset {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2rem;
+
+  border: none;
+
+  legend {
+    padding: 0;
+    padding-bottom: 1rem;
+    margin: 0;
+    margin-left: 1rem;
+  }
+
+  label {
+    margin: 0;
+
+    input[type='radio'] {
+      margin: 0;
+    }
+  }
+}
+
 a.button,
 button,
 input[type='reset'],
