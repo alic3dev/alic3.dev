@@ -41,6 +41,7 @@ export default function ContactSection(): JSX.Element {
   const onFormReset: React.FormEventHandler<HTMLFormElement> =
     React.useCallback<React.FormEventHandler<HTMLFormElement>>((): void => {
       setContactMethod('')
+      setMessage('')
 
       setTimeout((): void => {
         setContactMethod(setDefaultContactMethod)
