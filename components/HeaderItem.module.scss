@@ -41,7 +41,7 @@
   }
 }
 
-.navigation-header-item {
+.header-item {
   position: relative;
   z-index: 1;
 
@@ -70,7 +70,7 @@
   }
 }
 
-.navigation-header-item-wrapper {
+.header-item-wrapper {
   position: relative;
 
   margin-left: 1rem;
@@ -109,7 +109,7 @@
   }
 
   &.active {
-    .navigation-header-item {
+    .header-item {
       cursor: default;
 
       animation: addborder 400ms ease-in-out 1 forwards 50ms;

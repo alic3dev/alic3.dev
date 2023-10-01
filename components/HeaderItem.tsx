@@ -6,7 +6,7 @@ import styles from './HeaderItem.module.scss'
 
 import { ValidLocation } from '@/utils/validLocations'
 
-export default function NavigationHeaderItem({
+export default function HeaderItem({
   align,
   location,
   currentLocation,
@@ -34,12 +34,12 @@ export default function NavigationHeaderItem({
 
   return (
     <span
-      className={`${styles['navigation-header-item-wrapper']} ${
+      className={`${styles['header-item-wrapper']} ${
         isActive && styles['active']
       } ${align === 'right' ? styles['align-right'] : ''}`}
     >
       <a
-        className={styles['navigation-header-item']}
+        className={styles['header-item']}
         onClick={onClick}
         href={`#${location}`}
       >
