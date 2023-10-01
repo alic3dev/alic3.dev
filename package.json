@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -r .next"
+    "clean": "rm -fr .next",
+    "clean-dev": "rm -rf .next && next dev",
+    "clean-build": "rm -rf .next && next build",
+    "clean-build-start": "rm -rf .next && next build && next start"
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.1.12",
