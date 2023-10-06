@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 
 // For more icons, see: https://react-icons.github.io/
 import { DiPhonegap } from 'react-icons/di'
@@ -221,10 +222,10 @@ export default function WorkSection(): JSX.Element {
         </React.Fragment>
       ))}
 
-      <a className={'button'} href="/Alice_Grace_Resume.pdf">
+      <Link className={'button'} href="/Alice_Grace_Resume.pdf" target="_blank">
         View/download resume{' '}
         <span className={styles['resume-link-extension']}>(PDF)</span>
-      </a>
+      </Link>
     </Section>
   )
 }
