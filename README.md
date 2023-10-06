@@ -13,7 +13,23 @@ Run the development server:
 pnpm dev
 ```
 
+Or use `turbo` (Installed globally)
+
+```zsh
+turbo dev
+```
+
 Open [localhost:3000](http://localhost:3000) with your browser to see.
+
+### Caching issues
+
+Sometimes you'll run into issues that can be fixed with a simple clearing of the cache
+
+Try running this script and then re-trying what had the issue before losing hope
+
+```zsh
+pnpm clean
+```
 
 ## Development
 

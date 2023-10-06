@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rm -fr .next",
+    "clean": "rm -fr .next .turbo node_modules/.cache/turbo",
     "clean-dev": "rm -rf .next && next dev",
     "clean-build": "rm -rf .next && next build",
     "clean-build-start": "rm -rf .next && next build && next start"
