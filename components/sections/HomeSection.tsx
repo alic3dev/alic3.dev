@@ -15,8 +15,6 @@ export default function HomeSection(): JSX.Element {
     if (workSectionElement)
       workSectionElement.scrollIntoView({ behavior: 'smooth' })
 
-    // history.replaceState({}, '', '#work')
-
     event.preventDefault()
   }, [])
 
