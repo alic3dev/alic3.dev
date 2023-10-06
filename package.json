@@ -28,6 +28,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "sass": "^1.68.0"
+    "encoding": "^0.1.13",
+    "sass": "^1.69.0"
   }
 }
