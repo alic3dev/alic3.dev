@@ -1,14 +1,15 @@
 import { StyleSheet } from '@react-pdf/renderer'
+import { Style } from '@react-pdf/types'
 
 import { variants } from '@catppuccin/palette'
 const { latte } = variants
 
-export const colors = {
+export const colors: { [color: string]: string } = {
   accent: latte.sky.hex,
   lightText: latte.text.hex,
 }
 
-export const styles = StyleSheet.create({
+export const styles: { [className: string]: Style } = StyleSheet.create({
   page: {
     flexDirection: 'row-reverse',
     flexWrap: 'wrap',

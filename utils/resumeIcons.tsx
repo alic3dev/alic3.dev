@@ -2,16 +2,16 @@ import { Svg, Path } from '@react-pdf/renderer'
 
 import { styles, colors } from '@/styles/resumeStyles'
 
-const wrapIcon = (icon: JSX.Element) => (
+const wrapIcon = (icon: JSX.Element): JSX.Element => (
   <Svg height={12} width={12} viewBox="0 0 24 24" style={styles.icon}>
     {icon}
   </Svg>
 )
 
-const iconStroke = colors.lightText
-const iconFill = 'none'
+const iconStroke: string = colors.lightText
+const iconFill: string = 'none'
 
-export const icons = {
+export const icons: { [icon: string]: JSX.Element } = {
   location: wrapIcon(
     <>
       <Path fill="none" d="M0 0h24v24H0z"></Path>
