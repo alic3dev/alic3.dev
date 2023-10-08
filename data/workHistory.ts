@@ -112,6 +112,16 @@ export const educationHistory: WorkHistoryCompany[] = [
   },
 ]
 
+export const skills: {
+  languages: string[]
+  librariesAndFrameworks: string[]
+  software: string[]
+} = {
+  languages: ['TypeScript', 'HTML5', 'CSS3', 'Sass', 'MySQL', 'PostgreSQL'],
+  librariesAndFrameworks: ['React', 'Node.js'],
+  software: ['Figma', 'Trello', 'Asana', 'Jira'],
+}
+
 export const data: WorkHistoryCompany[] = [...jobHistory, ...educationHistory]
 
 export default data
