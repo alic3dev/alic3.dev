@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import Spinner from '@/components/Spinner'
+
 import Section from './Section'
 import styles from './ContactSection.module.scss'
 
@@ -15,6 +17,7 @@ const messageMaxLength: number = 2000
 export default function ContactSection(): JSX.Element {
   const [contactMethod, setContactMethod] = React.useState<ContactMethod>('')
   const [message, setMessage] = React.useState<string>('')
+  const [submitting, setSubmitting] = React.useState<boolean>(false)
 
   const onMessageTextAreaChange = React.useCallback<
     React.ChangeEventHandler<HTMLTextAreaElement>
@@ -30,11 +33,31 @@ export default function ContactSection(): JSX.Element {
         event.preventDefault()
         event.stopPropagation()
 
-        console.log(new FormData(event.currentTarget).entries())
+        if (submitting) return
 
-        // TODO: Implement this and server logic for form submission
+        setSubmitting(true)
+
+        fetch('/api/contact', {
+          method: 'POST',
+          body: new FormData(event.currentTarget),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (!data.success) throw new Error('Unexpected error')
+
+            console.log(data)
+
+            setSubmitting(false)
+          })
+          .catch((err) => {
+            console.error(err)
+
+            setSubmitting(false)
+          })
+
+        // TODO: Implement error handling and success states
       },
-      []
+      [submitting]
     )
 
   // Work-around for default radio not being selected on-form-reset
@@ -79,7 +102,13 @@ export default function ContactSection(): JSX.Element {
       >
         <label>
           Name
-          <input type="text" name="name" autoComplete="name" required />
+          <input
+            type="text"
+            name="name"
+            autoComplete="name"
+            disabled={submitting}
+            required
+          />
         </label>
 
         <fieldset>
@@ -88,10 +117,11 @@ export default function ContactSection(): JSX.Element {
           <label>
             <input
               type="radio"
-              name="contact_method"
+              name="contact-method"
               value="email"
               onChange={() => setContactMethod('email')}
               checked={contactMethod === 'email'}
+              disabled={submitting}
               required
             />{' '}
             Email
@@ -99,10 +129,11 @@ export default function ContactSection(): JSX.Element {
           <label>
             <input
               type="radio"
-              name="contact_method"
+              name="contact-method"
               value="phone"
               onChange={() => setContactMethod('phone')}
               checked={contactMethod === 'phone'}
+              disabled={submitting}
               required
             />{' '}
             Phone
@@ -110,10 +141,11 @@ export default function ContactSection(): JSX.Element {
           <label>
             <input
               type="radio"
-              name="contact_method"
+              name="contact-method"
               value="either"
               onChange={() => setContactMethod('either')}
               checked={contactMethod === 'either'}
+              disabled={submitting}
               required
             />{' '}
             Either
@@ -123,14 +155,26 @@ export default function ContactSection(): JSX.Element {
         {contactMethod !== 'phone' && (
           <label>
             Email
-            <input type="email" name="email" autoComplete="email" required />
+            <input
+              type="email"
+              name="email"
+              autoComplete="email"
+              disabled={submitting}
+              required
+            />
           </label>
         )}
 
         {contactMethod !== 'email' && contactMethod !== '' && (
           <label>
             Phone
-            <input type="tel" name="phone" autoComplete="tel" required />
+            <input
+              type="tel"
+              name="phone"
+              autoComplete="tel"
+              disabled={submitting}
+              required
+            />
           </label>
         )}
 
@@ -141,6 +185,7 @@ export default function ContactSection(): JSX.Element {
             maxLength={messageMaxLength}
             value={message}
             onChange={onMessageTextAreaChange}
+            disabled={submitting}
             required
           ></textarea>
           <div className="textarea-counter">
@@ -151,7 +196,8 @@ export default function ContactSection(): JSX.Element {
         <label>
           <input
             type="checkbox"
-            name="terms-privacy-dislaimer-agreement"
+            name="terms-privacy-disclaimer-agreement"
+            disabled={submitting}
             required
           />{' '}
           I have read and agree to the <a href="#">privacy policy</a>,{' '}
@@ -160,13 +206,37 @@ export default function ContactSection(): JSX.Element {
         </label>
 
         <label>
-          <input type="checkbox" name="contact-consent" required /> I consent to
-          being contacted in regards to the information provided.
+          <input
+            type="checkbox"
+            name="contact-consent"
+            disabled={submitting}
+            required
+          />{' '}
+          I consent to being contacted in regards to the information provided.
         </label>
 
         <div className={styles['contact-form-controls']}>
-          <input type="reset" name="reset" value="Clear" />
-          <input type="submit" name="submit" value="Submit" />
+          <input
+            type="reset"
+            name="reset"
+            value="Clear"
+            disabled={submitting}
+          />
+          <input
+            type="submit"
+            name="submit"
+            value="Submit"
+            disabled={submitting}
+          />
+        </div>
+        <div
+          className={`
+            ${styles['contact-form-overlay']}
+            ${submitting ? styles['active'] : ''}
+          `}
+        >
+          Submitting Contact Form
+          <Spinner />
         </div>
       </form>
     </Section>

@@ -1,0 +1,23 @@
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  padding: 4rem;
+  font-size: 4rem;
+
+  line-height: 0;
+
+  animation: spin 800ms linear 0ms infinite forwards;
+
+  &.large {
+    padding: 4rem;
+    font-size: 4rem;
+  }
+}

@@ -1,0 +1,11 @@
+import { ImSpinner2 } from 'react-icons/im'
+
+import styles from './Spinner.module.scss'
+
+export default function Spinner({ large }: { large?: boolean }): JSX.Element {
+  return (
+    <div className={`${styles.spinner} ${large ? styles.large : ''}`}>
+      <ImSpinner2 />
+    </div>
+  )
+}
