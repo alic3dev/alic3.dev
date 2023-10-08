@@ -61,9 +61,24 @@ export const styles = StyleSheet.create({
     fontSize: '12pt',
     fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
+    // paddingLeft: '5pt',
     marginTop: '20pt',
     marginBottom: '20pt',
     // color: colors.lightText,
+    // textAlign: 'center',
+    opacity: 0.8,
+    borderBottom: `1pt solid ${colors.lightText}`,
+  },
+  subHeadingCompact: {
+    fontSize: '12pt',
+    fontFamily: 'Helvetica-Bold',
+    paddingBottom: '5pt',
+    // paddingLeft: '5pt',
+    // marginTop: '20pt',
+    marginBottom: '20pt',
+    // color: colors.lightText,
+    // textAlign: 'center',
+    opacity: 0.8,
     borderBottom: `1pt solid ${colors.lightText}`,
   },
   company: {
@@ -104,6 +119,10 @@ export const styles = StyleSheet.create({
   },
   sideContentText: {
     color: colors.lightText,
+  },
+  skillsText: {
+    color: colors.lightText,
+    paddingLeft: '18pt',
   },
   icon: {
     marginRight: '5pt',

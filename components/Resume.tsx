@@ -106,10 +106,12 @@ export function Resume() {
 
           <View style={styles.contentSection}>
             <Text style={styles.heading}>Skills</Text>
+
+            <Text style={styles.subHeadingCompact}>Languages</Text>
             {[
               'TypeScript',
-              'React',
-              'Node.js',
+              // 'React',
+              // 'Node.js',
               'HTML5',
               'CSS3',
               'Sass',
@@ -117,14 +119,30 @@ export function Resume() {
               'PostgreSQL',
             ].map((skill) => (
               <View key={skill} style={styles.textContainer}>
-                <Text style={styles.sideContentText}>{skill}</Text>
+                <Text style={styles.skillsText}>{skill}</Text>
               </View>
             ))}
 
-            <Text style={styles.subHeading}>Software</Text>
+            <Text style={styles.subHeading}>Libraries/Frameworks</Text>
+            {[
+              // 'TypeScript',
+              'React',
+              'Node.js',
+              // 'HTML5',
+              // 'CSS3',
+              // 'Sass',
+              // 'MySQL',
+              // 'PostgreSQL',
+            ].map((skill) => (
+              <View key={skill} style={styles.textContainer}>
+                <Text style={styles.skillsText}>{skill}</Text>
+              </View>
+            ))}
+
+            <Text style={styles.subHeading}>Development Software</Text>
             {['Figma', 'Trello', 'Asana', 'Jira'].map((software) => (
               <View key={software} style={styles.textContainer}>
-                <Text style={styles.sideContentText}>{software}</Text>
+                <Text style={styles.skillsText}>{software}</Text>
               </View>
             ))}
           </View>
