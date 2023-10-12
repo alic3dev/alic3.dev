@@ -1,0 +1,101 @@
+@use '@/styles/utils/colors';
+
+@use './Section.module.scss';
+
+.contact-options {
+  max-width: 500px;
+  margin: auto;
+
+  text-align: center;
+
+  & > p + p {
+    margin-top: 6rem;
+  }
+
+  &-seperator {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+
+    opacity: 0.2;
+
+    pointer-events: none;
+    user-select: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -800%;
+      right: 200%;
+
+      height: 1px;
+
+      background: colors.$text;
+
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 200%;
+      right: -800%;
+
+      height: 1px;
+
+      background: colors.$text;
+
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.contact-form {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 8rem;
+}
+
+.contact-form-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+
+  & > input {
+    flex: 1;
+    margin-left: 25%;
+  }
+}
+
+.contact-form-overlay {
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  right: -1rem;
+  bottom: -1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  backdrop-filter: blur(4px);
+
+  opacity: 0;
+  transition: opacity 200ms;
+
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+
+    pointer-events: all;
+  }
+}

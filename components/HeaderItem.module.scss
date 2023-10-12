@@ -1,0 +1,126 @@
+@use '@/styles/utils/colors';
+
+@keyframes addborder {
+  0% {
+    color: colors.$subtext1;
+    border: 2px solid rgba(colors.$text, 0);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+  }
+  100% {
+    color: colors.$text;
+    border: 2px solid rgba(colors.$text, 1);
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+  }
+}
+
+@keyframes addBeforeborder {
+  0% {
+    border: 1px solid rgba(colors.$mauve, 0);
+    border-bottom: none;
+    border-right: none;
+  }
+  100% {
+    border: 1px solid rgba(colors.$mauve, 1);
+    border-bottom: none;
+    border-right: none;
+  }
+}
+
+@keyframes addAfterborder {
+  0% {
+    border: 1px solid rgba(colors.$text, 0);
+    border-bottom: none;
+    border-right: none;
+  }
+  100% {
+    border: 1px solid rgba(colors.$text, 1);
+    border-bottom: none;
+    border-right: none;
+  }
+}
+
+.header-item {
+  position: relative;
+  z-index: 1;
+
+  padding: 0.5rem;
+
+  border: 2px solid transparent;
+  border-radius: 2px;
+
+  font-size: 2rem;
+  text-transform: capitalize;
+
+  cursor: pointer;
+
+  &:active,
+  &:visited,
+  &:link,
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: colors.$subtext0;
+  }
+
+  &:hover {
+    color: colors.$subtext1;
+    transition: color 200ms ease-in-out;
+  }
+}
+
+.header-item-wrapper {
+  position: relative;
+
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    right: 8px;
+    top: -15px;
+    bottom: 1px;
+
+    border: 1px solid rgba(colors.$mauve, 0);
+    border-bottom: none;
+    border-right: none;
+    border-radius: 2px;
+
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: 4px;
+    top: -10px;
+    bottom: -3px;
+
+    border: 2px solid rgba(colors.$text, 0);
+    border-bottom: none;
+    border-right: none;
+    border-radius: 2px;
+
+    pointer-events: none;
+  }
+
+  &.active {
+    .header-item {
+      cursor: default;
+
+      animation: addborder 400ms ease-in-out 1 forwards 50ms;
+    }
+
+    &::before {
+      animation: addBeforeborder 400ms ease-in-out 1 forwards 200ms;
+    }
+
+    &::after {
+      animation: addAfterborder 400ms ease-in-out 1 forwards 100ms;
+    }
+  }
+}

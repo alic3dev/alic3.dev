@@ -1,0 +1,46 @@
+@keyframes rotate {
+  0% {
+    transform: translate(-45%, -60%) rotate(0deg) scale(0.8);
+  }
+  25% {
+    transform: translate(-50%, -56%) rotate(173deg) scale(1);
+  }
+  50% {
+    transform: translate(-53%, -48%) rotate(368deg) scale(1);
+  }
+  75% {
+    transform: translate(-48%, -52%) rotate(530deg) scale(0.925);
+  }
+  100% {
+    transform: translate(-45%, -60%) rotate(720deg) scale(0.8);
+  }
+}
+
+.background-canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -50%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.background-canvas {
+  position: absolute;
+  top: 37.5%;
+  left: 50%;
+
+  opacity: 0;
+
+  transform: translate(-50%, -50%);
+
+  animation: rotate 90s linear 0s infinite;
+
+  &.active {
+    transition: opacity 2500ms ease-in-out;
+    opacity: 0.25;
+  }
+}

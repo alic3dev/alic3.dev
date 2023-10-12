@@ -1,0 +1,26 @@
+@use '@/styles/utils/colors';
+
+.section {
+  font-size: 1.6rem;
+
+  min-height: 100%;
+
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-header {
+  margin-bottom: 6rem;
+
+  text-align: center;
+
+  h2 {
+    position: relative;
+    font-size: 3.6rem;
+  }
+}
