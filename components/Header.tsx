@@ -96,16 +96,16 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div
+      {/* <div
         className={styles['header-background']}
         style={{
           opacity: scrollDepthIntroMapped,
         }}
-      />
+      /> */}
 
       <Title />
 
-      <nav className={styles['navigation-header']}>
+      {/* <nav className={styles['navigation-header']}>
         <HeaderItem
           location="home"
           currentLocation={currentLocation}
@@ -134,7 +134,7 @@ export default function Header() {
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
-      </nav>
+      </nav> */}
     </header>
   )
 }

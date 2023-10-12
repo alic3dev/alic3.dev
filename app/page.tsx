@@ -5,12 +5,12 @@ export default function RootPage(): JSX.Element {
     <main id="home">
       <BackgroundCanvas />
 
-      <Sections.HomeSection />
+      {/* <Sections.HomeSection />
       <Sections.SkillsetSection />
       <Sections.WorkSection />
       <Sections.ContactSection />
 
-      <Footer />
+      <Footer /> */}
 
       <Header />
     </main>
