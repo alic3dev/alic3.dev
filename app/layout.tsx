@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Exo_2 } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 import './globals.scss'
 
@@ -15,7 +16,10 @@ export default function RootLayout({
 }: React.PropsWithChildren): JSX.Element {
   return (
     <html lang="en">
-      <body className={bodyFont.className}>{children}</body>
+      <body className={bodyFont.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
