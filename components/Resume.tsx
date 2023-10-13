@@ -139,7 +139,7 @@ export function Resume() {
             <View style={styles.textContainer}>
               {icons.phone}
               {/* TODO: Update this phone to a cell */}
-              <Text style={styles.sideContentText}>+1 (434) 842-3440</Text>
+              <Text style={styles.sideContentText}>+1 (434) 207-1336</Text>
             </View>
 
             <View style={styles.textContainer}>
