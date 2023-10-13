@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import Spinner from '@/components/Spinner'
+import Spinner from '@/components/decorative/Spinner'
 
 import Section from './Section'
 import styles from './ContactSection.module.scss'
