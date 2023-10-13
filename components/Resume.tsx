@@ -23,6 +23,7 @@ import {
   skills,
   WorkHistoryCompany,
   WorkHistoryPosition,
+  freelancingHistory,
 } from '@/data/workHistory'
 
 // FIXME: Figure out why hyphenation can't be disabled
@@ -115,6 +116,11 @@ export function Resume() {
         <View style={styles.mainContent}>
           <Text style={styles.heading}>Work Experience</Text>
           {jobHistory.map(
+            (company: WorkHistoryCompany): JSX.Element => (
+              <CompanyView key={company.name} company={company} />
+            )
+          )}
+          {freelancingHistory.map(
             (company: WorkHistoryCompany): JSX.Element => (
               <CompanyView key={company.name} company={company} />
             )
