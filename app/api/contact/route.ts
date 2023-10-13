@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createKysely } from '@vercel/postgres-kysely'
+
+import { Alic3DevPostgresDatabase } from '@/schemas/database'
+import { ContactMethod } from '@/schemas/contact_form'
 
 interface ContactAPIError {
   field:
@@ -22,6 +26,8 @@ type ContactFormServerFields =
   | 'contactConsent'
 
 type ContactData = Record<ContactFormServerFields, FormDataEntryValue | null>
+
+const db = createKysely<Alic3DevPostgresDatabase>()
 
 const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
   const contactDataErrors: ContactAPIError[] = []
@@ -105,7 +111,34 @@ export const POST = async (req: NextRequest) => {
 
   if (errors.length) return NextResponse.json({ errors }, { status: 400 })
 
-  // TODO: Store contact form data in DB and send an email containing the form to myself
+  try {
+    await db
+      .insertInto('contact_form')
+      .values({
+        name: contactData.name as string,
+        contact_method: contactData.contactMethod as ContactMethod,
+        email: (contactData.email as string) || null,
+        phone: (contactData.phone as string) || null,
+        message: contactData.message as string,
+        terms_privacy_disclaimer_agreement:
+          contactData.termsPrivacyDisclaimerAgreement === 'on',
+        contact_consent: contactData.contactConsent === 'on',
+        client_ip:
+          req.ip ||
+          req.headers.get('X-Real-IP') ||
+          req.headers
+            .get('X-Forwarded-For')
+            ?.replace(/\s/g, '')
+            .split(',')
+            .pop() ||
+          null,
+      })
+      .executeTakeFirstOrThrow()
+  } catch {
+    return NextResponse.json({}, { status: 500 })
+  }
+
+  // TODO: Send an email notification that someone submitted this form
 
   return NextResponse.json({ success: true })
 }

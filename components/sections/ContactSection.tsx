@@ -7,15 +7,18 @@ import Spinner from '@/components/decorative/Spinner'
 import Section from './Section'
 import styles from './ContactSection.module.scss'
 
-type ContactMethod = '' | 'email' | 'phone' | 'either'
+import { ContactMethod } from '@/schemas/contact_form'
 
-const setDefaultContactMethod = (prevValue: ContactMethod): ContactMethod =>
-  !prevValue ? 'email' : prevValue
+const setDefaultContactMethod = (
+  prevValue: ContactMethod | ''
+): ContactMethod => (!prevValue ? 'email' : prevValue)
 
-const messageMaxLength: number = 2000
+const messageMaxLength: number = 5000
 
 export default function ContactSection(): JSX.Element {
-  const [contactMethod, setContactMethod] = React.useState<ContactMethod>('')
+  const [contactMethod, setContactMethod] = React.useState<ContactMethod | ''>(
+    ''
+  )
   const [message, setMessage] = React.useState<string>('')
   const [submitting, setSubmitting] = React.useState<boolean>(false)
 
@@ -55,7 +58,7 @@ export default function ContactSection(): JSX.Element {
             setSubmitting(false)
           })
 
-        // TODO: Implement error handling and success states
+        // FIXME: Implement error handling and success states
       },
       [submitting]
     )
