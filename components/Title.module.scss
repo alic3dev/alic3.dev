@@ -2,11 +2,9 @@
 
 .title {
   position: absolute;
-  // top: -0.75rem;
-  top: 50%;
+  top: -0.75rem;
   left: 50%;
-  // transform: translateX(-50%);
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
 
   user-select: none;
 }
