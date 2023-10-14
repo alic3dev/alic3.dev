@@ -1,5 +1,8 @@
+import { ServerRuntime } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
+import { Ratelimit } from '@upstash/ratelimit'
 import { createKysely } from '@vercel/postgres-kysely'
+import { kv } from '@vercel/kv'
 
 type ContactFormServerFields =
   | 'name'
@@ -43,6 +46,13 @@ interface RecaptchaResponseData {
     createTime: string
   }
 }
+
+const ratelimit: Ratelimit = new Ratelimit({
+  redis: kv,
+  limiter: Ratelimit.slidingWindow(1, '1 h'),
+})
+
+export const runtime: ServerRuntime = 'edge'
 
 const getContactDataErrors = (
   contactData: ContactData
@@ -107,9 +117,21 @@ const getContactDataErrors = (
   return contactDataErrors
 }
 
+/**
+ * verifyRecaptcha() - `production` only
+ *
+ * To use in development you will need to whitelist your domain
+ * https://console.cloud.google.com/security/recaptcha?project=alic3-dev
+ *
+ * @async
+ * @param recpatchaToken Token returned from grecaptcha.enterprise.execute on client
+ * @returns NextResponse (if an error occurred) | undefined (if captcha was validated as valid)
+ */
 const verifyRecaptcha = async (
   recpatchaToken: FormDataEntryValue | null
 ): Promise<NextResponse | undefined> => {
+  if (process.env.NODE_ENV !== 'production') return
+
   if (!recpatchaToken || typeof recpatchaToken !== 'string')
     return NextResponse.json(
       { errors: [{ field: 'recaptcha', type: 'invalid' }] } as {
@@ -153,16 +175,21 @@ const verifyRecaptcha = async (
 }
 
 export const POST = async (req: NextRequest) => {
-  // TODO: Rate limiting/CAPTCHA
+  const clientIp: string =
+    req.ip ||
+    req.headers.get('X-Real-IP') ||
+    req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
+    '127.0.0.1'
+
+  if (!(await ratelimit.limit(clientIp)).success)
+    return NextResponse.json({}, { status: 429 })
+
   const contactFormData: FormData = await req.formData()
 
-  if (process.env.NODE_ENV === 'production') {
-    const captchaResponse = await verifyRecaptcha(
-      contactFormData.get('recaptcha-token')
-    )
-
-    if (captchaResponse) return captchaResponse
-  }
+  const captchaErrorResponse = await verifyRecaptcha(
+    contactFormData.get('recaptcha-token')
+  )
+  if (captchaErrorResponse) return captchaErrorResponse
 
   const contactData: ContactData = {
     name: contactFormData.get('name'),
@@ -194,15 +221,7 @@ export const POST = async (req: NextRequest) => {
         terms_privacy_disclaimer_agreement:
           contactData.termsPrivacyDisclaimerAgreement === 'on',
         contact_consent: contactData.contactConsent === 'on',
-        client_ip:
-          req.ip ||
-          req.headers.get('X-Real-IP') ||
-          req.headers
-            .get('X-Forwarded-For')
-            ?.replace(/\s/g, '')
-            .split(',')
-            .pop() ||
-          null,
+        client_ip: clientIp,
       })
       .executeTakeFirstOrThrow()
   } catch {
