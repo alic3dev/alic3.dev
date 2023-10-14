@@ -1,21 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createKysely } from '@vercel/postgres-kysely'
 
-import { Alic3DevPostgresDatabase } from '@/schemas/database'
-import { ContactMethod } from '@/schemas/contact_form'
-
-interface ContactAPIError {
-  field:
-    | 'name'
-    | 'contact-method'
-    | 'email'
-    | 'phone'
-    | 'message'
-    | 'terms-privacy-disclaimer-agreement'
-    | 'contact-consent'
-  type: 'empty' | 'invalid'
-}
-
 type ContactFormServerFields =
   | 'name'
   | 'contactMethod'
@@ -27,10 +12,42 @@ type ContactFormServerFields =
 
 type ContactData = Record<ContactFormServerFields, FormDataEntryValue | null>
 
-const db = createKysely<Alic3DevPostgresDatabase>()
+interface RecaptchaResponseData {
+  name: string
+  event: {
+    token: string
+    siteKey: string
+    userAgent: string
+    userIpAddress: string
+    expectedAction: string
+    hashedAccountId: string
+    express: boolean
+    requestedUri: string
+    wafTokenAssessment: boolean
+    ja3: string
+    headers: any[]
+    firewallPolicyEvaluation: boolean
+  }
+  riskAnalysis: {
+    score: number
+    reasons: string[]
+    extendedVerdictReasons: string[]
+  }
+  tokenProperties: {
+    valid: boolean
+    invalidReason: string
+    hostname: string
+    androidPackageName: string
+    iosBundleId: string
+    action: string
+    createTime: string
+  }
+}
 
-const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
-  const contactDataErrors: ContactAPIError[] = []
+const getContactDataErrors = (
+  contactData: ContactData
+): Api.ContactAPIError[] => {
+  const contactDataErrors: Api.ContactAPIError[] = []
 
   if (!contactData.name) {
     contactDataErrors.push({ field: 'name', type: 'empty' })
@@ -90,10 +107,62 @@ const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
   return contactDataErrors
 }
 
+const verifyRecaptcha = async (
+  recpatchaToken: FormDataEntryValue | null
+): Promise<NextResponse | undefined> => {
+  if (!recpatchaToken || typeof recpatchaToken !== 'string')
+    return NextResponse.json(
+      { errors: [{ field: 'recaptcha', type: 'invalid' }] } as {
+        errors: Api.ContactAPIError[]
+      },
+      { status: 400 }
+    )
+
+  try {
+    const res = await fetch(
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.GOOGLE_CLOUD_PROJECT_ID}/assessments?key=${process.env.GOOGLE_CLOUD_API_KEY}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          event: {
+            token: recpatchaToken,
+            siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+            expectedAction: 'SUBMIT_CONTACT_FORM',
+          },
+        }),
+      }
+    )
+    const data: RecaptchaResponseData | null = await res.json()
+
+    if (
+      !data?.tokenProperties.valid ||
+      data.event.expectedAction !== data.tokenProperties.action
+    ) {
+      return NextResponse.json(
+        { errors: [{ field: 'recaptcha', type: 'invalid' }] } as {
+          errors: Api.ContactAPIError[]
+        },
+        { status: 400 }
+      )
+    }
+
+    // TODO: Possibly use riskAnalysis score/reason in the future
+  } catch {
+    return NextResponse.json({}, { status: 500 })
+  }
+}
+
 export const POST = async (req: NextRequest) => {
   // TODO: Rate limiting/CAPTCHA
-
   const contactFormData: FormData = await req.formData()
+
+  if (process.env.NODE_ENV === 'production') {
+    const captchaResponse = await verifyRecaptcha(
+      contactFormData.get('recaptcha-token')
+    )
+
+    if (captchaResponse) return captchaResponse
+  }
 
   const contactData: ContactData = {
     name: contactFormData.get('name'),
@@ -107,16 +176,18 @@ export const POST = async (req: NextRequest) => {
     contactConsent: contactFormData.get('contact-consent'),
   }
 
-  const errors: ContactAPIError[] = getContactDataErrors(contactData)
+  const errors: Api.ContactAPIError[] = getContactDataErrors(contactData)
 
   if (errors.length) return NextResponse.json({ errors }, { status: 400 })
+
+  const db = createKysely<Database.Alic3Dev>()
 
   try {
     await db
       .insertInto('contact_form')
       .values({
         name: contactData.name as string,
-        contact_method: contactData.contactMethod as ContactMethod,
+        contact_method: contactData.contactMethod as Api.ContactMethod,
         email: (contactData.email as string) || null,
         phone: (contactData.phone as string) || null,
         message: contactData.message as string,
@@ -136,6 +207,8 @@ export const POST = async (req: NextRequest) => {
       .executeTakeFirstOrThrow()
   } catch {
     return NextResponse.json({}, { status: 500 })
+  } finally {
+    db.destroy()
   }
 
   // TODO: Send an email notification that someone submitted this form

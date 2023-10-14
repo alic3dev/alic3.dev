@@ -1,5 +1,9 @@
-import { ContactFormTable } from '@/schemas/contact_form'
-
-interface Alic3DevPostgresDatabase {
-  contact_form: ContactFormTable
+declare global {
+  namespace Database {
+    interface Alic3Dev {
+      contact_form: Database.Table.ContactForm
+    }
+  }
 }
+
+export {}

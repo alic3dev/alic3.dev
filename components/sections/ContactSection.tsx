@@ -1,26 +1,26 @@
 'use client'
 
 import React from 'react'
+import Script from 'next/script'
 
 import Spinner from '@/components/decorative/Spinner'
 
 import Section from './Section'
 import styles from './ContactSection.module.scss'
 
-import { ContactMethod } from '@/schemas/contact_form'
-
 const setDefaultContactMethod = (
-  prevValue: ContactMethod | ''
-): ContactMethod => (!prevValue ? 'email' : prevValue)
+  prevValue: Api.ContactMethod | ''
+): Api.ContactMethod => (!prevValue ? 'email' : prevValue)
 
 const messageMaxLength: number = 5000
 
 export default function ContactSection(): JSX.Element {
-  const [contactMethod, setContactMethod] = React.useState<ContactMethod | ''>(
-    ''
-  )
+  const [contactMethod, setContactMethod] = React.useState<
+    Api.ContactMethod | ''
+  >('')
   const [message, setMessage] = React.useState<string>('')
   const [submitting, setSubmitting] = React.useState<boolean>(false)
+  const [loading, setLoading] = React.useState<boolean>(true)
 
   const onMessageTextAreaChange = React.useCallback<
     React.ChangeEventHandler<HTMLTextAreaElement>
@@ -32,7 +32,7 @@ export default function ContactSection(): JSX.Element {
 
   const onFormSubmit: React.FormEventHandler<HTMLFormElement> =
     React.useCallback<React.FormEventHandler<HTMLFormElement>>(
-      (event: React.FormEvent<HTMLFormElement>): void => {
+      async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault()
         event.stopPropagation()
 
@@ -40,25 +40,36 @@ export default function ContactSection(): JSX.Element {
 
         setSubmitting(true)
 
-        fetch('/api/contact', {
-          method: 'POST',
-          body: new FormData(event.currentTarget),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (!data.success) throw new Error('Unexpected error')
+        try {
+          const body: FormData = new FormData(event.currentTarget)
 
-            console.log(data)
+          if (process.env.NODE_ENV === 'production') {
+            const recaptchaToken: string = await grecaptcha.enterprise.execute(
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+              {
+                action: 'SUBMIT_CONTACT_FORM',
+              }
+            )
+            body.append('recaptcha-token', recaptchaToken)
+          }
 
-            setSubmitting(false)
+          const res: Response = await fetch('/api/contact', {
+            method: 'POST',
+            body,
           })
-          .catch((err) => {
-            console.error(err)
 
-            setSubmitting(false)
-          })
+          const data: { success?: boolean; errors?: Api.ContactAPIError } =
+            await res.json()
+          if (!data.success) throw new Error('Unexpected error')
 
-        // FIXME: Implement error handling and success states
+          console.log(data)
+        } catch (error) {
+          console.error(error)
+        } finally {
+          setSubmitting(false)
+        }
+
+        // TODO: Implement success states
       },
       [submitting]
     )
@@ -75,10 +86,21 @@ export default function ContactSection(): JSX.Element {
     }, [])
 
   // Work-around for default radio not being selected on-load
-  React.useEffect(() => setContactMethod(setDefaultContactMethod), [])
+  React.useEffect(() => {
+    setContactMethod(setDefaultContactMethod)
+
+    if (process.env.NODE_ENV !== 'production') setLoading(false)
+  }, [])
 
   return (
     <Section name="contact">
+      {process.env.NODE_ENV === 'production' && (
+        <Script
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          onLoad={() => grecaptcha.enterprise.ready(() => setLoading(false))}
+        />
+      )}
+
       <div className={styles['section-header']}>
         <h2>Contact</h2>
       </div>
@@ -235,10 +257,10 @@ export default function ContactSection(): JSX.Element {
         <div
           className={`
             ${styles['contact-form-overlay']}
-            ${submitting ? styles['active'] : ''}
+            ${submitting || loading ? styles['active'] : ''}
           `}
         >
-          Submitting Contact Form
+          {submitting ? 'Submitting Contact Form' : 'Loading'}
           <Spinner />
         </div>
       </form>
