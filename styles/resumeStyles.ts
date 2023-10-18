@@ -23,16 +23,16 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     paddingTop: '30pt',
     paddingLeft: '20pt',
     paddingBottom: '20pt',
-    backgroundColor: latte.crust.hex,
+    backgroundColor: latte.text.hex,
+    color: latte.base.hex,
   },
   headerName: {
     marginBottom: '5pt',
     fontSize: '24pt',
-    // textTransform: 'uppercase',
   },
   headerTitle: {
-    fontSize: '20pt',
-    color: colors.accent,
+    fontSize: '18pt',
+    color: 'rgba(255,255,255,0.75)',
   },
   mainContent: {
     height: '100%',
@@ -43,9 +43,7 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     height: '100%',
     width: '30%',
     padding: '20pt 20pt',
-
-    backgroundColor: latte.mantle.hex,
-    borderRight: `1pt solid ${latte.crust.hex}`,
+    backgroundColor: latte.base.hex,
   },
   contentSection: {
     paddingBottom: '40pt',
@@ -55,18 +53,14 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
     marginBottom: '20pt',
-    // color: colors.lightText,
     borderBottom: `2pt solid ${colors.lightText}`,
   },
   subHeading: {
     fontSize: '12pt',
     fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
-    // paddingLeft: '5pt',
     marginTop: '20pt',
     marginBottom: '20pt',
-    // color: colors.lightText,
-    // textAlign: 'center',
     opacity: 0.8,
     borderBottom: `1pt solid ${colors.lightText}`,
   },
@@ -74,11 +68,7 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontSize: '12pt',
     fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
-    // paddingLeft: '5pt',
-    // marginTop: '20pt',
     marginBottom: '20pt',
-    // color: colors.lightText,
-    // textAlign: 'center',
     opacity: 0.8,
     borderBottom: `1pt solid ${colors.lightText}`,
   },
@@ -87,21 +77,19 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     paddingBottom: '10pt',
     borderBottom: `1pt solid ${colors.lightText}`,
   },
+  companyNoBorder: {
+    marginBottom: '10pt',
+    paddingBottom: '10pt',
+  },
   companyName: {
     alignSelf: 'flex-start',
-    color: colors.accent,
     fontFamily: 'Helvetica-Bold',
     marginBottom: '5pt',
   },
   companyPosition: {
     marginBottom: '10pt',
-    // fontSize: '10pt',
   },
-  companyPositionName: {
-    // fontSize: '12pt',
-    // color: colors.accent,
-    // fontFamily: 'Helvetica-Bold',
-  },
+  companyPositionName: {},
   companyPositionLength: {
     color: colors.lightText,
   },
@@ -111,7 +99,6 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
   educationName: {
     alignSelf: 'flex-start',
-    color: colors.accent,
     fontFamily: 'Helvetica-Bold',
   },
   textContainer: {
