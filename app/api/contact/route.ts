@@ -5,6 +5,9 @@ import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
 
 import regexs from '@/utils/regexs'
+import Recaptcha from '@/utils/Recaptcha'
+
+export const runtime: ServerRuntime = 'edge'
 
 const ratelimitCache: { [type: string]: Map<string, number> } = {
   presubmit: new Map<string, number>(),
@@ -24,11 +27,37 @@ const ratelimit: { [type: string]: Ratelimit } = {
   }),
 }
 
-export const runtime: ServerRuntime = 'edge'
+export const POST = async (req: NextRequest) => {
+  const clientIp: string =
+    req.ip ||
+    req.headers.get('X-Real-IP') ||
+    req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
+    '127.0.0.1'
 
-const getContactDataErrors = (
-  contactData: Api.Contact.Data
-): Api.Contact.Error[] => {
+  if (!(await ratelimit.presubmit.limit(clientIp)).success)
+    return NextResponse.json({}, { status: 429 })
+
+  const contactFormData: FormData = await req.formData()
+
+  const captchaErrorResponse: Api.Recaptcha.ErrorResponse =
+    await Recaptcha.verify(
+      contactFormData.get('recaptcha-token'),
+      Recaptcha.expectedActions.SUBMIT_CONTACT_FORM
+    )
+  if (captchaErrorResponse) return captchaErrorResponse
+
+  const contactData: Api.Contact.Data = {
+    name: contactFormData.get('name'),
+    contactMethod: contactFormData.get('contact-method'),
+    email: contactFormData.get('email'),
+    phone: contactFormData.get('phone'),
+    message: contactFormData.get('message'),
+    termsPrivacyDisclaimerAgreement: contactFormData.get(
+      'terms-privacy-disclaimer-agreement'
+    ),
+    contactConsent: contactFormData.get('contact-consent'),
+  }
+
   const contactDataErrors: Api.Contact.Error[] = []
 
   if (!contactData.name) {
@@ -92,99 +121,13 @@ const getContactDataErrors = (
     contactDataErrors.push({ field: 'contact-consent', type: 'empty' })
   }
 
-  return contactDataErrors
-}
-
-/**
- * verifyRecaptcha() - `production` only
- *
- * To use in development you will need to whitelist your domain
- * https://console.cloud.google.com/security/recaptcha?project=alic3-dev
- *
- * @async
- * @param recpatchaToken Token returned from grecaptcha.enterprise.execute on client
- * @returns NextResponse (if an error occurred) | undefined (if captcha was validated as valid)
- */
-const verifyRecaptcha = async (
-  recpatchaToken: FormDataEntryValue | null
-): Promise<Api.Recaptcha.ErrorResponse> => {
-  if (process.env.NODE_ENV !== 'production') return
-
-  if (!recpatchaToken || typeof recpatchaToken !== 'string')
-    return NextResponse.json(
-      { errors: [{ field: 'recaptcha', type: 'invalid' }] },
-      { status: 400 }
-    )
-
-  try {
-    const res: Response = await fetch(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.GOOGLE_CLOUD_PROJECT_ID}/assessments?key=${process.env.GOOGLE_CLOUD_API_KEY}`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          event: {
-            token: recpatchaToken,
-            siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-            expectedAction: 'SUBMIT_CONTACT_FORM',
-          },
-        }),
-      }
-    )
-    const data: Api.Recaptcha.ResponseData | null = await res.json()
-
-    if (
-      !data?.tokenProperties.valid ||
-      data.event.expectedAction !== data.tokenProperties.action
-    ) {
-      return NextResponse.json(
-        { errors: [{ field: 'recaptcha', type: 'invalid' }] },
-        { status: 400 }
-      )
-    }
-
-    // TODO: Possibly use riskAnalysis score/reason in the future
-  } catch {
-    return NextResponse.json({}, { status: 500 })
-  }
-}
-
-export const POST = async (req: NextRequest) => {
-  const clientIp: string =
-    req.ip ||
-    req.headers.get('X-Real-IP') ||
-    req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
-    '127.0.0.1'
-
-  if (!(await ratelimit.presubmit.limit(clientIp)).success)
-    return NextResponse.json({}, { status: 429 })
-
-  const contactFormData: FormData = await req.formData()
-
-  const captchaErrorResponse: Api.Recaptcha.ErrorResponse =
-    await verifyRecaptcha(contactFormData.get('recaptcha-token'))
-  if (captchaErrorResponse) return captchaErrorResponse
-
-  const contactData: Api.Contact.Data = {
-    name: contactFormData.get('name'),
-    contactMethod: contactFormData.get('contact-method'),
-    email: contactFormData.get('email'),
-    phone: contactFormData.get('phone'),
-    message: contactFormData.get('message'),
-    termsPrivacyDisclaimerAgreement: contactFormData.get(
-      'terms-privacy-disclaimer-agreement'
-    ),
-    contactConsent: contactFormData.get('contact-consent'),
-  }
-
-  const errors: Api.Contact.Error[] = getContactDataErrors(contactData)
-
-  if (errors.length) return NextResponse.json({ errors }, { status: 400 })
+  if (contactDataErrors.length)
+    return NextResponse.json({ errors: contactDataErrors }, { status: 400 })
 
   if (!(await ratelimit.submit.limit(clientIp)).success)
     return NextResponse.json({}, { status: 429 })
 
   const db = createKysely<Database.Alic3Dev>()
-
   try {
     await db
       .insertInto('contact_form')
