@@ -49,10 +49,23 @@ interface RecaptchaResponseData {
   }
 }
 
-const ratelimit: Ratelimit = new Ratelimit({
-  redis: kv,
-  limiter: Ratelimit.slidingWindow(1, '1 h'),
-})
+const ratelimitCache: { [type: string]: Map<string, number> } = {
+  presubmit: new Map<string, number>(),
+  submit: new Map<string, number>(),
+}
+const ratelimit: { [type: string]: Ratelimit } = {
+  presubmit: new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.slidingWindow(10, '10 s'),
+    ephemeralCache: ratelimitCache.presubmit,
+  }),
+  submit: new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.slidingWindow(1, '1 h'),
+    ephemeralCache: ratelimitCache.submit,
+    prefix: '@upstash/ratelimit/contact_submit',
+  }),
+}
 
 export const runtime: ServerRuntime = 'edge'
 
@@ -189,7 +202,7 @@ export const POST = async (req: NextRequest) => {
     req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
     '127.0.0.1'
 
-  if (!(await ratelimit.limit(clientIp)).success)
+  if (!(await ratelimit.presubmit.limit(clientIp)).success)
     return NextResponse.json({}, { status: 429 })
 
   const contactFormData: FormData = await req.formData()
@@ -214,6 +227,9 @@ export const POST = async (req: NextRequest) => {
   const errors: Api.ContactAPIError[] = getContactDataErrors(contactData)
 
   if (errors.length) return NextResponse.json({ errors }, { status: 400 })
+
+  if (!(await ratelimit.submit.limit(clientIp)).success)
+    return NextResponse.json({}, { status: 429 })
 
   const db = createKysely<Database.Alic3Dev>()
 
