@@ -4,7 +4,7 @@ export default function Disclaimer() {
       <h1>Disclaimer for Alic3dev</h1>
       <p>
         If you require any more information or have any questions about our
-        site&apos;s disclaimer, please feel free to contact us by email at
+        site&apos;s disclaimer, please feel free to contact us by email at{' '}
         <a href="mailto:alic3dev@gmail.com">alic3dev@gmail.com</a>.
       </p>
 
