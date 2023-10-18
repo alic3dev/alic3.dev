@@ -2,15 +2,13 @@ export default function Disclaimer() {
   return (
     <div>
       <h1>Disclaimer for Alic3dev</h1>
-
       <p>
         If you require any more information or have any questions about our
         site&apos;s disclaimer, please feel free to contact us by email at
-        alic3dev@gmail.com.
+        <a href="mailto:alic3dev@gmail.com">alic3dev@gmail.com</a>.
       </p>
 
       <h2>Disclaimers for Alic3dev</h2>
-
       <p>
         All the information on this website - alic3.dev - is published in good
         faith and for general information purpose only. Alic3dev does not make
@@ -40,14 +38,12 @@ export default function Disclaimer() {
       </p>
 
       <h2>Consent</h2>
-
       <p>
         By using our website, you hereby consent to our disclaimer and agree to
         its terms.
       </p>
 
       <h2>Update</h2>
-
       <p>
         Should we update, amend or make any changes to this document, those
         changes will be prominently posted here.

@@ -2,7 +2,6 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <h1>Privacy Policy for alic3.dev</h1>
-
       <p>
         At alic3dev, accessible from alic3.dev, one of our main priorities is
         the privacy of our visitors. This Privacy Policy document contains types
@@ -23,14 +22,12 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Consent</h2>
-
       <p>
         By using our website, you hereby consent to our Privacy Policy and agree
         to its terms.
       </p>
 
       <h2>Information we collect</h2>
-
       <p>
         The personal information that you are asked to provide, and the reasons
         why you are asked to provide it, will be made clear to you at the point
@@ -44,9 +41,7 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>How we use your information</h2>
-
       <p>We use the information we collect in various ways, including to:</p>
-
       <ul>
         <li>Provide, operate, and maintain our website</li>
         <li>Improve, personalize, and expand our website</li>
@@ -63,7 +58,6 @@ export default function PrivacyPolicy() {
       </ul>
 
       <h2>Log Files</h2>
-
       <p>
         alic3dev follows a standard procedure of using log files. These files
         log visitors when they visit websites. All hosting companies do this and
@@ -78,7 +72,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Cookies and Web Beacons</h2>
-
       <p>
         Like any other website, alic3dev uses &quot;cookies&quot;. These cookies
         are used to store information including visitors&apos; preferences, and
@@ -89,7 +82,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Advertising Partners Privacy Policies</h2>
-
       <p>
         You may consult this list to find the Privacy Policy for each of the
         advertising partners of alic3dev.
@@ -111,7 +103,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Third Party Privacy Policies</h2>
-
       <p>
         alic3dev&apos;s Privacy Policy does not apply to other advertisers or
         websites. Thus, we are advising you to consult the respective Privacy
@@ -128,7 +119,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
-
       <p>
         Under the CCPA, among other rights, California consumers have the right
         to:
@@ -152,7 +142,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>GDPR Data Protection Rights</h2>
-
       <p>
         We would like to make sure you are fully aware of all of your data
         protection rights. Every user is entitled to the following:
@@ -190,7 +179,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Children&apos;s Information</h2>
-
       <p>
         Another part of our priority is adding protection for children while
         using the internet. We encourage parents and guardians to observe,
@@ -206,7 +194,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Changes to This Privacy Policy</h2>
-
       <p>
         We may update our Privacy Policy from time to time. Thus, we advise you
         to review this page periodically for any changes. We will notify you of
@@ -215,7 +202,6 @@ export default function PrivacyPolicy() {
       </p>
 
       <h2>Contact Us</h2>
-
       <p>
         If you have any questions or suggestions about our Privacy Policy, do
         not hesitate to contact us.

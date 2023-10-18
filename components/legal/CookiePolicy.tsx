@@ -2,13 +2,9 @@ export default function CookiePolicy() {
   return (
     <div>
       <h1>Cookie Policy for Alic3dev</h1>
-
       <p>This is the Cookie Policy for Alic3dev, accessible from alic3.dev</p>
 
-      <p>
-        <strong>What Are Cookies</strong>
-      </p>
-
+      <h2>What Are Cookies</h2>
       <p>
         As is common practice with almost all professional websites this site
         uses cookies, which are tiny files that are downloaded to your computer,
@@ -19,10 +15,7 @@ export default function CookiePolicy() {
         sites functionality.
       </p>
 
-      <p>
-        <strong>How We Use Cookies</strong>
-      </p>
-
+      <h2>How We Use Cookies</h2>
       <p>
         We use cookies for a variety of reasons detailed below. Unfortunately in
         most cases there are no industry standard options for disabling cookies
@@ -32,10 +25,7 @@ export default function CookiePolicy() {
         service that you use.
       </p>
 
-      <p>
-        <strong>Disabling Cookies</strong>
-      </p>
-
+      <h2>Disabling Cookies</h2>
       <p>
         You can prevent the setting of cookies by adjusting the settings on your
         browser (see your browser Help for how to do this). Be aware that
@@ -44,10 +34,8 @@ export default function CookiePolicy() {
         disabling certain functionality and features of the this site. Therefore
         it is recommended that you do not disable cookies.
       </p>
-      <p>
-        <strong>The Cookies We Set</strong>
-      </p>
 
+      <h2>The Cookies We Set</h2>
       <ul>
         <li>
           <p>Forms related cookies</p>
@@ -70,10 +58,7 @@ export default function CookiePolicy() {
         </li>
       </ul>
 
-      <p>
-        <strong>Third Party Cookies</strong>
-      </p>
-
+      <h2>Third Party Cookies</h2>
       <p>
         In some special cases we also use cookies provided by trusted third
         parties. The following section details which third party cookies you
@@ -102,10 +87,7 @@ export default function CookiePolicy() {
         </li>
       </ul>
 
-      <p>
-        <strong>More Information</strong>
-      </p>
-
+      <h2>More Information</h2>
       <p>
         Hopefully that has clarified things for you and as was previously
         mentioned if there is something that you aren&apos;t sure whether you
@@ -119,7 +101,9 @@ export default function CookiePolicy() {
       </p>
 
       <ul>
-        <li>Email: alic3dev@gmail.com</li>
+        <li>
+          Email: <a href="mailto:alic3dev@gmail.com">alic3dev@gmail.com</a>
+        </li>
       </ul>
     </div>
   )

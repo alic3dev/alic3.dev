@@ -1,9 +1,7 @@
 export default function TermsAndConditions() {
   return (
     <div>
-      <h2>
-        <strong>Terms and Conditions</strong>
-      </h2>
+      <h2>Terms and Conditions</h2>
 
       <p>Welcome to Alic3dev!</p>
 
@@ -36,10 +34,7 @@ export default function TermsAndConditions() {
         interchangeable and therefore as referring to same.
       </p>
 
-      <h3>
-        <strong>Cookies</strong>
-      </h3>
-
+      <h3>Cookies</h3>
       <p>
         We employ the use of cookies. By accessing Alic3dev, you agreed to use
         cookies in agreement with the Alic3dev&apos;s Privacy Policy.{' '}
@@ -53,10 +48,7 @@ export default function TermsAndConditions() {
         cookies.
       </p>
 
-      <h3>
-        <strong>License</strong>
-      </h3>
-
+      <h3>License</h3>
       <p>
         Unless otherwise stated, Alic3dev and/or its licensors own the
         intellectual property rights for all material on Alic3dev. All
@@ -95,7 +87,6 @@ export default function TermsAndConditions() {
       </p>
 
       <p>You warrant and represent that:</p>
-
       <ul>
         <li>
           You are entitled to post the Comments on our website and have all
@@ -122,15 +113,11 @@ export default function TermsAndConditions() {
         Comments in any and all forms, formats or media.
       </p>
 
-      <h3>
-        <strong>Hyperlinking to our Content</strong>
-      </h3>
-
+      <h3>Hyperlinking to our Content</h3>
       <p>
         The following organizations may link to our Website without prior
         written approval:
       </p>
-
       <ul>
         <li>Government agencies;</li>
         <li>Search engines;</li>
@@ -159,7 +146,6 @@ export default function TermsAndConditions() {
         We may consider and approve other link requests from the following types
         of organizations:
       </p>
-
       <ul>
         <li>commonly-known consumer and/or business information sources;</li>
         <li>dot.com community sites;</li>
@@ -197,7 +183,6 @@ export default function TermsAndConditions() {
       </p>
 
       <p>Approved organizations may hyperlink to our Website as follows:</p>
-
       <ul>
         <li>By use of our corporate name; or</li>
         <li>By use of the uniform resource locator being linked to; or</li>
@@ -213,20 +198,14 @@ export default function TermsAndConditions() {
         linking absent a trademark license agreement.
       </p>
 
-      <h3>
-        <strong>iFrames</strong>
-      </h3>
-
+      <h3>iFrames</h3>
       <p>
         Without prior approval and written permission, you may not create frames
         around our Webpages that alter in any way the visual presentation or
         appearance of our Website.
       </p>
 
-      <h3>
-        <strong>Content Liability</strong>
-      </h3>
-
+      <h3>Content Liability</h3>
       <p>
         We shall not be hold responsible for any content that appears on your
         Website. You agree to protect and defend us against all claims that is
@@ -236,10 +215,7 @@ export default function TermsAndConditions() {
         any third party rights.
       </p>
 
-      <h3>
-        <strong>Reservation of Rights</strong>
-      </h3>
-
+      <h3>Reservation of Rights</h3>
       <p>
         We reserve the right to request that you remove all links or any
         particular link to our Website. You approve to immediately remove all
@@ -249,10 +225,7 @@ export default function TermsAndConditions() {
         these linking terms and conditions.
       </p>
 
-      <h3>
-        <strong>Removal of links from our website</strong>
-      </h3>
-
+      <h3>Removal of links from our website</h3>
       <p>
         If you find any link on our Website that is offensive for any reason,
         you are free to contact and inform us any moment. We will consider
@@ -267,16 +240,12 @@ export default function TermsAndConditions() {
         is kept up to date.
       </p>
 
-      <h3>
-        <strong>Disclaimer</strong>
-      </h3>
-
+      <h3>Disclaimer</h3>
       <p>
         To the maximum extent permitted by applicable law, we exclude all
         representations, warranties and conditions relating to our website and
         the use of this website. Nothing in this disclaimer will:
       </p>
-
       <ul>
         <li>
           limit or exclude our or your liability for death or personal injury;

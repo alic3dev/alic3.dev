@@ -1,10 +1,12 @@
 import { Footer, Header } from '@/components'
-import { CookiePolicy } from '@/components/legal'
+import { LegalPageWrapper, CookiePolicy } from '@/components/legal'
 
 export default function PrivacyPage(): JSX.Element {
   return (
     <main>
-      <CookiePolicy />
+      <LegalPageWrapper>
+        <CookiePolicy />
+      </LegalPageWrapper>
 
       <Footer />
       <Header />
