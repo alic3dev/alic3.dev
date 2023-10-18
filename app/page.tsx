@@ -6,7 +6,7 @@ export default function RootPage(): JSX.Element {
       <BackgroundCanvas />
 
       <Sections.HomeSection />
-      <Sections.SkillsetSection />
+      <Sections.FocusSection />
       <Sections.WorkSection />
       <Sections.ContactSection />
 

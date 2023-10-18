@@ -6,7 +6,7 @@ import { NextFont } from 'next/dist/compiled/@next/font'
 import { Inconsolata } from 'next/font/google'
 
 import Section from './Section'
-import styles from './SkillsetSection.module.scss'
+import styles from './FocusSection.module.scss'
 import { SiReact } from 'react-icons/si'
 import { LuBinary } from 'react-icons/lu'
 
@@ -40,7 +40,7 @@ const getRandomColorIndexs = (): RandomColorIndex[] => {
   return randomColorIndexs
 }
 
-export default function SkillsetSection(): JSX.Element {
+export default function FocusSection(): JSX.Element {
   const [randomColorIndexs, setRandomColorIndexs] = React.useState<
     RandomColorIndex[]
   >(getRandomColorIndexs())
