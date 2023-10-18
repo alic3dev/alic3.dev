@@ -4,6 +4,8 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
 
+import regexs from '@/utils/regexs'
+
 type ContactFormServerFields =
   | 'name'
   | 'contactMethod'
@@ -78,8 +80,11 @@ const getContactDataErrors = (
     ) {
       if (!contactData.email) {
         contactDataErrors.push({ field: 'email', type: 'empty' })
-      } else {
-        // TODO: Validate email
+      } else if (
+        typeof contactData.email !== 'string' ||
+        !regexs.email.test(contactData.email)
+      ) {
+        contactDataErrors.push({ field: 'email', type: 'invalid' })
       }
     }
 
@@ -89,8 +94,11 @@ const getContactDataErrors = (
     ) {
       if (!contactData.phone) {
         contactDataErrors.push({ field: 'phone', type: 'empty' })
-      } else {
-        // TODO: Validate phone
+      } else if (
+        typeof contactData.phone !== 'string' ||
+        !regexs.phone.test(contactData.phone)
+      ) {
+        contactDataErrors.push({ field: 'phone', type: 'invalid' })
       }
     }
   } else {
