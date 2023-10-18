@@ -7,11 +7,11 @@ import styles from './Header.module.scss'
 import HeaderItem from '@/components/Header/HeaderItem'
 import Title from '@/components/Header/Title'
 
-import { validLocations, ValidLocation } from '@/utils/validLocations'
+import validLocations from '@/utils/validLocations'
 
 function getScrollRelationalLocation(
   scrollDepth: number
-): ValidLocation | null {
+): Pages.ValidLocation | null {
   for (const location of validLocations) {
     if (location === 'home') {
       if (scrollDepth <= 300) return 'home'
@@ -36,7 +36,7 @@ function getScrollRelationalLocation(
 export default function Header() {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
   const [currentLocation, setCurrentLocation] = React.useState<
-    ValidLocation | undefined
+    Pages.ValidLocation | undefined
   >()
 
   const scrollDepthIntroMapped: number = React.useMemo<number>(
@@ -50,8 +50,8 @@ export default function Header() {
 
     const startingScrollDepth: number = window.scrollY
 
-    if (validLocations.includes(startingLocation as ValidLocation))
-      setCurrentLocation(startingLocation as ValidLocation)
+    if (validLocations.includes(startingLocation as Pages.ValidLocation))
+      setCurrentLocation(startingLocation as Pages.ValidLocation)
     else
       setCurrentLocation(
         getScrollRelationalLocation(startingScrollDepth) || 'home'
@@ -82,7 +82,7 @@ export default function Header() {
   }, [scrollDepth])
 
   const navigateToLocation = React.useCallback(
-    (location: ValidLocation): void => {
+    (location: Pages.ValidLocation): void => {
       const sectionElement = document.getElementById(location)
       if (sectionElement) sectionElement.scrollIntoView({ behavior: 'smooth' })
     },

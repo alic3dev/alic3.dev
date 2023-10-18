@@ -1,7 +1,5 @@
 'use client'
 
-import { ValidLocation } from '@/utils/validLocations'
-
 import styles from './Section.module.scss'
 
 export default function Section({
@@ -10,7 +8,7 @@ export default function Section({
   containerClassName,
   children,
 }: React.PropsWithChildren<{
-  name: ValidLocation
+  name: Pages.ValidLocation
   className?: string
   containerClassName?: string
 }>): JSX.Element {
