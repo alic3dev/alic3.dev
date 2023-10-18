@@ -1,14 +1,13 @@
 'use client'
 
 import React from 'react'
-
+import { SiReact } from 'react-icons/si'
+import { LuBinary } from 'react-icons/lu'
 import { NextFont } from 'next/dist/compiled/@next/font'
 import { Inconsolata } from 'next/font/google'
 
-import Section from './Section'
-import styles from './FocusSection.module.scss'
-import { SiReact } from 'react-icons/si'
-import { LuBinary } from 'react-icons/lu'
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/FocusSection.module.scss'
 
 const modernFont: NextFont = Inconsolata({ subsets: ['latin'] })
 

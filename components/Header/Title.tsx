@@ -3,7 +3,7 @@
 import { NextFont } from 'next/dist/compiled/@next/font'
 import { Inconsolata } from 'next/font/google'
 
-import styles from './Title.module.scss'
+import styles from '@/components/Header/Title.module.scss'
 
 const titleMainStartFont: NextFont = Inconsolata({ subsets: ['latin'] })
 

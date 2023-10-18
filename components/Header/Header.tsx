@@ -2,8 +2,7 @@
 
 import React from 'react'
 
-import styles from './Header.module.scss'
-
+import styles from '@/components/Header/Header.module.scss'
 import HeaderItem from '@/components/Header/HeaderItem'
 import Title from '@/components/Header/Title'
 

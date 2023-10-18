@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import dynamic, { LoaderComponent } from 'next/dynamic'
 import { Document, Page, Text, View, Link } from '@react-pdf/renderer'
+import dynamic, { LoaderComponent } from 'next/dynamic'
 
 import icons from '@/utils/resumeIcons'
 import styles from '@/styles/resumeStyles'

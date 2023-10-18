@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import Section from './Section'
-import styles from './HomeSection.module.scss'
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/HomeSection.module.scss'
 
 export default function HomeSection(): JSX.Element {
   const onNextClick = React.useCallback<

@@ -1,6 +1,5 @@
 @use '@/styles/utils/colors';
-
-@use './Section.module.scss';
+@use '@/components/sections/Section.module.scss';
 
 .work-item {
   width: 70%;

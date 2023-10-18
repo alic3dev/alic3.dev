@@ -44,7 +44,7 @@ This project uses CSS modules through SASS (with SCSS syntax).
 Make sure your component styles follow the naming convention `*.module.scss` and import accordingly in your components `tsx` file
 
 ```javascript
-import styles from './COMPONENT_NAME.module.scss'
+import styles from '@/components/COMPONENT_NAME.module.scss'
 ```
 
 #### Applying Styles
@@ -62,7 +62,7 @@ Styles can be applied to an element as shown below
 ##### Example.tsx
 
 ```javascript
-import styles from './Example.module.scss'
+import styles from '@/components/Example.module.scss'
 
 const Example = () => (
   <div className={styles.example}>
@@ -90,7 +90,7 @@ Nested styles can also be applied to an element as follows
 ##### Example.tsx
 
 ```javascript
-import styles from './Example.module.scss'
+import styles from '@/components/Example.module.scss'
 
 const Example = () => (
   <div className={`${styles.example} ${styles.active}`}>
@@ -114,7 +114,7 @@ Since Javascript interprets a `-` as an operator we have to change our syntax sl
 ##### KebabCaseExample.tsx
 
 ```javascript
-import styles from './KebabCaseExample.module.scss'
+import styles from '@/components/KebabCaseExample.module.scss'
 
 const KebabCaseExample = () => (
   <div className={styles['kebab-case-example']}>

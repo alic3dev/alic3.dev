@@ -3,10 +3,9 @@
 import React from 'react'
 import Script from 'next/script'
 
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/ContactSection.module.scss'
 import Spinner from '@/components/decorative/Spinner'
-
-import Section from './Section'
-import styles from './ContactSection.module.scss'
 
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | ''
