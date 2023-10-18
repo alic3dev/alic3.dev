@@ -225,9 +225,19 @@ export default function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           />{' '}
-          I have read and agree to the <a href="#">privacy policy</a>,{' '}
-          <a href="#">terms of service</a>, and <a href="#">disclaimer</a>.
-          {/* FIXME: Make these actual links */}
+          I have read and agree to the{' '}
+          <a href="/privacy" target="_blank">
+            privacy policy
+          </a>
+          ,{' '}
+          <a href="/terms" target="blank">
+            terms of service
+          </a>
+          , and{' '}
+          <a href="/disclaimer" target="_blank">
+            disclaimer
+          </a>
+          .
         </label>
 
         <label>
