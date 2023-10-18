@@ -112,7 +112,7 @@ export default function Header() {
           navigateToLocation={navigateToLocation}
         />
         <HeaderItem
-          location="work"
+          location={'focus'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
@@ -120,17 +120,14 @@ export default function Header() {
         <div className={styles['navigation-header-spacer']} />
 
         <HeaderItem
+          location="work"
           align={'right'}
-          location={'personal'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
-        >
-          Misc
-        </HeaderItem>
-
+        />
         <HeaderItem
-          align={'right'}
           location={'contact'}
+          align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
