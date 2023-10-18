@@ -6,49 +6,6 @@ import { kv } from '@vercel/kv'
 
 import regexs from '@/utils/regexs'
 
-type ContactFormServerFields =
-  | 'name'
-  | 'contactMethod'
-  | 'email'
-  | 'phone'
-  | 'message'
-  | 'termsPrivacyDisclaimerAgreement'
-  | 'contactConsent'
-
-type ContactData = Record<ContactFormServerFields, FormDataEntryValue | null>
-
-interface RecaptchaResponseData {
-  name: string
-  event: {
-    token: string
-    siteKey: string
-    userAgent: string
-    userIpAddress: string
-    expectedAction: string
-    hashedAccountId: string
-    express: boolean
-    requestedUri: string
-    wafTokenAssessment: boolean
-    ja3: string
-    headers: any[]
-    firewallPolicyEvaluation: boolean
-  }
-  riskAnalysis: {
-    score: number
-    reasons: string[]
-    extendedVerdictReasons: string[]
-  }
-  tokenProperties: {
-    valid: boolean
-    invalidReason: string
-    hostname: string
-    androidPackageName: string
-    iosBundleId: string
-    action: string
-    createTime: string
-  }
-}
-
 const ratelimitCache: { [type: string]: Map<string, number> } = {
   presubmit: new Map<string, number>(),
   submit: new Map<string, number>(),
@@ -70,9 +27,9 @@ const ratelimit: { [type: string]: Ratelimit } = {
 export const runtime: ServerRuntime = 'edge'
 
 const getContactDataErrors = (
-  contactData: ContactData
-): Api.ContactAPIError[] => {
-  const contactDataErrors: Api.ContactAPIError[] = []
+  contactData: Api.Contact.Data
+): Api.Contact.Error[] => {
+  const contactDataErrors: Api.Contact.Error[] = []
 
   if (!contactData.name) {
     contactDataErrors.push({ field: 'name', type: 'empty' })
@@ -150,19 +107,17 @@ const getContactDataErrors = (
  */
 const verifyRecaptcha = async (
   recpatchaToken: FormDataEntryValue | null
-): Promise<NextResponse | undefined> => {
+): Promise<Api.Recaptcha.ErrorResponse> => {
   if (process.env.NODE_ENV !== 'production') return
 
   if (!recpatchaToken || typeof recpatchaToken !== 'string')
     return NextResponse.json(
-      { errors: [{ field: 'recaptcha', type: 'invalid' }] } as {
-        errors: Api.ContactAPIError[]
-      },
+      { errors: [{ field: 'recaptcha', type: 'invalid' }] },
       { status: 400 }
     )
 
   try {
-    const res = await fetch(
+    const res: Response = await fetch(
       `https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.GOOGLE_CLOUD_PROJECT_ID}/assessments?key=${process.env.GOOGLE_CLOUD_API_KEY}`,
       {
         method: 'POST',
@@ -175,16 +130,14 @@ const verifyRecaptcha = async (
         }),
       }
     )
-    const data: RecaptchaResponseData | null = await res.json()
+    const data: Api.Recaptcha.ResponseData | null = await res.json()
 
     if (
       !data?.tokenProperties.valid ||
       data.event.expectedAction !== data.tokenProperties.action
     ) {
       return NextResponse.json(
-        { errors: [{ field: 'recaptcha', type: 'invalid' }] } as {
-          errors: Api.ContactAPIError[]
-        },
+        { errors: [{ field: 'recaptcha', type: 'invalid' }] },
         { status: 400 }
       )
     }
@@ -207,12 +160,11 @@ export const POST = async (req: NextRequest) => {
 
   const contactFormData: FormData = await req.formData()
 
-  const captchaErrorResponse = await verifyRecaptcha(
-    contactFormData.get('recaptcha-token')
-  )
+  const captchaErrorResponse: Api.Recaptcha.ErrorResponse =
+    await verifyRecaptcha(contactFormData.get('recaptcha-token'))
   if (captchaErrorResponse) return captchaErrorResponse
 
-  const contactData: ContactData = {
+  const contactData: Api.Contact.Data = {
     name: contactFormData.get('name'),
     contactMethod: contactFormData.get('contact-method'),
     email: contactFormData.get('email'),
@@ -224,7 +176,7 @@ export const POST = async (req: NextRequest) => {
     contactConsent: contactFormData.get('contact-consent'),
   }
 
-  const errors: Api.ContactAPIError[] = getContactDataErrors(contactData)
+  const errors: Api.Contact.Error[] = getContactDataErrors(contactData)
 
   if (errors.length) return NextResponse.json({ errors }, { status: 400 })
 
@@ -238,7 +190,7 @@ export const POST = async (req: NextRequest) => {
       .insertInto('contact_form')
       .values({
         name: contactData.name as string,
-        contact_method: contactData.contactMethod as Api.ContactMethod,
+        contact_method: contactData.contactMethod as Api.Contact.Method,
         email: (contactData.email as string) || null,
         phone: (contactData.phone as string) || null,
         message: contactData.message as string,

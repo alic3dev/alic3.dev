@@ -5,7 +5,7 @@ declare global {
     interface ContactForm {
       id: ColumnType<Generated<number>, never, never>
       name: string
-      contact_method: Api.ContactMethod
+      contact_method: Api.Contact.Method
       email: string | null
       phone: string | null
       message: string

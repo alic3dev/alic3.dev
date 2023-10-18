@@ -9,14 +9,14 @@ import Section from './Section'
 import styles from './ContactSection.module.scss'
 
 const setDefaultContactMethod = (
-  prevValue: Api.ContactMethod | ''
-): Api.ContactMethod => (!prevValue ? 'email' : prevValue)
+  prevValue: Api.Contact.Method | ''
+): Api.Contact.Method => (!prevValue ? 'email' : prevValue)
 
 const messageMaxLength: number = 5000
 
 export default function ContactSection(): JSX.Element {
   const [contactMethod, setContactMethod] = React.useState<
-    Api.ContactMethod | ''
+    Api.Contact.Method | ''
   >('')
   const [message, setMessage] = React.useState<string>('')
   const [submitting, setSubmitting] = React.useState<boolean>(false)
@@ -58,7 +58,7 @@ export default function ContactSection(): JSX.Element {
             body,
           })
 
-          const data: { success?: boolean; errors?: Api.ContactAPIError } =
+          const data: { success?: boolean; errors?: Api.Contact.Error } =
             await res.json()
           if (!data.success) throw new Error('Unexpected error')
 
