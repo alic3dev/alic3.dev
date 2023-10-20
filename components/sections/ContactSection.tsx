@@ -7,11 +7,15 @@ import Section from '@/components/sections/Section'
 import styles from '@/components/sections/ContactSection.module.scss'
 import Spinner from '@/components/decorative/Spinner'
 
+import { PiSmileyXEyes } from 'react-icons/pi'
+import { BsFillEnvelopeCheckFill } from 'react-icons/bs'
+
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | ''
 ): Api.Contact.Method => (!prevValue ? 'email' : prevValue)
 
 const messageMaxLength: number = 5000
+const messageSentLocalStorageKey: string = 'root:contact-section:message-sent'
 
 export default function ContactSection(): JSX.Element {
   const [contactMethod, setContactMethod] = React.useState<
@@ -20,6 +24,10 @@ export default function ContactSection(): JSX.Element {
   const [message, setMessage] = React.useState<string>('')
   const [submitting, setSubmitting] = React.useState<boolean>(false)
   const [loading, setLoading] = React.useState<boolean>(true)
+  const [finalState, setFinalState] = React.useState<{
+    error?: boolean
+    success?: boolean
+  } | null>(null)
 
   const onMessageTextAreaChange = React.useCallback<
     React.ChangeEventHandler<HTMLTextAreaElement>
@@ -35,7 +43,7 @@ export default function ContactSection(): JSX.Element {
         event.preventDefault()
         event.stopPropagation()
 
-        if (submitting) return
+        if (submitting || loading) return
 
         setSubmitting(true)
 
@@ -61,16 +69,19 @@ export default function ContactSection(): JSX.Element {
             await res.json()
           if (!data.success) throw new Error('Unexpected error')
 
-          console.log(data)
-        } catch (error) {
-          console.error(error)
+          setFinalState({ success: true })
+
+          window.localStorage.setItem(
+            messageSentLocalStorageKey,
+            new Date().toJSON()
+          )
+        } catch {
+          setFinalState({ error: true })
         } finally {
           setSubmitting(false)
         }
-
-        // TODO: Implement success states
       },
-      [submitting]
+      [submitting, loading]
     )
 
   // Work-around for default radio not being selected on-form-reset
@@ -89,6 +100,21 @@ export default function ContactSection(): JSX.Element {
     setContactMethod(setDefaultContactMethod)
 
     if (process.env.NODE_ENV !== 'production') setLoading(false)
+
+    const lastSentMessageDateTime: string | null = window.localStorage.getItem(
+      messageSentLocalStorageKey
+    )
+
+    if (lastSentMessageDateTime) {
+      if (
+        new Date().valueOf() - new Date(lastSentMessageDateTime).valueOf() >=
+        8.64e7 // One day in MS
+      ) {
+        window.localStorage.removeItem(messageSentLocalStorageKey)
+      } else {
+        setFinalState({ success: true })
+      }
+    }
   }, [])
 
   return (
@@ -269,8 +295,33 @@ export default function ContactSection(): JSX.Element {
             ${submitting || loading ? styles['active'] : ''}
           `}
         >
-          {submitting ? 'Submitting Contact Form' : 'Loading'}
+          <h3>{submitting ? 'Submitting Contact Form' : 'Loading'}</h3>
           <Spinner />
+        </div>
+
+        <div
+          className={`
+            ${styles['contact-form-overlay']}
+            ${finalState ? styles['active'] : ''}
+          `}
+        >
+          {finalState?.error ? (
+            <>
+              <PiSmileyXEyes className={styles['contact-form-overlay-icon']} />
+
+              <p>Whoops something went wrong</p>
+            </>
+          ) : (
+            <>
+              <h3>Thanks!</h3>
+
+              <BsFillEnvelopeCheckFill
+                className={styles['contact-form-overlay-icon']}
+              />
+
+              <p>We recieved your messsage and will be in contact soon</p>
+            </>
+          )}
         </div>
       </form>
     </Section>
