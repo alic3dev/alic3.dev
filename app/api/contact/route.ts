@@ -21,7 +21,7 @@ const ratelimit: { [type: string]: Ratelimit } = {
   }),
   submit: new Ratelimit({
     redis: kv,
-    limiter: Ratelimit.slidingWindow(1, '1 h'),
+    limiter: Ratelimit.slidingWindow(1, '1 d'),
     ephemeralCache: ratelimitCache.submit,
     prefix: '@upstash/ratelimit/contact_submit',
   }),
