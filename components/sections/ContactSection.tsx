@@ -50,7 +50,10 @@ export default function ContactSection(): JSX.Element {
         try {
           const body: FormData = new FormData(event.currentTarget)
 
-          if (process.env.NODE_ENV === 'production') {
+          if (
+            process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA &&
+            process.env.NODE_ENV === 'production'
+          ) {
             const recaptchaToken: string = await grecaptcha.enterprise.execute(
               process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
               {
@@ -119,12 +122,13 @@ export default function ContactSection(): JSX.Element {
 
   return (
     <Section name="contact">
-      {process.env.NODE_ENV === 'production' && (
-        <Script
-          src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          onLoad={() => grecaptcha.enterprise.ready(() => setLoading(false))}
-        />
-      )}
+      {process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA &&
+        process.env.NODE_ENV === 'production' && (
+          <Script
+            src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+            onLoad={() => grecaptcha.enterprise.ready(() => setLoading(false))}
+          />
+        )}
 
       <div className={styles['section-header']}>
         <h2>Contact</h2>

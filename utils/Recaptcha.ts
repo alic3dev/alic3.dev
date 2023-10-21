@@ -18,7 +18,11 @@ export const verify = async (
   recpatchaToken: FormDataEntryValue | null,
   expectedAction: string
 ): Promise<Api.Recaptcha.ErrorResponse> => {
-  if (process.env.NODE_ENV !== 'production') return
+  if (
+    !process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA ||
+    process.env.NODE_ENV !== 'production'
+  )
+    return
 
   if (!recpatchaToken || typeof recpatchaToken !== 'string')
     return NextResponse.json(
