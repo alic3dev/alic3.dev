@@ -1,16 +1,16 @@
 import ContactSection from '@/components/sections/ContactSection'
 import HomeSection from '@/components/sections/HomeSection'
-import SkillsetSection from '@/components/sections/SkillsetSection'
+import FocusSection from '@/components/sections/FocusSection'
 import WorkSection from '@/components/sections/WorkSection'
 
-export { ContactSection, HomeSection, SkillsetSection, WorkSection }
+export { ContactSection, HomeSection, FocusSection, WorkSection }
 
 const sections: {
   [section: string]: React.FC
 } = {
   ContactSection,
   HomeSection,
-  SkillsetSection,
+  FocusSection,
   WorkSection,
 }
 

@@ -2,9 +2,7 @@
 
 import React from 'react'
 
-import styles from './HeaderItem.module.scss'
-
-import { ValidLocation } from '@/utils/validLocations'
+import styles from '@/components/Header/HeaderItem.module.scss'
 
 export default function HeaderItem({
   align,
@@ -14,9 +12,9 @@ export default function HeaderItem({
   children,
 }: {
   align?: 'right'
-  location: ValidLocation
-  currentLocation?: ValidLocation
-  navigateToLocation: (location: ValidLocation) => void
+  location: Pages.ValidLocation
+  currentLocation?: Pages.ValidLocation
+  navigateToLocation: (location: Pages.ValidLocation) => void
   children?: React.ReactNode
 }): JSX.Element {
   const isActive = React.useMemo<boolean>(

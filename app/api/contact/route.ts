@@ -1,30 +1,64 @@
+import { ServerRuntime } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
+import { Ratelimit } from '@upstash/ratelimit'
+import { createKysely } from '@vercel/postgres-kysely'
+import { kv } from '@vercel/kv'
 
-interface ContactAPIError {
-  field:
-    | 'name'
-    | 'contact-method'
-    | 'email'
-    | 'phone'
-    | 'message'
-    | 'terms-privacy-disclaimer-agreement'
-    | 'contact-consent'
-  type: 'empty' | 'invalid'
+import regexs from '@/utils/regexs'
+import Recaptcha from '@/utils/Recaptcha'
+
+export const runtime: ServerRuntime = 'edge'
+
+const ratelimitCache: { [type: string]: Map<string, number> } = {
+  presubmit: new Map<string, number>(),
+  submit: new Map<string, number>(),
+}
+const ratelimit: { [type: string]: Ratelimit } = {
+  presubmit: new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.slidingWindow(10, '10 s'),
+    ephemeralCache: ratelimitCache.presubmit,
+  }),
+  submit: new Ratelimit({
+    redis: kv,
+    limiter: Ratelimit.slidingWindow(1, '1 d'),
+    ephemeralCache: ratelimitCache.submit,
+    prefix: '@upstash/ratelimit/contact_submit',
+  }),
 }
 
-type ContactFormServerFields =
-  | 'name'
-  | 'contactMethod'
-  | 'email'
-  | 'phone'
-  | 'message'
-  | 'termsPrivacyDisclaimerAgreement'
-  | 'contactConsent'
+export const POST = async (req: NextRequest) => {
+  const clientIp: string =
+    req.ip ||
+    req.headers.get('X-Real-IP') ||
+    req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
+    '127.0.0.1'
 
-type ContactData = Record<ContactFormServerFields, FormDataEntryValue | null>
+  if (!(await ratelimit.presubmit.limit(clientIp)).success)
+    return NextResponse.json({}, { status: 429 })
 
-const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
-  const contactDataErrors: ContactAPIError[] = []
+  const contactFormData: FormData = await req.formData()
+
+  const captchaErrorResponse: Api.Recaptcha.ErrorResponse =
+    await Recaptcha.verify(
+      contactFormData.get('recaptcha-token'),
+      Recaptcha.expectedActions.SUBMIT_CONTACT_FORM
+    )
+  if (captchaErrorResponse) return captchaErrorResponse
+
+  const contactData: Api.Contact.Data = {
+    name: contactFormData.get('name'),
+    contactMethod: contactFormData.get('contact-method'),
+    email: contactFormData.get('email'),
+    phone: contactFormData.get('phone'),
+    message: contactFormData.get('message'),
+    termsPrivacyDisclaimerAgreement: contactFormData.get(
+      'terms-privacy-disclaimer-agreement'
+    ),
+    contactConsent: contactFormData.get('contact-consent'),
+  }
+
+  const contactDataErrors: Api.Contact.Error[] = []
 
   if (!contactData.name) {
     contactDataErrors.push({ field: 'name', type: 'empty' })
@@ -45,8 +79,11 @@ const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
     ) {
       if (!contactData.email) {
         contactDataErrors.push({ field: 'email', type: 'empty' })
-      } else {
-        // TODO: Validate email
+      } else if (
+        typeof contactData.email !== 'string' ||
+        !regexs.email.test(contactData.email)
+      ) {
+        contactDataErrors.push({ field: 'email', type: 'invalid' })
       }
     }
 
@@ -56,8 +93,11 @@ const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
     ) {
       if (!contactData.phone) {
         contactDataErrors.push({ field: 'phone', type: 'empty' })
-      } else {
-        // TODO: Validate phone
+      } else if (
+        typeof contactData.phone !== 'string' ||
+        !regexs.phone.test(contactData.phone)
+      ) {
+        contactDataErrors.push({ field: 'phone', type: 'invalid' })
       }
     }
   } else {
@@ -81,31 +121,35 @@ const getContactDataErrors = (contactData: ContactData): ContactAPIError[] => {
     contactDataErrors.push({ field: 'contact-consent', type: 'empty' })
   }
 
-  return contactDataErrors
-}
+  if (contactDataErrors.length)
+    return NextResponse.json({ errors: contactDataErrors }, { status: 400 })
 
-export const POST = async (req: NextRequest) => {
-  // TODO: Rate limiting/CAPTCHA
+  if (!(await ratelimit.submit.limit(clientIp)).success)
+    return NextResponse.json({}, { status: 429 })
 
-  const contactFormData: FormData = await req.formData()
-
-  const contactData: ContactData = {
-    name: contactFormData.get('name'),
-    contactMethod: contactFormData.get('contact-method'),
-    email: contactFormData.get('email'),
-    phone: contactFormData.get('phone'),
-    message: contactFormData.get('message'),
-    termsPrivacyDisclaimerAgreement: contactFormData.get(
-      'terms-privacy-disclaimer-agreement'
-    ),
-    contactConsent: contactFormData.get('contact-consent'),
+  const db = createKysely<Database.Alic3Dev>()
+  try {
+    await db
+      .insertInto('contact_form')
+      .values({
+        name: contactData.name as string,
+        contact_method: contactData.contactMethod as Api.Contact.Method,
+        email: (contactData.email as string) || null,
+        phone: (contactData.phone as string) || null,
+        message: contactData.message as string,
+        terms_privacy_disclaimer_agreement:
+          contactData.termsPrivacyDisclaimerAgreement === 'on',
+        contact_consent: contactData.contactConsent === 'on',
+        client_ip: clientIp,
+      })
+      .executeTakeFirstOrThrow()
+  } catch {
+    return NextResponse.json({}, { status: 500 })
+  } finally {
+    db.destroy()
   }
 
-  const errors: ContactAPIError[] = getContactDataErrors(contactData)
-
-  if (errors.length) return NextResponse.json({ errors }, { status: 400 })
-
-  // TODO: Store contact form data in DB and send an email containing the form to myself
+  // TODO: Send an email notification that someone submitted this form
 
   return NextResponse.json({ success: true })
 }

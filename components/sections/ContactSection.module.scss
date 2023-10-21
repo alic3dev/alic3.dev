@@ -1,6 +1,5 @@
 @use '@/styles/utils/colors';
-
-@use './Section.module.scss';
+@use '@/components/sections/Section.module.scss';
 
 .contact-options {
   max-width: 500px;
@@ -81,6 +80,8 @@
   right: -1rem;
   bottom: -1rem;
 
+  padding-bottom: 6rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,5 +98,38 @@
     opacity: 1;
 
     pointer-events: all;
+  }
+}
+
+.contact-form-overlay-icon {
+  margin: 2rem;
+  font-size: 4rem;
+}
+
+@media (max-width: 900px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .contact-options > p + p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-options-seperator {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .contact-checkbox {
+    width: 85%;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+
+    & > input[type='checkbox'] {
+      margin-left: -2rem;
+      margin-bottom: 0;
+    }
   }
 }

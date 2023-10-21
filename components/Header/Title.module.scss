@@ -2,11 +2,9 @@
 
 .title {
   position: absolute;
-  // top: -0.75rem;
-  top: 50%;
+  top: -0.75rem;
   left: 50%;
-  // transform: translateX(-50%);
-  transform: translate(-50%, -100%);
+  transform: translateX(-50%);
 
   user-select: none;
 }
@@ -26,13 +24,12 @@
 }
 
 .title-main {
+  position: relative;
   font-size: 6rem;
   font-weight: 300;
-  letter-spacing: -1em;
 }
 
 .title-secondary {
-  padding-left: 4.25rem;
   font-size: 3rem;
   font-weight: 100;
 }
@@ -50,6 +47,12 @@
   font-size: 0.75em;
 }
 
+.title-main-part {
+  position: absolute;
+  left: 0;
+  bottom: 0.75rem;
+}
+
 .title-main-start {
   font-size: 1.5em;
   font-weight: 100;
@@ -60,7 +63,13 @@
   font-weight: 100;
 }
 
+.title-main-c {
+  bottom: 0.4rem;
+}
+
 .title-main-end {
   font-size: 0.6875em;
   font-weight: 100;
+  left: 0.3rem;
+  bottom: 0.8rem;
 }

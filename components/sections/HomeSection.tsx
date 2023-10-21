@@ -2,15 +2,15 @@
 
 import React from 'react'
 
-import Section from './Section'
-import styles from './HomeSection.module.scss'
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/HomeSection.module.scss'
 
 export default function HomeSection(): JSX.Element {
   const onNextClick = React.useCallback<
     React.MouseEventHandler<HTMLAnchorElement>
   >((event) => {
     const workSectionElement: HTMLElement | null =
-      document.getElementById('work')
+      document.getElementById('focus')
 
     if (workSectionElement)
       workSectionElement.scrollIntoView({ behavior: 'smooth' })
@@ -25,7 +25,7 @@ export default function HomeSection(): JSX.Element {
         className={styles.next}
         aria-label="Next section"
         title="Next section"
-        href="#work"
+        href="#focus"
       />
     </Section>
   )

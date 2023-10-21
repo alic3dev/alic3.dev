@@ -1,9 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
-
-// For more icons, see: https://react-icons.github.io/
 import { DiPhonegap } from 'react-icons/di'
 import { LiaJava } from 'react-icons/lia'
 import {
@@ -23,9 +20,10 @@ import {
   TbBrandTypescript,
   TbSquareLetterK,
 } from 'react-icons/tb'
+import Link from 'next/link'
 
-import Section from './Section'
-import styles from './WorkSection.module.scss'
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/WorkSection.module.scss'
 
 import workHistory from '@/data/workHistory'
 
@@ -222,7 +220,11 @@ export default function WorkSection(): JSX.Element {
         </React.Fragment>
       ))}
 
-      <Link className={'button'} href="/Alice_Grace_Resume.pdf" target="_blank">
+      <Link
+        className={'button ' + styles['resume-link']}
+        href="/Alice_Grace_Resume.pdf"
+        target="_blank"
+      >
         View/download resume{' '}
         <span className={styles['resume-link-extension']}>(PDF)</span>
       </Link>

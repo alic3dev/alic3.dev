@@ -3,7 +3,7 @@
 import { NextFont } from 'next/dist/compiled/@next/font'
 import { Inconsolata } from 'next/font/google'
 
-import styles from './Title.module.scss'
+import styles from '@/components/Header/Title.module.scss'
 
 const titleMainStartFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
@@ -17,10 +17,22 @@ export default function Title(): JSX.Element {
           >
             A
           </span>
-          <span className={styles['title-no-click']}>
-            l<span className={styles['title-main-middle']}>i</span>c
-            <span className={styles['title-main-end']}>3</span>
-          </span>
+          <div className={styles['title-main-part']}>l</div>
+          <div
+            className={`${styles['title-main-middle']} ${styles['title-main-part']}`}
+          >
+            i
+          </div>
+          <div
+            className={`${styles['title-main-c']} ${styles['title-main-part']}`}
+          >
+            c
+          </div>
+          <div
+            className={`${styles['title-main-end']} ${styles['title-main-part']}`}
+          >
+            3
+          </div>
         </div>
         <div className={styles['title-secondary']} aria-hidden="true">
           L<span className={styles['title-emphasis']}>I</span>C3

@@ -1,7 +1,7 @@
 @use '@/styles/utils/colors';
 
 .header {
-  // position: fixed;
+  position: fixed;
   display: flex;
   align-items: baseline;
 
@@ -28,8 +28,6 @@
   background: transparentize(colors.$mantle, 0.1);
   backdrop-filter: blur(4px);
 
-  border-bottom: 1px solid transparentize(colors.$pink, 0.8);
-
   box-shadow: 0 -5px 10px colors.$crust;
 }
 
@@ -46,9 +44,8 @@
   flex: 100%;
 }
 
-@media (max-width: 900px) {
-  .header {
-    left: 2rem;
-    right: 2rem;
+@media (max-width: 750px) {
+  .navigation-header {
+    visibility: hidden;
   }
 }

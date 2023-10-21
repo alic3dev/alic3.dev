@@ -1,11 +1,10 @@
 @use '@/styles/utils/colors';
-
-@use './Section.module.scss';
+@use '@/components/sections/Section.module.scss';
 
 .work-item {
   width: 70%;
 
-  margin-left: 15%;
+  margin: auto;
 }
 
 .work-item-company {
@@ -155,7 +154,7 @@ button.work-item-position-info-toggle-minimize {
 
     width: 0.5rem;
 
-    border: 1px solid #fff;
+    border: 1px solid colors.$white;
     border-right: none;
   }
 
@@ -168,7 +167,7 @@ button.work-item-position-info-toggle-minimize {
 
     width: 0.5rem;
 
-    border: 1px solid #fff;
+    border: 1px solid colors.$white;
     border-left: none;
   }
 }
@@ -328,4 +327,45 @@ button.work-item-position-info-toggle-minimize {
 .resume-link-extension {
   font-size: 0.6em;
   vertical-align: text-top;
+}
+
+@media (max-width: 900px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .work-item {
+    width: 100%;
+  }
+
+  .work-item-company {
+    padding-bottom: 2rem;
+  }
+
+  .work-item-position {
+    margin-bottom: 2.25rem;
+  }
+
+  .work-item-position-info {
+    flex-direction: column;
+  }
+
+  .work-item-seperator {
+    height: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  button.work-item-position-info-toggle-minimize {
+    position: absolute;
+    top: 1rem;
+    right: -0.5rem;
+  }
+
+  a.resume-link {
+    display: block;
+    width: 75%;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

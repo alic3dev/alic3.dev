@@ -85,7 +85,15 @@ export const freelancingHistory: WorkHistoryCompany[] = [
         length: '2 Months',
         detailedLength: 'Aug 2021 - Sep 2021',
         description:
-          'Complete design of site and ground-up development in React.',
+          'Completed a full redesign of public facing site in addition to refactoring front-end code to follow modern standards.',
+        technologies: ['html', 'sass', 'mysql', 'php', 'react'],
+      },
+      {
+        name: 'Freelance Web Developer',
+        length: '2 Months',
+        detailedLength: 'Mar 2017 - Apr 2017',
+        description:
+          'Solo development of the front/back-end as well as providing hosting support.',
         technologies: ['html', 'sass', 'mysql', 'php', 'js', 'jquery'],
       },
     ],

@@ -1,23 +1,33 @@
 'use client'
 
 import React from 'react'
+import Script from 'next/script'
 
-import Spinner from '@/components/Spinner'
+import Section from '@/components/sections/Section'
+import styles from '@/components/sections/ContactSection.module.scss'
+import Spinner from '@/components/decorative/Spinner'
 
-import Section from './Section'
-import styles from './ContactSection.module.scss'
+import { PiSmileyXEyes } from 'react-icons/pi'
+import { BsFillEnvelopeCheckFill } from 'react-icons/bs'
 
-type ContactMethod = '' | 'email' | 'phone' | 'either'
+const setDefaultContactMethod = (
+  prevValue: Api.Contact.Method | ''
+): Api.Contact.Method => (!prevValue ? 'email' : prevValue)
 
-const setDefaultContactMethod = (prevValue: ContactMethod): ContactMethod =>
-  !prevValue ? 'email' : prevValue
-
-const messageMaxLength: number = 2000
+const messageMaxLength: number = 5000
+const messageSentLocalStorageKey: string = 'root:contact-section:message-sent'
 
 export default function ContactSection(): JSX.Element {
-  const [contactMethod, setContactMethod] = React.useState<ContactMethod>('')
+  const [contactMethod, setContactMethod] = React.useState<
+    Api.Contact.Method | ''
+  >('')
   const [message, setMessage] = React.useState<string>('')
   const [submitting, setSubmitting] = React.useState<boolean>(false)
+  const [loading, setLoading] = React.useState<boolean>(true)
+  const [finalState, setFinalState] = React.useState<{
+    error?: boolean
+    success?: boolean
+  } | null>(null)
 
   const onMessageTextAreaChange = React.useCallback<
     React.ChangeEventHandler<HTMLTextAreaElement>
@@ -29,35 +39,49 @@ export default function ContactSection(): JSX.Element {
 
   const onFormSubmit: React.FormEventHandler<HTMLFormElement> =
     React.useCallback<React.FormEventHandler<HTMLFormElement>>(
-      (event: React.FormEvent<HTMLFormElement>): void => {
+      async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault()
         event.stopPropagation()
 
-        if (submitting) return
+        if (submitting || loading) return
 
         setSubmitting(true)
 
-        fetch('/api/contact', {
-          method: 'POST',
-          body: new FormData(event.currentTarget),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (!data.success) throw new Error('Unexpected error')
+        try {
+          const body: FormData = new FormData(event.currentTarget)
 
-            console.log(data)
+          if (process.env.NODE_ENV === 'production') {
+            const recaptchaToken: string = await grecaptcha.enterprise.execute(
+              process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+              {
+                action: 'SUBMIT_CONTACT_FORM',
+              }
+            )
+            body.append('recaptcha-token', recaptchaToken)
+          }
 
-            setSubmitting(false)
+          const res: Response = await fetch('/api/contact', {
+            method: 'POST',
+            body,
           })
-          .catch((err) => {
-            console.error(err)
 
-            setSubmitting(false)
-          })
+          const data: { success?: boolean; errors?: Api.Contact.Error } =
+            await res.json()
+          if (!data.success) throw new Error('Unexpected error')
 
-        // TODO: Implement error handling and success states
+          setFinalState({ success: true })
+
+          window.localStorage.setItem(
+            messageSentLocalStorageKey,
+            new Date().toJSON()
+          )
+        } catch {
+          setFinalState({ error: true })
+        } finally {
+          setSubmitting(false)
+        }
       },
-      [submitting]
+      [submitting, loading]
     )
 
   // Work-around for default radio not being selected on-form-reset
@@ -72,10 +96,36 @@ export default function ContactSection(): JSX.Element {
     }, [])
 
   // Work-around for default radio not being selected on-load
-  React.useEffect(() => setContactMethod(setDefaultContactMethod), [])
+  React.useEffect(() => {
+    setContactMethod(setDefaultContactMethod)
+
+    if (process.env.NODE_ENV !== 'production') setLoading(false)
+
+    const lastSentMessageDateTime: string | null = window.localStorage.getItem(
+      messageSentLocalStorageKey
+    )
+
+    if (lastSentMessageDateTime) {
+      if (
+        new Date().valueOf() - new Date(lastSentMessageDateTime).valueOf() >=
+        8.64e7 // One day in MS
+      ) {
+        window.localStorage.removeItem(messageSentLocalStorageKey)
+      } else {
+        setFinalState({ success: true })
+      }
+    }
+  }, [])
 
   return (
     <Section name="contact">
+      {process.env.NODE_ENV === 'production' && (
+        <Script
+          src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          onLoad={() => grecaptcha.enterprise.ready(() => setLoading(false))}
+        />
+      )}
+
       <div className={styles['section-header']}>
         <h2>Contact</h2>
       </div>
@@ -193,19 +243,29 @@ export default function ContactSection(): JSX.Element {
           </div>
         </label>
 
-        <label>
+        <label className={styles['contact-checkbox']}>
           <input
             type="checkbox"
             name="terms-privacy-disclaimer-agreement"
             disabled={submitting}
             required
           />{' '}
-          I have read and agree to the <a href="#">privacy policy</a>,{' '}
-          <a href="#">terms of service</a>, and <a href="#">disclaimer</a>.
-          {/* FIXME: Make these actual links */}
+          I have read and agree to the{' '}
+          <a href="/privacy" target="_blank">
+            privacy policy
+          </a>
+          ,{' '}
+          <a href="/terms" target="blank">
+            terms of service
+          </a>
+          , and{' '}
+          <a href="/disclaimer" target="_blank">
+            disclaimer
+          </a>
+          .
         </label>
 
-        <label>
+        <label className={styles['contact-checkbox']}>
           <input
             type="checkbox"
             name="contact-consent"
@@ -232,11 +292,36 @@ export default function ContactSection(): JSX.Element {
         <div
           className={`
             ${styles['contact-form-overlay']}
-            ${submitting ? styles['active'] : ''}
+            ${submitting || loading ? styles['active'] : ''}
           `}
         >
-          Submitting Contact Form
+          <h3>{submitting ? 'Submitting Contact Form' : 'Loading'}</h3>
           <Spinner />
+        </div>
+
+        <div
+          className={`
+            ${styles['contact-form-overlay']}
+            ${finalState ? styles['active'] : ''}
+          `}
+        >
+          {finalState?.error ? (
+            <>
+              <PiSmileyXEyes className={styles['contact-form-overlay-icon']} />
+
+              <p>Whoops something went wrong</p>
+            </>
+          ) : (
+            <>
+              <h3>Thanks!</h3>
+
+              <BsFillEnvelopeCheckFill
+                className={styles['contact-form-overlay-icon']}
+              />
+
+              <p>We recieved your messsage and will be in contact soon</p>
+            </>
+          )}
         </div>
       </form>
     </Section>

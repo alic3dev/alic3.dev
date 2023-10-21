@@ -1,19 +1,8 @@
 'use client'
 
 import React from 'react'
-
-// TODO: Get fonts working properly
-// import { Lato } from 'next/font/google'
+import { Document, Page, Text, View, Link } from '@react-pdf/renderer'
 import dynamic, { LoaderComponent } from 'next/dynamic'
-
-import {
-  /* Font, */
-  Document,
-  Page,
-  Text,
-  View,
-  Link,
-} from '@react-pdf/renderer'
 
 import icons from '@/utils/resumeIcons'
 import styles from '@/styles/resumeStyles'
@@ -23,6 +12,7 @@ import {
   skills,
   WorkHistoryCompany,
   WorkHistoryPosition,
+  freelancingHistory,
 } from '@/data/workHistory'
 
 // FIXME: Figure out why hyphenation can't be disabled
@@ -51,11 +41,13 @@ const CompanyPositionView = ({
 
 const CompanyView = ({
   company,
+  noBorder,
 }: {
   company: WorkHistoryCompany
+  noBorder?: boolean
 }): JSX.Element => {
   return (
-    <View style={styles.company}>
+    <View style={noBorder ? styles.companyNoBorder : styles.company}>
       <Text style={styles.companyName}>{company.name}</Text>
       {company.positions.map((position) => (
         <CompanyPositionView key={position.name} position={position} />
@@ -119,6 +111,11 @@ export function Resume() {
               <CompanyView key={company.name} company={company} />
             )
           )}
+          {freelancingHistory.map(
+            (company: WorkHistoryCompany): JSX.Element => (
+              <CompanyView key={company.name} company={company} noBorder />
+            )
+          )}
         </View>
 
         <View style={styles.sideContent}>
@@ -132,8 +129,7 @@ export function Resume() {
 
             <View style={styles.textContainer}>
               {icons.phone}
-              {/* TODO: Update this phone to a cell */}
-              <Text style={styles.sideContentText}>+1 (434) 842-3440</Text>
+              <Text style={styles.sideContentText}>+1 (434) 207-1336</Text>
             </View>
 
             <View style={styles.textContainer}>
