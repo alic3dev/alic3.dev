@@ -102,7 +102,11 @@ export default function ContactSection(): JSX.Element {
   React.useEffect(() => {
     setContactMethod(setDefaultContactMethod)
 
-    if (process.env.NODE_ENV !== 'production') setLoading(false)
+    if (
+      !process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA ||
+      process.env.NODE_ENV !== 'production'
+    )
+      setLoading(false)
 
     const lastSentMessageDateTime: string | null = window.localStorage.getItem(
       messageSentLocalStorageKey
