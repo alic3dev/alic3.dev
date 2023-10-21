@@ -1,8 +1,10 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 
 import styles from '@/components/decorative/BackgroundCanvas.module.scss'
+import backgroundImage from '@/public/1.jpeg'
 
 interface CanvasValues {
   size: number
@@ -22,13 +24,15 @@ export default function BackgroundCanvas() {
 
   const [active, setActive] = React.useState<boolean>(false)
 
-  const resizeCanvas = React.useCallback(() => {
+  const resizeCanvas = () => {
     if (!canvasRef.current) return
 
-    canvasValuesRef.current.size = Math.max(
-      window.innerWidth,
-      window.innerHeight
-    )
+    canvasValuesRef.current.size = 1200
+
+    // canvasValuesRef.current.size = Math.max(
+    //   900,
+    //   900
+    // )
     canvasValuesRef.current.sizeDpiAdjusted =
       canvasValuesRef.current.size * window.devicePixelRatio
 
@@ -36,6 +40,14 @@ export default function BackgroundCanvas() {
     canvasRef.current.height = canvasValuesRef.current.sizeDpiAdjusted
     canvasRef.current.style.width = `${canvasValuesRef.current.size}px`
     canvasRef.current.style.height = `${canvasValuesRef.current.size}px`
+
+    // if (900 < 900) {
+    //   canvasRef.current.style.width = `75vw`
+    //   canvasRef.current.style.height = `75vw`
+    // } else {
+    //   canvasRef.current.style.width = `75vh`
+    //   canvasRef.current.style.height = `75vh`
+    // }
 
     const ctx: CanvasRenderingContext2D | null =
       canvasRef.current.getContext('2d')
@@ -49,7 +61,7 @@ export default function BackgroundCanvas() {
     )
 
     ctx.translate(canvasTranslateAmount, canvasTranslateAmount)
-  }, [])
+  }
 
   const renderCanvas = React.useCallback((time: number) => {
     const onContinueRender = () =>
@@ -76,56 +88,45 @@ export default function BackgroundCanvas() {
     const strokeAlpha = 0.1
 
     ctx.strokeStyle = `rgba(${invBlueAm}, ${invBlueAm}, ${blueAm}, ${strokeAlpha})`
-    ctx.beginPath()
-    ctx.arc(0, (Math.random() * window.innerHeight) / 2, 100, 0, 2 * Math.PI)
-    ctx.arc(
-      -window.innerWidth / 10,
-      (Math.random() * window.innerHeight) / 2 - window.innerHeight / 10,
-      100,
-      0,
-      2 * Math.PI
-    )
-    ctx.arc(0, 0, 100, 0, 2 * Math.PI)
-    ctx.arc(100, Math.random() * -50, 100, 0, 2 * Math.PI)
-    ctx.arc(Math.random() * -100, 50, 100, 0, 2 * Math.PI)
-    ctx.arc(Math.random() * 50, -100, 100, 0, 2 * Math.PI)
-    ctx.arc(Math.random() * -50, Math.random() * 100, 100, 0, 2 * Math.PI)
-    ctx.arc(0, (Math.random() * -window.innerHeight) / 2, 100, 0, 2 * Math.PI)
-    ctx.arc(
-      (Math.random() * window.innerWidth) / 10,
-      -window.innerHeight / 2 + window.innerHeight / 10,
-      100,
-      0,
-      2 * Math.PI
-    )
-    ctx.stroke()
+    // ctx.beginPath()
+
+    // ctx.arc(0, (Math.random() * 900) / 2, 100, 0, 2 * Math.PI)
+    // ctx.arc(
+    //   -900 / 10,
+    //   (Math.random() * 900) / 2 - 900 / 10,
+    //   100,
+    //   0,
+    //   2 * Math.PI
+    // )
+    // ctx.arc(0, 0, 100, 0, 2 * Math.PI)
+    // ctx.arc(100, Math.random() * -50, 100, 0, 2 * Math.PI)
+    // ctx.arc(Math.random() * -100, 50, 100, 0, 2 * Math.PI)
+    // ctx.arc(Math.random() * 50, -100, 100, 0, 2 * Math.PI)
+    // ctx.arc(Math.random() * -50, Math.random() * 100, 100, 0, 2 * Math.PI)
+    // ctx.arc(0, (Math.random() * -900) / 2, 100, 0, 2 * Math.PI)
+    // ctx.arc(
+    //   (Math.random() * 900) / 10,
+    //   -900 / 2 + 900 / 10,
+    //   100,
+    //   0,
+    //   2 * Math.PI
+    // )
+    // ctx.stroke()
 
     ctx.beginPath()
 
     ctx.rotate((Math.random() * 70 + 20) * (Math.PI / 180))
 
     ctx.beginPath()
-    ctx.arc(0, window.innerHeight / 2, 100, 0, 2 * Math.PI)
-    ctx.arc(
-      -window.innerWidth / 10,
-      window.innerHeight / 2 - window.innerHeight / 10,
-      100,
-      0,
-      2 * Math.PI
-    )
+    ctx.arc(0, 900 / 2, 100, 0, 2 * Math.PI)
+    ctx.arc(-900 / 10, 900 / 2 - 900 / 10, 100, 0, 2 * Math.PI)
     ctx.arc(0, 0, 100, 0, 2 * Math.PI)
     ctx.arc(100, -50, 100, 0, 2 * Math.PI)
     ctx.arc(-100, 50, 100, 0, 2 * Math.PI)
     ctx.arc(50, -100, 100, 0, 2 * Math.PI)
     ctx.arc(-50, 100, 100, 0, 2 * Math.PI)
-    ctx.arc(0, -window.innerHeight / 2, 100, 0, 2 * Math.PI)
-    ctx.arc(
-      window.innerWidth / 10,
-      -window.innerHeight / 2 + window.innerHeight / 10,
-      100,
-      0,
-      2 * Math.PI
-    )
+    ctx.arc(0, -900 / 2, 100, 0, 2 * Math.PI)
+    ctx.arc(900 / 10, -900 / 2 + 900 / 10, 100, 0, 2 * Math.PI)
     ctx.stroke()
 
     onContinueRender()
@@ -133,12 +134,12 @@ export default function BackgroundCanvas() {
 
   // Setup window resize handler
   React.useEffect(() => {
-    window.addEventListener('resize', resizeCanvas)
+    // window.addEventListener('resize', resizeCanvas)
 
     resizeCanvas()
 
-    return () => window.removeEventListener('resize', resizeCanvas)
-  }, [resizeCanvas])
+    // return () => window.removeEventListener('resize', resizeCanvas)
+  }, [])
 
   // Fade canvas into existence from obscurity
   React.useEffect(() => setActive(true), [])
@@ -154,6 +155,10 @@ export default function BackgroundCanvas() {
 
   return (
     <div className={styles['background-canvas-wrapper']}>
+      {/* <div className={styles['background-image-wrapper']}>
+        <Image src={backgroundImage} alt="Background image" />
+      </div> */}
+
       <canvas
         ref={canvasRef}
         className={`${styles['background-canvas']} ${
