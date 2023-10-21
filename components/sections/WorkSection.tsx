@@ -220,7 +220,11 @@ export default function WorkSection(): JSX.Element {
         </React.Fragment>
       ))}
 
-      <Link className={'button'} href="/Alice_Grace_Resume.pdf" target="_blank">
+      <Link
+        className={'button ' + styles['resume-link']}
+        href="/Alice_Grace_Resume.pdf"
+        target="_blank"
+      >
         View/download resume{' '}
         <span className={styles['resume-link-extension']}>(PDF)</span>
       </Link>

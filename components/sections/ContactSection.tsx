@@ -243,7 +243,7 @@ export default function ContactSection(): JSX.Element {
           </div>
         </label>
 
-        <label>
+        <label className={styles['contact-checkbox']}>
           <input
             type="checkbox"
             name="terms-privacy-disclaimer-agreement"
@@ -265,7 +265,7 @@ export default function ContactSection(): JSX.Element {
           .
         </label>
 
-        <label>
+        <label className={styles['contact-checkbox']}>
           <input
             type="checkbox"
             name="contact-consent"

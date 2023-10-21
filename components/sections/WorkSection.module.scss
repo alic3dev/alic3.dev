@@ -330,7 +330,42 @@ button.work-item-position-info-toggle-minimize {
 }
 
 @media (max-width: 900px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
   .work-item {
     width: 100%;
+  }
+
+  .work-item-company {
+    padding-bottom: 2rem;
+  }
+
+  .work-item-position {
+    margin-bottom: 2.25rem;
+  }
+
+  .work-item-position-info {
+    flex-direction: column;
+  }
+
+  .work-item-seperator {
+    height: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  button.work-item-position-info-toggle-minimize {
+    position: absolute;
+    top: 1rem;
+    right: -0.5rem;
+  }
+
+  a.resume-link {
+    display: block;
+    width: 75%;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

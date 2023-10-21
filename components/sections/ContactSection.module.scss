@@ -120,4 +120,16 @@
     margin-top: 4rem;
     margin-bottom: 4rem;
   }
+
+  .contact-checkbox {
+    width: 85%;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+
+    & > input[type='checkbox'] {
+      margin-left: -2rem;
+      margin-bottom: 0;
+    }
+  }
 }
