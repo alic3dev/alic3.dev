@@ -42,12 +42,11 @@ const getRandomColorIndexs = (): RandomColorIndex[] => {
 export default function FocusSection(): JSX.Element {
   const [randomColorIndexs, setRandomColorIndexs] = React.useState<
     RandomColorIndex[]
-  >(getRandomColorIndexs())
+  >([])
 
   React.useEffect(() => {
-    let flip = true
-
-    const randomColorInterval: number = window.setInterval(() => {
+    let flip: boolean = true
+    let randomColorInterval: number = window.setInterval(() => {
       if (flip) setRandomColorIndexs(getRandomColorIndexs())
       else setRandomColorIndexs([])
 
