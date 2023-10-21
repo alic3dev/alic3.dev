@@ -4,7 +4,7 @@
 .work-item {
   width: 70%;
 
-  margin-left: 15%;
+  margin: auto;
 }
 
 .work-item-company {
@@ -327,4 +327,10 @@ button.work-item-position-info-toggle-minimize {
 .resume-link-extension {
   font-size: 0.6em;
   vertical-align: text-top;
+}
+
+@media (max-width: 900px) {
+  .work-item {
+    width: 100%;
+  }
 }

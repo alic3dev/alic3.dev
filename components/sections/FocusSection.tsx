@@ -66,7 +66,9 @@ export default function FocusSection(): JSX.Element {
         <span className={`${styles.modern} ${modernFont.className}`}>
           modern
         </span>{' '}
-        full-stack <span className={styles['web-dev']}>web dev</span>elopment
+        <span className={styles['full-stack']}>full-stack</span>{' '}
+        <span className={styles['web-dev']}>web dev</span>
+        <span className={styles['web-dev-end']}>elopment</span>
       </h2>
 
       <p className={styles.utilizing}>

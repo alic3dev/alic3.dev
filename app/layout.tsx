@@ -9,6 +9,7 @@ const bodyFont = Exo_2({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Alic3.Dev',
   description: '0u0\\',
+  viewport: 'width=device-width, initial-scale=1, minimum-scale=1',
 }
 
 export default function RootLayout({

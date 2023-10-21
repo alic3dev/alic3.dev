@@ -105,3 +105,19 @@
   margin: 2rem;
   font-size: 4rem;
 }
+
+@media (max-width: 900px) {
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .contact-options > p + p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-options-seperator {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}

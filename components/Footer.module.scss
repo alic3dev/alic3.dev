@@ -27,14 +27,13 @@
   font-size: 1.1rem;
 
   width: fit-content;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 2rem;
 }
 
 button.footer-item,
 a.footer-item {
   margin: 0;
-  padding: 0;
+  padding: 2rem;
   border: none;
   background: none;
 
@@ -56,4 +55,25 @@ a.footer-item {
 
 .footer-section-seperator {
   flex: 0.5;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    flex-wrap: wrap;
+  }
+
+  .footer-section-seperator {
+    display: none;
+  }
+
+  .footer-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  button.footer-item,
+  a.footer-item {
+    width: unset;
+    transform: none;
+  }
 }
