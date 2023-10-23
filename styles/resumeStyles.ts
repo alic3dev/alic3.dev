@@ -110,7 +110,6 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
   skillsText: {
     color: colors.lightText,
-    paddingLeft: '18pt',
   },
   icon: {
     marginRight: '5pt',

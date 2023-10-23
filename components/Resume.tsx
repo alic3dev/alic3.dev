@@ -27,6 +27,7 @@ Font.registerHyphenationCallback(hyphenationCallback)
 
 const SkillView = ({ skill }: { skill: string }): JSX.Element => (
   <View style={styles.textContainer}>
+    {icons[skill.toLowerCase()]}
     <Text style={styles.skillsText}>{skill}</Text>
   </View>
 )
