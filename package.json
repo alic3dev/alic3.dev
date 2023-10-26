@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@catppuccin/palette": "^0.2.0",
-    "@react-pdf/renderer": "^3.1.13",
+    "@react-pdf/renderer": "^3.1.14",
     "@react-pdf/types": "2.3.3",
     "@types/grecaptcha": "^3.0.6",
     "@types/node": "20.6.2",
@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "encoding": "^0.1.13",
-    "sass": "^1.69.4"
+    "sass": "^1.69.5"
   }
 }
