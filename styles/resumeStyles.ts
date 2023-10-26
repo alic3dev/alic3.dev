@@ -96,7 +96,13 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   companyPositionDescription: {
     fontSize: '12pt',
     padding: '5pt 20pt',
+    paddingLeft: '0pt',
   },
+  companyPositionDescriptionPointIcon: {
+    // transform: 'scale(0.75)',
+    // marginTop: '-2pt',
+  },
+  companyPositionDescriptionPointText: {},
   educationName: {
     alignSelf: 'flex-start',
     fontFamily: 'Helvetica-Bold',
@@ -104,6 +110,10 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   textContainer: {
     flexDirection: 'row',
     marginBottom: '5pt',
+  },
+  textContainerPosition: {
+    flexDirection: 'row',
+    marginBottom: '2pt',
   },
   sideContentText: {
     color: colors.lightText,
@@ -113,6 +123,10 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
   icon: {
     marginRight: '5pt',
+  },
+  iconSmall: {
+    marginRight: '5pt',
+    marginTop: '3px',
   },
 })
 

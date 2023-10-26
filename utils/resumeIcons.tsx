@@ -2,8 +2,16 @@ import { Svg, Path } from '@react-pdf/renderer'
 
 import { styles, colors } from '@/styles/resumeStyles'
 
-const IconSvgWrapper = ({ children }: React.PropsWithChildren): JSX.Element => (
-  <Svg height={12} width={12} viewBox="0 0 24 24" style={styles.icon}>
+const IconSvgWrapper = ({
+  children,
+  small,
+}: React.PropsWithChildren<{ small?: boolean }>): JSX.Element => (
+  <Svg
+    height={small ? 8 : 12}
+    width={small ? 8 : 12}
+    viewBox="0 0 24 24"
+    style={small ? styles.iconSmall : styles.icon}
+  >
     {children}
   </Svg>
 )
@@ -30,7 +38,6 @@ export const icons: { [icon: string]: JSX.Element } = {
   /////////////
   // Contact //
   /////////////
-
   location: (
     <IconSvgWrapper>
       <Path fill="none" d="M0 0h24v24H0z" />
@@ -78,7 +85,6 @@ export const icons: { [icon: string]: JSX.Element } = {
   ////////////
   // Skills //
   ////////////
-
   typescript: (
     <IconSvgWrapper>
       <Path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -161,7 +167,6 @@ export const icons: { [icon: string]: JSX.Element } = {
   //////////////
   // Software //
   //////////////
-
   figma: (
     <IconSvgWrapper>
       <Path
@@ -203,6 +208,19 @@ export const icons: { [icon: string]: JSX.Element } = {
       <Path
         {...strokeFillDefaults}
         d="M12.004 0c-2.35 2.395-2.365 6.185.133 8.585l3.412 3.413-3.197 3.198a6.501 6.501 0 0 1 1.412 7.04l9.566-9.566a.95.95 0 0 0 0-1.344L12.004 0zm-1.748 1.74L.67 11.327a.95.95 0 0 0 0 1.344C4.45 16.44 8.22 20.244 12 24c2.295-2.298 2.395-6.096-.08-8.533l-3.47-3.469 3.2-3.2c-1.918-1.955-2.363-4.725-1.394-7.057z"
+      />
+    </IconSvgWrapper>
+  ),
+
+  //////////
+  // Misc //
+  //////////
+  point: (
+    <IconSvgWrapper small>
+      <Path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <Path
+        {...inverseStrokeFillDefaults}
+        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
       />
     </IconSvgWrapper>
   ),
