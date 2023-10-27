@@ -173,7 +173,7 @@ export default function WorkSection(): JSX.Element {
                     {minimized || (
                       <>
                         <p className={styles['work-item-position-description']}>
-                          {position.description}
+                          {position.description.join(' ')}
                         </p>
 
                         <div
