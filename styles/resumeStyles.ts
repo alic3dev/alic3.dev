@@ -35,14 +35,16 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     color: 'rgba(255,255,255,0.75)',
   },
   mainContent: {
-    height: '100%',
+    height: '87.9795471524171%',
     width: '70%',
     padding: '20pt',
+    paddingBottom: '0',
   },
   sideContent: {
-    height: '100%',
+    height: '87.9795471524171%',
     width: '30%',
     padding: '20pt 20pt',
+    paddingBottom: '0',
     backgroundColor: latte.base.hex,
   },
   contentSection: {
@@ -73,23 +75,21 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     borderBottom: `1pt solid ${colors.lightText}`,
   },
   company: {
-    marginBottom: '10pt',
-    paddingBottom: '10pt',
+    marginBottom: '8pt',
     borderBottom: `1pt solid ${colors.lightText}`,
-  },
-  companyNoBorder: {
-    marginBottom: '10pt',
-    paddingBottom: '10pt',
   },
   companyName: {
     alignSelf: 'flex-start',
-    fontFamily: 'Helvetica-Bold',
-    marginBottom: '5pt',
+    marginBottom: '2pt',
   },
   companyPosition: {
-    marginBottom: '10pt',
+    marginBottom: '0pt',
   },
-  companyPositionName: {},
+  companyPositionName: {
+    marginBottom: '2pt',
+    fontFamily: 'Helvetica-Bold',
+    fontSize: '12pt',
+  },
   companyPositionLength: {
     color: colors.lightText,
   },
@@ -98,11 +98,6 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     padding: '5pt 20pt',
     paddingLeft: '0pt',
   },
-  companyPositionDescriptionPointIcon: {
-    // transform: 'scale(0.75)',
-    // marginTop: '-2pt',
-  },
-  companyPositionDescriptionPointText: {},
   educationName: {
     alignSelf: 'flex-start',
     fontFamily: 'Helvetica-Bold',
@@ -126,7 +121,7 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
   iconSmall: {
     marginRight: '5pt',
-    marginTop: '3px',
+    marginTop: '3pt',
   },
 })
 

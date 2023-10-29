@@ -59,7 +59,7 @@ const CompanyView = ({
   noBorder?: boolean
 }): JSX.Element => {
   return (
-    <View style={noBorder ? styles.companyNoBorder : styles.company}>
+    <View style={!noBorder && styles.company}>
       <Text style={styles.companyName}>{company.name}</Text>
       {company.positions.map((position) => (
         <CompanyPositionView key={position.name} position={position} />
@@ -111,7 +111,7 @@ export default function ResumeWithViewer(): JSX.Element {
         pageLayout="singlePage"
         keywords="Contact 'Work Experience' Education Skills"
       >
-        <Page size="A4" wrap={false} style={styles.page}>
+        <Page size="A4" wrap={true} style={styles.page}>
           <View style={styles.header}>
             <Text style={styles.headerName}>Alice Grace</Text>
             <Text style={styles.headerTitle}>Full-Stack Web Developer</Text>

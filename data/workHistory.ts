@@ -27,8 +27,10 @@ export const jobHistory: WorkHistoryCompany[] = [
         detailedLength: 'Jan 2022 - Sep 2022',
         name: 'Full-Stack Developer',
         description: [
-          'Collaborated across teams for the creation/support of features to be used internally with Contentful CMS for independent non-developer management of dynamic pages and articles.',
-          'Assisted in reworkings of donation processes and analytic systems to increase supporter conversion.',
+          'Developed components and pages in Typescript, React, and JSX.',
+          'Creation and support of Contentful CMS components.',
+          'Assisted in the reworking of donation processes and analytic systems to increase supporter conversion.',
+          'Enhanced developer experience and reduced friction through maintenance of configurations for linting, formatting, and typings.',
         ],
         technologies: ['ts', 'react', 'sass', 'postgresql'],
       },
@@ -46,13 +48,13 @@ export const jobHistory: WorkHistoryCompany[] = [
         detailedLength: 'Jan 2019 - Jun 2021',
         description: [
           'Development and maintenance of backend REST APIs.',
-          'Improvements to video streaming technologies including the introduction of encrypted HLS feeds through the creation of a processing pipeline using FFMPEG to guard against content piracy.',
+          'Improvements to video streaming technologies including the introduction of encrypted HLS feeds through an FFMPEG processing pipeline to guard against content piracy.',
           'Lead in vulnerability triaging and resolution through HackerOne.',
-          'Mobile app development utilizing Apache Cordova.',
+          'Mobile app development with Apache Cordova.',
           'Upgrades to Stripe payment processor allowing recurring subscription based payments with Recurly.',
         ],
         technologies: [
-          /*'js',*/ 'knockout',
+          'knockout',
           'less',
           'pug',
           'phonegap',
@@ -66,21 +68,19 @@ export const jobHistory: WorkHistoryCompany[] = [
         length: '10 Months',
         detailedLength: 'Mar 2018 - Jan 2019',
         description: [
-          'Implementation of new features for both users and administators.',
           'Maintenance of existing pages to keep up with the evolving standards of the codebases reducing technical debt.',
-          'Addressing user bug reports through replication and resolution of unexpected behavior.',
-          'Ensuring mobile responsiveness on new and existing pages.',
+          'Addressed user bug reports through replication and resolution.',
         ],
-        technologies: [/*'js',*/ 'knockout', 'less', 'pug'],
+        technologies: ['knockout', 'less', 'pug'],
       },
       {
         name: 'Front-End Developer Intern',
         length: '2 Months',
         detailedLength: 'Jan 2018 - Mar 2018',
         description: [
-          'Production of web pages based upon Figma design files working closely across teams.',
+          'Production of web pages based upon Figma design files in a proprietary framework which utilized Knockout.js + Jade templating.',
         ],
-        technologies: [/*'js',*/ 'knockout', 'less', 'pug'],
+        technologies: ['knockout', 'less', 'pug'],
       },
     ],
   },
@@ -98,7 +98,7 @@ export const freelancingHistory: WorkHistoryCompany[] = [
         length: '2 Months',
         detailedLength: 'Aug 2021 - Sep 2021',
         description: [
-          'Completed a full redesign of public facing site along with a rewrite of front-end code from jQuery/HTML into React/JSX for maintainability.',
+          'Rewrite of front-end code from jQuery/HTML to React/JSX.',
           'Refactor of repository to follow modern standards and implement package management through NPM.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'react'],
@@ -108,8 +108,8 @@ export const freelancingHistory: WorkHistoryCompany[] = [
         length: '2 Months',
         detailedLength: 'Mar 2017 - Apr 2017',
         description: [
-          'Solo development of the front/back-end to implement public facing pages modifyable through an administrative interface.',
-          'Provided hosting and domain support via Digital Ocean droplets and Namecheap.',
+          'Solo development of a front and back-end with PHP to implement public facing pages modifiable through an administrative interface.',
+          'Provided hosting/domain support via DigitalOcean and Namecheap.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'js', 'jquery'],
       },
@@ -142,7 +142,7 @@ export const skills: {
   librariesAndFrameworks: string[]
   software: string[]
 } = {
-  languages: ['TypeScript', 'HTML5', 'CSS3', 'Sass', 'MySQL', 'PostgreSQL'],
+  languages: ['TypeScript', 'HTML5', 'CSS3', 'Sass', 'PostgreSQL'],
   librariesAndFrameworks: ['React', 'Node.js'],
   software: ['Figma', 'Trello', 'Asana', 'Jira'],
 }
