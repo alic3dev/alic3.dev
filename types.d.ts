@@ -1,1 +1,1 @@
-declare module '@react-pdf/renderer/lib/react-pdf.browser.cjs'
+declare module '@react-pdf/renderer/lib/react-pdf.browser.es'

@@ -35,14 +35,16 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     color: 'rgba(255,255,255,0.75)',
   },
   mainContent: {
-    height: '100%',
+    height: '87.9795471524171%',
     width: '70%',
     padding: '20pt',
+    paddingBottom: '0',
   },
   sideContent: {
-    height: '100%',
+    height: '87.9795471524171%',
     width: '30%',
     padding: '20pt 20pt',
+    paddingBottom: '0',
     backgroundColor: latte.base.hex,
   },
   contentSection: {
@@ -73,29 +75,35 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     borderBottom: `1pt solid ${colors.lightText}`,
   },
   company: {
-    marginBottom: '10pt',
-    paddingBottom: '10pt',
+    marginBottom: '8pt',
     borderBottom: `1pt solid ${colors.lightText}`,
-  },
-  companyNoBorder: {
-    marginBottom: '10pt',
-    paddingBottom: '10pt',
   },
   companyName: {
     alignSelf: 'flex-start',
-    fontFamily: 'Helvetica-Bold',
-    marginBottom: '5pt',
+    marginBottom: '2pt',
+    fontSize: '11pt',
   },
   companyPosition: {
-    marginBottom: '10pt',
+    marginBottom: '0pt',
   },
-  companyPositionName: {},
+  companyPositionName: {
+    marginBottom: '2pt',
+    fontFamily: 'Helvetica-Bold',
+  },
+  companyPositionInfo: {
+    flexDirection: 'row',
+    fontSize: '11pt',
+  },
+  companyPositionLocation: {
+    color: colors.lightText,
+  },
   companyPositionLength: {
     color: colors.lightText,
   },
   companyPositionDescription: {
     fontSize: '12pt',
     padding: '5pt 20pt',
+    paddingLeft: '0pt',
   },
   educationName: {
     alignSelf: 'flex-start',
@@ -105,15 +113,22 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: '5pt',
   },
+  textContainerPosition: {
+    flexDirection: 'row',
+    marginBottom: '2pt',
+  },
   sideContentText: {
     color: colors.lightText,
   },
   skillsText: {
     color: colors.lightText,
-    paddingLeft: '18pt',
   },
   icon: {
     marginRight: '5pt',
+  },
+  iconSmall: {
+    marginRight: '5pt',
+    marginTop: '3pt',
   },
 })
 
