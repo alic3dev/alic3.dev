@@ -6,6 +6,7 @@ export interface WorkHistoryPosition {
   detailedLength?: string
   description: string[]
   technologies: string[]
+  location?: 'Remote' | 'Hybrid-Remote' | 'Solo'
 }
 
 export interface WorkHistoryCompany {
@@ -33,6 +34,7 @@ export const jobHistory: WorkHistoryCompany[] = [
           'Enhanced developer experience and reduced friction through maintenance of configurations for linting, formatting, and typings.',
         ],
         technologies: ['ts', 'react', 'sass', 'postgresql'],
+        location: 'Remote',
       },
     ],
   },
@@ -62,6 +64,7 @@ export const jobHistory: WorkHistoryCompany[] = [
           'stripe',
           'hackerone',
         ],
+        location: 'Remote',
       },
       {
         name: 'Front-End Developer',
@@ -72,6 +75,7 @@ export const jobHistory: WorkHistoryCompany[] = [
           'Addressed user bug reports through replication and resolution.',
         ],
         technologies: ['knockout', 'less', 'pug'],
+        location: 'Hybrid-Remote',
       },
       {
         name: 'Front-End Developer Intern',
@@ -81,6 +85,7 @@ export const jobHistory: WorkHistoryCompany[] = [
           'Production of web pages based upon Figma design files in a proprietary framework which utilized Knockout.js + Jade templating.',
         ],
         technologies: ['knockout', 'less', 'pug'],
+        location: 'Hybrid-Remote',
       },
     ],
   },
@@ -102,6 +107,7 @@ export const freelancingHistory: WorkHistoryCompany[] = [
           'Refactor of repository to follow modern standards and implement package management through NPM.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'react'],
+        location: 'Solo',
       },
       {
         name: 'Freelance Web Developer',
@@ -112,6 +118,7 @@ export const freelancingHistory: WorkHistoryCompany[] = [
           'Provided hosting/domain support via DigitalOcean and Namecheap.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'js', 'jquery'],
+        location: 'Solo',
       },
     ],
   },

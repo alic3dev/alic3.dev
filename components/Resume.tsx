@@ -39,7 +39,12 @@ const CompanyPositionView = ({
 }): JSX.Element => (
   <View style={styles.companyPosition}>
     <Text style={styles.companyPositionName}>{position.name}</Text>
-    <Text style={styles.companyPositionLength}>{position.detailedLength}</Text>
+    <View style={styles.companyPositionInfo}>
+      <Text style={styles.companyPositionLength}>
+        {position.detailedLength} |&nbsp;
+      </Text>
+      <Text style={styles.companyPositionLocation}>{position.location}</Text>
+    </View>
     <View style={styles.companyPositionDescription}>
       {position.description.map((value) => (
         <View key={value} style={styles.textContainerPosition}>

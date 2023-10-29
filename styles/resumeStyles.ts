@@ -81,6 +81,7 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   companyName: {
     alignSelf: 'flex-start',
     marginBottom: '2pt',
+    fontSize: '11pt',
   },
   companyPosition: {
     marginBottom: '0pt',
@@ -88,7 +89,13 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   companyPositionName: {
     marginBottom: '2pt',
     fontFamily: 'Helvetica-Bold',
-    fontSize: '12pt',
+  },
+  companyPositionInfo: {
+    flexDirection: 'row',
+    fontSize: '11pt',
+  },
+  companyPositionLocation: {
+    color: colors.lightText,
   },
   companyPositionLength: {
     color: colors.lightText,
