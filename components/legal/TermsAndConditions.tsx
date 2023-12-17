@@ -7,7 +7,8 @@ export default function TermsAndConditions() {
 
       <p>
         These terms and conditions outline the rules and regulations for the use
-        of Alic3dev&apos;s Website, located at alic3.dev.
+        of Alic3dev&apos;s Website, located at{' '}
+        <a href="https://alic3.dev/">alic3.dev</a>.
       </p>
 
       <p>
@@ -176,10 +177,11 @@ export default function TermsAndConditions() {
       <p>
         If you are one of the organizations listed in paragraph 2 above and are
         interested in linking to our website, you must inform us by sending an
-        e-mail to Alic3dev. Please include your name, your organization name,
-        contact information as well as the URL of your site, a list of any URLs
-        from which you intend to link to our Website, and a list of the URLs on
-        our site to which you would like to link. Wait 2-3 weeks for a response.
+        e-mail to <a href="mailto:links@alic3.dev">links@alic3.dev</a>. Please
+        include your name, your organization name, contact information as well
+        as the URL of your site, a list of any URLs from which you intend to
+        link to our Website, and a list of the URLs on our site to which you
+        would like to link. Wait 2-3 weeks for a response.
       </p>
 
       <p>Approved organizations may hyperlink to our Website as follows:</p>
@@ -228,7 +230,8 @@ export default function TermsAndConditions() {
       <h3>Removal of links from our website</h3>
       <p>
         If you find any link on our Website that is offensive for any reason,
-        you are free to contact and inform us any moment. We will consider
+        you are free to contact and inform us any moment via email to{' '}
+        <a href="mailto:links@alic3.dev">links@alic3.dev</a>. We will consider
         requests to remove links but we are not obligated to or so or to respond
         to you directly.
       </p>

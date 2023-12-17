@@ -5,14 +5,15 @@ export default function Disclaimer() {
       <p>
         If you require any more information or have any questions about our
         site&apos;s disclaimer, please feel free to contact us by email at{' '}
-        <a href="mailto:alic3dev@gmail.com">alic3dev@gmail.com</a>.
+        <a href="mailto:disclaimer@alic3.dev">disclaimer@alic3.dev</a>.
       </p>
 
       <h2>Disclaimers for Alic3dev</h2>
       <p>
-        All the information on this website - alic3.dev - is published in good
-        faith and for general information purpose only. Alic3dev does not make
-        any warranties about the completeness, reliability and accuracy of this
+        All the information on this website -{' '}
+        <a href="https://alic3.dev/">alic3.dev</a> - is published in good faith
+        and for general information purpose only. Alic3dev does not make any
+        warranties about the completeness, reliability and accuracy of this
         information. Any action you take upon the information you find on this
         website (Alic3dev), is strictly at your own risk. Alic3dev will not be
         liable for any losses and/or damages in connection with the use of our

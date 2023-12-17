@@ -3,10 +3,10 @@ export default function PrivacyPolicy() {
     <div>
       <h1>Privacy Policy for alic3.dev</h1>
       <p>
-        At alic3dev, accessible from alic3.dev, one of our main priorities is
-        the privacy of our visitors. This Privacy Policy document contains types
-        of information that is collected and recorded by alic3dev and how we use
-        it.
+        At alic3dev, accessible from <a href="https://alic3.dev/">alic3.dev</a>,
+        one of our main priorities is the privacy of our visitors. This Privacy
+        Policy document contains types of information that is collected and
+        recorded by alic3dev and how we use it.
       </p>
 
       <p>
@@ -204,7 +204,8 @@ export default function PrivacyPolicy() {
       <h2>Contact Us</h2>
       <p>
         If you have any questions or suggestions about our Privacy Policy, do
-        not hesitate to contact us.
+        not hesitate to contact us. We can be reached through email to{' '}
+        <a href="mailto:privacy@alic3.dev">privacy@alic3.dev</a>.
       </p>
     </div>
   )

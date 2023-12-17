@@ -142,7 +142,7 @@ export default function ResumeWithViewer(): JSX.Element {
 
               <View style={styles.textContainer}>
                 {icons.email}
-                <Text style={styles.sideContentText}>alic3dev@gmail.com</Text>
+                <Text style={styles.sideContentText}>alice@alic3.dev</Text>
               </View>
 
               <View style={styles.textContainer}>
