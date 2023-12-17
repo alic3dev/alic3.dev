@@ -2,7 +2,10 @@ export default function CookiePolicy() {
   return (
     <div>
       <h1>Cookie Policy for Alic3dev</h1>
-      <p>This is the Cookie Policy for Alic3dev, accessible from alic3.dev</p>
+      <p>
+        This is the Cookie Policy for Alic3dev, accessible from{' '}
+        <a href="https://alic3.dev/">alic3.dev</a>.
+      </p>
 
       <h2>What Are Cookies</h2>
       <p>
@@ -102,7 +105,7 @@ export default function CookiePolicy() {
 
       <ul>
         <li>
-          Email: <a href="mailto:alic3dev@gmail.com">alic3dev@gmail.com</a>
+          Email: <a href="mailto:cookies@alic3.dev">cookies@alic3.dev</a>
         </li>
       </ul>
     </div>
