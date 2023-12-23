@@ -1,0 +1,62 @@
+.card {
+  min-width: 20rem;
+  min-height: 30rem;
+  width: 20rem;
+  height: 30rem;
+
+  margin: 2rem;
+
+  background: #333;
+
+  border: 1px solid #222;
+  border-radius: 1rem;
+
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.333);
+
+  overflow: hidden;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  width: calc(100% - 1.2rem);
+  height: calc(100% - 1.2rem);
+
+  margin: 0.6rem;
+
+  border-radius: 0.5rem;
+
+  background: rgba(0, 0, 0, 0.111);
+
+  overflow: hidden;
+}
+
+.card-value,
+.card-suit,
+.card-name {
+  padding: 0.25rem;
+
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.111);
+}
+
+.card-icons {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap-reverse;
+
+  padding: 2.5rem;
+
+  font-size: 3.33rem;
+}
+
+.card-icon {
+  filter: drop-shadow(1px 1px 1px red) drop-shadow(-1px -1px 1px blue);
+}

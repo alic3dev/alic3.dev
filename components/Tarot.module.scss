@@ -1,0 +1,45 @@
+.tarot {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+  max-width: 100%;
+
+  margin: auto;
+
+  overflow-x: auto;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 2rem 3rem;
+
+  button {
+    margin: 0;
+    transform: none;
+  }
+}
+
+.draw-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.draw-controls-buttons {
+  display: flex;
+}
