@@ -9,7 +9,8 @@ const values: (string | null)[] = [
   null,
   null,
   null,
-  'Jack',
+  'Page',
+  'Knight',
   'Queen',
   'King',
   'The Fool',
@@ -41,7 +42,7 @@ const suits: {
     hearts: string,
     spades: string,
     clubs: string,
-    diamonds: string
+    diamonds: string,
   ]
 } = {
   default: ['cups', 'swords', 'wands', 'coins'],
@@ -58,7 +59,7 @@ export class Card {
 
   constructor(value: number, style: string = 'tarot') {
     this.valueNumber = value
-    this.valueString = values[this.valueNumber] || `${this.valueNumber}`
+    this.valueString = values[this.valueNumber] || `${this.valueNumber + 1}`
     this.style = style
   }
 
@@ -90,19 +91,19 @@ export class MajorArcanaCard extends Card {
 }
 
 const minorArcanaCards: readonly MinorArcanaCard[] = Object.freeze(
-  new Array(52)
+  new Array(56)
     .fill(null)
     .map((v, i) =>
       Object.freeze(
-        new MinorArcanaCard(i - Math.floor(i / 13) * 13, Math.floor(i / 13))
-      )
-    )
+        new MinorArcanaCard(i - Math.floor(i / 14) * 14, Math.floor(i / 14)),
+      ),
+    ),
 )
 
 const majorArcanaCards: readonly MajorArcanaCard[] = Object.freeze(
-  new Array(23)
+  new Array(22)
     .fill(null)
-    .map((v, i) => Object.freeze(new MajorArcanaCard(i + 12)))
+    .map((v, i) => Object.freeze(new MajorArcanaCard(i + 14))),
 )
 
 const defaultCards: readonly Card[] = Object.freeze([
