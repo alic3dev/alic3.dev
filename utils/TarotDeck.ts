@@ -110,6 +110,8 @@ const defaultCards: readonly Card[] = Object.freeze([
   ...majorArcanaCards,
 ])
 
+type TarotDeckEventType = 'update'
+
 export class TarotDeck {
   cards: Card[] = [...defaultCards]
   originalCards: readonly Card[] = this.cards
@@ -118,9 +120,13 @@ export class TarotDeck {
   suitStyle: string
   valueStyle: string
 
+  events: Record<TarotDeckEventType, (() => void)[]> = {
+    update: [],
+  }
+
   constructor(
     style: string | { suit: string; value: string } = 'tarot',
-    cards?: Card[]
+    cards?: Card[],
   ) {
     if (typeof style === 'string') {
       this.suitStyle = style
@@ -137,15 +143,53 @@ export class TarotDeck {
     this.shuffle()
   }
 
+  // TODO: Decide if this should be deferred
+  // #triggerDeferTimeout?: number
+  #trigger(type: TarotDeckEventType): void {
+    // window.clearTimeout(this.#triggerDeferTimeout)
+    // this.#triggerDeferTimeout = window.setTimeout((): void => {
+    this.events[type].forEach((e) => e())
+    //   this.#triggerDeferTimeout = undefined
+    // }, 0)
+  }
+
+  on(type: TarotDeckEventType, call: () => void): void {
+    this.events[type].push(call)
+  }
+
+  off(type: TarotDeckEventType, call: () => void): void {
+    this.events[type] = this.events[type].filter(
+      (e: () => void): boolean => e !== call,
+    )
+  }
+
+  async when(type: TarotDeckEventType): Promise<void> {
+    const onAndOff = (resolve: () => void): void => {
+      const offAndResolve = (): void => {
+        this.off(type, offAndResolve)
+
+        resolve()
+      }
+
+      this.on(type, offAndResolve)
+    }
+
+    await new Promise<void>(onAndOff)
+  }
+
   reset(sorted: boolean = false): void {
     if (sorted) this.cards.splice(0, this.cards.length, ...this.originalCards)
     else this.shuffle(true)
+
+    this.#trigger('update')
   }
 
   shuffle(resetDiscard: boolean = false): void {
     if (resetDiscard) this.cards.push(...this.discardPile.splice(0))
 
     this.cards.sort(() => Math.random() * 10 - 5)
+
+    this.#trigger('update')
   }
 
   drawRandomly(): Card | null {
@@ -154,9 +198,11 @@ export class TarotDeck {
     this.discardPile.push(
       this.cards.splice(
         Math.floor(Math.random() * (this.cards.length - 1)),
-        1
-      )[0]
+        1,
+      )[0],
     )
+
+    this.#trigger('update')
 
     return this.discardPile[this.discardPile.length - 1]
   }
@@ -166,6 +212,8 @@ export class TarotDeck {
 
     this.discardPile.push(this.cards.shift() as Card)
 
+    this.#trigger('update')
+
     return this.discardPile[this.discardPile.length - 1]
   }
 
@@ -173,8 +221,10 @@ export class TarotDeck {
     if (!this.cards.length) return null
 
     this.discardPile.push(
-      this.cards.splice(Math.floor((this.cards.length - 1) / 2), 1)[0]
+      this.cards.splice(Math.floor((this.cards.length - 1) / 2), 1)[0],
     )
+
+    this.#trigger('update')
 
     return this.discardPile[this.discardPile.length - 1]
   }
@@ -183,6 +233,8 @@ export class TarotDeck {
     if (!this.cards.length) return null
 
     this.discardPile.push(this.cards.pop() as Card)
+
+    this.#trigger('update')
 
     return this.discardPile[this.discardPile.length - 1]
   }
