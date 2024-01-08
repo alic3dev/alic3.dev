@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export const expectedActions = {
+export const expectedActions: Record<string, string> = {
   SUBMIT_CONTACT_FORM: 'SUBMIT_CONTACT_FORM',
 }
 
@@ -16,7 +16,7 @@ export const expectedActions = {
  */
 export const verify = async (
   recpatchaToken: FormDataEntryValue | null,
-  expectedAction: string
+  expectedAction: string,
 ): Promise<Api.Recaptcha.ErrorResponse> => {
   if (
     !process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA ||
@@ -27,7 +27,7 @@ export const verify = async (
   if (!recpatchaToken || typeof recpatchaToken !== 'string')
     return NextResponse.json(
       { errors: [{ field: 'recaptcha', type: 'invalid' }] },
-      { status: 400 }
+      { status: 400 },
     )
 
   try {
@@ -42,7 +42,7 @@ export const verify = async (
             expectedAction,
           },
         }),
-      }
+      },
     )
     const data: Api.Recaptcha.ResponseData | null = await res.json()
 
@@ -52,7 +52,7 @@ export const verify = async (
     ) {
       return NextResponse.json(
         { errors: [{ field: 'recaptcha', type: 'invalid' }] },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
@@ -62,9 +62,10 @@ export const verify = async (
   }
 }
 
-const Recaptcha = {
+export const Recaptcha: {
+  expectedActions: typeof expectedActions
+  verify: typeof verify
+} = {
   expectedActions,
   verify,
 }
-
-export default Recaptcha

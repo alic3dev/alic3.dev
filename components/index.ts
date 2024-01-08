@@ -1,19 +1,6 @@
-import BackgroundCanvas from '@/components/decorative/BackgroundCanvas'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
+export { Footer } from '@/components/Footer'
+export { Header } from '@/components/Header'
+export { Resume } from '@/components/Resume'
+export { Tarot } from '@/components/Tarot'
 
-import Sections from '@/components/sections'
-
-export { Sections, BackgroundCanvas, Footer, Header }
-
-const components: {
-  [component: string]: React.FC<any> | { [component: string]: React.FC<any> }
-} = {
-  Sections,
-
-  BackgroundCanvas,
-  Footer,
-  Header,
-}
-
-export default components
+export { sections } from '@/components/sections'

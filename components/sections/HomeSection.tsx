@@ -2,10 +2,11 @@
 
 import React from 'react'
 
-import Section from '@/components/sections/Section'
-import styles from '@/components/sections/HomeSection.module.scss'
+import { Section } from '@/components/sections/Section'
 
-export default function HomeSection(): JSX.Element {
+import styles from './HomeSection.module.scss'
+
+export function HomeSection(): JSX.Element {
   const onNextClick = React.useCallback<
     React.MouseEventHandler<HTMLAnchorElement>
   >((event) => {

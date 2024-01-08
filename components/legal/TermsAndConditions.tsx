@@ -1,4 +1,7 @@
-export default function TermsAndConditions() {
+import React from 'react'
+import Link from 'next/link'
+
+export function TermsAndConditions(): JSX.Element {
   return (
     <div>
       <h2>Terms and Conditions</h2>
@@ -8,7 +11,7 @@ export default function TermsAndConditions() {
       <p>
         These terms and conditions outline the rules and regulations for the use
         of Alic3dev&apos;s Website, located at{' '}
-        <a href="https://alic3.dev/">alic3.dev</a>.
+        <Link href="https://alic3.dev/">alic3.dev</Link>.
       </p>
 
       <p>

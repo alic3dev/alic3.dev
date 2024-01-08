@@ -1,10 +1,13 @@
-export default function CookiePolicy() {
+import React from 'react'
+import Link from 'next/link'
+
+export function CookiePolicy(): JSX.Element {
   return (
     <div>
       <h1>Cookie Policy for Alic3dev</h1>
       <p>
         This is the Cookie Policy for Alic3dev, accessible from{' '}
-        <a href="https://alic3.dev/">alic3.dev</a>.
+        <Link href="https://alic3.dev/">alic3.dev</Link>.
       </p>
 
       <h2>What Are Cookies</h2>

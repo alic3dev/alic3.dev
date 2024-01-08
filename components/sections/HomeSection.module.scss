@@ -1,6 +1,16 @@
 @use '@/styles/utils/colors';
 @use '@/components/sections/Section.module.scss';
 
+.icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  font-size: 4rem;
+}
+
 .next {
   position: absolute;
   left: 50%;

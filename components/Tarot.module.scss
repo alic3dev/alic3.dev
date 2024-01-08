@@ -43,3 +43,27 @@
 .draw-controls-buttons {
   display: flex;
 }
+
+@media (max-width: 800px) {
+  .controls {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .draw-controls {
+    flex: 100%;
+
+    order: -1;
+
+    margin-bottom: 1rem;
+  }
+
+  .draw-controls-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    & > button {
+      margin: 1rem;
+    }
+  }
+}

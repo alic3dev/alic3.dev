@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 
-import { Tarot } from '@/components/Tarot'
+import { Header, Tarot } from '@/components'
 
 export const metadata: Metadata = {
   title: '🂡🂱🃁🃑',
@@ -12,6 +12,8 @@ export default function TarotPage(): JSX.Element {
   return (
     <main>
       <Tarot />
+
+      <Header minimal />
     </main>
   )
 }

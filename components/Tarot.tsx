@@ -52,7 +52,7 @@ export function Tarot(): JSX.Element {
     <div className={styles.tarot}>
       <div className={styles.content}>
         {drawnCards.map(
-          (card: CardWithInfo, index: number): JSX.Element => (
+          (card: CardWithInfo): JSX.Element => (
             <TarotCard key={card.id} card={card} />
           ),
         )}
