@@ -4,8 +4,8 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
 
-import regexs from '@/utils/regexs'
-import Recaptcha from '@/utils/Recaptcha'
+import { regexs } from '@/utils/regexs'
+import { Recaptcha } from '@/utils/Recaptcha'
 
 export const runtime: ServerRuntime = 'edge'
 
@@ -42,7 +42,7 @@ export const POST = async (req: NextRequest) => {
   const captchaErrorResponse: Api.Recaptcha.ErrorResponse =
     await Recaptcha.verify(
       contactFormData.get('recaptcha-token'),
-      Recaptcha.expectedActions.SUBMIT_CONTACT_FORM
+      Recaptcha.expectedActions.SUBMIT_CONTACT_FORM,
     )
   if (captchaErrorResponse) return captchaErrorResponse
 
@@ -53,7 +53,7 @@ export const POST = async (req: NextRequest) => {
     phone: contactFormData.get('phone'),
     message: contactFormData.get('message'),
     termsPrivacyDisclaimerAgreement: contactFormData.get(
-      'terms-privacy-disclaimer-agreement'
+      'terms-privacy-disclaimer-agreement',
     ),
     contactConsent: contactFormData.get('contact-consent'),
   }

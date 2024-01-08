@@ -1,8 +1,8 @@
 'use client'
 
-import styles from '@/components/sections/Section.module.scss'
+import styles from './Section.module.scss'
 
-export default function Section({
+export function Section({
   name,
   className,
   containerClassName,

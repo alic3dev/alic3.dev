@@ -22,10 +22,11 @@ import {
 } from 'react-icons/tb'
 import Link from 'next/link'
 
-import Section from '@/components/sections/Section'
-import styles from '@/components/sections/WorkSection.module.scss'
+import { Section } from '@/components/sections/Section'
 
-import workHistory from '@/data/workHistory'
+import { data as workHistory } from '@/data/workHistory'
+
+import styles from './WorkSection.module.scss'
 
 const iconLookup: { [iconName: string]: React.ReactElement } = {
   ts: <TbBrandTypescript />,
@@ -48,7 +49,7 @@ const iconLookup: { [iconName: string]: React.ReactElement } = {
 const minimizedDescriptionsLocalStorageKey: string =
   'root:work-section:minimized-descriptions'
 
-export default function WorkSection(): JSX.Element {
+export function WorkSection(): JSX.Element {
   const [minimizedDescriptions, setMinimizedDescriptions] = React.useState<
     string[]
   >([])
@@ -70,7 +71,7 @@ export default function WorkSection(): JSX.Element {
 
     try {
       const minimizedDescriptionsJSONParsed: string[] = JSON.parse(
-        minimizedDescriptionsJSON
+        minimizedDescriptionsJSON,
       )
 
       if (Array.isArray(minimizedDescriptionsJSONParsed))
@@ -81,12 +82,12 @@ export default function WorkSection(): JSX.Element {
 
   React.useEffect((): void => {
     const minimizedDescriptionsJSON: string = JSON.stringify(
-      minimizedDescriptions
+      minimizedDescriptions,
     )
 
     window.localStorage.setItem(
       minimizedDescriptionsLocalStorageKey,
-      minimizedDescriptionsJSON
+      minimizedDescriptionsJSON,
     )
   }, [minimizedDescriptions])
 

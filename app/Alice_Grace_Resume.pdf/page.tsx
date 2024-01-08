@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import ResumeWithViewer from '@/components/Resume'
+import { Resume } from '@/components'
 
 export const metadata: Metadata = {
   title: 'Alice_Grace_Resume.pdf',
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 }
 
 export default function AliceGraceResumePDF() {
-  return <ResumeWithViewer />
+  return <Resume />
 }

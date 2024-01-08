@@ -240,5 +240,3 @@ export class TarotDeck {
     return this.discardPile[this.discardPile.length - 1]
   }
 }
-
-export default TarotDeck

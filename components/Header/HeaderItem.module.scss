@@ -9,7 +9,7 @@
   }
   100% {
     color: colors.$text;
-    border: 2px solid rgba(colors.$text, 1);
+    border: 2px solid rgba(colors.$text, 0.25);
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
   }
@@ -17,12 +17,12 @@
 
 @keyframes addBeforeborder {
   0% {
-    border: 1px solid rgba(colors.$mauve, 0);
+    border: 1px solid rgba(colors.$blue, 0);
     border-bottom: none;
     border-right: none;
   }
   100% {
-    border: 1px solid rgba(colors.$mauve, 1);
+    border: 1px solid rgba(colors.$blue, 1);
     border-bottom: none;
     border-right: none;
   }
@@ -50,7 +50,7 @@
   border: 2px solid transparent;
   border-radius: 2px;
 
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-transform: capitalize;
 
   cursor: pointer;
@@ -84,12 +84,14 @@
     top: -15px;
     bottom: 1px;
 
-    border: 1px solid rgba(colors.$mauve, 0);
+    border: 1px solid rgba(colors.$blue, 0);
     border-bottom: none;
     border-right: none;
     border-radius: 2px;
 
     pointer-events: none;
+
+    opacity: 0.25;
   }
 
   &::after {
@@ -106,12 +108,12 @@
     border-radius: 2px;
 
     pointer-events: none;
+
+    opacity: 0.5;
   }
 
   &.active {
     .header-item {
-      cursor: default;
-
       animation: addborder 400ms ease-in-out 1 forwards 50ms;
     }
 

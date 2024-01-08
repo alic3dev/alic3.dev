@@ -34,6 +34,11 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontSize: '18pt',
     color: 'rgba(255,255,255,0.75)',
   },
+  fullContent: {
+    width: '100%',
+    padding: '20pt',
+    paddingBottom: '0pt',
+  },
   mainContent: {
     height: '87.9795471524171%',
     width: '70%',
@@ -47,6 +52,34 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     paddingBottom: '0',
     backgroundColor: latte.base.hex,
   },
+  cvContact: {
+    marginTop: '10pt',
+    // marginBottom: '-10pt',
+    paddingRight: '20pt',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // color: 'rgba(255,255,255,0.75)',
+  },
+  cvContactText: {
+    // color: 'rgba(255,255,255,0.75)',
+    color: '#d2d3d9',
+  },
+
+  // cvContact: {
+  //   // marginTop: '5pt',
+  //   paddingLeft: '20pt',
+  //   paddingRight: '20pt',
+  //   width: '100%',
+  //   display: 'flex',
+  //   flexDirection: 'row',
+  //   justifyContent: 'space-between',
+  //   // color: 'rgba(255,255,255,0.75)',
+  //   backgroundColor: latte.base.hex,
+  // },
+  // cvContactText: {
+  //   // color: 'rgba(255,255,255,0.75)',
+  // },
   contentSection: {
     paddingBottom: '40pt',
   },
@@ -131,5 +164,3 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     marginTop: '3pt',
   },
 })
-
-export default styles
