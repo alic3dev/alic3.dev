@@ -53,43 +53,6 @@ export interface CardWithInfo {
   rotate: number
 }
 
-// 'Ace',
-// null,
-// null,
-// null,
-// null,
-// null,
-// null,
-// null,
-// null,
-// null,
-// 'Page',
-// 'Knight',
-// 'Queen',
-// 'King',
-// 'The Fool',
-// 'The Magician',
-// 'The High Priestess',
-// 'The Empress',
-// 'The Emporer',
-// 'The Hierophant',
-// 'The Lovers',
-// 'The Chariot',
-// 'Strength',
-// 'The Hermit',
-// 'Wheel of Fortune',
-// 'Justice',
-// 'The Hanged Man',
-// 'Death',
-// 'Temperance',
-// 'The Devil',
-// 'The Tower',
-// 'The Star',
-// 'The Moon',
-// 'The Sun',
-// 'Judgement',
-// 'The World',
-
 const majorIcons: React.FunctionComponent[] = [
   () => (
     <div className={`${styles['card-major-content']} ${styles['the-fool']}`}>
@@ -228,8 +191,6 @@ const majorIcons: React.FunctionComponent[] = [
     </div>
   ), // 'The World',
 ]
-
-//GiSunkenEye
 
 export function TarotCard({ card }: { card: CardWithInfo }): JSX.Element {
   const content = React.useMemo(() => {

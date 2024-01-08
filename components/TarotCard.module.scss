@@ -105,11 +105,9 @@
 
 @keyframes sway {
   from {
-    // transform: rotate(-25deg);
     transform: rotate(-2.5deg) skewX(5deg) skewY(5deg) scaleX(0.75);
   }
   to {
-    // transform: rotate(25deg);
     transform: rotate(2.5deg) skewX(-5deg) skewY(-5deg) scaleX(0.75);
   }
 }
@@ -130,8 +128,6 @@
   z-index: -1;
 
   & > * {
-    // mix-blend-mode: difference;
-
     filter: drop-shadow(1px 1px 1px red) drop-shadow(-1px -1px 1px blue);
   }
 
