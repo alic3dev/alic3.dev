@@ -4,8 +4,6 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
 
-import regexs from '@/utils/regexs'
-import Recaptcha from '@/utils/Recaptcha'
 import { Transaction } from 'kysely'
 
 export const runtime: ServerRuntime = 'edge'
