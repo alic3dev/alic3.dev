@@ -1,10 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 
-import { Tarot } from '@/components/Tarot'
-import Title from '@/components/Header/Title'
-
-import styles from './page.module.scss'
+import { Header, Tarot } from '@/components'
 
 export const metadata: Metadata = {
   title: '🂡🂱🃁🃑',
@@ -16,9 +13,7 @@ export default function TarotPage(): JSX.Element {
     <main>
       <Tarot />
 
-      <div className={styles['title-wrapper']}>
-        <Title />
-      </div>
+      <Header minimal />
     </main>
   )
 }
