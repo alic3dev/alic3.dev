@@ -18,3 +18,16 @@ declare global {
 }
 
 export {}
+
+// CREATE TABLE contact_form (
+//     id serial,
+//     name varchar(100) not null,
+//     contact_method contact_method not null,
+//     email varchar(254),
+//     phone varchar(15),
+//     message varchar(5000) not null,
+//     terms_privacy_disclaimer_agreement boolean not null,
+//     contact_consent boolean not null,
+//     client_ip inet,
+//     submitted_timestamp timestamp default current_timestamp
+// );

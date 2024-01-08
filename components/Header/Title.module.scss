@@ -1,11 +1,6 @@
 @use '@/styles/utils/colors';
 
 .title {
-  position: absolute;
-  top: -0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-
   user-select: none;
 }
 
@@ -20,22 +15,26 @@
   &:hover {
     text-decoration: none;
     color: colors.$textlight;
+
+    // text-shadow: 1px 2px 1px transparentize(colors.$blue, 0.25),
+    //   -1px -2px 1px transparentize(colors.$red, 0.25);
   }
 }
 
 .title-main {
   position: relative;
-  font-size: 6rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
 .title-secondary {
   font-size: 3rem;
   font-weight: 100;
+  z-index: 1;
 }
 
 .title-emphasis {
-  font-weight: 400;
+  // font-weight: 400;
 }
 
 .title-seperator {

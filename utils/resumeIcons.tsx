@@ -225,5 +225,3 @@ export const icons: { [icon: string]: JSX.Element } = {
     </IconSvgWrapper>
   ),
 }
-
-export default icons

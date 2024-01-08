@@ -155,5 +155,3 @@ export const skills: {
 }
 
 export const data: WorkHistoryCompany[] = [...jobHistory, ...educationHistory]
-
-export default data

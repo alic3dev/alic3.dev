@@ -1,15 +1,18 @@
 'use client'
 
 import React from 'react'
+import { GiDiamondsSmile, GiGluttonousSmile } from 'react-icons/gi'
+import Link from 'next/link'
 
-import styles from '@/components/Header/Header.module.scss'
-import HeaderItem from '@/components/Header/HeaderItem'
-import Title from '@/components/Header/Title'
+import { HeaderItem } from '@/components/Header/HeaderItem'
+import { Title } from '@/components/Header/Title'
 
-import validLocations from '@/utils/validLocations'
+import { validLocations } from '@/utils/validLocations'
+
+import styles from './Header.module.scss'
 
 function getScrollRelationalLocation(
-  scrollDepth: number
+  scrollDepth: number,
 ): Pages.ValidLocation | null {
   for (const location of validLocations) {
     if (location === 'home') {
@@ -32,7 +35,7 @@ function getScrollRelationalLocation(
   return null
 }
 
-export default function Header() {
+export function FullHeader(): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
   const [currentLocation, setCurrentLocation] = React.useState<
     Pages.ValidLocation | undefined
@@ -40,7 +43,7 @@ export default function Header() {
 
   const scrollDepthIntroMapped: number = React.useMemo<number>(
     (): number => Math.min(1, (scrollDepth || 0) / 300),
-    [scrollDepth]
+    [scrollDepth],
   )
 
   React.useEffect((): void => {
@@ -53,7 +56,7 @@ export default function Header() {
       setCurrentLocation(startingLocation as Pages.ValidLocation)
     else
       setCurrentLocation(
-        getScrollRelationalLocation(startingScrollDepth) || 'home'
+        getScrollRelationalLocation(startingScrollDepth) || 'home',
       )
 
     setScrollDepth(startingScrollDepth)
@@ -85,7 +88,7 @@ export default function Header() {
       const sectionElement = document.getElementById(location)
       if (sectionElement) sectionElement.scrollIntoView({ behavior: 'smooth' })
     },
-    []
+    [],
   )
 
   return (
@@ -111,8 +114,6 @@ export default function Header() {
           navigateToLocation={navigateToLocation}
         />
 
-        <div className={styles['navigation-header-spacer']} />
-
         <HeaderItem
           location="work"
           align={'right'}
@@ -126,6 +127,31 @@ export default function Header() {
           navigateToLocation={navigateToLocation}
         />
       </nav>
+
+      <div className={styles['navigation-header-spacer']} />
+
+      {/* <button className={styles['header-icon']} onClick={() => alert('hi')}> */}
+      <Link href="/portal" className={styles['header-icon']}>
+        <GiDiamondsSmile />
+        <GiGluttonousSmile />
+      </Link>
+      {/* </button> */}
     </header>
   )
+}
+
+export function MinimalHeader(): JSX.Element {
+  return (
+    <div className={styles['title-wrapper']}>
+      <Title />
+    </div>
+  )
+}
+
+export function Header({
+  minimal = false,
+}: {
+  minimal?: boolean
+}): JSX.Element {
+  return minimal ? <MinimalHeader /> : <FullHeader />
 }

@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-import styles from '@/components/Header/HeaderItem.module.scss'
+import styles from './HeaderItem.module.scss'
 
-export default function HeaderItem({
+export function HeaderItem({
   align,
   location,
   currentLocation,
@@ -18,16 +18,17 @@ export default function HeaderItem({
   children?: React.ReactNode
 }): JSX.Element {
   const isActive = React.useMemo<boolean>(
-    () => location === currentLocation && currentLocation !== undefined,
-    [location, currentLocation]
+    (): boolean =>
+      location === currentLocation && currentLocation !== undefined,
+    [location, currentLocation],
   )
 
   const onClick = React.useCallback<React.MouseEventHandler>(
-    (event) => {
-      if (!isActive) navigateToLocation(location)
+    (event): void => {
+      navigateToLocation(location)
       event.preventDefault()
     },
-    [isActive, navigateToLocation, location]
+    [navigateToLocation, location],
   )
 
   return (

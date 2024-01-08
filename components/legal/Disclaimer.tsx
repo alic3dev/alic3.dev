@@ -1,4 +1,7 @@
-export default function Disclaimer() {
+import React from 'react'
+import Link from 'next/link'
+
+export function Disclaimer(): JSX.Element {
   return (
     <div>
       <h1>Disclaimer for Alic3dev</h1>
@@ -11,9 +14,9 @@ export default function Disclaimer() {
       <h2>Disclaimers for Alic3dev</h2>
       <p>
         All the information on this website -{' '}
-        <a href="https://alic3.dev/">alic3.dev</a> - is published in good faith
-        and for general information purpose only. Alic3dev does not make any
-        warranties about the completeness, reliability and accuracy of this
+        <Link href="https://alic3.dev/">alic3.dev</Link> - is published in good
+        faith and for general information purpose only. Alic3dev does not make
+        any warranties about the completeness, reliability and accuracy of this
         information. Any action you take upon the information you find on this
         website (Alic3dev), is strictly at your own risk. Alic3dev will not be
         liable for any losses and/or damages in connection with the use of our

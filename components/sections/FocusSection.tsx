@@ -6,8 +6,9 @@ import { LuBinary } from 'react-icons/lu'
 import { NextFont } from 'next/dist/compiled/@next/font'
 import { Inconsolata } from 'next/font/google'
 
-import Section from '@/components/sections/Section'
-import styles from '@/components/sections/FocusSection.module.scss'
+import { Section } from '@/components/sections/Section'
+
+import styles from './FocusSection.module.scss'
 
 const modernFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
@@ -39,12 +40,12 @@ const getRandomColorIndexs = (): RandomColorIndex[] => {
   return randomColorIndexs
 }
 
-export default function FocusSection(): JSX.Element {
+export function FocusSection(): JSX.Element {
   const [randomColorIndexs, setRandomColorIndexs] = React.useState<
     RandomColorIndex[]
   >([])
 
-  React.useEffect(() => {
+  React.useEffect((): (() => void) => {
     let flip: boolean = true
     let randomColorInterval: number = window.setInterval(() => {
       if (flip) setRandomColorIndexs(getRandomColorIndexs())
@@ -53,7 +54,7 @@ export default function FocusSection(): JSX.Element {
       flip = !flip
     }, 500)
 
-    return () => window.clearInterval(randomColorInterval)
+    return (): void => window.clearInterval(randomColorInterval)
   }, [])
 
   return (
@@ -81,19 +82,21 @@ export default function FocusSection(): JSX.Element {
           <span className={styles.type}>Type</span>Script
         </span>
         <span className={styles.add}>
-          {new Array(9).fill(null).map((v, i) => (
-            <LuBinary
-              className={(() => {
-                const randomColorIndex = randomColorIndexs.find(
-                  (v) => v.i === i
-                )
-                return randomColorIndex
-                  ? styles[`add-icon-color-${randomColorIndex.c}`]
-                  : styles['add-icon']
-              })()}
-              key={i}
-            />
-          ))}
+          {new Array(9).fill(null).map(
+            (_v: null, i: number): JSX.Element => (
+              <LuBinary
+                className={(() => {
+                  const randomColorIndex = randomColorIndexs.find(
+                    (v: RandomColorIndex): boolean => v.i === i,
+                  )
+                  return randomColorIndex
+                    ? styles[`add-icon-color-${randomColorIndex.c}`]
+                    : styles['add-icon']
+                })()}
+                key={i}
+              />
+            ),
+          )}
         </span>
         <span className={styles.react}>
           <SiReact />

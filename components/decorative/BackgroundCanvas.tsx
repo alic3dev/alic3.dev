@@ -1,10 +1,8 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 
-import styles from '@/components/decorative/BackgroundCanvas.module.scss'
-import backgroundImage from '@/public/1.jpeg'
+import styles from './BackgroundCanvas.module.scss'
 
 interface CanvasValues {
   size: number
@@ -13,7 +11,7 @@ interface CanvasValues {
   animationFrame: number
 }
 
-export default function BackgroundCanvas() {
+export function BackgroundCanvas() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const canvasValuesRef = React.useRef<CanvasValues>({
     size: 0,
@@ -57,7 +55,7 @@ export default function BackgroundCanvas() {
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
 
     const canvasTranslateAmount: number = Math.floor(
-      canvasValuesRef.current.size / 2
+      canvasValuesRef.current.size / 2,
     )
 
     ctx.translate(canvasTranslateAmount, canvasTranslateAmount)
