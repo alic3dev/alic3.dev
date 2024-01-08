@@ -130,12 +130,10 @@ export function FullHeader(): JSX.Element {
 
       <div className={styles['navigation-header-spacer']} />
 
-      {/* <button className={styles['header-icon']} onClick={() => alert('hi')}> */}
-      <Link href="/portal" className={styles['header-icon']}>
+      <button className={styles['header-icon']} onClick={() => {}}>
         <GiDiamondsSmile />
         <GiGluttonousSmile />
-      </Link>
-      {/* </button> */}
+      </button>
     </header>
   )
 }
