@@ -141,7 +141,7 @@ export function ContactSection(): JSX.Element {
       </div>
 
       <div className={styles['contact-options']}>
-        <p>You may contact me directly via email</p>
+        <p>You may contact us directly via email</p>
 
         <p>
           <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
@@ -150,7 +150,7 @@ export function ContactSection(): JSX.Element {
         <div className={styles['contact-options-seperator']}>OR</div>
 
         <p>
-          Complete and submit the form below with your inquiry and I will reach
+          Complete and submit the form below with your inquiry and we will reach
           back out to you as soon as possible
         </p>
       </div>
