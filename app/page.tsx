@@ -1,5 +1,4 @@
 import { Footer, Header } from '@/components'
-import { /*BackgroundCanvas,*/ BackgroundImages } from '@/components/decorative'
 import {
   ContactSection,
   HomeSection,
@@ -10,11 +9,7 @@ import {
 export default function RootPage(): JSX.Element {
   return (
     <main id="home">
-      <BackgroundImages />
-      {/* <BackgroundCanvas /> */}
-
       <HomeSection />
-      {/* <FocusSection /> */}
       <WorkSection />
       <ProjectsSection />
       <ContactSection />

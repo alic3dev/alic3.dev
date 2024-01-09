@@ -2,6 +2,7 @@
 
 import React from 'react'
 
+import { BackgroundImages } from '@/components/decorative'
 import { Section } from '@/components/sections/Section'
 
 import styles from './HomeSection.module.scss'
@@ -21,6 +22,8 @@ export function HomeSection(): JSX.Element {
 
   return (
     <Section name="home">
+      <BackgroundImages />
+
       <h2 className={styles.header}>
         <span className={styles['full-stack']}>Full-stack</span>{' '}
         <span className={styles['web-dev']}>web-dev</span>
