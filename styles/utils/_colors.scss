@@ -1,7 +1,12 @@
 @import '@catppuccin/palette/scss/mocha';
 
+$dark-base: darken($base, 1%);
+
 $white: #fff;
-$background: #06060a;
-$dark-red: #100;
-$dark-blue: #001;
+$black: #000;
+
+$primary-red: #f00;
+$primary-green: #0f0;
+$primary-blue: #00f;
+
 $textlight: #eaefff;

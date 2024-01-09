@@ -6,7 +6,7 @@
   margin-bottom: 10rem;
   padding-top: 10rem;
   padding-bottom: 10rem;
-  background: rgba(0, 0, 0, 0.111);
+  background: rgba(colors.$black, 0.111);
 }
 
 .project {
@@ -46,19 +46,19 @@
 
 @keyframes icon-flicker {
   0% {
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0px 0px 1px colors.$black;
   }
   100% {
-    text-shadow: 0px 0px 1px black;
+    text-shadow: 0px 0px 1px colors.$black;
   }
 }
 
 @keyframes icon-drip {
   from {
-    filter: drop-shadow(0px 0px 0px rgb(255, 0, 0));
+    filter: drop-shadow(0px 0px 0px colors.$primary-red);
   }
   to {
-    filter: drop-shadow(2px 3px 3px rgb(100, 0, 0));
+    filter: drop-shadow(2px 3px 3px darken(colors.$primary-red, 30.3%));
   }
 }
 
@@ -71,15 +71,16 @@
   flex-wrap: wrap;
 
   &.with-icons {
-    filter: drop-shadow(2px 4px 0px white) drop-shadow(2px 4px 6px black);
+    filter: drop-shadow(2px 4px 0px colors.$white)
+      drop-shadow(2px 4px 6px colors.$black);
   }
 
   .image {
     max-width: 100%;
     height: auto;
 
-    border: 5px solid rgba(0, 0, 0, 0.9);
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    border: 5px solid rgba(colors.$black, 0.9);
+    box-shadow: 0px 2px 4px rgba(colors.$black, 0.3);
   }
 
   .icon {
@@ -123,7 +124,7 @@
   margin-top: 4rem;
   padding: 2rem;
 
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(colors.$black, 0.1);
 
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 4px rgba(colors.$black, 0.3);
 }

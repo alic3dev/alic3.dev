@@ -166,7 +166,7 @@ input[type='submit'] {
   padding-right: 4rem;
   padding-bottom: 1rem;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(colors.$white, 0.05);
   border: none;
   border-bottom: 1px solid colors.$mauve;
 
@@ -180,7 +180,7 @@ input[type='submit'] {
 
   &:hover,
   &:active {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(colors.$white, 0.04);
     border-bottom: 1px solid darken(colors.$mauve, 5%);
 
     transition: color 300ms ease-in-out, background 150ms ease-in-out,
@@ -188,7 +188,7 @@ input[type='submit'] {
   }
 
   &:active {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(colors.$white, 0.03);
     border-bottom: 1px solid darken(colors.$mauve, 10%);
   }
 }
