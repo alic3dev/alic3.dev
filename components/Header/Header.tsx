@@ -62,7 +62,7 @@ export function FullHeader(): JSX.Element {
     setScrollDepth(startingScrollDepth)
 
     let waitingForAnimationFrame: boolean = false
-    document.addEventListener('scroll', (event) => {
+    document.addEventListener('scroll', (): void => {
       if (waitingForAnimationFrame) return
 
       window.requestAnimationFrame(() => {
@@ -90,7 +90,7 @@ export function FullHeader(): JSX.Element {
       if (!sectionElement) throw new Error(`Couldn't find section: ${location}`)
 
       window.scrollTo({
-        top: sectionElement.offsetTop - 100,
+        top: sectionElement.offsetTop - (location === 'projects' ? 0 : 100),
         behavior: 'smooth',
       })
     },
