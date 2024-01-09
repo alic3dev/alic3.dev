@@ -86,7 +86,13 @@ export function FullHeader(): JSX.Element {
   const navigateToLocation = React.useCallback(
     (location: Pages.ValidLocation): void => {
       const sectionElement = document.getElementById(location)
-      if (sectionElement) sectionElement.scrollIntoView({ behavior: 'smooth' })
+
+      if (!sectionElement) throw new Error(`Couldn't find section: ${location}`)
+
+      window.scrollTo({
+        top: sectionElement.offsetTop - 100,
+        behavior: 'smooth',
+      })
     },
     [],
   )
