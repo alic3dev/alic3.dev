@@ -1,2 +1,129 @@
 @use '@/styles/utils/colors';
 @use '@/components/sections/Section.module.scss';
+
+.section {
+  margin-top: -10rem;
+  margin-bottom: 10rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  background: rgba(0, 0, 0, 0.111);
+}
+
+.project {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90%;
+  // max-width: 900px;
+  margin: auto;
+  margin-top: 10rem;
+}
+
+@keyframes icon-stutter {
+  35.9% {
+    transform: scaleY(1);
+  }
+  36% {
+    transform: scaleY(-1);
+  }
+  36.9% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes icon-stutter-layered {
+  83.9% {
+    transform: scaleY(1);
+  }
+  84% {
+    transform: scaleY(-0.8);
+  }
+  84.9% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes icon-flicker {
+  0% {
+    text-shadow: 0px 0px 1px black;
+  }
+  100% {
+    text-shadow: 0px 0px 1px black;
+  }
+}
+
+@keyframes icon-drip {
+  from {
+    filter: drop-shadow(0px 0px 0px rgb(255, 0, 0));
+  }
+  to {
+    filter: drop-shadow(2px 3px 3px rgb(100, 0, 0));
+  }
+}
+
+.visualization {
+  position: relative;
+  width: 30%;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  &.with-icons {
+    filter: drop-shadow(2px 4px 0px white) drop-shadow(2px 4px 6px black);
+  }
+
+  .image {
+    max-width: 100%;
+    height: auto;
+
+    border: 5px solid rgba(0, 0, 0, 0.9);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .icon {
+    opacity: 0.3336663339997272;
+
+    font-size: 20rem;
+
+    animation: icon-drip 10s ease-in-out infinite alternate,
+      icon-stutter 1s 3ms ease-in-out infinite alternate,
+      icon-stutter-layered 1.25s 42ms linear infinite alternate;
+  }
+
+  .mouth {
+    position: absolute;
+    left: -30%;
+    top: 20rem;
+
+    width: 10rem;
+
+    transform: scaleX(-1) skewY(10deg);
+
+    overflow: hidden;
+
+    .icon {
+      animation: icon-drip 11s 22ms ease-in-out infinite alternate,
+        icon-stutter 1s 666ms ease-in-out infinite alternate,
+        icon-stutter-layered 1.25s 333ms linear infinite alternate;
+    }
+  }
+}
+
+.info {
+  width: 60%;
+}
+
+.project-title {
+  text-align: center;
+}
+
+.description {
+  margin-top: 4rem;
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
