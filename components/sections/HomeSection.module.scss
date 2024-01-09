@@ -1,14 +1,20 @@
 @use '@/styles/utils/colors';
 @use '@/components/sections/Section.module.scss';
 
-.icons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+.header {
+  position: relative;
 
-  transform: translate(-50%, -50%);
+  padding: 10rem 8rem;
 
   font-size: 4rem;
+  font-weight: 400;
+
+  color: transparentize(colors.$text, 0.3);
+}
+
+.web-dev {
+  font-weight: 700;
+  color: colors.$text;
 }
 
 .next {
@@ -54,5 +60,23 @@
 
   &::after {
     transform: translate(calc(-50% + 0.5rem + 1px), -50%) rotate(-45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 8rem 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+
+  .full-stack {
+    display: block;
+  }
+}
+
+@media (max-width: 700px) {
+  .web-dev-end {
+    display: none;
   }
 }

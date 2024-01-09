@@ -1,1 +1,7 @@
-export const validLocations = ['home', 'focus', 'work', 'contact'] as const
+export const validLocations = [
+  'home',
+  // 'focus',
+  'work',
+  'projects',
+  'contact',
+] as const

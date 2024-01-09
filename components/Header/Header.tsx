@@ -114,14 +114,20 @@ export function FullHeader(): JSX.Element {
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
-        <HeaderItem
+        {/* <HeaderItem
           location={'focus'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
-        />
+        /> */}
 
         <HeaderItem
           location="work"
+          align={'right'}
+          currentLocation={currentLocation}
+          navigateToLocation={navigateToLocation}
+        />
+        <HeaderItem
+          location="projects"
           align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}

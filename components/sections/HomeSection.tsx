@@ -21,6 +21,11 @@ export function HomeSection(): JSX.Element {
 
   return (
     <Section name="home">
+      <h2 className={styles.header}>
+        <span className={styles['full-stack']}>Full-stack</span>{' '}
+        <span className={styles['web-dev']}>web-dev</span>
+        <span className={styles['web-dev-end']}>elopment</span>
+      </h2>
       <a
         onClick={onNextClick}
         className={styles.next}
