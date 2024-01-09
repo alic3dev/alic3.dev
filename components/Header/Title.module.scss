@@ -15,15 +15,12 @@
   &:hover {
     text-decoration: none;
     color: colors.$textlight;
-
-    // text-shadow: 1px 2px 1px transparentize(colors.$blue, 0.25),
-    //   -1px -2px 1px transparentize(colors.$red, 0.25);
   }
 }
 
 .title-main {
   position: relative;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 300;
 }
 
@@ -34,7 +31,7 @@
 }
 
 .title-emphasis {
-  // font-weight: 400;
+  font-weight: 300;
 }
 
 .title-seperator {

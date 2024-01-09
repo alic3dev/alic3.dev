@@ -3,13 +3,14 @@
 .header {
   position: fixed;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 
   top: 0;
   left: 0;
   right: 0;
 
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
+  padding-bottom: 1rem;
 
   z-index: 10;
 }
@@ -31,19 +32,19 @@
   display: flex;
   align-items: center;
 
-  padding: 1rem;
-  padding-right: 4rem;
+  padding: 1rem 1.5rem;
 }
 
 .navigation-header-spacer {
   flex: 100%;
 }
 
-a.header-icon,
 button.header-icon {
+  align-self: center;
+
   position: relative;
 
-  padding: 0.5rem;
+  padding: 1.6rem;
   margin: 0;
 
   background: none;
@@ -54,6 +55,8 @@ button.header-icon {
   cursor: pointer;
 
   color: colors.$subtext0;
+
+  transform: none;
 
   &:active,
   &:visited,
