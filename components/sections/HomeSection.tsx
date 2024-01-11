@@ -10,14 +10,19 @@ import styles from './HomeSection.module.scss'
 export function HomeSection(): JSX.Element {
   const onNextClick = React.useCallback<
     React.MouseEventHandler<HTMLAnchorElement>
-  >((event) => {
+  >((event): void => {
     const workSectionElement: HTMLElement | null =
-      document.getElementById('focus')
+      document.getElementById('work')
 
-    if (workSectionElement)
-      workSectionElement.scrollIntoView({ behavior: 'smooth' })
+    if (!workSectionElement) return
+
+    window.scrollTo({
+      top: workSectionElement.offsetTop - 100,
+      behavior: 'smooth',
+    })
 
     event.preventDefault()
+    event.stopPropagation()
   }, [])
 
   return (
@@ -34,7 +39,7 @@ export function HomeSection(): JSX.Element {
         className={styles.next}
         aria-label="Next section"
         title="Next section"
-        href="#focus"
+        href="#work"
       />
     </Section>
   )
