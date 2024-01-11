@@ -1,10 +1,10 @@
 import React from 'react'
-import type { Metadata } from 'next'
+import { Metadata } from 'next'
 
 import { Gematria } from '@/components/Gematria'
 
 export const metadata: Metadata = {
-  title: 'Gematria',
+  title: 'Alic3.dev - Gematria',
   description: 'Gematria',
 }
 

@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Header, Tarot } from '@/components'
 
 export const metadata: Metadata = {
-  title: '🂡🂱🃁🃑',
+  title: 'Alic3.Dev - 🂡🂱🃁🃑',
   description: '🂡🂱🃁🃑T0🂡🂱🃁🃑R🂡🂱🃁🃑4T🂡🂱🃁🃑',
 }
 
