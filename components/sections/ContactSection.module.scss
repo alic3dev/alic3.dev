@@ -1,6 +1,10 @@
 @use '@/styles/utils/colors';
 @use '@/components/sections/Section.module.scss';
 
+.section {
+  margin-bottom: 12rem;
+}
+
 .contact-options {
   max-width: 500px;
   margin: auto;

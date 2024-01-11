@@ -127,7 +127,7 @@ export function ContactSection(): JSX.Element {
   }, [])
 
   return (
-    <Section name="contact">
+    <Section name="contact" className={styles.section}>
       {process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA &&
         process.env.NODE_ENV === 'production' && (
           <Script
