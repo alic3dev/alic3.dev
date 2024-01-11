@@ -26,7 +26,7 @@ export function HomeSection(): JSX.Element {
   }, [])
 
   return (
-    <Section name="home">
+    <Section name="home" className={styles.section}>
       <BackgroundImages />
 
       <h2 className={styles.header}>
