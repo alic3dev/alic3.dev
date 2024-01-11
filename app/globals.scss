@@ -8,13 +8,18 @@ html,
 body {
   position: relative;
   width: 100%;
+
+  padding: 0;
+  margin: 0;
+
   color: colors.$text;
+
   background: linear-gradient(colors.$base, colors.$dark-base);
+  background-color: colors.$dark-base;
 
   font-size: 10px;
   text-rendering: optimizeLegibility;
-  padding: 0;
-  margin: 0;
+
   box-sizing: border-box;
 }
 
