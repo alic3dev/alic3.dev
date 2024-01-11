@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import Image from 'next/image'
+
 import { BackgroundImages } from '@/components/decorative'
 import { Section } from '@/components/sections/Section'
 
@@ -34,6 +36,17 @@ export function HomeSection(): JSX.Element {
         <span className={styles['web-dev']}>web-dev</span>
         <span className={styles['web-dev-end']}>elopment</span>
       </h2>
+
+      {/* <Image
+        className={styles.profile}
+        src="/[.jpeg"
+        alt="[.jpeg"
+        width={768}
+        height={1024}
+        quality={100}
+        priority
+      /> */}
+
       <a
         onClick={onNextClick}
         className={styles.next}
