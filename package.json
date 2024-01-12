@@ -24,7 +24,7 @@
     "@vercel/analytics": "^1.1.1",
     "@vercel/kv": "^0.2.4",
     "@vercel/postgres-kysely": "^0.5.1",
-    "@vercel/speed-insights": "^1.0.2",
+    "@vercel/speed-insights": "^1.0.3",
     "autoprefixer": "10.4.16",
     "eslint": "8.51.0",
     "eslint-config-next": "13.5.5",
