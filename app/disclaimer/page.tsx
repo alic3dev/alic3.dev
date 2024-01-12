@@ -16,7 +16,7 @@ export default function DisclaimerPage(): JSX.Element {
       </LegalPageWrapper>
 
       <Footer />
-      <Header />
+      <Header minimal />
     </main>
   )
 }

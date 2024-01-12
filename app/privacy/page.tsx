@@ -15,7 +15,7 @@ export default function PrivacyPage(): JSX.Element {
       </LegalPageWrapper>
 
       <Footer />
-      <Header />
+      <Header minimal />
     </main>
   )
 }

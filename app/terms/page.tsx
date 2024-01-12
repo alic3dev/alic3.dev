@@ -9,7 +9,7 @@ export default function TermsPage(): JSX.Element {
       </LegalPageWrapper>
 
       <Footer />
-      <Header />
+      <Header minimal />
     </main>
   )
 }
