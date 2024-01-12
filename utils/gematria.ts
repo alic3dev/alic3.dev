@@ -8,12 +8,14 @@ export interface DecodeOptions {
   method: GematriaMethod
   ignoreCase: boolean
   ignoreCaseDirection: IgnoreCaseDirection
+  ignoreSpaces: boolean
 }
 
 export const defaultDecodeOptions: DecodeOptions = {
   method: 'direct',
   ignoreCase: true,
   ignoreCaseDirection: 'Upper',
+  ignoreSpaces: false,
 }
 
 export function decode(
@@ -38,7 +40,11 @@ export function decode(
 
   switch (options.method) {
     case 'direct':
-      decodedValues = encodedString.split('').map((c) => c.charCodeAt(0))
+      decodedValues = encodedString.split('').map((c) => {
+        if (c === ' ' && options.ignoreSpaces) return 0
+
+        return c.charCodeAt(0)
+      })
       break
     default:
       throw new Error('Unknown gematria method')
