@@ -142,7 +142,11 @@ export function FullHeader(): JSX.Element {
 
       <div className={styles['navigation-header-spacer']} />
 
-      <Link href="/portal" className={styles['header-icon']}>
+      <Link
+        href="/portal"
+        className={styles['header-icon']}
+        aria-label="Portal"
+      >
         <GiDiamondsSmile />
         <GiGluttonousSmile />
       </Link>
