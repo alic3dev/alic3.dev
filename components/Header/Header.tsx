@@ -156,7 +156,7 @@ export function FullHeader(): JSX.Element {
 
 export function MinimalHeader(): JSX.Element {
   return (
-    <div className={styles['title-wrapper']}>
+    <div className={styles['header']}>
       <Title />
     </div>
   )
