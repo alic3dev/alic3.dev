@@ -3,6 +3,8 @@ import React from 'react'
 
 import * as gematria from '@/utils/gematria'
 
+import styles from './Gematria.module.scss'
+
 const GEMATRIA_LOCAL_STORAGE_PREFIX: string = 'gematria:'
 const localStorageKeys: Record<string, string> = {
   offline: `${GEMATRIA_LOCAL_STORAGE_PREFIX}offline`,
@@ -36,6 +38,7 @@ const gematriaStateReducer: React.Reducer<GematriaState, GematriaAction> = (
         const decodedValues = gematria.decode(prevState.encodedText, {
           ignoreCase: prevState.ignoreCase,
           ignoreCaseDirection: prevState.ignoreCaseDirection,
+          ignoreSpaces: prevState.ignoreSpaces,
           method: prevState.method,
         })
 
@@ -115,22 +118,22 @@ export function Gematria(): JSX.Element {
   )
 
   return (
-    <div>
-      {state.decodedValues && state.decodedValues.length > 0 && (
-        <>
-          <p>
-            {state.decodedText} | {state.decodedSum}
-          </p>
-          <p>
-            {state.decodedText.split('').map((c, i) => (
-              <React.Fragment key={c + i}>
-                {i > 0 && ' '}
-                {c} | {state.decodedValues[i]}
-              </React.Fragment>
-            ))}
-          </p>
-        </>
-      )}
+    <div className={styles.gematria}>
+      <div className={styles.decoding}>
+        {state.decodedValues && state.decodedValues.length > 0 && (
+          <>
+            <h3 className={styles['decoded-text']}>{state.decodedText}</h3>
+            <h2 className={styles['decoded-sum']}>{state.decodedSum}</h2>
+            <p className={styles['decoded-parts']}>
+              {state.decodedText.split('').map((c, i) => (
+                <span className={styles['decoded-part']} key={c + i}>
+                  {c} - {state.decodedValues[i]}
+                </span>
+              ))}
+            </p>
+          </>
+        )}
+      </div>
 
       <label>
         <input
@@ -148,64 +151,83 @@ export function Gematria(): JSX.Element {
 
       <button onClick={() => dispatch({ type: 'decode' })}>Decode</button>
 
-      <label>
-        Ignore Case{' '}
-        <input
-          type="checkbox"
-          checked={state.ignoreCase}
-          onChange={(event) =>
-            dispatch({
-              type: 'set',
-              value: { ignoreCase: event.target.checked },
-            })
-          }
-        />
-      </label>
-
-      {state.ignoreCase && (
+      <div className={styles.options}>
         <label>
-          Ignore Case Direction{' '}
-          <select
-            value={state.ignoreCaseDirection}
+          Ignore Case{' '}
+          <input
+            type="checkbox"
+            checked={state.ignoreCase}
             onChange={(event) =>
               dispatch({
                 type: 'set',
-                value: {
-                  ignoreCaseDirection: event.target
-                    .value as gematria.IgnoreCaseDirection,
-                },
+                value: { ignoreCase: event.target.checked },
               })
             }
-          >
-            {gematria.ignoreCaseDirections.map(
-              (
-                ignoreCaseDirectionPossibility: gematria.IgnoreCaseDirection,
-              ) => (
-                <option
-                  key={ignoreCaseDirectionPossibility}
-                  value={ignoreCaseDirectionPossibility}
-                >
-                  {ignoreCaseDirectionPossibility}
-                </option>
-              ),
-            )}
-          </select>
+          />
         </label>
-      )}
 
-      <label>
-        Offline{' '}
-        <span title="Results will be stored/retrieved on/from the server if left unchecked">
-          (?)
-        </span>
-        <input
-          type="checkbox"
-          checked={state.offline}
-          onChange={(event) =>
-            dispatch({ type: 'set', value: { offline: event.target.checked } })
-          }
-        />
-      </label>
+        {state.ignoreCase && (
+          <label>
+            Ignore Case Direction{' '}
+            <select
+              value={state.ignoreCaseDirection}
+              onChange={(event) =>
+                dispatch({
+                  type: 'set',
+                  value: {
+                    ignoreCaseDirection: event.target
+                      .value as gematria.IgnoreCaseDirection,
+                  },
+                })
+              }
+            >
+              {gematria.ignoreCaseDirections.map(
+                (
+                  ignoreCaseDirectionPossibility: gematria.IgnoreCaseDirection,
+                ) => (
+                  <option
+                    key={ignoreCaseDirectionPossibility}
+                    value={ignoreCaseDirectionPossibility}
+                  >
+                    {ignoreCaseDirectionPossibility}
+                  </option>
+                ),
+              )}
+            </select>
+          </label>
+        )}
+
+        <label>
+          Ignore Spaces{' '}
+          <input
+            type="checkbox"
+            checked={state.ignoreSpaces}
+            onChange={(event) =>
+              dispatch({
+                type: 'set',
+                value: { ignoreSpaces: event.target.checked },
+              })
+            }
+          />
+        </label>
+
+        <label>
+          Offline{' '}
+          <span title="Results will be stored/retrieved on/from the server if left unchecked">
+            (?)
+          </span>
+          <input
+            type="checkbox"
+            checked={state.offline}
+            onChange={(event) =>
+              dispatch({
+                type: 'set',
+                value: { offline: event.target.checked },
+              })
+            }
+          />
+        </label>
+      </div>
     </div>
   )
 }
