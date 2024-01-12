@@ -1,6 +1,39 @@
 @use '@/styles/utils/colors';
 @use '@/components/sections/Section.module.scss';
 
+.section {
+  margin-bottom: 10rem;
+}
+
+.header {
+  position: relative;
+
+  padding: 10rem 8rem;
+  padding-bottom: 6rem;
+
+  font-size: 4rem;
+  font-weight: 400;
+
+  color: transparentize(colors.$text, 0.3);
+}
+
+.web-dev {
+  font-weight: 700;
+  color: colors.$text;
+}
+
+.profile {
+  position: relative;
+  float: right;
+  margin-right: 6rem;
+  width: 333px;
+  height: 333px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid colors.$black;
+  border-radius: 33px;
+}
+
 .next {
   position: absolute;
   left: 50%;
@@ -44,5 +77,37 @@
 
   &::after {
     transform: translate(calc(-50% + 0.5rem + 1px), -50%) rotate(-45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 8rem 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+
+  .full-stack {
+    display: block;
+  }
+
+  .profile {
+    width: 30vw;
+    height: 30vw;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .web-dev-end {
+    display: none;
+  }
+
+  .profile {
+    float: none;
+    margin: 0;
+    margin-left: 40vw;
+    width: 20vw;
+    height: 20vw;
   }
 }

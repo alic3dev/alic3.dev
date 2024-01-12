@@ -1,18 +1,25 @@
 @use '@/styles/utils/colors';
 
+html {
+  min-height: 100%;
+}
+
 html,
 body {
   position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 100%;
+
+  padding: 0;
+  margin: 0;
+
   color: colors.$text;
-  background-color: colors.$base;
+
+  background: linear-gradient(colors.$base, colors.$dark-base);
+  background-color: colors.$dark-base;
 
   font-size: 10px;
   text-rendering: optimizeLegibility;
-  padding: 0;
-  margin: 0;
+
   box-sizing: border-box;
 }
 
@@ -164,7 +171,7 @@ input[type='submit'] {
   padding-right: 4rem;
   padding-bottom: 1rem;
 
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(colors.$white, 0.05);
   border: none;
   border-bottom: 1px solid colors.$mauve;
 
@@ -178,7 +185,7 @@ input[type='submit'] {
 
   &:hover,
   &:active {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(colors.$white, 0.04);
     border-bottom: 1px solid darken(colors.$mauve, 5%);
 
     transition: color 300ms ease-in-out, background 150ms ease-in-out,
@@ -186,7 +193,7 @@ input[type='submit'] {
   }
 
   &:active {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(colors.$white, 0.03);
     border-bottom: 1px solid darken(colors.$mauve, 10%);
   }
 }

@@ -11,8 +11,9 @@ import {
   Link,
 } from '@react-pdf/renderer/lib/react-pdf.browser.es'
 
-import icons from '@/utils/resumeIcons'
-import styles from '@/styles/resumeStyles'
+import { icons } from '@/utils/resumeIcons'
+import { styles } from '@/styles/resumeStyles'
+
 import {
   jobHistory,
   educationHistory,
@@ -100,12 +101,12 @@ const EducationView = ({
           education={education}
           position={position}
         />
-      )
+      ),
     )}
   </View>
 )
 
-export default function ResumeWithViewer(): JSX.Element {
+export function Resume(): JSX.Element {
   return (
     <PDFViewer height="100%" width="100%" style={{ border: 'none' }}>
       <Document
@@ -127,12 +128,12 @@ export default function ResumeWithViewer(): JSX.Element {
             {jobHistory.map(
               (company: WorkHistoryCompany): JSX.Element => (
                 <CompanyView key={company.name} company={company} />
-              )
+              ),
             )}
             {freelancingHistory.map(
               (company: WorkHistoryCompany): JSX.Element => (
                 <CompanyView key={company.name} company={company} noBorder />
-              )
+              ),
             )}
           </View>
 
@@ -183,7 +184,7 @@ export default function ResumeWithViewer(): JSX.Element {
               {skills.languages.map(
                 (language: string): JSX.Element => (
                   <SkillView key={language} skill={language} />
-                )
+                ),
               )}
 
               <Text style={styles.subHeading}>Libraries/Frameworks</Text>
@@ -193,14 +194,14 @@ export default function ResumeWithViewer(): JSX.Element {
                     key={libraryOrFramework}
                     skill={libraryOrFramework}
                   />
-                )
+                ),
               )}
 
               <Text style={styles.subHeading}>Development Software</Text>
               {skills.software.map(
                 (software: string): JSX.Element => (
                   <SkillView key={software} skill={software} />
-                )
+                ),
               )}
             </View>
 
@@ -209,7 +210,7 @@ export default function ResumeWithViewer(): JSX.Element {
               {educationHistory.map(
                 (education: WorkHistoryCompany): JSX.Element => (
                   <EducationView key={education.name} education={education} />
-                )
+                ),
               )}
             </View>
           </View>

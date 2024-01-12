@@ -1,0 +1,392 @@
+.card {
+  min-width: 20rem;
+  min-height: 30rem;
+  width: 20rem;
+  height: 30rem;
+
+  margin: 2rem;
+
+  background: #333;
+
+  border: 1px solid #222;
+  border-radius: 1rem;
+
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.333);
+
+  overflow: hidden;
+}
+
+.card-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  width: calc(100% - 1.2rem);
+  height: calc(100% - 1.2rem);
+
+  margin: 0.6rem;
+
+  border-radius: 0.5rem;
+
+  background: rgba(0, 0, 0, 0.111);
+
+  overflow: hidden;
+}
+
+.card-value,
+.card-suit,
+.card-name {
+  padding: 0.25rem;
+
+  text-align: center;
+
+  background: rgba(0, 0, 0, 0.111);
+
+  text-shadow: 0px 0px 2px #000;
+}
+
+.card-greater-minor-content {
+  position: relative;
+  flex: 1;
+
+  & > * {
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+    position: absolute;
+
+    font-size: 10rem;
+
+    text-align: center;
+
+    &:nth-child(1) {
+      top: calc(50% - 7.5rem);
+      left: calc(50% - 7.5rem);
+      font-size: 15rem;
+    }
+  }
+}
+
+.card-icons {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap-reverse;
+
+  padding: 2.5rem;
+
+  font-size: 3.33rem;
+}
+
+.card-icon {
+  filter: drop-shadow(1px 1px 1px red) drop-shadow(-1px -1px 1px blue);
+}
+
+@keyframes fliptate {
+  from {
+    transform: rotate3d(0, 1, 0, 30deg);
+  }
+  to {
+    transform: rotate3d(0, 1, 0, -30deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-2.5deg) skewX(5deg) skewY(5deg) scaleX(0.75);
+  }
+  to {
+    transform: rotate(2.5deg) skewX(-5deg) skewY(-5deg) scaleX(0.75);
+  }
+}
+
+.card-major-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 50rem;
+
+  z-index: -1;
+
+  & > * {
+    filter: drop-shadow(1px 1px 1px red) drop-shadow(-1px -1px 1px blue);
+  }
+
+  &.the-lovers {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        left: 0;
+        top: -10rem;
+
+        font-size: 24rem;
+
+        transform: scaleX(-1);
+      }
+      &:nth-of-type(2) {
+        position: absolute;
+        left: 0;
+        bottom: -1rem;
+
+        font-size: 16rem;
+      }
+    }
+  }
+
+  &.the-magician {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        top: 0;
+        font-size: 20rem;
+      }
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 3rem;
+        font-size: 20rem;
+      }
+      &:nth-of-type(3) {
+        position: absolute;
+        bottom: 1000%;
+        font-size: 16rem;
+      }
+    }
+  }
+
+  &.strength {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        left: 0;
+        bottom: 50%;
+        font-size: 16rem;
+      }
+      &:nth-of-type(2) {
+        position: absolute;
+        right: 0;
+        top: 40%;
+        font-size: 16rem;
+
+        transform: rotate(180deg);
+      }
+      &:nth-of-type(3) {
+        position: absolute;
+        left: 0;
+        bottom: 56%;
+        font-size: 12rem;
+        transform: rotate(90deg);
+      }
+      &:nth-of-type(4) {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        font-size: 12rem;
+        transform: rotate(-90deg);
+      }
+      &:nth-of-type(5) {
+        position: absolute;
+        left: 0;
+        bottom: 50%;
+        font-size: 8rem;
+        transform: rotate(180deg);
+      }
+      &:nth-of-type(6) {
+        position: absolute;
+        top: 30%;
+        right: 0;
+        font-size: 8rem;
+      }
+    }
+  }
+
+  &.the-fool {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        bottom: 50%;
+        font-size: 16rem;
+      }
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 50%;
+        font-size: 16rem;
+
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &.justice svg {
+    position: absolute;
+    bottom: -3rem;
+    font-size: 30rem;
+    animation: sway 10s ease-in-out infinite alternate;
+  }
+
+  &.death {
+    svg {
+      position: absolute;
+      animation: rotate 30s 0s linear infinite;
+
+      &:nth-of-type(1) {
+        font-size: 40rem;
+      }
+      &:nth-of-type(2) {
+        font-size: 30rem;
+        animation: none;
+      }
+      &:nth-of-type(3) {
+        font-size: 20rem;
+        animation: none;
+      }
+      &:nth-of-type(4) {
+        font-size: 10rem;
+        animation-delay: 2500ms;
+        animation-direction: reverse;
+      }
+      &:nth-of-type(5) {
+        font-size: 5rem;
+        animation-delay: 10000ms;
+      }
+      &:nth-of-type(6) {
+        font-size: 2rem;
+        animation: none;
+      }
+    }
+  }
+
+  &.temperance svg {
+    position: absolute;
+    top: -10%;
+
+    font-size: 20rem;
+  }
+
+  &.the-star {
+    svg {
+      position: absolute;
+
+      font-size: 20rem;
+    }
+  }
+
+  &.judgement svg {
+    position: absolute;
+
+    font-size: 20rem;
+  }
+
+  &.the-sun {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        font-size: 31rem;
+      }
+      &:nth-of-type(2) {
+        display: none;
+
+        position: absolute;
+        top: -1.5rem;
+        left: 2.3rem;
+        font-size: 13rem;
+
+        animation: rotate 60s linear infinite reverse;
+      }
+      &:nth-of-type(3) {
+        position: absolute;
+        top: -1.5rem;
+        left: 2.3rem;
+        font-size: 13rem;
+
+        animation: rotate 60s linear infinite;
+      }
+    }
+  }
+
+  &.the-tower svg {
+    position: absolute;
+    bottom: -1rem;
+    left: calc(50% + 1rem);
+
+    font-size: 20rem;
+
+    transform: translateX(-50%);
+  }
+
+  &.the-hermit svg {
+    position: absolute;
+    left: 50%;
+    top: 1%;
+
+    font-size: 10rem;
+
+    transform: translateX(-19%);
+  }
+
+  &.the-devil {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        left: 50%;
+        bottom: -1rem;
+
+        transform: translateX(-50%);
+
+        font-size: 15rem;
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        font-size: 20rem;
+      }
+    }
+  }
+
+  &.the-hanged-man {
+    svg {
+      &:nth-of-type(1) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        font-size: 40rem;
+      }
+
+      &:nth-of-type(2) {
+        position: absolute;
+        top: -1rem;
+        left: 0;
+
+        font-size: 10rem;
+
+        animation: fliptate 5s ease-in-out infinite alternate;
+      }
+    }
+  }
+}

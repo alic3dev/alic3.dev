@@ -1,12 +1,16 @@
-export default function PrivacyPolicy() {
+import React from 'react'
+import Link from 'next/link'
+
+export function PrivacyPolicy(): JSX.Element {
   return (
     <div>
       <h1>Privacy Policy for alic3.dev</h1>
       <p>
-        At alic3dev, accessible from <a href="https://alic3.dev/">alic3.dev</a>,
-        one of our main priorities is the privacy of our visitors. This Privacy
-        Policy document contains types of information that is collected and
-        recorded by alic3dev and how we use it.
+        At alic3dev, accessible from{' '}
+        <Link href="https://alic3.dev/">alic3.dev</Link>, one of our main
+        priorities is the privacy of our visitors. This Privacy Policy document
+        contains types of information that is collected and recorded by alic3dev
+        and how we use it.
       </p>
 
       <p>

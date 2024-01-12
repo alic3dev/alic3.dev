@@ -1,23 +1,25 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import Script from 'next/script'
 
-import Section from '@/components/sections/Section'
-import styles from '@/components/sections/ContactSection.module.scss'
-import Spinner from '@/components/decorative/Spinner'
+import { Section } from '@/components/sections/Section'
+import { Spinner } from '@/components/decorative'
 
 import { PiSmileyXEyes } from 'react-icons/pi'
 import { BsFillEnvelopeCheckFill } from 'react-icons/bs'
 
+import styles from './ContactSection.module.scss'
+
 const setDefaultContactMethod = (
-  prevValue: Api.Contact.Method | ''
+  prevValue: Api.Contact.Method | '',
 ): Api.Contact.Method => (!prevValue ? 'email' : prevValue)
 
 const messageMaxLength: number = 5000
 const messageSentLocalStorageKey: string = 'root:contact-section:message-sent'
 
-export default function ContactSection(): JSX.Element {
+export function ContactSection(): JSX.Element {
   const [contactMethod, setContactMethod] = React.useState<
     Api.Contact.Method | ''
   >('')
@@ -34,7 +36,7 @@ export default function ContactSection(): JSX.Element {
   >(
     (event: React.ChangeEvent<HTMLTextAreaElement>): void =>
       setMessage(event.currentTarget.value),
-    []
+    [],
   )
 
   const onFormSubmit: React.FormEventHandler<HTMLFormElement> =
@@ -58,7 +60,7 @@ export default function ContactSection(): JSX.Element {
               process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
               {
                 action: 'SUBMIT_CONTACT_FORM',
-              }
+              },
             )
             body.append('recaptcha-token', recaptchaToken)
           }
@@ -76,7 +78,7 @@ export default function ContactSection(): JSX.Element {
 
           window.localStorage.setItem(
             messageSentLocalStorageKey,
-            new Date().toJSON()
+            new Date().toJSON(),
           )
         } catch {
           setFinalState({ error: true })
@@ -84,7 +86,7 @@ export default function ContactSection(): JSX.Element {
           setSubmitting(false)
         }
       },
-      [submitting, loading]
+      [submitting, loading],
     )
 
   // Work-around for default radio not being selected on-form-reset
@@ -109,7 +111,7 @@ export default function ContactSection(): JSX.Element {
       setLoading(false)
 
     const lastSentMessageDateTime: string | null = window.localStorage.getItem(
-      messageSentLocalStorageKey
+      messageSentLocalStorageKey,
     )
 
     if (lastSentMessageDateTime) {
@@ -125,7 +127,7 @@ export default function ContactSection(): JSX.Element {
   }, [])
 
   return (
-    <Section name="contact">
+    <Section name="contact" className={styles.section}>
       {process.env.NEXT_PUBLIC_FEATURE_ENABLED_RECAPTCHA &&
         process.env.NODE_ENV === 'production' && (
           <Script
@@ -139,7 +141,7 @@ export default function ContactSection(): JSX.Element {
       </div>
 
       <div className={styles['contact-options']}>
-        <p>You may contact me directly via email</p>
+        <p>You may contact us directly via email</p>
 
         <p>
           <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
@@ -148,7 +150,7 @@ export default function ContactSection(): JSX.Element {
         <div className={styles['contact-options-seperator']}>OR</div>
 
         <p>
-          Complete and submit the form below with your inquiry and I will reach
+          Complete and submit the form below with your inquiry and we will reach
           back out to you as soon as possible
         </p>
       </div>
@@ -259,17 +261,17 @@ export default function ContactSection(): JSX.Element {
             required
           />{' '}
           I have read and agree to the{' '}
-          <a href="/privacy" target="_blank">
+          <Link href="/privacy" target="_blank">
             privacy policy
-          </a>
+          </Link>
           ,{' '}
-          <a href="/terms" target="blank">
+          <Link href="/terms" target="blank">
             terms of service
-          </a>
+          </Link>
           , and{' '}
-          <a href="/disclaimer" target="_blank">
+          <Link href="/disclaimer" target="_blank">
             disclaimer
-          </a>
+          </Link>
           .
         </label>
 

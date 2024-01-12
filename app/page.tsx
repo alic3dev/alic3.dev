@@ -1,14 +1,18 @@
-import { BackgroundCanvas, Footer, Header, Sections } from '@/components'
+import { Footer, Header } from '@/components'
+import {
+  ContactSection,
+  HomeSection,
+  ProjectsSection,
+  WorkSection,
+} from '@/components/sections'
 
 export default function RootPage(): JSX.Element {
   return (
     <main id="home">
-      <BackgroundCanvas />
-
-      <Sections.HomeSection />
-      <Sections.FocusSection />
-      <Sections.WorkSection />
-      <Sections.ContactSection />
+      <HomeSection />
+      <WorkSection />
+      <ProjectsSection />
+      <ContactSection />
 
       <Footer />
 

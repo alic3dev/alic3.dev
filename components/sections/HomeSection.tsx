@@ -2,30 +2,57 @@
 
 import React from 'react'
 
-import Section from '@/components/sections/Section'
-import styles from '@/components/sections/HomeSection.module.scss'
+import Image from 'next/image'
 
-export default function HomeSection(): JSX.Element {
+import { BackgroundImages } from '@/components/decorative'
+import { Section } from '@/components/sections/Section'
+
+import styles from './HomeSection.module.scss'
+
+export function HomeSection(): JSX.Element {
   const onNextClick = React.useCallback<
     React.MouseEventHandler<HTMLAnchorElement>
-  >((event) => {
+  >((event): void => {
     const workSectionElement: HTMLElement | null =
-      document.getElementById('focus')
+      document.getElementById('work')
 
-    if (workSectionElement)
-      workSectionElement.scrollIntoView({ behavior: 'smooth' })
+    if (!workSectionElement) return
+
+    window.scrollTo({
+      top: workSectionElement.offsetTop - 100,
+      behavior: 'smooth',
+    })
 
     event.preventDefault()
+    event.stopPropagation()
   }, [])
 
   return (
-    <Section name="home">
+    <Section name="home" className={styles.section}>
+      <BackgroundImages />
+
+      <h2 className={styles.header}>
+        <span className={styles['full-stack']}>Full-stack</span>{' '}
+        <span className={styles['web-dev']}>web-dev</span>
+        <span className={styles['web-dev-end']}>elopment</span>
+      </h2>
+
+      {/* <Image
+        className={styles.profile}
+        src="/[.jpeg"
+        alt="[.jpeg"
+        width={768}
+        height={1024}
+        quality={100}
+        priority
+      /> */}
+
       <a
         onClick={onNextClick}
         className={styles.next}
         aria-label="Next section"
         title="Next section"
-        href="#focus"
+        href="#work"
       />
     </Section>
   )

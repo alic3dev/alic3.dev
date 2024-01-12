@@ -1,0 +1,70 @@
+.tarot {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+  max-width: 100%;
+
+  margin: auto;
+
+  overflow-x: auto;
+}
+
+.controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding: 2rem 3rem;
+
+  button {
+    margin: 0;
+    transform: none;
+  }
+}
+
+.draw-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.draw-controls-buttons {
+  display: flex;
+}
+
+@media (max-width: 800px) {
+  .controls {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .draw-controls {
+    flex: 100%;
+
+    order: -1;
+
+    margin-bottom: 1rem;
+  }
+
+  .draw-controls-buttons {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    & > button {
+      margin: 1rem;
+    }
+  }
+}

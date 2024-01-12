@@ -3,9 +3,11 @@
 .section {
   font-size: 1.6rem;
 
-  min-height: 100%;
+  min-height: 100vh;
 
   margin-bottom: 18rem;
+
+  position: relative;
 }
 
 .section-container {
