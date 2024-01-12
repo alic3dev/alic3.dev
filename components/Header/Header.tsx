@@ -35,44 +35,72 @@ function getScrollRelationalLocation(
   return null
 }
 
+function HeaderBackground({
+  scrollDepth,
+}: {
+  scrollDepth: number | null
+}): JSX.Element {
+  const scrollDepthIntroMapped: number = React.useMemo<number>(
+    (): number => Math.min(1, (scrollDepth || 0) / 300),
+    [scrollDepth],
+  )
+
+  return (
+    <div
+      className={styles['header-background']}
+      style={{
+        opacity: scrollDepthIntroMapped,
+      }}
+    />
+  )
+}
+
+function onScroll(run: (scrollY: number) => void): () => void {
+  let waitingForAnimationFrame: boolean = false
+  let animationFrameHandle: number
+
+  const _scrollEventListener = (): void => {
+    if (waitingForAnimationFrame) return
+
+    animationFrameHandle = window.requestAnimationFrame((): void => {
+      run(window.scrollY)
+
+      waitingForAnimationFrame = false
+    })
+
+    waitingForAnimationFrame = true
+  }
+
+  document.addEventListener('scroll', _scrollEventListener)
+
+  return () => {
+    document.removeEventListener('scroll', _scrollEventListener)
+    window.cancelAnimationFrame(animationFrameHandle)
+  }
+}
+
 export function FullHeader(): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
   const [currentLocation, setCurrentLocation] = React.useState<
     Pages.ValidLocation | undefined
   >()
 
-  const scrollDepthIntroMapped: number = React.useMemo<number>(
-    (): number => Math.min(1, (scrollDepth || 0) / 300),
-    [scrollDepth],
-  )
-
-  React.useEffect((): void => {
+  React.useEffect((): (() => void) => {
     const startingLocation: string | false =
       typeof window !== 'undefined' && window.location.hash.substring(1)
 
     const startingScrollDepth: number = window.scrollY
 
-    if (validLocations.includes(startingLocation as Pages.ValidLocation))
+    if (validLocations.includes(startingLocation as Pages.ValidLocation)) {
       setCurrentLocation(startingLocation as Pages.ValidLocation)
-    else
+    } else {
       setCurrentLocation(
         getScrollRelationalLocation(startingScrollDepth) || 'home',
       )
+    }
 
     setScrollDepth(startingScrollDepth)
-
-    let waitingForAnimationFrame: boolean = false
-    document.addEventListener('scroll', (): void => {
-      if (waitingForAnimationFrame) return
-
-      window.requestAnimationFrame(() => {
-        setScrollDepth(window.scrollY)
-
-        waitingForAnimationFrame = false
-      })
-
-      waitingForAnimationFrame = true
-    })
+    return onScroll((scrollY) => setScrollDepth(scrollY))
   }, [])
 
   React.useEffect((): void => {
@@ -99,12 +127,7 @@ export function FullHeader(): JSX.Element {
 
   return (
     <header className={styles.header}>
-      <div
-        className={styles['header-background']}
-        style={{
-          opacity: scrollDepthIntroMapped,
-        }}
-      />
+      <HeaderBackground scrollDepth={scrollDepth} />
 
       <Title />
 
@@ -150,8 +173,17 @@ export function FullHeader(): JSX.Element {
 }
 
 export function MinimalHeader(): JSX.Element {
+  const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
+
+  React.useEffect((): (() => void) => {
+    setScrollDepth(window.scrollY)
+    return onScroll((scrollY) => setScrollDepth(scrollY))
+  }, [])
+
   return (
     <div className={styles['header']}>
+      <HeaderBackground scrollDepth={scrollDepth} />
+
       <Title />
     </div>
   )
