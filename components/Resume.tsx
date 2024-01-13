@@ -108,7 +108,11 @@ const EducationView = ({
 
 export function Resume(): JSX.Element {
   return (
-    <PDFViewer height="100%" width="100%" style={{ border: 'none' }}>
+    <PDFViewer
+      height="100%"
+      width="100%"
+      style={{ border: 'none', height: '100vh' }}
+    >
       <Document
         language="en"
         author="Alice Grace"
