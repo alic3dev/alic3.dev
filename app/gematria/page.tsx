@@ -3,6 +3,8 @@ import { Metadata } from 'next'
 
 import { Gematria, Header } from '@/components'
 
+import '@/app/noScroll.scss'
+
 export const metadata: Metadata = {
   title: 'Alic3.dev - Gematria',
   description: 'Gematria',

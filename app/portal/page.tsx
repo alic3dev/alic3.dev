@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { Footer, Header, Trip } from '@/components'
 import { PortalBackground } from '@/components/decorative'
 
+import '@/app/noScroll.scss'
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
