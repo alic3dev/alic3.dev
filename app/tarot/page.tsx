@@ -2,8 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 import { Header, Tarot } from '@/components'
-
-import '@/app/noScroll.scss'
+import { NoPageScroll } from '@/utils/useNoPageScroll'
 
 export const metadata: Metadata = {
   title: 'Alic3.Dev - 🂡🂱🃁🃑',
@@ -13,6 +12,8 @@ export const metadata: Metadata = {
 export default function TarotPage(): JSX.Element {
   return (
     <main>
+      <NoPageScroll />
+
       <Tarot />
 
       <Header minimal />

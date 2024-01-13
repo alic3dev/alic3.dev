@@ -4,7 +4,8 @@ import { Metadata } from 'next'
 import { Footer, Header, Trip } from '@/components'
 import { PortalBackground } from '@/components/decorative'
 
-import '@/app/noScroll.scss'
+import { NoPageScroll } from '@/utils/useNoPageScroll'
+
 import styles from './page.module.scss'
 
 export const metadata: Metadata = {
@@ -15,6 +16,8 @@ export const metadata: Metadata = {
 export default function PortalPage(): JSX.Element {
   return (
     <main className={styles.page}>
+      <NoPageScroll />
+
       <PortalBackground />
 
       <Trip />
