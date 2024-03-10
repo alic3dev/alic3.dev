@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { ServerRuntime } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
 import { Ratelimit } from '@upstash/ratelimit'
@@ -6,8 +8,9 @@ import { kv } from '@vercel/kv'
 
 import { regexs } from '@/utils/regexs'
 import { Recaptcha } from '@/utils/Recaptcha'
+import * as mail from '@/utils/server/mail'
 
-export const runtime: ServerRuntime = 'edge'
+export const runtime: ServerRuntime = 'nodejs'
 
 const ratelimitCache: { [type: string]: Map<string, number> } = {
   presubmit: new Map<string, number>(),
@@ -25,6 +28,15 @@ const ratelimit: { [type: string]: Ratelimit } = {
     ephemeralCache: ratelimitCache.submit,
     prefix: '@upstash/ratelimit/contact_submit',
   }),
+}
+
+const escapeHTML = (unsafe: string): string => {
+  return unsafe
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;')
 }
 
 export const POST = async (req: NextRequest) => {
@@ -149,7 +161,34 @@ export const POST = async (req: NextRequest) => {
     db.destroy()
   }
 
-  // TODO: Send an email notification that someone submitted this form
+  mail.send({
+    to: 'alic3dev@gmail.com',
+    subject: 'Contact Form Submission',
+    text: JSON.stringify({
+      contactData: contactData,
+      clientIp: clientIp || 'UNKNOWN',
+    }),
+    html: `
+      <ul>
+        <li>name: ${escapeHTML((contactData.name as string) ?? 'null')}</li>
+        <li>contact_method: ${escapeHTML(
+          (contactData.contactMethod as Api.Contact.Method) ?? 'null',
+        )}</li>
+        <li>email: ${escapeHTML((contactData.email as string) ?? 'null')}</li>
+        <li>phone: ${escapeHTML((contactData.phone as string) ?? 'null')}</li>
+        <li>message: ${escapeHTML(
+          (contactData.message as string) ?? 'null',
+        )}</li>
+        <li>terms_privacy_disclaimer_agreement: ${escapeHTML(
+          (contactData.termsPrivacyDisclaimerAgreement as string) ?? 'off',
+        )}</li>
+        <li>contact_consent: ${escapeHTML(
+          (contactData.contactConsent as string) ?? 'off',
+        )}</li>
+        <li>client_ip: ${escapeHTML(clientIp ?? 'UNKNOWN')}</li>
+      </ul>
+    `,
+  })
 
   return NextResponse.json({ success: true })
 }
