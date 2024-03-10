@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { Exo_2 } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -10,7 +10,12 @@ const bodyFont = Exo_2({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Alic3.Dev',
   description: '0u0\\',
-  viewport: 'width=device-width, initial-scale=1, minimum-scale=1',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
 }
 
 export default function RootLayout({
