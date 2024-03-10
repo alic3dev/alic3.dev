@@ -21,8 +21,6 @@ export function Project({
 }): JSX.Element {
   return (
     <article className={styles.project}>
-      <figure className={styles.visualization}>{visual}</figure>
-
       <div className={styles.info}>
         <div>
           <h3 className={styles['project-title']}>{title}</h3>
@@ -61,6 +59,8 @@ export function Project({
           <p className={styles.description}>{description}</p>
         )}
       </div>
+
+      <figure className={styles.visualization}>{visual}</figure>
     </article>
   )
 }
