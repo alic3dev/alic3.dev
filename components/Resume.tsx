@@ -2,14 +2,42 @@
 
 import React from 'react'
 import {
-  PDFViewer,
+  PDFViewer as _PDFViewerType,
   Font,
   Document,
   Page,
   Text,
   View,
   Link,
-} from '@react-pdf/renderer/lib/react-pdf.browser.es'
+} from '@react-pdf/renderer'
+type PDFViewerType = typeof _PDFViewerType
+
+import dynamic from 'next/dynamic'
+
+const PDFViewer: PDFViewerType = dynamic<PDFViewerType>(
+  (): PDFViewerType =>
+    import('@react-pdf/renderer').then<PDFViewerType>(
+      (mod: { PDFViewer: PDFViewerType }): PDFViewerType => mod.PDFViewer,
+    ),
+  {
+    ssr: false,
+
+    loading: (): React.ReactElement => {
+      return (
+        <h1
+          style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          Rendering...
+        </h1>
+      )
+    },
+  },
+)
 
 import { icons } from '@/utils/resumeIcons'
 import { styles } from '@/styles/resumeStyles'
