@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { ServerRuntime } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
 import { Ratelimit } from '@upstash/ratelimit'
