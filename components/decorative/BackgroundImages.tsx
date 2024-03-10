@@ -15,19 +15,57 @@ export function BackgroundImages({
 }: {
   images?: string[]
 }): JSX.Element {
+  const imagesLoadedRef = React.useRef<Set<string>>(new Set())
+  const [allImagesLoaded, setAllImagesLoaded] = React.useState<boolean>(
+    !images || !images.length,
+  )
+
+  const onImageLoad = React.useCallback(
+    (key: string): (() => void) => {
+      return (): void => {
+        imagesLoadedRef.current.add(key)
+        setAllImagesLoaded(images.length <= imagesLoadedRef.current.size)
+      }
+    },
+    [images],
+  )
+
+  React.useEffect((): void => {
+    if (!images) {
+      setAllImagesLoaded(true)
+      imagesLoadedRef.current.clear()
+      return
+    }
+
+    const imageKeys: string[] = images.map(
+      (image: string, index: number): string => `${image}-${index}`,
+    )
+
+    for (const key of imagesLoadedRef.current.keys()) {
+      if (!imageKeys.includes(key)) {
+        imagesLoadedRef.current.delete(key)
+      }
+    }
+
+    setAllImagesLoaded(imageKeys.length <= imagesLoadedRef.current.size)
+  }, [images])
+
   return (
     <div className={styles.background}>
       {images.map(
         (image: string, index: number): JSX.Element => (
           <Image
             key={`${image}-${index}`}
-            className={styles.image}
+            className={`${styles.image} ${
+              allImagesLoaded ? styles.active : ''
+            }`}
             src={image}
             width={1024}
             height={1024}
             quality={100}
             alt="background"
             priority
+            onLoad={onImageLoad(`${image}-${index}`)}
           />
         ),
       )}
