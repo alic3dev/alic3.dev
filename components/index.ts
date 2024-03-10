@@ -6,3 +6,5 @@ export { Resume } from '@/components/Resume'
 export { Gematria } from '@/components/Gematria'
 export { Tarot } from '@/components/Tarot'
 export { Trip } from '@/components/Trip'
+
+export { ConMisc } from '@/components/ConMisc'
