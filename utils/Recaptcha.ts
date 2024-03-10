@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { NextResponse } from 'next/server'
 
 export const expectedActions: Record<string, string> = {
