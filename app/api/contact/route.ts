@@ -161,7 +161,7 @@ export const POST = async (req: NextRequest) => {
     db.destroy()
   }
 
-  mail.send({
+  const hasSent = await mail.send({
     to: 'alic3dev@gmail.com',
     subject: 'Contact Form Submission',
     text: JSON.stringify({
@@ -189,6 +189,10 @@ export const POST = async (req: NextRequest) => {
       </ul>
     `,
   })
+
+  if (!hasSent) {
+    return NextResponse.json({}, { status: 500 })
+  }
 
   return NextResponse.json({ success: true })
 }
