@@ -8,7 +8,7 @@ import { kv } from '@vercel/kv'
 
 import { regexs } from '@/utils/regexs'
 import { Recaptcha } from '@/utils/Recaptcha'
-import * as mail from '@/utils/server/mail'
+// import * as mail from '@/utils/server/mail'
 
 export const runtime: ServerRuntime = 'nodejs'
 
@@ -161,38 +161,38 @@ export const POST = async (req: NextRequest) => {
     db.destroy()
   }
 
-  const hasSent = await mail.send({
-    to: 'alic3dev@gmail.com',
-    subject: 'Contact Form Submission',
-    text: JSON.stringify({
-      contactData: contactData,
-      clientIp: clientIp || 'UNKNOWN',
-    }),
-    html: `
-      <ul>
-        <li>name: ${escapeHTML((contactData.name as string) ?? 'null')}</li>
-        <li>contact_method: ${escapeHTML(
-          (contactData.contactMethod as Api.Contact.Method) ?? 'null',
-        )}</li>
-        <li>email: ${escapeHTML((contactData.email as string) ?? 'null')}</li>
-        <li>phone: ${escapeHTML((contactData.phone as string) ?? 'null')}</li>
-        <li>message: ${escapeHTML(
-          (contactData.message as string) ?? 'null',
-        )}</li>
-        <li>terms_privacy_disclaimer_agreement: ${escapeHTML(
-          (contactData.termsPrivacyDisclaimerAgreement as string) ?? 'off',
-        )}</li>
-        <li>contact_consent: ${escapeHTML(
-          (contactData.contactConsent as string) ?? 'off',
-        )}</li>
-        <li>client_ip: ${escapeHTML(clientIp ?? 'UNKNOWN')}</li>
-      </ul>
-    `,
-  })
+  // const hasSent = await mail.send({
+  //   to: 'alic3dev@gmail.com',
+  //   subject: 'Contact Form Submission',
+  //   text: JSON.stringify({
+  //     contactData: contactData,
+  //     clientIp: clientIp || 'UNKNOWN',
+  //   }),
+  //   html: `
+  //     <ul>
+  //       <li>name: ${escapeHTML((contactData.name as string) ?? 'null')}</li>
+  //       <li>contact_method: ${escapeHTML(
+  //         (contactData.contactMethod as Api.Contact.Method) ?? 'null',
+  //       )}</li>
+  //       <li>email: ${escapeHTML((contactData.email as string) ?? 'null')}</li>
+  //       <li>phone: ${escapeHTML((contactData.phone as string) ?? 'null')}</li>
+  //       <li>message: ${escapeHTML(
+  //         (contactData.message as string) ?? 'null',
+  //       )}</li>
+  //       <li>terms_privacy_disclaimer_agreement: ${escapeHTML(
+  //         (contactData.termsPrivacyDisclaimerAgreement as string) ?? 'off',
+  //       )}</li>
+  //       <li>contact_consent: ${escapeHTML(
+  //         (contactData.contactConsent as string) ?? 'off',
+  //       )}</li>
+  //       <li>client_ip: ${escapeHTML(clientIp ?? 'UNKNOWN')}</li>
+  //     </ul>
+  //   `,
+  // })
 
-  if (!hasSent) {
-    return NextResponse.json({}, { status: 500 })
-  }
+  // if (!hasSent) {
+  //   return NextResponse.json({}, { status: 500 })
+  // }
 
   return NextResponse.json({ success: true })
 }
