@@ -3,9 +3,7 @@ import 'server-only'
 import nodemailer from 'nodemailer'
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.mail.me.com',
-  port: 587,
-  secure: false,
+  service: 'iCloud',
   auth: {
     user: process.env.ICLOUD_USER,
     pass: process.env.ICLOUD_PASSWORD,
