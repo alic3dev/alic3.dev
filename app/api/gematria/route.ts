@@ -29,6 +29,8 @@ const ratelimit: { [type: string]: Ratelimit } = {
 }
 
 export const POST = async (req: NextRequest) => {
+  return NextResponse.json({}, { status: 500 })
+
   const clientIp: string =
     req.ip ||
     req.headers.get('X-Real-IP') ||
