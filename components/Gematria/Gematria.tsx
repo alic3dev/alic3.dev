@@ -5,40 +5,16 @@ import * as gematria from '@/utils/gematria'
 
 import styles from './Gematria.module.scss'
 
+import type {
+  GematriaState,
+  GematriaAction,
+  GematriaResult,
+} from '@/components/Gematria/Gematria.types'
+
 const GEMATRIA_LOCAL_STORAGE_PREFIX: string = 'gematria:'
 const localStorageKeys: Record<string, string> = {
   offline: `${GEMATRIA_LOCAL_STORAGE_PREFIX}offline`,
 }
-
-interface GematriaResult {
-  decodedText: string
-  decodedValues: number[]
-  decodedSum: number
-}
-
-interface GematriaState extends gematria.DecodeOptions, GematriaResult {
-  encodedText: string
-  offline: boolean
-  pastResults: GematriaResult[]
-}
-
-interface GematriaActionDecode {
-  type: 'decode'
-}
-
-interface GematriaActionSet {
-  type: 'set'
-  value: Partial<GematriaState>
-}
-
-interface GematriaActionSetDecode extends Omit<GematriaActionSet, 'type'> {
-  type: 'set/decode'
-}
-
-type GematriaAction =
-  | GematriaActionDecode
-  | GematriaActionSet
-  | GematriaActionSetDecode
 
 const gematriaStateReducer: React.Reducer<GematriaState, GematriaAction> = (
   prevState: GematriaState,
