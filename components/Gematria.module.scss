@@ -12,6 +12,16 @@
   margin: auto;
 }
 
+.section {
+  flex: 1;
+
+  &:first-of-type {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
 .decoding {
   min-height: 10rem;
 }
