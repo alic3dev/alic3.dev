@@ -10,7 +10,8 @@
     "clean": "rm -fr .next .turbo node_modules/.cache/turbo",
     "clean-dev": "rm -rf .next && next dev",
     "clean-build": "rm -rf .next && next build",
-    "clean-build-start": "rm -rf .next && next build && next start"
+    "clean-build-start": "rm -rf .next && next build && next start",
+    "script": "ts-node ./scripts/run.ts"
   },
   "dependencies": {
     "@catppuccin/palette": "^0.2.0",
