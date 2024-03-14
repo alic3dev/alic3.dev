@@ -9,7 +9,13 @@ export interface GematriaResult {
 export interface GematriaState extends DecodeOptions, GematriaResult {
   encodedText: string
   offline: boolean
+  loading: boolean
   pastResults: GematriaResult[]
+}
+
+export interface GematriaActionResult {
+  type: 'result'
+  value: GematriaResult
 }
 
 export interface GematriaActionDecode {
@@ -27,6 +33,7 @@ export interface GematriaActionSetDecode
 }
 
 export type GematriaAction =
+  | GematriaActionResult
   | GematriaActionDecode
   | GematriaActionSet
   | GematriaActionSetDecode

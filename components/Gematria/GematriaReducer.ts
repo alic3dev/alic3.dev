@@ -1,12 +1,53 @@
 import { localStorageKeys } from '@/components/Gematria/GematriaStorage'
 
-import { decode } from '@/utils/gematria'
+import { decode, defaultDecodeOptions } from '@/utils/gematria'
 
 import type {
   GematriaState,
   GematriaAction,
   GematriaResult,
 } from '@/components/Gematria/Gematria.types'
+
+export const defaultGematriaState: GematriaState = {
+  ...defaultDecodeOptions,
+  encodedText: '',
+  decodedText: '',
+  decodedValues: [],
+  decodedSum: 0,
+  offline: false,
+  loading: false,
+  pastResults: [],
+}
+
+export function defaultGematriaStateInitializer(
+  defaultState: GematriaState,
+): GematriaState {
+  if (typeof window === 'undefined') return defaultState
+
+  const localStorageOfflineValue: string | null = window.localStorage.getItem(
+    localStorageKeys.offline,
+  )
+  let localStorageOfflineParsedValue: boolean | null = null
+
+  try {
+    if (localStorageOfflineValue) {
+      const localStorageOfflineJSONValue: any = JSON.parse(
+        localStorageOfflineValue,
+      )
+
+      if (typeof localStorageOfflineJSONValue === 'boolean') {
+        localStorageOfflineParsedValue = localStorageOfflineJSONValue
+      } else {
+        window.localStorage.removeItem(localStorageKeys.offline)
+      }
+    }
+  } catch {}
+
+  return {
+    ...defaultState,
+    offline: localStorageOfflineParsedValue ?? defaultState.offline,
+  }
+}
 
 export const gematriaStateReducer: React.Reducer<
   GematriaState,
@@ -30,46 +71,33 @@ export const gematriaStateReducer: React.Reducer<
   }
 
   switch (action.type) {
-    case 'decode':
-      if (
-        prevState.pastResults.length &&
-        prevState.pastResults[0].decodedText === prevState.encodedText
-      ) {
-        return prevState
-      }
-
-      if (prevState.offline) {
-        const decodedValues: number[] = decode(prevState.encodedText, {
-          ignoreCase: prevState.ignoreCase,
-          ignoreCaseDirection: prevState.ignoreCaseDirection,
-          ignoreSpaces: prevState.ignoreSpaces,
-          method: prevState.method,
-        })
-
-        const result: GematriaResult = {
-          decodedText: prevState.encodedText,
-          decodedValues,
-          decodedSum: decodedValues.reduce(
-            (a: number, c: number): number => a + c,
-            0,
-          ),
-        }
-
-        return {
-          ...prevState,
-          ...result,
-          pastResults: [result, ...prevState.pastResults],
-        }
-      }
-
-      fetch('/api/gematria', {
-        method: 'POST',
-      })
-
+    case 'result':
       return {
         ...prevState,
-        decodedText: prevState.encodedText,
+        ...action.value,
+        pastResults: [action.value, ...prevState.pastResults],
       }
+    case 'decode':
+      const decodedValues: number[] = decode(prevState.encodedText, {
+        ignoreCase: prevState.ignoreCase,
+        ignoreCaseDirection: prevState.ignoreCaseDirection,
+        ignoreSpaces: prevState.ignoreSpaces,
+        method: prevState.method,
+      })
+
+      const result: GematriaResult = {
+        decodedText: prevState.encodedText,
+        decodedValues,
+        decodedSum: decodedValues.reduce(
+          (a: number, c: number): number => a + c,
+          0,
+        ),
+      }
+
+      return gematriaStateReducer(prevState, {
+        type: 'result',
+        value: result,
+      })
     case 'set':
       if (
         action.value.hasOwnProperty('offline') &&

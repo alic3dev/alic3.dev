@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react'
 
 import * as gematria from '@/utils/gematria'
@@ -11,66 +12,77 @@ import type {
   GematriaResult,
 } from '@/components/Gematria/Gematria.types'
 
-import { gematriaStateReducer } from '@/components/Gematria/GematriaReducer'
-import { localStorageKeys } from '@/components/Gematria/GematriaStorage'
+import {
+  gematriaStateReducer,
+  defaultGematriaState,
+  defaultGematriaStateInitializer,
+} from '@/components/Gematria/GematriaReducer'
 
 export function Gematria(): JSX.Element {
   const [state, dispatch] = React.useReducer<
     React.Reducer<GematriaState, GematriaAction>,
     GematriaState
-  >(
-    gematriaStateReducer,
-    {
-      ...gematria.defaultDecodeOptions,
-      encodedText: '',
-      decodedText: '',
-      decodedValues: [],
-      decodedSum: 0,
-      offline: false,
-      pastResults: [],
-    },
-    (defaultState: GematriaState): GematriaState => {
-      if (typeof window === 'undefined') return defaultState
+  >(gematriaStateReducer, defaultGematriaState, defaultGematriaStateInitializer)
 
-      const localStorageOfflineValue: string | null =
-        window.localStorage.getItem(localStorageKeys.offline)
-      let localStorageOfflineParsedValue: boolean | null = null
+  const onFormSubmit: React.FormEventHandler<HTMLFormElement> =
+    React.useCallback<React.FormEventHandler<HTMLFormElement>>(
+      async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+        event.preventDefault()
+        event.stopPropagation()
 
-      try {
-        if (localStorageOfflineValue) {
-          const localStorageOfflineJSONValue: any = JSON.parse(
-            localStorageOfflineValue,
-          )
+        if (
+          state.pastResults.length &&
+          state.pastResults[0].decodedText === state.encodedText
+        ) {
+          return
+        }
 
-          if (typeof localStorageOfflineJSONValue === 'boolean') {
-            localStorageOfflineParsedValue = localStorageOfflineJSONValue
-          } else {
-            window.localStorage.removeItem(localStorageKeys.offline)
+        if (state.offline) {
+          dispatch({ type: 'decode' })
+        } else {
+          const body: FormData = new FormData(event.currentTarget)
+
+          const res: Response = await fetch('/api/gematria', {
+            method: 'POST',
+            body,
+          })
+
+          const data: Api.Gematria.ResponseData = await res.json()
+
+          if (data.success) {
+            dispatch({
+              type: 'result',
+              value: {
+                decodedText: body.get('encoded-text') as string,
+                decodedSum: data.decoded.sum,
+                decodedValues: data.decoded.values,
+              },
+            })
           }
         }
-      } catch {}
-
-      return {
-        ...defaultState,
-        offline: true, //localStorageOfflineParsedValue ?? defaultState.offline,
-      }
-    },
-  )
+      },
+      [state],
+    )
 
   return (
     <div className={styles.gematria}>
-      <div className={styles.section}>
+      <form className={styles.section} onSubmit={onFormSubmit}>
         <div className={styles.decoding}>
           {state.decodedValues && state.decodedValues.length > 0 && (
             <>
               <h3 className={styles['decoded-text']}>{state.decodedText}</h3>
               <h2 className={styles['decoded-sum']}>{state.decodedSum}</h2>
               <p className={styles['decoded-parts']}>
-                {state.decodedText.split('').map((c, i) => (
-                  <span className={styles['decoded-part']} key={c + i}>
-                    {c} - {state.decodedValues[i]}
-                  </span>
-                ))}
+                {state.decodedText.split('').map(
+                  (character: string, index: number): React.ReactNode => (
+                    <span
+                      className={styles['decoded-part']}
+                      key={character + index}
+                    >
+                      {character} - {state.decodedValues[index]}
+                    </span>
+                  ),
+                )}
               </p>
             </>
           )}
@@ -81,7 +93,8 @@ export function Gematria(): JSX.Element {
             type="text"
             placeholder="Enter text to decode..."
             value={state.encodedText}
-            onChange={(event) =>
+            name="encoded-text"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
               dispatch({
                 type: 'set',
                 value: { encodedText: event.target.value },
@@ -90,7 +103,7 @@ export function Gematria(): JSX.Element {
           />
         </label>
 
-        <button onClick={() => dispatch({ type: 'decode' })}>Decode</button>
+        <input type="submit" value="Decode" disabled={false} />
 
         <div className={styles.options}>
           <label>
@@ -98,7 +111,8 @@ export function Gematria(): JSX.Element {
             <input
               type="checkbox"
               checked={state.ignoreCase}
-              onChange={(event) =>
+              name="ignore-case"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
                 dispatch({
                   type: 'set',
                   value: { ignoreCase: event.target.checked },
@@ -112,7 +126,8 @@ export function Gematria(): JSX.Element {
               Ignore Case Direction{' '}
               <select
                 value={state.ignoreCaseDirection}
-                onChange={(event) =>
+                name="ignore-case-direction"
+                onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
                   dispatch({
                     type: 'set',
                     value: {
@@ -125,7 +140,7 @@ export function Gematria(): JSX.Element {
                 {gematria.ignoreCaseDirections.map(
                   (
                     ignoreCaseDirectionPossibility: gematria.IgnoreCaseDirection,
-                  ) => (
+                  ): React.ReactNode => (
                     <option
                       key={ignoreCaseDirectionPossibility}
                       value={ignoreCaseDirectionPossibility}
@@ -143,7 +158,8 @@ export function Gematria(): JSX.Element {
             <input
               type="checkbox"
               checked={state.ignoreSpaces}
-              onChange={(event) =>
+              name="ignore-spaces"
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
                 dispatch({
                   type: 'set',
                   value: { ignoreSpaces: event.target.checked },
@@ -152,24 +168,24 @@ export function Gematria(): JSX.Element {
             />
           </label>
 
-          {/* <label>
-          Offline{' '}
-          <span title="Results will be stored/retrieved on/from the server if left unchecked">
-            (?)
-          </span>
-          <input
-            type="checkbox"
-            checked={state.offline}
-            onChange={(event) =>
-              dispatch({
-                type: 'set',
-                value: { offline: event.target.checked },
-              })
-            }
-          />
-        </label> */}
+          <label>
+            Offline{' '}
+            <span title="Results will be stored/retrieved on/from the server if left unchecked">
+              (?)
+            </span>
+            <input
+              type="checkbox"
+              checked={state.offline}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+                dispatch({
+                  type: 'set',
+                  value: { offline: event.target.checked },
+                })
+              }
+            />
+          </label>
         </div>
-      </div>
+      </form>
 
       <div className={styles.section}>
         <h3>Results</h3>

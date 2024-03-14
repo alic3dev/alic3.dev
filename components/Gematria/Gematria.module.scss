@@ -15,7 +15,7 @@
 .section {
   flex: 1;
 
-  &:first-of-type {
+  &:first-child {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;

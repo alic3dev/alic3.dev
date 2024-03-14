@@ -2,7 +2,7 @@ declare global {
   namespace Api.Contact {
     type Method = 'email' | 'phone' | 'either'
 
-    type FormServerFields =
+    type ContactFormServerFields =
       | 'name'
       | 'contactMethod'
       | 'email'
@@ -24,6 +24,33 @@ declare global {
         | 'contact-consent'
         | 'recaptcha'
       type: 'empty' | 'invalid'
+    }
+  }
+
+  namespace Api.Gematria {
+    type GematriaFormServerFields = 'encodedText'
+
+    type GematriaFormServerOptionalFields =
+      | 'ignoreCase'
+      | 'ignoreCaseDirection'
+      | 'ignoreSpaces'
+
+    type Data = Record<GematriaFormServerFields, FormDataEntryValue | null> &
+      Partial<
+        Record<GematriaFormServerOptionalFields, FormDataEntryValue | null>
+      >
+
+    interface ResponseError {
+      field: 'encoded-text' | 'ignore-case-direction' | 'unknown'
+      type: 'empty' | 'invalid'
+    }
+
+    interface ResponseData {
+      decoded: {
+        values: number[]
+        sum: number
+      }
+      success: boolean
     }
   }
 
