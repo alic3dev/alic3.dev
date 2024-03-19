@@ -40,6 +40,32 @@ export const projects: Project[] = [
     ),
   },
   {
+    title: 'Tirest',
+    links: {
+      external: 'https://tirest.alic3.dev/',
+      github: 'https://github.com/alic3dev/tirest',
+    },
+    description: (
+      <>
+        Tired.. Tirest.. Tertis.. Tet.. ris?
+        <br />
+        <br />
+        Play my own version of the classic block dropping game with leaderboards
+        and account statistics.
+      </>
+    ),
+    visual: (
+      <Image
+        className={styles.image}
+        src="/htri2o.png"
+        alt="Tirest screenshot"
+        width={3620}
+        height={2336}
+        quality={60}
+      />
+    ),
+  },
+  {
     title: 'Nature of Code',
     links: {
       external: 'https://nature-of-code.alic3.dev/',
