@@ -15,7 +15,7 @@ export function ConMisc(): React.ReactNode {
 
       Lost epiphanies,
       If only to see,
-      What is to mean,
+      What is to be,
       In this symphony.
       ...🖊️
 
