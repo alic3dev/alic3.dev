@@ -23,6 +23,7 @@ import {
 import Link from 'next/link'
 
 import { Section } from '@/components/sections/Section'
+import { LinksWithIcons } from '@/components/LinksWithIcons'
 
 import { data as workHistory } from '@/data/workHistory'
 
@@ -114,6 +115,8 @@ export function WorkSection(): JSX.Element {
                   ({company.detailedLength})
                 </span>
               </span>
+
+              <LinksWithIcons links={company.links} />
             </div>
 
             <div className={styles['work-item-positions']}>

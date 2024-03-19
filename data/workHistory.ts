@@ -1,3 +1,5 @@
+import type { Links } from '@/components/LinksWithIcons'
+
 export interface WorkHistoryPosition {
   name: string
   shortName?: string
@@ -13,6 +15,7 @@ export interface WorkHistoryCompany {
   name: string
   length: string
   detailedLength: string
+  links?: Links
   positions: WorkHistoryPosition[]
 }
 
@@ -21,6 +24,10 @@ export const jobHistory: WorkHistoryCompany[] = [
     name: 'The Humane League',
     length: '8 Months',
     detailedLength: 'Jan 2022 - Sep 2022',
+
+    links: {
+      external: 'https://thehumaneleague.org/',
+    },
 
     positions: [
       {
@@ -42,6 +49,10 @@ export const jobHistory: WorkHistoryCompany[] = [
     name: 'Osmosis - Knowledge Diffusion',
     length: '3 Years 5 Months',
     detailedLength: 'Jan 2018 - Jun 2021',
+
+    links: {
+      external: 'https://www.osmosis.org/',
+    },
 
     positions: [
       {
@@ -97,6 +108,10 @@ export const freelancingHistory: WorkHistoryCompany[] = [
     length: '2 Months',
     detailedLength: 'Aug 2021 - Sep 2021',
 
+    links: {
+      external: 'https://www.cleanlineslawncare.com/',
+    },
+
     positions: [
       {
         name: 'Freelance Web Developer',
@@ -129,6 +144,10 @@ export const educationHistory: WorkHistoryCompany[] = [
     name: 'ECPI University',
     length: '2 Years',
     detailedLength: '2014 - 2016',
+
+    links: {
+      external: 'https://www.ecpi.edu/',
+    },
 
     positions: [
       {
