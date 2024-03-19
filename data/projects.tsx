@@ -92,8 +92,8 @@ export const projects: Project[] = [
   {
     title: 'Kana Totsugeki',
     links: {
-      external: 'https://nature-of-code.alic3.dev/',
-      github: 'https://github.com/alic3dev/nature-of-code',
+      external: 'https://kana-totsugeki.alic3.dev/',
+      github: 'https://github.com/alic3dev/Kana-Totsugeki',
     },
     description: (
       <>
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     links: {
       external: '/portal',
       github:
-        'https://github.com/alic3dev/alic3.dev/blob/main/app/tarot/_page.tsx',
+        'https://github.com/alic3dev/alic3.dev/blob/main/app/portal/page.tsx',
     },
     description: [
       <React.Fragment key={'waiting'}>
