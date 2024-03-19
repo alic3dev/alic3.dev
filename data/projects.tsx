@@ -117,7 +117,7 @@ export const projects: Project[] = [
     links: {
       external: '/portal',
       github:
-        'https://github.com/alic3dev/alic3.dev/blob/main/app/tarot/_page.tsx',
+        'https://github.com/alic3dev/alic3.dev/blob/main/app/portal/page.tsx',
     },
     description: [
       <React.Fragment key={'waiting'}>
