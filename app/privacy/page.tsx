@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+
 import { Footer, Header } from '@/components'
 import { LegalPageWrapper, PrivacyPolicy } from '@/components/legal'
 
