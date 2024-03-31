@@ -1,0 +1,64 @@
+.writings {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 100%;
+
+  padding-top: 100px;
+
+  font-size: 1.6rem;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+
+  width: 98%;
+  max-width: 1000px;
+}
+
+.category {
+  height: min-content;
+
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.category-title {
+  align-self: flex-start;
+}
+
+.pages {
+  max-width: 100%;
+
+  padding: 0;
+  padding-left: 2rem;
+}
+
+.page-content {
+  display: inline-block;
+
+  max-width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  vertical-align: bottom;
+}
+
+.posted {
+  font-size: 0.75em;
+
+  color: darken(#a6adc8, 10%);
+}

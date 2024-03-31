@@ -1,0 +1,61 @@
+.writing-page {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 100%;
+
+  padding-top: 100px;
+
+  font-size: 1.6rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  // align-items: center;
+
+  width: 95%;
+  max-width: 750px;
+
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0.1);
+
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navigation {
+  align-self: flex-start;
+  padding-left: 0.5rem;
+
+  font-size: 0.75em;
+
+  white-space: nowrap;
+}
+
+.title {
+  max-width: 100%;
+
+  padding-top: 1rem;
+  padding-left: 2rem;
+}
+
+.posted {
+  padding-left: 2rem;
+
+  font-size: 0.75em;
+
+  color: lighten(#a6adc8, 2.5%);
+}
+
+.posted-value {
+  color: lighten(#a6adc8, 10%);
+}
+
+.writing {
+  padding: 2rem 0;
+  padding-left: 2rem;
+}
