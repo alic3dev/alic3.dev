@@ -31,7 +31,7 @@ declare global {
 export {}
 
 // CREATE TABLE contact_form (
-//     id serial,
+//     id serial PRIMARY KEY,
 //     name varchar(100) not null,
 //     contact_method contact_method not null,
 //     email varchar(254),
