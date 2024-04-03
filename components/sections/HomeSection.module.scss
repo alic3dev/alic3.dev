@@ -1,4 +1,6 @@
 @use '@/styles/utils/colors';
+@use '@/styles/utils/breakpoints';
+
 @use '@/components/sections/Section.module.scss';
 
 .section {
@@ -80,7 +82,7 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: breakpoints.$mobile) {
   .header {
     padding: 8rem 2rem;
     padding-bottom: 1rem;
@@ -95,6 +97,10 @@
     width: 30vw;
     height: 30vw;
     margin-top: 3rem;
+  }
+
+  .next {
+    bottom: 16rem;
   }
 }
 

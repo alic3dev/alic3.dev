@@ -14,11 +14,19 @@ export function Project({
 }: Project): JSX.Element {
   return (
     <article className={styles.project}>
+      <figure className={`${styles.visualization} ${styles.desktop}`}>
+        {visual}
+      </figure>
+
       <div className={styles.info}>
         <div>
           <h3 className={styles['project-title']}>{title}</h3>
 
           <LinksWithIcons links={links} />
+
+          <figure className={`${styles.visualization} ${styles.mobile}`}>
+            {visual}
+          </figure>
         </div>
 
         {Array.isArray(description) ? (
@@ -37,8 +45,6 @@ export function Project({
           <p className={styles.description}>{description}</p>
         )}
       </div>
-
-      <figure className={styles.visualization}>{visual}</figure>
     </article>
   )
 }
