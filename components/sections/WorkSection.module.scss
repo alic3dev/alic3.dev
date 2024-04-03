@@ -1,4 +1,6 @@
 @use '@/styles/utils/colors';
+@use '@/styles/utils/breakpoints';
+
 @use '@/components/sections/Section.module.scss';
 
 .work-item {
@@ -336,7 +338,7 @@ button.work-item-position-info-toggle-minimize {
   vertical-align: text-top;
 }
 
-@media (max-width: 900px) {
+@media (max-width: breakpoints.$mobile) {
   .section-header {
     margin-bottom: 2rem;
   }
@@ -351,6 +353,10 @@ button.work-item-position-info-toggle-minimize {
 
   .work-item-position {
     margin-bottom: 2.25rem;
+
+    & + .work-item-position {
+      margin-top: 4rem;
+    }
   }
 
   .work-item-position-info {

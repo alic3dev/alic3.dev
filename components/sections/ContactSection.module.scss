@@ -1,4 +1,6 @@
 @use '@/styles/utils/colors';
+@use '@/styles/utils/breakpoints';
+
 @use '@/components/sections/Section.module.scss';
 
 .section {
@@ -110,7 +112,11 @@
   font-size: 4rem;
 }
 
-@media (max-width: 900px) {
+@media (max-width: breakpoints.$mobile) {
+  .section {
+    margin-bottom: 6rem;
+  }
+
   .section-header {
     margin-bottom: 2rem;
   }
@@ -118,6 +124,11 @@
   .contact-options > p + p {
     margin-top: 2rem;
     margin-bottom: 2rem;
+
+    & ~ p {
+      max-width: 90%;
+      margin: auto;
+    }
   }
 
   .contact-options-seperator {
@@ -134,6 +145,17 @@
     & > input[type='checkbox'] {
       margin-left: -2rem;
       margin-bottom: 0;
+    }
+  }
+
+  .contact-form-controls {
+    justify-content: space-around;
+
+    & > input {
+      flex: 1;
+      max-width: 45%;
+      margin: 0;
+      transform: none;
     }
   }
 }
