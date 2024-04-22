@@ -1,6 +1,7 @@
 declare global {
   namespace Database {
     interface Alic3Dev {
+      activity: Database.Table.Activity
       contact_form: Database.Table.ContactForm
       gematria: Database.Table.Gematria
       gematria_value: Database.Table.GematriaValue
