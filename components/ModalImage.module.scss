@@ -1,0 +1,33 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 1;
+
+  opacity: 0;
+
+  animation: fadeIn 1000ms ease-in-out 300ms 1 forwards;
+}
+
+.modal-image {
+  width: auto;
+  height: auto;
+  max-width: calc(95vw - 2rem);
+  max-height: calc(90vh - 2rem);
+
+  cursor: pointer;
+
+  z-index: 2;
+}
