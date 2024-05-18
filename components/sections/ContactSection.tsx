@@ -141,18 +141,13 @@ export function ContactSection(): JSX.Element {
       </div>
 
       <div className={styles['contact-options']}>
-        <p>You may contact us directly via email</p>
-
         <p>
-          <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
+          Send an email to <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
         </p>
 
         <div className={styles['contact-options-seperator']}>OR</div>
 
-        <p>
-          Complete and submit the form below with your inquiry and we will reach
-          back out to you as soon as possible
-        </p>
+        <p>Complete and submit the form below with your inquiry</p>
       </div>
 
       <form
@@ -329,9 +324,7 @@ export function ContactSection(): JSX.Element {
                 className={styles['contact-form-overlay-icon']}
               />
 
-              <p>
-                Your messsage has been sent and we&apos;ll be in contact soon
-              </p>
+              <p>Your messsage has been sent, I&aposll be in contact soon</p>
             </>
           )}
         </div>
