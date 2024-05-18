@@ -44,9 +44,10 @@
     "typescript": "5.4.2"
   },
   "devDependencies": {
+    "@types/module-alias": "^2.0.4",
     "@types/nodemailer": "^6.4.15",
     "encoding": "^0.1.13",
-    "sass": "^1.77.1"
+    "sass": "^1.77.2"
   },
-  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+  "packageManager": "pnpm@9.1.1+sha512.14e915759c11f77eac07faba4d019c193ec8637229e62ec99eefb7cf3c3b75c64447882b7c485142451ee3a6b408059cdfb7b7fa0341b975f12d0f7629c71195"
 }
