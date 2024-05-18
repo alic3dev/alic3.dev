@@ -1,8 +1,9 @@
+import type { Links } from '@/components/LinksWithIcons'
+
 import React from 'react'
 import { GiBleedingEye } from 'react-icons/gi'
-import Image from 'next/image'
 
-import type { Links } from '@/components/LinksWithIcons'
+import { ImageWithViewer } from '@/components/ImageWithViewer'
 
 import styles from './projects.module.scss'
 
@@ -29,13 +30,15 @@ export const projects: Project[] = [
       </>
     ),
     visual: (
-      <Image
-        className={styles.image}
-        src="/23u5i3.png"
-        alt="ZER0 screenshot"
-        width={3620}
-        height={2336}
-        quality={60}
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/23u5i3.png',
+          alt: 'ZER0 screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
       />
     ),
   },
@@ -55,13 +58,15 @@ export const projects: Project[] = [
       </>
     ),
     visual: (
-      <Image
-        className={styles.image}
-        src="/htri2o.png"
-        alt="Tirest screenshot"
-        width={3620}
-        height={2336}
-        quality={60}
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/htri2o.png',
+          alt: 'Tirest screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
       />
     ),
   },
@@ -79,13 +84,15 @@ export const projects: Project[] = [
       </>
     ),
     visual: (
-      <Image
-        className={styles.image}
-        src="/j24ihg.png"
-        alt="Nature of Code screenshot"
-        width={3620}
-        height={2336}
-        quality={60}
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/j24ihg.png',
+          alt: 'Nature of Code screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
       />
     ),
   },
@@ -102,13 +109,15 @@ export const projects: Project[] = [
       </>
     ),
     visual: (
-      <Image
-        className={styles.image}
-        src="/234uo9.png"
-        alt="Kana Totsugeki screenshot"
-        width={3620}
-        height={2336}
-        quality={60}
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/234uo9.png',
+          alt: 'Kana Totsugeki screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
       />
     ),
   },

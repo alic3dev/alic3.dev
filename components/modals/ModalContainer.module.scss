@@ -1,0 +1,25 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+
+  pointer-events: none;
+
+  transition: all 250ms ease-out;
+
+  z-index: 20;
+
+  &.with-content {
+    pointer-events: all;
+
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+  }
+}

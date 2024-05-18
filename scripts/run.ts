@@ -1,5 +1,20 @@
-import fs from 'fs'
 import path from 'path'
+import dotenv from 'dotenv'
+
+dotenv.config({
+  override: true,
+  path: path.resolve(process.cwd(), '.env.local'),
+})
+
+import 'module-alias/register'
+import { addAliases } from 'module-alias'
+
+addAliases({
+  '@': `${__dirname}/../`,
+  'server-only': `${__dirname}/../node_modules/server-only/empty`,
+})
+
+import fs from 'fs'
 
 const scriptName: string | undefined = process.argv[2]
 
