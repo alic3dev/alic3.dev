@@ -11,8 +11,8 @@ export async function GET(request: NextRequest): Promise<Response> {
     })
   }
 
-  let successfulKV = true
-  let successfulKysely = true
+  let successfulKV: boolean = true
+  let successfulKysely: boolean = true
 
   try {
     await kv.del('activity_key')
