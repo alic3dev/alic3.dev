@@ -73,7 +73,9 @@
   justify-content: center;
   margin-top: 2rem;
 
-  & > input {
+  & > input,
+  & > input[type='reset'],
+  & > input[type='submit'] {
     flex: 1;
     margin-left: 25%;
   }
@@ -151,7 +153,9 @@
   .contact-form-controls {
     justify-content: space-around;
 
-    & > input {
+    & > input,
+    & > input[type='reset'],
+    & > input[type='submit'] {
       flex: 1;
       max-width: 45%;
       margin: 0;
