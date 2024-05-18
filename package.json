@@ -1,6 +1,7 @@
 {
   "name": "alic3.dev",
   "version": "0.3.0",
+  "license": "ISC",
   "private": true,
   "scripts": {
     "dev": "next dev",
