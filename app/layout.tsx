@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from 'next'
 
+import React from 'react'
 import { Exo_2 } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+
+import { ModalContainer, ModalContextWrapper } from '@/components/modals'
 
 import {
   NotificationContainer,
@@ -24,17 +27,28 @@ export const viewport: Viewport = {
   minimumScale: 1,
 }
 
+function ContextWrappers({
+  children,
+}: React.PropsWithChildren): React.ReactElement {
+  return (
+    <ModalContextWrapper>
+      <NotificationContextWrapper>{children}</NotificationContextWrapper>
+    </ModalContextWrapper>
+  )
+}
+
 export default function RootLayout({
   children,
 }: React.PropsWithChildren): JSX.Element {
   return (
     <html lang="en">
       <body className={bodyFont.className}>
-        <NotificationContextWrapper>
+        <ContextWrappers>
           {children}
 
+          <ModalContainer />
           <NotificationContainer />
-        </NotificationContextWrapper>
+        </ContextWrappers>
 
         <Analytics />
         <SpeedInsights />
