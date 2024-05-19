@@ -1,6 +1,18 @@
 {
   "name": "alic3.dev",
+  "author": {
+    "name": "alic3dev",
+    "email": "alice@alic3.dev",
+    "url": "https://alic3.dev"
+  },
+  "repository": "github:alic3dev/alic3.dev",
+  "bugs": {
+    "url": "https://github.com/alic3dev/alic3.dev/issues",
+    "email": "bug@alic3.dev"
+  },
+  "homepage": "https://alic3.dev",
   "version": "0.3.0",
+  "license": "ISC",
   "private": true,
   "scripts": {
     "dev": "next dev",
