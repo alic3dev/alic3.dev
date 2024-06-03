@@ -1,0 +1,30 @@
+@use '@/styles/utils/colors';
+
+.page-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 2rem;
+}
+
+.selected-input {
+  width: 7rem;
+
+  padding: 1rem;
+  margin: 0;
+
+  background: colors.$mantle;
+
+  border: 1px solid colors.$crust;
+  border-radius: 10px;
+
+  color: colors.$text;
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: 1px solid colors.$mauve;
+    outline-offset: -1px;
+  }
+}
