@@ -40,3 +40,6 @@ next-env.d.ts
 # Generated data
 data/gematria/*
 
+# Build data
+data/enivid/sporp
+
