@@ -30,6 +30,7 @@ export function Trip(): JSX.Element {
         </div>
 
         <nav className={styles.navigation}>
+          <Link href="/enivid">Enivid</Link>
           <Link href="/gematria">Gematria</Link>
           <Link href="/tarot">Tarot</Link>
           <Link href="/writings">Writings</Link>
