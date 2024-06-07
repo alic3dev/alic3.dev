@@ -6,7 +6,7 @@ import { CollapsibleItem } from '@/components/CollapsibleItem'
 import { LinksWithIcons } from '@/components/LinksWithIcons'
 import { TechnologyList } from '@/components/TechnologyList'
 
-import styles from './Project.module.scss'
+import styles from '@/components/Project.module.scss'
 
 export function Project({
   title,

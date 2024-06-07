@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from './NextButton.module.scss'
+import styles from '@/components/sections/NextButton.module.scss'
 
 export function NextButton({
   scrollToId,

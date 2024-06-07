@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import styles from './Footer.module.scss'
+import styles from '@/components/Footer.module.scss'
 
 export function Footer(): JSX.Element {
   const copyrightYear = new Date().getFullYear()

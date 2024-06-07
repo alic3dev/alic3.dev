@@ -5,7 +5,7 @@ import { NextButton } from '@/components/sections/NextButton'
 
 import { BackgroundImages } from '@/components/decorative'
 
-import styles from './HomeSection.module.scss'
+import styles from '@/components/sections/HomeSection.module.scss'
 
 export function HomeSection(): JSX.Element {
   return (

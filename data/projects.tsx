@@ -6,7 +6,7 @@ import React from 'react'
 
 import { ImageWithViewer } from '@/components/ImageWithViewer'
 
-import styles from './projects.module.scss'
+import styles from '@/data/projects.module.scss'
 
 export interface Project {
   title: string

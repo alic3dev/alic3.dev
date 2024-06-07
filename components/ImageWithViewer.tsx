@@ -10,7 +10,7 @@ import Image from 'next/image'
 import { ModalContext } from '@/components/modals'
 import { ModalImage } from '@/components/ModalImage'
 
-import styles from './ImageWithViewer.module.scss'
+import styles from '@/components/ImageWithViewer.module.scss'
 
 export function ImageWithViewer({
   imageProps,

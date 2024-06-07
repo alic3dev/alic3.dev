@@ -4,7 +4,7 @@ import type {
   NotificationInterface,
   NotificationContextInterface,
   NotificationManagerInterface,
-} from './types'
+} from '@/components/notifications/types'
 
 import React from 'react'
 

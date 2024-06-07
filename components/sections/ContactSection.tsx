@@ -4,13 +4,13 @@ import React from 'react'
 import Link from 'next/link'
 import Script from 'next/script'
 
-import { Section } from '@/components/sections/Section'
-import { Spinner } from '@/components/decorative'
-
 import { PiSmileyXEyes } from 'react-icons/pi'
 import { BsFillEnvelopeCheckFill } from 'react-icons/bs'
 
-import styles from './ContactSection.module.scss'
+import { Section } from '@/components/sections/Section'
+import { Spinner } from '@/components/decorative'
+
+import styles from '@/components/sections/ContactSection.module.scss'
 
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | '',
