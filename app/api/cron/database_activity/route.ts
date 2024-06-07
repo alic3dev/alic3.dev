@@ -1,6 +1,12 @@
+import 'server-only'
+
+import type { ServerRuntime } from 'next'
+import type { NextRequest } from 'next/server'
+
 import { kv } from '@vercel/kv'
 import { createKysely } from '@vercel/postgres-kysely'
-import { NextRequest } from 'next/server'
+
+export const runtime: ServerRuntime = 'nodejs'
 
 export async function GET(request: NextRequest): Promise<Response> {
   const authHeader = request.headers.get('authorization')

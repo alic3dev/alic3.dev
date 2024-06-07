@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 import { Footer, Header } from '@/components'
 import { LegalPageWrapper, TermsAndConditions } from '@/components/legal'

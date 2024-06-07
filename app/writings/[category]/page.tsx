@@ -1,13 +1,13 @@
+import type { Metadata } from 'next'
+
+import type { WritingCategoryData } from '@/components/writings'
+
 import React from 'react'
 import { createKysely } from '@vercel/postgres-kysely'
 import { redirect } from 'next/navigation'
 
-import type { Metadata } from 'next'
-
 import { Footer, Header } from '@/components'
 import { WritingCategory } from '@/components/writings'
-
-import type { WritingCategoryData } from '@/components/writings'
 
 import styles from '@/app/writings/[category]/page.module.scss'
 

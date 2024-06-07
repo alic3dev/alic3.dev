@@ -1,0 +1,223 @@
+@use '@/styles/utils/colors';
+@use '@/styles/utils/breakpoints';
+
+.collapsible-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  text-align: left;
+
+  margin-bottom: 6rem;
+
+  background: colors.$mantle;
+
+  box-shadow: 0px 2px 4px rgba(colors.$black, 0.3);
+
+  border-radius: 10px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -1.25rem;
+    top: -1.25rem;
+
+    width: 4.5rem;
+    height: 4.5rem;
+
+    border-left: 1px solid colors.$text;
+    border-top: 1px solid colors.$text;
+
+    border-top-left-radius: 2px;
+
+    opacity: 0.1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: -1.5rem;
+
+    width: 4rem;
+    height: 4rem;
+
+    border-left: 1px solid colors.$text;
+    border-top: 1px solid colors.$text;
+
+    border-top-left-radius: 2px;
+
+    opacity: 0.3;
+  }
+}
+
+.collapsible-item-info {
+  display: flex;
+  align-items: baseline;
+
+  width: 100%;
+
+  padding: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  background-color: colors.$crust;
+
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+
+  &.minimized {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+}
+
+.collapsible-item-info-title {
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.8rem;
+}
+
+.collapsible-item-info-sub-title {
+  padding-left: 1rem;
+
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+
+.collapsible-item-info-detailed-title {
+  opacity: 0;
+
+  transition: opacity 200ms ease-in-out;
+}
+
+.collapsible-item-info-sub-title:hover .collapsible-item-info-detailed-title,
+.collapsible-item-info-detailed-title:hover {
+  opacity: 0.3;
+}
+
+.collapsible-item-info-seperator {
+  flex: 1;
+}
+
+button.collapsible-item-info-toggle-minimize {
+  position: relative;
+
+  height: 2rem;
+  width: 3rem;
+
+  padding: 0;
+  margin: 0;
+
+  background: none;
+  border-bottom: none;
+
+  font-size: 2rem;
+
+  line-height: 0;
+
+  opacity: 0.3;
+
+  &.minimized {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    bottom: 0rem;
+
+    width: 0.5rem;
+
+    border: 1px solid colors.$white;
+    border-right: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0rem;
+    right: 0;
+    bottom: 0rem;
+
+    width: 0.5rem;
+
+    border: 1px solid colors.$white;
+    border-left: none;
+  }
+}
+
+.collapsible-item-content {
+  position: relative;
+
+  width: 100%;
+
+  padding: 2rem;
+  padding-top: 1rem;
+
+  box-shadow: inset 2px 2px 10px rgba(colors.$black, 0.05);
+
+  &::before {
+    content: '';
+    position: absolute;
+    right: -1.25rem;
+    bottom: -1.25rem;
+
+    width: 4rem;
+    height: 4rem;
+
+    border-right: 1px solid colors.$text;
+    border-bottom: 1px solid colors.$text;
+
+    border-bottom-right-radius: 2px;
+
+    opacity: 0.3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -1.5rem;
+    bottom: -1.5rem;
+
+    width: 3.5rem;
+    height: 3.5rem;
+
+    border-right: 1px solid colors.$text;
+    border-bottom: 1px solid colors.$text;
+
+    border-bottom-right-radius: 2px;
+
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: breakpoints.$mobile) {
+  .collapsible-item {
+    margin-bottom: 2.25rem;
+
+    & + .collapsible-item {
+      margin-top: 4rem;
+    }
+  }
+
+  .collapsible-item-info {
+    flex-direction: column;
+  }
+
+  button.collapsible-item-info-toggle-minimize {
+    position: absolute;
+    top: 1rem;
+    right: -0.5rem;
+  }
+}

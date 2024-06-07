@@ -1,0 +1,39 @@
+@use '@/styles/utils/colors';
+
+.technology-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 3.5rem;
+  width: 3.5rem;
+
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+  font-size: 2.5rem;
+  line-height: normal;
+  text-align: center;
+
+  background: transparentize(colors.$crust, 0.8);
+  border: 1px solid colors.$base;
+  border-radius: 5px;
+
+  box-shadow: 0px 2px 5px rgba(colors.$black, 0.2);
+
+  transition: border 200ms ease-in-out;
+
+  cursor: pointer;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border: 1px solid colors.$mauve;
+  }
+}

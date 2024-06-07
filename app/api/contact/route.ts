@@ -1,7 +1,9 @@
 import 'server-only'
 
-import { ServerRuntime } from 'next'
-import { NextRequest, NextResponse } from 'next/server'
+import type { ServerRuntime } from 'next'
+import type { NextRequest } from 'next/server'
+
+import { NextResponse } from 'next/server'
 import { Ratelimit } from '@upstash/ratelimit'
 import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
