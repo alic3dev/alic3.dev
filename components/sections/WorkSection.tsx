@@ -1,4 +1,4 @@
-'use client'
+import type { WorkHistoryPosition } from '@/data/workHistory'
 
 import React from 'react'
 import { DiPhonegap } from 'react-icons/di'
@@ -24,12 +24,13 @@ import Link from 'next/link'
 
 import { Section } from '@/components/sections/Section'
 import { LinksWithIcons } from '@/components/LinksWithIcons'
+import { CollapsibleItem } from '@/components/CollapsibleItem'
 
 import { data as workHistory } from '@/data/workHistory'
 
-import styles from './WorkSection.module.scss'
+import styles from '@/components/sections/WorkSection.module.scss'
 
-const iconLookup: { [iconName: string]: React.ReactElement } = {
+const iconLookup: Record<string, React.ReactElement> = {
   ts: <TbBrandTypescript />,
   react: <TbBrandReact />,
   sass: <TbBrandSass />,
@@ -47,51 +48,7 @@ const iconLookup: { [iconName: string]: React.ReactElement } = {
   hackerone: <SiHackerone />,
 }
 
-const minimizedDescriptionsLocalStorageKey: string =
-  'root:work-section:minimized-descriptions'
-
 export function WorkSection(): JSX.Element {
-  const [minimizedDescriptions, setMinimizedDescriptions] = React.useState<
-    string[]
-  >([])
-
-  const toggleMinimizeDescription = React.useCallback((key: string): void => {
-    setMinimizedDescriptions((prevState: string[] = []): string[] => {
-      if (prevState.includes(key))
-        return prevState.filter((fKey: string): boolean => fKey !== key)
-
-      return [...prevState, key]
-    })
-  }, [])
-
-  React.useEffect((): void => {
-    const minimizedDescriptionsJSON: string | null =
-      window.localStorage.getItem(minimizedDescriptionsLocalStorageKey)
-
-    if (!minimizedDescriptionsJSON) return
-
-    try {
-      const minimizedDescriptionsJSONParsed: string[] = JSON.parse(
-        minimizedDescriptionsJSON,
-      )
-
-      if (Array.isArray(minimizedDescriptionsJSONParsed))
-        setMinimizedDescriptions(minimizedDescriptionsJSONParsed)
-      else window.localStorage.removeItem(minimizedDescriptionsLocalStorageKey)
-    } catch {}
-  }, [])
-
-  React.useEffect((): void => {
-    const minimizedDescriptionsJSON: string = JSON.stringify(
-      minimizedDescriptions,
-    )
-
-    window.localStorage.setItem(
-      minimizedDescriptionsLocalStorageKey,
-      minimizedDescriptionsJSON,
-    )
-  }, [minimizedDescriptions])
-
   return (
     <Section name="work">
       <div className={styles['section-header']}>
@@ -120,103 +77,32 @@ export function WorkSection(): JSX.Element {
             </div>
 
             <div className={styles['work-item-positions']}>
-              {company.positions.map((position) => {
-                const companyPositionKey: string = `${company.name}:${position.name}`
-
-                const minimized: boolean =
-                  minimizedDescriptions.includes(companyPositionKey)
-
-                return (
-                  <div
-                    key={companyPositionKey}
-                    className={styles['work-item-position']}
-                  >
-                    <div className={styles['work-item-position-info']}>
-                      <h4 className={styles['work-item-position-info-title']}>
-                        {position.name}
-                      </h4>
-                      <span
-                        className={styles['work-item-position-info-length']}
-                      >
-                        {position.length || company.length}{' '}
-                        <span
-                          className={
-                            styles['work-item-position-info-length-detailed']
-                          }
-                        >
-                          ({position.detailedLength || company.detailedLength})
-                        </span>
-                      </span>
-
-                      <div
-                        className={styles['work-item-position-info-seperator']}
-                      />
-
-                      <button
-                        className={`
-                          ${styles['work-item-position-info-toggle-minimize']}
-                          ${minimized ? styles['minimized'] : ''}
-                        `}
-                        onClick={() =>
-                          toggleMinimizeDescription(companyPositionKey)
-                        }
-                        aria-label={
-                          minimized
-                            ? 'Expand description'
-                            : 'Minimize description'
-                        }
-                        title={
-                          minimized
-                            ? 'Expand description'
-                            : 'Minimize description'
-                        }
-                      >
-                        {minimized ? '+' : '-'}
-                      </button>
-                    </div>
-                    {minimized || (
-                      <>
-                        <p className={styles['work-item-position-description']}>
-                          {position.description.join(' ')}
-                        </p>
-
+              {company.positions.map(
+                (position: WorkHistoryPosition): React.ReactNode => (
+                  <CollapsibleItem
+                    key={`${company.name}:${position.name}`}
+                    id={`work-section|${company.name}:${position.name}`}
+                    title={position.name}
+                    subTitle={position.length || company.length}
+                    detailedTitle={
+                      position.detailedLength || company.detailedLength
+                    }
+                    content={position.description.join(' ')}
+                    footer={position.technologies.map(
+                      (technology: string): React.ReactNode => (
                         <div
-                          className={styles['work-item-position-technologies']}
+                          key={technology}
+                          className={styles['technology-icon-wrapper']}
+                          title={technology}
                         >
-                          <div
-                            className={
-                              styles['work-item-position-technologies-intro']
-                            }
-                          >
-                            <span
-                              className={
-                                styles[
-                                  'work-item-position-technologies-intro-text'
-                                ]
-                              }
-                            >
-                              stack | tech
-                            </span>
-                          </div>
-                          {position.technologies.map((technology) => (
-                            <div
-                              key={technology}
-                              className={
-                                styles[
-                                  'work-item-position-technology-icon-wrapper'
-                                ]
-                              }
-                              title={technology}
-                            >
-                              {iconLookup[technology]}
-                            </div>
-                          ))}
+                          {iconLookup[technology]}
                         </div>
-                      </>
+                      ),
                     )}
-                  </div>
-                )
-              })}
+                    footerIntro="stack | tech"
+                  />
+                ),
+              )}
             </div>
           </section>
 
