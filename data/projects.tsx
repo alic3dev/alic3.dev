@@ -1,7 +1,7 @@
 import type { Links } from '@/components/LinksWithIcons'
 
 import React from 'react'
-import { GiBleedingEye } from 'react-icons/gi'
+// import { GiBleedingEye } from 'react-icons/gi'
 
 import { ImageWithViewer } from '@/components/ImageWithViewer'
 
@@ -121,32 +121,32 @@ export const projects: Project[] = [
       />
     ),
   },
-  {
-    title: 'Miscellaneous Magickal Tools',
-    links: {
-      external: '/portal',
-      github:
-        'https://github.com/alic3dev/alic3.dev/blob/main/app/portal/page.tsx',
-    },
-    description: [
-      <React.Fragment key={'waiting'}>
-        We&apos;(re/ve) are._-been// waiting.
-      </React.Fragment>,
-      <ul key={'includes'}>
-        <li>Tarot</li>
-        <li>Gematria</li>
-        <li>
-          d4<strong>c</strong>2792<strong>a</strong>724<strong>52</strong>
-          846f75dc4893e
-          <strong>8</strong>51977cb<strong>1</strong>33d<strong>b</strong>3
-        </li>
-        <li>More...</li>
-      </ul>,
-    ],
-    visual: (
-      <div className={styles['icons-container']}>
-        <GiBleedingEye className={styles.icon} aria-hidden />
-      </div>
-    ),
-  },
+  // {
+  //   title: 'Miscellaneous Magickal Tools',
+  //   links: {
+  //     external: '/portal',
+  //     github:
+  //       'https://github.com/alic3dev/alic3.dev/blob/main/app/portal/page.tsx',
+  //   },
+  //   description: [
+  //     <React.Fragment key={'waiting'}>
+  //       We&apos;(re/ve) are._-been// waiting.
+  //     </React.Fragment>,
+  //     <ul key={'includes'}>
+  //       <li>Tarot</li>
+  //       <li>Gematria</li>
+  //       <li>
+  //         d4<strong>c</strong>2792<strong>a</strong>724<strong>52</strong>
+  //         846f75dc4893e
+  //         <strong>8</strong>51977cb<strong>1</strong>33d<strong>b</strong>3
+  //       </li>
+  //       <li>More...</li>
+  //     </ul>,
+  //   ],
+  //   visual: (
+  //     <div className={styles['icons-container']}>
+  //       <GiBleedingEye className={styles.icon} aria-hidden />
+  //     </div>
+  //   ),
+  // },
 ]
