@@ -63,7 +63,7 @@
   font-size: 2.5rem;
   line-height: normal;
 
-  // background: colors.$crust;
+  background: transparentize(colors.$crust, 0.8);
   border: 1px solid colors.$base;
   border-radius: 5px;
 
