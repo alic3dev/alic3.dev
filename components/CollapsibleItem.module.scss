@@ -83,11 +83,10 @@
 }
 
 .collapsible-item-info-sub-title {
-  font-size: 1.4rem;
-  font-weight: 200;
   padding-left: 1rem;
 
-  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 200;
 }
 
 .collapsible-item-info-detailed-title {
@@ -167,24 +166,12 @@ button.collapsible-item-info-toggle-minimize {
   padding-top: 1rem;
 
   box-shadow: inset 2px 2px 10px rgba(colors.$black, 0.05);
-}
-
-.collapsible-item-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  width: 100%;
-
-  padding: 1rem 2rem;
-  padding-top: 0;
 
   &::before {
     content: '';
     position: absolute;
-    right: -0.75rem;
-    bottom: -0.75rem;
+    right: -1.25rem;
+    bottom: -1.25rem;
 
     width: 4rem;
     height: 4rem;
@@ -200,8 +187,8 @@ button.collapsible-item-info-toggle-minimize {
   &::after {
     content: '';
     position: absolute;
-    right: -1rem;
-    bottom: -1rem;
+    right: -1.5rem;
+    bottom: -1.5rem;
 
     width: 3.5rem;
     height: 3.5rem;
@@ -212,86 +199,6 @@ button.collapsible-item-info-toggle-minimize {
     border-bottom-right-radius: 2px;
 
     opacity: 0.1;
-  }
-
-  &:hover .collapsible-item-footer-intro-text {
-    opacity: 1;
-  }
-}
-
-.collapsible-item-footer-intro {
-  position: relative;
-  flex: 100%;
-  width: 100%;
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-  opacity: 0.5;
-
-  pointer-events: none;
-  user-select: none;
-
-  &-text {
-    position: relative;
-    padding-left: 2rem;
-    padding-right: 2rem;
-
-    background: colors.$mantle;
-
-    font-size: 1.4rem;
-    text-shadow: -1px 1px 1px colors.$black;
-    opacity: 0;
-
-    transition: opacity 200ms ease-in-out;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 5%;
-    right: 5%;
-    top: calc(50% + 1px);
-
-    height: 1px;
-
-    background: colors.$text;
-
-    opacity: 0.1;
-  }
-}
-
-.collapsible-item-footer-icon-wrapper {
-  height: 3.5rem;
-  width: 3.5rem;
-  padding-top: 0.5rem;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-
-  font-size: 2.5rem;
-  line-height: normal;
-
-  background: transparentize(colors.$crust, 0.8);
-  border: 1px solid colors.$base;
-  border-radius: 5px;
-
-  box-shadow: 0px 2px 5px rgba(colors.$black, 0.2);
-
-  transition: border 200ms ease-in-out;
-
-  cursor: pointer;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-
-  &:last-of-type {
-    margin-right: 0;
-  }
-
-  &:hover {
-    border: 1px solid colors.$mauve;
   }
 }
 

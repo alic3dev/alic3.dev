@@ -12,18 +12,13 @@ export function CollapsibleItem({
   title,
   subTitle,
   detailedTitle,
-  content,
-  footer,
-  footerIntro,
-}: {
+  children,
+}: React.PropsWithChildren<{
   id?: string
   title: React.ReactNode
   subTitle?: React.ReactNode
   detailedTitle?: React.ReactNode
-  content: React.ReactNode
-  footer: React.ReactNode
-  footerIntro: React.ReactNode
-}): React.ReactNode {
+}>): React.ReactNode {
   const [minimized, setMinimized] = React.useState<boolean>(false)
 
   React.useEffect((): void => {
@@ -132,23 +127,8 @@ export function CollapsibleItem({
       </div>
 
       {minimized || (
-        <p className={styles['collapsible-item-content']}>{content}</p>
+        <div className={styles['collapsible-item-content']}>{children}</div>
       )}
-
-      {minimized ||
-        (footer && (
-          <div className={styles['collapsible-item-footer']}>
-            <div className={styles['collapsible-item-footer-intro']}>
-              {footerIntro && (
-                <span className={styles['collapsible-item-footer-intro-text']}>
-                  {footerIntro}
-                </span>
-              )}
-            </div>
-
-            {footer}
-          </div>
-        ))}
     </div>
   )
 }

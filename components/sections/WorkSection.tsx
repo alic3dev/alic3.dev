@@ -1,52 +1,17 @@
 import type { WorkHistoryPosition } from '@/data/workHistory'
 
 import React from 'react'
-import { DiPhonegap } from 'react-icons/di'
-import { LiaJava } from 'react-icons/lia'
-import {
-  SiHackerone,
-  SiLess,
-  SiMariadb,
-  SiPostgresql,
-  SiPug,
-} from 'react-icons/si'
-import {
-  TbBrandCpp,
-  TbBrandJavascript,
-  TbBrandMysql,
-  TbBrandReact,
-  TbBrandSass,
-  TbBrandStripe,
-  TbBrandTypescript,
-  TbSquareLetterK,
-} from 'react-icons/tb'
 import Link from 'next/link'
 
 import { Section } from '@/components/sections/Section'
+
 import { LinksWithIcons } from '@/components/LinksWithIcons'
 import { CollapsibleItem } from '@/components/CollapsibleItem'
+import { TechnologyList } from '@/components/TechnologyList'
 
 import { data as workHistory } from '@/data/workHistory'
 
 import styles from '@/components/sections/WorkSection.module.scss'
-
-const iconLookup: Record<string, React.ReactElement> = {
-  ts: <TbBrandTypescript />,
-  react: <TbBrandReact />,
-  sass: <TbBrandSass />,
-  postgresql: <SiPostgresql />,
-  js: <TbBrandJavascript />,
-  knockout: <TbSquareLetterK />,
-  less: <SiLess />,
-  pug: <SiPug />,
-  'c++': <TbBrandCpp />,
-  mysql: <TbBrandMysql />,
-  java: <LiaJava />,
-  phonegap: <DiPhonegap />,
-  mariadb: <SiMariadb />,
-  stripe: <TbBrandStripe />,
-  hackerone: <SiHackerone />,
-}
 
 export function WorkSection(): JSX.Element {
   return (
@@ -73,7 +38,7 @@ export function WorkSection(): JSX.Element {
                 </span>
               </span>
 
-              <LinksWithIcons links={company.links} />
+              {company.links && <LinksWithIcons links={company.links} />}
             </div>
 
             <div className={styles['work-item-positions']}>
@@ -87,20 +52,11 @@ export function WorkSection(): JSX.Element {
                     detailedTitle={
                       position.detailedLength || company.detailedLength
                     }
-                    content={position.description.join(' ')}
-                    footer={position.technologies.map(
-                      (technology: string): React.ReactNode => (
-                        <div
-                          key={technology}
-                          className={styles['technology-icon-wrapper']}
-                          title={technology}
-                        >
-                          {iconLookup[technology]}
-                        </div>
-                      ),
-                    )}
-                    footerIntro="stack | tech"
-                  />
+                  >
+                    <p>{position.description.join(' ')}</p>
+
+                    <TechnologyList technologies={position.technologies} />
+                  </CollapsibleItem>
                 ),
               )}
             </div>
