@@ -1,6 +1,7 @@
+import type { Metadata } from 'next'
+
 import React from 'react'
 import { createKysely } from '@vercel/postgres-kysely'
-import { Metadata } from 'next'
 
 import { Footer, Header } from '@/components'
 import { Writings } from '@/components/writings'

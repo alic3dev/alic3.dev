@@ -1,5 +1,6 @@
+import type { Metadata } from 'next'
+
 import React from 'react'
-import { Metadata } from 'next'
 
 import { Footer, Header, Trip } from '@/components'
 import { PortalBackground } from '@/components/decorative'
