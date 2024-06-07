@@ -1,4 +1,4 @@
-'use client'
+import type { Project as ProjectData } from '@/data/projects'
 
 import React from 'react'
 
@@ -6,8 +6,6 @@ import { Section } from '@/components/sections/Section'
 import { Project } from '@/components/Project'
 
 import { projects } from '@/data/projects'
-
-import type { Project as ProjectData } from '@/data/projects'
 
 import styles from './ProjectsSection.module.scss'
 
