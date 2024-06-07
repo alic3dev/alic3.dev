@@ -1,4 +1,5 @@
 import type { Links } from '@/components/LinksWithIcons'
+import type { TechnologyName } from '@/components/decorative/TechnologyIcon'
 
 import React from 'react'
 // import { GiBleedingEye } from 'react-icons/gi'
@@ -12,6 +13,7 @@ export interface Project {
   links?: Links
   description: JSX.Element | JSX.Element[]
   visual: JSX.Element
+  technologies: TechnologyName[]
 }
 
 export const projects: Project[] = [
@@ -25,7 +27,7 @@ export const projects: Project[] = [
       <>
         A collection of tools/modules for the generation and manipulation of
         audio including <a href="https://bluegreen.alic3.dev/zer0">ゼロ</a> - a
-        DAW for our WebAudio API based library{' '}
+        DAW for my WebAudio API based library{' '}
         <a href="https://github.com/alic3dev/zer0">ZER0</a>.
       </>
     ),
@@ -41,6 +43,7 @@ export const projects: Project[] = [
         }}
       />
     ),
+    technologies: ['vite', 'react', 'ts', 'sass'],
   },
   {
     title: 'Tirest',
@@ -69,6 +72,7 @@ export const projects: Project[] = [
         }}
       />
     ),
+    technologies: ['qwik', 'ts', 'sass'],
   },
   {
     title: 'Nature of Code',
@@ -95,6 +99,7 @@ export const projects: Project[] = [
         }}
       />
     ),
+    technologies: ['vite', 'react', 'ts', 'sass'],
   },
   {
     title: 'Kana Totsugeki',
@@ -120,6 +125,7 @@ export const projects: Project[] = [
         }}
       />
     ),
+    technologies: ['vite', 'react', 'ts', 'sass'],
   },
   // {
   //   title: 'Miscellaneous Magickal Tools',
@@ -148,5 +154,6 @@ export const projects: Project[] = [
   //       <GiBleedingEye className={styles.icon} aria-hidden />
   //     </div>
   //   ),
+  //   technologies: []
   // },
 ]
