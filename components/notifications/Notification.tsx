@@ -2,17 +2,16 @@ import type {
   NotificationContextInterface,
   NotificationInterface,
   NotificationLength,
-} from './types'
+} from '@/components/notifications/types'
 
 import React from 'react'
 import { IoIosClose } from 'react-icons/io'
 import { IoAlertCircleSharp } from 'react-icons/io5'
-
 import { PiCookie } from 'react-icons/pi'
 
-import { NotificationContext } from './NotificationContext'
+import { NotificationContext } from '@/components/notifications/NotificationContext'
 
-import styles from './Notification.module.scss'
+import styles from '@/components/notifications/Notification.module.scss'
 
 const lengthMSLookup: Record<NotificationLength, number> = {
   short: 2000,

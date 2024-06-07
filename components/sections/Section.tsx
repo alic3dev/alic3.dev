@@ -1,4 +1,4 @@
-import styles from './Section.module.scss'
+import styles from '@/components/sections/Section.module.scss'
 
 export function Section({
   name,

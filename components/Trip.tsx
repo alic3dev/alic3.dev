@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import styles from './Trip.module.scss'
+import styles from '@/components/Trip.module.scss'
 
 export function Trip(): JSX.Element {
   const [tripping, setTripping] = React.useState<boolean>(false)

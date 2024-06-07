@@ -2,10 +2,7 @@
 
 import type { ImageProps } from 'next/dist/shared/lib/get-img-props'
 
-import type {
-  ModalManagerInterface,
-  ModalContextInterface,
-} from '@/components/modals'
+import type { ModalContextInterface } from '@/components/modals'
 
 import React from 'react'
 import Image from 'next/image'
@@ -13,7 +10,7 @@ import Image from 'next/image'
 import { Spinner } from '@/components/decorative'
 import { ModalContext } from '@/components/modals'
 
-import styles from './ModalImage.module.scss'
+import styles from '@/components/ModalImage.module.scss'
 
 export function ModalImage({
   id,

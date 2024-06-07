@@ -1,13 +1,16 @@
 'use client'
 
-import type { ModalContextInterface, ModalInterface } from './types'
+import type {
+  ModalContextInterface,
+  ModalInterface,
+} from '@/components/modals/types'
 
 import React from 'react'
 
-import styles from './ModalContainer.module.scss'
+import styles from '@/components/modals/ModalContainer.module.scss'
 
-import { Modal } from './Modal'
-import { ModalContext } from './ModalContext'
+import { Modal } from '@/components/modals/Modal'
+import { ModalContext } from '@/components/modals/ModalContext'
 
 import { NoPageScroll } from '@/utils/useNoPageScroll'
 

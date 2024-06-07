@@ -1,10 +1,14 @@
+import type {
+  WritingCategoryData,
+  WritingCategoryPageData,
+} from '@/components/writings/types'
+
 import React from 'react'
 import Link from 'next/link'
 
-import type { WritingCategoryData, WritingCategoryPageData } from './types'
+import { cascadingDifferenceDisplay } from '@/utils/dates'
 
 import styles from '@/components/writings/Writings.module.scss'
-import { cascadingDifferenceDisplay } from '@/utils/dates'
 
 export function Writings({
   writingCategoriesData,

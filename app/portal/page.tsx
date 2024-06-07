@@ -7,7 +7,7 @@ import { PortalBackground } from '@/components/decorative'
 
 import { NoPageScroll } from '@/utils/useNoPageScroll'
 
-import styles from './page.module.scss'
+import styles from '@/app/portal/page.module.scss'
 
 export const metadata: Metadata = {
   title: 'Alic3.Dev - Portal',

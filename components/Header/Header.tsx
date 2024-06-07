@@ -9,7 +9,7 @@ import { Title } from '@/components/Header/Title'
 
 import { validLocations } from '@/utils/validLocations'
 
-import styles from './Header.module.scss'
+import styles from '@/components/Header/Header.module.scss'
 
 function getScrollRelationalLocation(
   scrollDepth: number,

@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { ScanLines } from '@/components/decorative'
 
-import styles from './PortalBackground.module.scss'
+import styles from '@/components/decorative/PortalBackground.module.scss'
 
 export function PortalBackground(): JSX.Element {
   const [imagesLoaded, setImagesLoaded] = React.useState<number>(0)

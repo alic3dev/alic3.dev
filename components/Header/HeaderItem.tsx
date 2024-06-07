@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from './HeaderItem.module.scss'
+import styles from '@/components/Header/HeaderItem.module.scss'
 
 export function HeaderItem({
   align,

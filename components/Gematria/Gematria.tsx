@@ -1,22 +1,22 @@
 'use client'
 
-import React from 'react'
-
-import * as gematria from '@/utils/gematria'
-
-import styles from './Gematria.module.scss'
-
 import type {
   GematriaState,
   GematriaAction,
   GematriaResult,
 } from '@/components/Gematria/Gematria.types'
 
+import React from 'react'
+
 import {
   gematriaStateReducer,
   defaultGematriaState,
   defaultGematriaStateInitializer,
 } from '@/components/Gematria/GematriaReducer'
+
+import * as gematria from '@/utils/gematria'
+
+import styles from '@/components/Gematria/Gematria.module.scss'
 
 export function Gematria(): JSX.Element {
   const [state, dispatch] = React.useReducer<

@@ -1,11 +1,14 @@
-import type { ModalContextInterface, ModalInterface } from './types'
+import type {
+  ModalContextInterface,
+  ModalInterface,
+} from '@/components/modals/types'
 
 import React from 'react'
 import { IoIosClose } from 'react-icons/io'
 
-import { ModalContext } from './ModalContext'
+import { ModalContext } from '@/components/modals/ModalContext'
 
-import styles from './Modal.module.scss'
+import styles from '@/components/modals/Modal.module.scss'
 
 export function Modal({ id, content }: ModalInterface): JSX.Element {
   const [closing, setClosing] = React.useState<boolean>(false)

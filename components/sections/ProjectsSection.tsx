@@ -7,7 +7,7 @@ import { Project } from '@/components/Project'
 
 import { projects } from '@/data/projects'
 
-import styles from './ProjectsSection.module.scss'
+import styles from '@/components/sections/ProjectsSection.module.scss'
 
 export function ProjectsSection(): JSX.Element {
   return (

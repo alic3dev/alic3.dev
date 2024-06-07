@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
-import styles from './LinksWithIcons.module.scss'
+import styles from '@/components/LinksWithIcons.module.scss'
 
 export interface Links {
   external?: string

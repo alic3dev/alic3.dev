@@ -3,15 +3,15 @@
 import type {
   NotificationContextInterface,
   NotificationInterface,
-} from './types'
+} from '@/components/notifications/types'
 
 import React from 'react'
 import Link from 'next/link'
 
-import styles from './NotificationContainer.module.scss'
+import { Notification } from '@/components/notifications/Notification'
+import { NotificationContext } from '@/components/notifications/NotificationContext'
 
-import { Notification } from './Notification'
-import { NotificationContext } from './NotificationContext'
+import styles from '@/components/notifications/NotificationContainer.module.scss'
 
 const cookieNoticeKey: string = 'alic3-dev:agreed-to-cookie-notice'
 
