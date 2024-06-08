@@ -29,6 +29,16 @@
   }
 }
 
+.links {
+  &.desktop {
+    display: block;
+  }
+
+  &.mobile {
+    display: none;
+  }
+}
+
 .info {
   width: 60%;
 }
@@ -58,6 +68,16 @@
 
     &.mobile {
       display: inline;
+    }
+  }
+
+  .links {
+    &.desktop {
+      display: none;
+    }
+
+    &.mobile {
+      display: block;
     }
   }
 
