@@ -36,3 +36,10 @@ next-env.d.ts
 
 # turbo
 .turbo
+
+# Generated data
+data/gematria/*
+
+# Build data
+data/enivid/sporp
+
