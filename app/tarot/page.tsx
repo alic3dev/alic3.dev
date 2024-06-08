@@ -1,5 +1,6 @@
-import React from 'react'
 import type { Metadata } from 'next'
+
+import React from 'react'
 
 import { Header, Tarot } from '@/components'
 import { NoPageScroll } from '@/utils/useNoPageScroll'

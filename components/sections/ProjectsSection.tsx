@@ -1,4 +1,4 @@
-'use client'
+import type { Project as ProjectData } from '@/data/projects'
 
 import React from 'react'
 
@@ -7,9 +7,7 @@ import { Project } from '@/components/Project'
 
 import { projects } from '@/data/projects'
 
-import type { Project as ProjectData } from '@/data/projects'
-
-import styles from './ProjectsSection.module.scss'
+import styles from '@/components/sections/ProjectsSection.module.scss'
 
 export function ProjectsSection(): JSX.Element {
   return (
@@ -18,11 +16,13 @@ export function ProjectsSection(): JSX.Element {
         <h2>Personal Projects</h2>
       </div>
 
-      {projects.map(
-        (project: ProjectData): React.ReactNode => (
-          <Project key={project.title} {...project} />
-        ),
-      )}
+      <div className={styles.projects}>
+        {projects.map(
+          (project: ProjectData): React.ReactNode => (
+            <Project key={project.title} {...project} />
+          ),
+        )}
+      </div>
     </Section>
   )
 }

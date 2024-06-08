@@ -19,6 +19,8 @@ body {
   background-color: colors.$dark-base;
 
   font-size: 10px;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
 
   box-sizing: border-box;
@@ -126,10 +128,6 @@ label {
     right: 1rem;
 
     opacity: 0.2;
-  }
-
-  input[type='checkbox'] {
-    margin-bottom: 2rem;
   }
 }
 

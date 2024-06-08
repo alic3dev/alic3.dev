@@ -3,20 +3,21 @@
 
 .project {
   position: relative;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  width: 90%;
+
+  max-width: 100%;
   margin: auto;
-  margin-top: 10rem;
 }
 
 .visualization {
   position: relative;
+
   width: 38%;
 
   margin: 0;
-  margin-top: 3rem;
 
   display: flex;
   justify-content: center;
@@ -25,6 +26,16 @@
   &.mobile {
     display: none;
     text-align: center;
+  }
+}
+
+.links {
+  &.desktop {
+    display: block;
+  }
+
+  &.mobile {
+    display: none;
   }
 }
 
@@ -39,12 +50,6 @@
 .description {
   margin-top: 1.5rem;
   padding: 2rem;
-
-  background: rgba(colors.$black, 0.1);
-
-  box-shadow: 0px 2px 4px rgba(colors.$black, 0.3);
-
-  word-break: break-all;
 }
 
 @media (max-width: breakpoints.$mobile) {
@@ -63,6 +68,16 @@
 
     &.mobile {
       display: inline;
+    }
+  }
+
+  .links {
+    &.desktop {
+      display: none;
+    }
+
+    &.mobile {
+      display: block;
     }
   }
 

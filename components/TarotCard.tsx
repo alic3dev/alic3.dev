@@ -44,7 +44,7 @@ import {
 
 import { Card, MinorArcanaCard } from '@/utils/TarotDeck'
 
-import styles from './TarotCard.module.scss'
+import styles from '@/components/TarotCard.module.scss'
 
 export interface CardWithInfo {
   id: string

@@ -1,4 +1,5 @@
 import type { Links } from '@/components/LinksWithIcons'
+import type { TechnologyName } from '@/components/decorative/TechnologyIcon'
 
 export interface WorkHistoryPosition {
   name: string
@@ -7,7 +8,7 @@ export interface WorkHistoryPosition {
   length?: string
   detailedLength?: string
   description: string[]
-  technologies: string[]
+  technologies: TechnologyName[]
   location?: 'Remote' | 'Hybrid-Remote' | 'Solo'
 }
 

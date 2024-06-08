@@ -1,4 +1,4 @@
-import styles from './LegalPageWrapper.module.scss'
+import styles from '@/components/legal/LegalPageWrapper.module.scss'
 
 export function LegalPageWrapper({
   children,

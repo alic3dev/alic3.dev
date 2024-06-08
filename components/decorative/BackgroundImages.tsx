@@ -1,7 +1,9 @@
-import React from 'react'
+'use client'
 
-import styles from './BackgroundImages.module.scss'
+import React from 'react'
 import Image from 'next/image'
+
+import styles from '@/components/decorative/BackgroundImages.module.scss'
 
 const defaultImages: string[] = [
   '/4a03107ee9f15ae9b82cedbaa4ee027f042f5d87.jpeg',

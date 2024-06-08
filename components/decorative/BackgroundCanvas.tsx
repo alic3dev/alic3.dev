@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from './BackgroundCanvas.module.scss'
+import styles from '@/components/decorative/BackgroundCanvas.module.scss'
 
 interface CanvasValues {
   size: number

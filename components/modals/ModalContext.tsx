@@ -4,7 +4,7 @@ import type {
   ModalInterface,
   ModalContextInterface,
   ModalManagerInterface,
-} from './types'
+} from '@/components/modals/types'
 
 import React from 'react'
 

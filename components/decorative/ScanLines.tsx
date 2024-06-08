@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import styles from './ScanLines.module.scss'
+import styles from '@/components/decorative/ScanLines.module.scss'
 
 export function ScanLines({
   resolution = { x: 2560, y: 2560 },

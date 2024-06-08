@@ -7,7 +7,7 @@ import { TarotCard, CardWithInfo } from '@/components/TarotCard'
 import { useTarotDeck } from '@/hooks'
 import { TarotDeck, Card } from '@/utils/TarotDeck'
 
-import styles from './Tarot.module.scss'
+import styles from '@/components/Tarot.module.scss'
 
 export function Tarot(): JSX.Element {
   const tarotDeck: TarotDeck = useTarotDeck()

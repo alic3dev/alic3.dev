@@ -8,7 +8,7 @@ import { Inconsolata } from 'next/font/google'
 
 import { Section } from '@/components/sections/Section'
 
-import styles from './FocusSection.module.scss'
+import styles from '@/components/sections/FocusSection.module.scss'
 
 const modernFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
