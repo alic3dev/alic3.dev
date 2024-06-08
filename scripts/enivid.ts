@@ -4,8 +4,16 @@ import path from 'path'
 
 import { readFile, writeFile } from '@/utils/server/files'
 
-import foundWordsFile from '@/data/enivid/sporp/found_words.json'
-import customAntonymsFile from '@/data/enivid/sporp/custom_antonyms.json'
+import _foundWordsFile from '@/data/enivid/sporp/found_words.json'
+import _customAntonymsFile from '@/data/enivid/sporp/custom_antonyms.json'
+
+interface FoundWord {
+  transformed: string
+  antonyms: string[]
+}
+
+const foundWordsFile = _foundWordsFile as Record<string, FoundWord>
+const customAntonymsFile = _customAntonymsFile as Record<string, string>
 
 interface Verse {
   id: number
@@ -511,7 +519,7 @@ async function lookupAntonymV1(input: string): Promise<string> {
   return matchCase(input, res)
 }
 
-const lookupAntonym: (string) => Promise<string> = lookupAntonymV2
+const lookupAntonym: (input: string) => Promise<string> = lookupAntonymV2
 
 interface BuildData {
   missingWords: string[]
