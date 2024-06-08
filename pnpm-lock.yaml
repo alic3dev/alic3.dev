@@ -30,8 +30,8 @@ importers:
         specifier: 18.2.21
         version: 18.2.21
       '@upstash/ratelimit':
-        specifier: ^1.1.3
-        version: 1.1.3
+        specifier: ^1.2.0
+        version: 1.2.0
       '@vercel/analytics':
         specifier: ^1.3.1
         version: 1.3.1(next@14.2.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.4))(react@18.2.0)
@@ -350,12 +350,12 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@upstash/core-analytics@0.0.8':
-    resolution: {integrity: sha512-MCJoF+Y8fkzq4NRLG7kEHjtGyMsZ2DICBdmEdwoK9umoSrfkzgBlYdZiHTIaewyt9PGaMZCHOasz0LAuMpxwxQ==}
+  '@upstash/core-analytics@0.0.9':
+    resolution: {integrity: sha512-9NXXxZ5y1/A/zqKLlVT7NsAWSggJfOjB0hG6Ffx29b4jbzHOiQVWB55h5+j2clT9Ib+mNPXn0iB5zN3aWLkICw==}
     engines: {node: '>=16.0.0'}
 
-  '@upstash/ratelimit@1.1.3':
-    resolution: {integrity: sha512-rl+GMvPdZJ9xPDIvIrqRl/g0nzAEaH75hwR5lXAKW8zPPplD/AeliDCHwuwcFCPIjg49FKyA1oc5H473WkVFrQ==}
+  '@upstash/ratelimit@1.2.0':
+    resolution: {integrity: sha512-03mNBUNz9EvIJCxhU0OtFWO3OSQE4gShFBlGph+hDPm9k7O75We1NYS/tCXSdmLVXtOvUGSmi5fyKQLBTEGWxw==}
 
   '@upstash/redis@1.25.1':
     resolution: {integrity: sha512-ACj0GhJ4qrQyBshwFgPod6XufVEfKX2wcaihsEvSdLYnY+m+pa13kGt1RXm/yTHKf4TQi/Dy2A8z/y6WUEOmlg==}
@@ -698,8 +698,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.4.794:
-    resolution: {integrity: sha512-6FApLtsYhDCY0Vglq3AptsdxQ+PJLc6AxlAM0HjEihUAiOPPbkASEsq9gtxUeZY9o0sJIEa3WnF0vVH4VT4iug==}
+  electron-to-chromium@1.4.795:
+    resolution: {integrity: sha512-hHo4lK/8wb4NUa+NJYSFyJ0xedNHiR6ylilDtb8NUW9d4dmBFmGiecYEKCEbti1wTNzbKXLfl4hPWEkAFbHYlw==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -2193,13 +2193,13 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@upstash/core-analytics@0.0.8':
+  '@upstash/core-analytics@0.0.9':
     dependencies:
       '@upstash/redis': 1.31.3
 
-  '@upstash/ratelimit@1.1.3':
+  '@upstash/ratelimit@1.2.0':
     dependencies:
-      '@upstash/core-analytics': 0.0.8
+      '@upstash/core-analytics': 0.0.9
 
   '@upstash/redis@1.25.1':
     dependencies:
@@ -2413,7 +2413,7 @@ snapshots:
   browserslist@4.23.0:
     dependencies:
       caniuse-lite: 1.0.30001629
-      electron-to-chromium: 1.4.794
+      electron-to-chromium: 1.4.795
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.0)
 
@@ -2557,7 +2557,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.4.794: {}
+  electron-to-chromium@1.4.795: {}
 
   emoji-regex@10.3.0: {}
 
