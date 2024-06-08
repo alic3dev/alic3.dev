@@ -215,6 +215,11 @@ button.collapsible-item-info-toggle-minimize {
     flex-direction: column;
   }
 
+  .collapsible-item-info-sub-title {
+    width: 100%;
+    padding-left: 0;
+  }
+
   button.collapsible-item-info-toggle-minimize {
     position: absolute;
     top: 1rem;

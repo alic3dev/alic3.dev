@@ -20,7 +20,11 @@ export function Project({
       key={title}
       id={`project|${title}`}
       title={title}
-      subTitle={<LinksWithIcons links={links} />}
+      subTitle={
+        <div className={`${styles.links} ${styles.desktop}`}>
+          <LinksWithIcons links={links} />
+        </div>
+      }
     >
       <div className={styles.project}>
         <figure className={`${styles.visualization} ${styles.desktop}`}>
@@ -32,19 +36,24 @@ export function Project({
             {visual}
           </figure>
 
-          <div className={styles.description}></div>
-          {Array.isArray(description) ? (
-            description.map(
-              (descriptionElement: JSX.Element): React.ReactNode =>
-                descriptionElement.type ? (
-                  <div key={descriptionElement.key}>{descriptionElement}</div>
-                ) : (
-                  <p key={descriptionElement.key}>{descriptionElement}</p>
-                ),
-            )
-          ) : (
-            <p>{description}</p>
-          )}
+          <div className={`${styles.links} ${styles.mobile}`}>
+            <LinksWithIcons links={links} />
+          </div>
+
+          <div className={styles.description}>
+            {Array.isArray(description) ? (
+              description.map(
+                (descriptionElement: JSX.Element): React.ReactNode =>
+                  descriptionElement.type ? (
+                    <div key={descriptionElement.key}>{descriptionElement}</div>
+                  ) : (
+                    <p key={descriptionElement.key}>{descriptionElement}</p>
+                  ),
+              )
+            ) : (
+              <p>{description}</p>
+            )}
+          </div>
 
           <TechnologyList technologies={technologies} />
         </div>

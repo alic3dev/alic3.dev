@@ -16,11 +16,13 @@ export function ProjectsSection(): JSX.Element {
         <h2>Personal Projects</h2>
       </div>
 
-      {projects.map(
-        (project: ProjectData): React.ReactNode => (
-          <Project key={project.title} {...project} />
-        ),
-      )}
+      <div className={styles.projects}>
+        {projects.map(
+          (project: ProjectData): React.ReactNode => (
+            <Project key={project.title} {...project} />
+          ),
+        )}
+      </div>
     </Section>
   )
 }
