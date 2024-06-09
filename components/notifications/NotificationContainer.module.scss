@@ -3,7 +3,7 @@
   bottom: 0;
   left: 0;
 
-  max-width: 450px;
+  max-width: min(450px, 100vw);
   max-height: calc(100vh - 100px);
 
   padding: 2rem;
