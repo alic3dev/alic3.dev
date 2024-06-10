@@ -1,161 +1,207 @@
+import type { Style } from '@react-pdf/types'
+
 import { StyleSheet } from '@react-pdf/renderer'
-import { Style } from '@react-pdf/types'
 
 import { variants } from '@catppuccin/palette'
 const { latte } = variants
 
-export const colors: { [color: string]: string } = {
-  accent: latte.sky.hex,
-  lightText: latte.text.hex,
+interface ResumeColors {
+  background: string
+
+  text: string
+  textLight: string
+  textLighter: string
+}
+
+export const colors: ResumeColors = {
+  background: '#ffffff',
+
+  text: latte.text.hex,
+  textLight: latte.subtext1.hex,
+  textLighter: latte.overlay0.hex,
+}
+
+interface ResumeFonts {
+  body: string
+  heading: string
+}
+
+const fonts: ResumeFonts = {
+  body: 'NotoSans-Regular',
+  heading: 'NotoSans-Bold',
 }
 
 export const styles: { [className: string]: Style } = StyleSheet.create({
   page: {
-    flexDirection: 'row-reverse',
-    flexWrap: 'wrap',
-    backgroundColor: '#FFF',
+    flexDirection: 'column',
+
+    maxHeight: '100vh',
+
+    backgroundColor: colors.background,
+    color: colors.text,
+
     fontSize: '12pt',
     fontWeight: 400,
-    fontFamily: 'Helvetica',
+    fontFamily: fonts.body,
   },
+
   header: {
     width: '100%',
-    paddingTop: '30pt',
-    paddingLeft: '20pt',
-    paddingBottom: '20pt',
-    backgroundColor: latte.text.hex,
-    color: latte.base.hex,
+
+    paddingTop: '15pt',
+    paddingBottom: '5pt',
+
+    textAlign: 'center',
   },
   headerName: {
-    marginBottom: '5pt',
+    marginBottom: '2pt',
+
     fontSize: '24pt',
+    letterSpacing: '1pt',
   },
   headerTitle: {
-    fontSize: '18pt',
-    color: 'rgba(255,255,255,0.75)',
+    color: colors.textLight,
+    fontSize: '14pt',
   },
-  fullContent: {
-    width: '100%',
-    padding: '20pt',
-    paddingBottom: '0pt',
+
+  contentContainer: {
+    flexDirection: 'row',
+    alignItems: 'start',
+    justifyContent: 'start',
+
+    height: '100%',
   },
   mainContent: {
-    height: '87.9795471524171%',
     width: '70%',
+
     padding: '20pt',
+    paddingLeft: '10pt',
     paddingBottom: '0',
   },
   sideContent: {
-    height: '87.9795471524171%',
+    alignSelf: 'baseline',
+
+    minHeight: '0%',
     width: '30%',
-    padding: '20pt 20pt',
-    paddingBottom: '0',
-    backgroundColor: latte.base.hex,
-  },
-  cvContact: {
-    marginTop: '10pt',
-    // marginBottom: '-10pt',
+
     paddingRight: '20pt',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    // color: 'rgba(255,255,255,0.75)',
-  },
-  cvContactText: {
-    // color: 'rgba(255,255,255,0.75)',
-    color: '#d2d3d9',
+
+    fontSize: '10pt',
   },
 
-  // cvContact: {
-  //   // marginTop: '5pt',
-  //   paddingLeft: '20pt',
-  //   paddingRight: '20pt',
-  //   width: '100%',
-  //   display: 'flex',
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   // color: 'rgba(255,255,255,0.75)',
-  //   backgroundColor: latte.base.hex,
-  // },
-  // cvContactText: {
-  //   // color: 'rgba(255,255,255,0.75)',
-  // },
   contentSection: {
-    paddingBottom: '40pt',
+    padding: '20pt 20pt',
+    paddingRight: '0pt',
   },
+
   heading: {
+    paddingBottom: '10pt',
+
+    color: colors.textLight,
     fontSize: '14pt',
-    fontFamily: 'Helvetica-Bold',
-    paddingBottom: '5pt',
-    marginBottom: '20pt',
-    borderBottom: `2pt solid ${colors.lightText}`,
+    fontFamily: fonts.heading,
+    textTransform: 'uppercase',
+    letterSpacing: '1pt',
+  },
+  experience: {
+    paddingLeft: '11pt',
   },
   subHeading: {
-    fontSize: '12pt',
-    fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
     marginTop: '20pt',
-    marginBottom: '20pt',
-    opacity: 0.8,
-    borderBottom: `1pt solid ${colors.lightText}`,
+    marginBottom: '5pt',
+
+    fontSize: '12pt',
+    fontFamily: fonts.heading,
   },
   subHeadingCompact: {
-    fontSize: '12pt',
-    fontFamily: 'Helvetica-Bold',
     paddingBottom: '5pt',
-    marginBottom: '20pt',
-    opacity: 0.8,
-    borderBottom: `1pt solid ${colors.lightText}`,
+    marginBottom: '5pt',
+
+    fontSize: '12pt',
+    fontFamily: fonts.heading,
   },
+
   company: {
-    marginBottom: '8pt',
-    borderBottom: `1pt solid ${colors.lightText}`,
+    marginBottom: '20pt',
+    paddingLeft: '10pt',
+
+    borderLeft: `1pt solid ${colors.textLighter}`,
+    borderTopLeftRadius: '5pt',
+    borderBottomLeftRadius: '5pt',
   },
-  companyName: {
-    alignSelf: 'flex-start',
-    marginBottom: '2pt',
-    fontSize: '11pt',
+
+  companyInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    color: colors.textLight,
+    fontSize: '10pt',
   },
+  companyName: {},
+  companyPositionLocation: {},
+
   companyPosition: {
-    marginBottom: '0pt',
+    marginBottom: '10pt',
   },
-  companyPositionName: {
-    marginBottom: '2pt',
-    fontFamily: 'Helvetica-Bold',
-  },
+
   companyPositionInfo: {
     flexDirection: 'row',
-    fontSize: '11pt',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  companyPositionLocation: {
-    color: colors.lightText,
+  companyPositionName: {
+    fontFamily: fonts.heading,
   },
   companyPositionLength: {
-    color: colors.lightText,
+    color: colors.textLight,
+    fontSize: '10pt',
   },
+
   companyPositionDescription: {
-    fontSize: '12pt',
     padding: '5pt 20pt',
     paddingLeft: '0pt',
+
+    color: '#000',
+    fontSize: '10pt',
+  },
+
+  educationShortName: {
+    fontFamily: fonts.heading,
   },
   educationName: {
-    alignSelf: 'flex-start',
-    fontFamily: 'Helvetica-Bold',
+    color: colors.textLight,
+    fontSize: '10pt',
   },
+  educationPositionLength: {
+    color: colors.textLight,
+    fontSize: '10pt',
+  },
+
   textContainer: {
     flexDirection: 'row',
+
     marginBottom: '5pt',
   },
   textContainerPosition: {
     flexDirection: 'row',
+
     marginBottom: '2pt',
   },
+
   sideContentText: {
-    color: colors.lightText,
+    color: colors.textLight,
   },
+
+  link: {
+    textDecoration: 'none',
+  },
+
   skillsText: {
-    color: colors.lightText,
+    color: colors.textLight,
   },
+
   icon: {
     marginRight: '5pt',
   },
