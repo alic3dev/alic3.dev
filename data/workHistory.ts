@@ -48,10 +48,10 @@ export const jobHistory: WorkHistoryCompany[] = [
         endDate: new Date('Sep 2022'),
         name: 'Full Stack Developer',
         description: [
-          'Developed components and pages in Typescript, React, and JSX.',
-          'Creation and support of Contentful CMS components.',
-          'Assisted in the reworking of donation processes and analytic systems to increase supporter conversion.',
-          'Enhanced developer experience and reduced friction through maintenance of configurations for linting, formatting, and typings.',
+          'Improved developer experience by maintaining configurations for linting, formatting, and typings.',
+          'Built components and pages using Typescript, React, and JSX.',
+          'Created and maintained Contentful CMS components.',
+          'Contributed to enhancing donation processes and analytic systems for higher supporter conversion rates.',
         ],
         technologies: ['ts', 'react', 'sass', 'postgresql'],
         location: 'Remote',
@@ -85,10 +85,10 @@ export const jobHistory: WorkHistoryCompany[] = [
 
         description: [
           'Development and maintenance of backend REST APIs.',
-          'Improvements to video streaming technologies including the introduction of encrypted HLS feeds through an FFMPEG processing pipeline to guard against content piracy.',
-          'Lead in vulnerability triaging and resolution through HackerOne.',
-          'Mobile app development with Apache Cordova.',
-          'Upgrades to Stripe payment processor allowing recurring subscription based payments with Recurly.',
+          'Enhanced video streaming technologies by implementing encrypted HLS feeds using an FFMPEG processing pipeline to prevent content piracy.',
+          'Led vulnerability triage and resolution efforts on HackerOne platform.',
+          'Created mobile apps with Apache Cordova framework.',
+          'Upgraded Stripe payment processor for managing recurring subscription payments via Recurly.',
         ],
         technologies: [
           'knockout',
@@ -111,8 +111,8 @@ export const jobHistory: WorkHistoryCompany[] = [
         location: 'Hybrid-Remote',
 
         description: [
-          'Maintenance of existing pages to keep up with the evolving standards of the codebases reducing technical debt.',
-          'Addressed user bug reports through replication and resolution.',
+          'Maintained existing pages to meet updated code standards and minimize technical debt.',
+          'Resolved user bug reports by reproducing and fixing issues.',
         ],
         technologies: ['knockout', 'less', 'pug'],
       },
@@ -162,8 +162,8 @@ export const freelancingHistory: WorkHistoryCompany[] = [
         location: 'Solo',
 
         description: [
-          'Rewrite of front-end code from jQuery/HTML to React/JSX.',
-          'Refactor of repository to follow modern standards and implement package management through NPM.',
+          'Rewrote front-end code from jQuery/HTML to React JSX.',
+          'Refactored repository to adhere to modern standards and integrated package management using NPM.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'react'],
       },
@@ -195,8 +195,8 @@ export const freelancingHistory: WorkHistoryCompany[] = [
         location: 'Solo',
 
         description: [
-          'Solo development of a front and back-end with PHP to implement public facing pages modifiable through an administrative interface.',
-          'Provided hosting/domain support via DigitalOcean and Namecheap.',
+          'Developed front and back-end using PHP for public facing pages editable via an admin interface.',
+          'Offered hosting and domain assistance through DigitalOcean and Namecheap.',
         ],
         technologies: ['html', 'sass', 'mysql', 'php', 'js', 'jquery'],
       },
