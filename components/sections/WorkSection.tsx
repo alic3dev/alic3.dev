@@ -1,4 +1,4 @@
-import type { WorkHistoryPosition } from '@/data/workHistory'
+import type { WorkHistoryPosition } from '@/data/workHistory.types'
 
 import React from 'react'
 import Link from 'next/link'

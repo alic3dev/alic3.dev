@@ -1,28 +1,12 @@
-import type { Links } from '@/components/LinksWithIcons'
-import type { TechnologyName } from '@/components/decorative/TechnologyIcon'
+import type {
+  ExperienceSummaries,
+  WorkHistoryCompany,
+} from './workHistory.types'
 
-export interface WorkHistoryPosition {
-  name: string
-  shortName?: string
-  focus?: string
-  length?: string
-  detailedLength?: string
-  startDate: Date
-  endDate: Date
-  description: string[]
-  technologies: TechnologyName[]
-  location?: 'Remote' | 'Hybrid-Remote' | 'Solo'
-}
-
-export interface WorkHistoryCompany {
-  name: string
-  length: string
-  detailedLength: string
-  startDate: Date
-  endDate: Date
-  location?: string
-  links?: Links
-  positions: WorkHistoryPosition[]
+export const experienceSummaries: ExperienceSummaries = {
+  full: 'Dynamic and detail-oriented Full Stack Developer with over five years of experience in developing and maintaining high-quality web applications. Proficient in TypeScript, React, and Node.js, with a strong background in creating and maintaining REST APIs, enhancing video streaming technologies, and improving developer experiences. Demonstrated ability to lead vulnerability triage and resolution, upgrade payment processors, and develop mobile apps. Adept at translating design files into functional web pages and optimizing code for performance and maintainability. Proven track record of increasing supporter conversion rates and adhering to modern development standards. Seeking to leverage my technical expertise and innovative problem-solving skills in a challenging development role.',
+  condensed:
+    'Experienced Full Stack Developer with 5+ years in TypeScript, React, and Node.js. Skilled in developing and maintaining REST APIs, enhancing video streaming, and improving developer experiences. Proven success in increasing supporter conversion rates and resolving security vulnerabilities. Seeking a challenging role to apply my technical expertise and innovative problem-solving skills.',
 }
 
 export const jobHistory: WorkHistoryCompany[] = [
