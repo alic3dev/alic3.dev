@@ -160,10 +160,11 @@ a.button,
 button,
 input[type='reset'],
 input[type='submit'] {
-  display: inline-block;
+  display: block;
 
-  margin: 0;
-  margin-left: 50%;
+  width: fit-content;
+
+  margin: auto;
   padding-top: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
@@ -177,7 +178,6 @@ input[type='submit'] {
 
   transition: color 300ms ease-in-out, background 150ms ease-in-out,
     border-bottom 150ms ease-in-out, opacity 200ms ease-in-out;
-  transform: translateX(-50%);
 
   cursor: pointer;
 
