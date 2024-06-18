@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 
 import React from 'react'
-import { Exo_2 } from 'next/font/google'
+import { Rubik } from 'next/font/google'
+
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
@@ -14,7 +15,7 @@ import {
 
 import '@/app/globals.scss'
 
-const bodyFont = Exo_2({ subsets: ['latin'] })
+const bodyFont = Rubik({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Alic3.Dev',
