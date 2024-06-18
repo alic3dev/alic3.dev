@@ -4,7 +4,7 @@ import type { ResumeInfo, PDFViewerType } from '@/components/Resume.types'
 import type {
   WorkHistoryCompany,
   WorkHistoryPosition,
-} from '@/data/workHistory'
+} from '@/data/workHistory.types'
 
 import React from 'react'
 import dynamic from 'next/dynamic'
