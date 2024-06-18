@@ -324,7 +324,7 @@ export function ContactSection(): JSX.Element {
                 className={styles['contact-form-overlay-icon']}
               />
 
-              <p>Your messsage has been sent, I&aposll be in contact soon</p>
+              <p>Your messsage has been sent, I&apos;ll be in contact soon</p>
             </>
           )}
         </div>
