@@ -34,7 +34,7 @@ importers:
         version: 1.2.1
       '@vercel/analytics':
         specifier: ^1.3.1
-        version: 1.3.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5))(react@18.2.0)
+        version: 1.3.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react@18.2.0)
       '@vercel/kv':
         specifier: ^1.0.1
         version: 1.0.1
@@ -43,7 +43,7 @@ importers:
         version: 0.7.2(kysely@0.27.3)
       '@vercel/speed-insights':
         specifier: ^1.0.12
-        version: 1.0.12(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5))(react@18.2.0)
+        version: 1.0.12(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react@18.2.0)
       autoprefixer:
         specifier: 10.4.18
         version: 10.4.18(postcss@8.4.35)
@@ -67,7 +67,7 @@ importers:
         version: 2.2.3
       next:
         specifier: ^14.2.4
-        version: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5)
+        version: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6)
       nodemailer:
         specifier: ^6.9.13
         version: 6.9.13
@@ -103,8 +103,8 @@ importers:
         specifier: ^0.1.13
         version: 0.1.13
       sass:
-        specifier: ^1.77.5
-        version: 1.77.5
+        specifier: ^1.77.6
+        version: 1.77.6
 
 packages:
 
@@ -294,8 +294,8 @@ packages:
   '@types/node-fetch@2.6.11':
     resolution: {integrity: sha512-24xFj9R5+rfQJLRyM56qh+wnVSYhyXC2tkoBndtY0U+vubqNsYXGjufB2nn8Q6gt0LrARwL6UBtMCSVCwl4B1g==}
 
-  '@types/node@18.19.34':
-    resolution: {integrity: sha512-eXF4pfBNV5DAMKGbI02NnDtWrQ40hAN558/2vvS4gMpMIxaf6JmD7YjnZbq0Q9TDSSkKBamime8ewRoomHdt4g==}
+  '@types/node@18.19.36':
+    resolution: {integrity: sha512-tX1BNmYSWEvViftB26VLNxT6mEr37M7+ldUtq7rlKnv4/2fKYsJIOmqJAjT6h1DNuwQjIKgw3VJ/Dtw3yiTIQw==}
 
   '@types/node@20.11.25':
     resolution: {integrity: sha512-TBHyJxk2b7HceLVGFcpAUjsa5zIdsPWlR6XHfyGzd0SFu+/NFgQgMAl96MSDZgQDvJAvV6BKsFOrt6zIL09JDw==}
@@ -576,8 +576,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001634:
-    resolution: {integrity: sha512-fbBYXQ9q3+yp1q1gBk86tOFs4pyn/yxFm5ZNP18OXJDfA3txImOY9PhfxVggZ4vRHDqoU8NrKU81eN0OtzOgRA==}
+  caniuse-lite@1.0.30001636:
+    resolution: {integrity: sha512-bMg2vmr8XBsbL6Lr0UHXy/21m84FTxDLWn2FSqMd5PrlbMxwJlQnC2YWYxVgp66PZE+BBNF2jYQUBKCo1FDeZg==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -700,8 +700,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.4.803:
-    resolution: {integrity: sha512-61H9mLzGOCLLVsnLiRzCbc63uldP0AniRYPV3hbGVtONA1pI7qSGILdbofR7A8TMbOypDocEAjH/e+9k1QIe3g==}
+  electron-to-chromium@1.4.805:
+    resolution: {integrity: sha512-8W4UJwX/w9T0QSzINJckTKG6CYpAUTqsaWcWIsdud3I1FYJcMgW9QqT1/4CBff/pP/TihWh13OmiyY8neto6vw==}
 
   emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}
@@ -820,8 +820,8 @@ packages:
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
 
-  eslint-plugin-react@7.34.2:
-    resolution: {integrity: sha512-2HCmrU+/JNigDN6tg55cRDKCQWicYAPB38JGSFDQt95jDm8rrvSUo7YPkOIm5l6ts1j1zCvysNcasvfTMQzUOw==}
+  eslint-plugin-react@7.34.3:
+    resolution: {integrity: sha512-aoW4MV891jkUulwDApQbPYTVZmeuSyFrudpbTAQuj5Fv8VL+o6df2xIGpw8B0hPjAaih1/Fb0om9grCdyFYemA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -1591,8 +1591,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass@1.77.5:
-    resolution: {integrity: sha512-oDfX1mukIlxacPdQqNb6mV2tVCrnE+P3nVYioy72V5tlk56CPNcO4TCuFcaCRKKfJ1M3lH95CleRS+dVKL2qMg==}
+  sass@1.77.6:
+    resolution: {integrity: sha512-ByXE1oLD79GVq9Ht1PeHWCPMPB8XHpBuz1r85oByKHjZY6qV6rWnQovQzXJXuQ/XyE1Oj3iPk3lo28uzaRA2/Q==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -2121,7 +2121,7 @@ snapshots:
       '@types/node': 20.11.25
       form-data: 4.0.0
 
-  '@types/node@18.19.34':
+  '@types/node@18.19.36':
     dependencies:
       undici-types: 5.26.5
 
@@ -2211,11 +2211,11 @@ snapshots:
     dependencies:
       crypto-js: 4.2.0
 
-  '@vercel/analytics@1.3.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5))(react@18.2.0)':
+  '@vercel/analytics@1.3.1(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react@18.2.0)':
     dependencies:
       server-only: 0.0.1
     optionalDependencies:
-      next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5)
+      next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6)
       react: 18.2.0
 
   '@vercel/kv@1.0.1':
@@ -2234,9 +2234,9 @@ snapshots:
       utf-8-validate: 6.0.3
       ws: 8.14.2(bufferutil@4.0.8)(utf-8-validate@6.0.3)
 
-  '@vercel/speed-insights@1.0.12(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5))(react@18.2.0)':
+  '@vercel/speed-insights@1.0.12(next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6))(react@18.2.0)':
     optionalDependencies:
-      next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5)
+      next: 14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6)
       react: 18.2.0
 
   abort-controller@3.0.0:
@@ -2364,7 +2364,7 @@ snapshots:
   autoprefixer@10.4.18(postcss@8.4.35):
     dependencies:
       browserslist: 4.23.1
-      caniuse-lite: 1.0.30001634
+      caniuse-lite: 1.0.30001636
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
@@ -2414,8 +2414,8 @@ snapshots:
 
   browserslist@4.23.1:
     dependencies:
-      caniuse-lite: 1.0.30001634
-      electron-to-chromium: 1.4.803
+      caniuse-lite: 1.0.30001636
+      electron-to-chromium: 1.4.805
       node-releases: 2.0.14
       update-browserslist-db: 1.0.16(browserslist@4.23.1)
 
@@ -2437,7 +2437,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001634: {}
+  caniuse-lite@1.0.30001636: {}
 
   chalk@4.1.2:
     dependencies:
@@ -2559,7 +2559,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.4.803: {}
+  electron-to-chromium@1.4.805: {}
 
   emoji-regex@10.3.0: {}
 
@@ -2682,7 +2682,7 @@ snapshots:
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.2))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
-      eslint-plugin-react: 7.34.2(eslint@8.57.0)
+      eslint-plugin-react: 7.34.3(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
     optionalDependencies:
       typescript: 5.4.2
@@ -2777,7 +2777,7 @@ snapshots:
     dependencies:
       eslint: 8.57.0
 
-  eslint-plugin-react@7.34.2(eslint@8.57.0):
+  eslint-plugin-react@7.34.3(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlast: 1.2.5
@@ -3308,12 +3308,12 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.5):
+  next@14.2.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sass@1.77.6):
     dependencies:
       '@next/env': 14.2.4
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001634
+      caniuse-lite: 1.0.30001636
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.2.0
@@ -3329,7 +3329,7 @@ snapshots:
       '@next/swc-win32-arm64-msvc': 14.2.4
       '@next/swc-win32-ia32-msvc': 14.2.4
       '@next/swc-win32-x64-msvc': 14.2.4
-      sass: 1.77.5
+      sass: 1.77.6
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
@@ -3406,7 +3406,7 @@ snapshots:
 
   openai@4.51.0(encoding@0.1.13):
     dependencies:
-      '@types/node': 18.19.34
+      '@types/node': 18.19.36
       '@types/node-fetch': 2.6.11
       abort-controller: 3.0.0
       agentkeepalive: 4.5.0
@@ -3603,7 +3603,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass@1.77.5:
+  sass@1.77.6:
     dependencies:
       chokidar: 3.6.0
       immutable: 4.3.6
