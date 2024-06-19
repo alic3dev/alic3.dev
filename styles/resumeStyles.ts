@@ -54,6 +54,23 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontSize: '14pt',
   },
 
+  summary: {
+    paddingLeft: '20pt',
+    // paddingRight: '20pt',
+    paddingBottom: '20pt',
+    color: colors.textDark,
+    fontSize: '10pt',
+  },
+
+  summaryT: {
+    paddingTop: '10pt',
+    paddingLeft: '33pt',
+    paddingRight: '33pt',
+    paddingBottom: '10pt',
+    color: colors.textDark,
+    fontSize: '10pt',
+  },
+
   contentContainer: {
     flexDirection: 'row',
     alignItems: 'start',
@@ -66,7 +83,8 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
 
     padding: '20pt',
     paddingLeft: '10pt',
-    paddingBottom: '0',
+    paddingRight: '10pt',
+    paddingBottom: '0pt',
   },
   sideContent: {
     alignSelf: 'baseline',
@@ -150,10 +168,10 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
 
   companyPositionDescription: {
-    padding: '5pt 20pt',
+    padding: '5pt',
     paddingLeft: '0pt',
 
-    color: '#000',
+    color: colors.textDark,
     fontSize: '10pt',
   },
 
