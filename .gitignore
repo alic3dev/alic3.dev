@@ -41,7 +41,8 @@ next-env.d.ts
 data/gematria/*
 
 # Build data
-data/enivid/sporp
+data/enivid/sporp/
+data/enivid/sporp/*
 
 # OpenAI data
 data/openai
