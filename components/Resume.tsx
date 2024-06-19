@@ -15,7 +15,7 @@ import {
   jobHistory,
   educationHistory,
   skills,
-  freelancingHistory,
+  experienceSummaries,
 } from '@/data/workHistory'
 
 import { icons } from '@/utils/resumeIcons'
@@ -196,6 +196,12 @@ export function Resume(): JSX.Element {
 
           <View style={styles.contentContainer}>
             <View style={styles.mainContent}>
+              <Text style={[styles.heading, styles.experience]}>Summary</Text>
+
+              <Text style={styles.summary}>
+                {experienceSummaries.condensed}
+              </Text>
+
               <Text style={[styles.heading, styles.experience]}>
                 Professional Experience
               </Text>
