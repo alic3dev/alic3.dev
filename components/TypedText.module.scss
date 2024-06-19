@@ -1,0 +1,32 @@
+@keyframes letter-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes letter-rainbow {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.letter {
+  opacity: 0;
+
+  animation: letter-fade-in 150ms ease-in-out 0ms 1 forwards;
+
+  &.slow {
+    animation-duration: 900ms;
+  }
+
+  &.rainbow {
+    animation: letter-fade-in 150ms ease-in-out 0ms 1 forwards,
+      letter-rainbow 4000ms ease-in 3500ms infinite;
+  }
+}
