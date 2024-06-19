@@ -12,10 +12,9 @@ body {
   padding: 0;
   margin: 0;
 
-  color: colors.$text;
+  background-color: colors.$base;
 
-  background: linear-gradient(colors.$base, colors.$dark-base);
-  background-color: colors.$dark-base;
+  color: colors.$text;
 
   font-size: 10px;
   letter-spacing: 0.5px;
