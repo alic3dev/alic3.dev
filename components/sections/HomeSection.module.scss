@@ -1,69 +1,142 @@
-@use '@/styles/utils/colors';
 @use '@/styles/utils/breakpoints';
 
 @use '@/components/sections/Section.module.scss';
 
 .section {
+  display: flex;
+
   margin-bottom: 10rem;
+}
+
+.intro {
+  color: rgba(var(--color-text-raw), 0.7);
+
+  width: 270px;
+
+  margin: auto;
 }
 
 .header {
   position: relative;
 
-  padding: 10rem 8rem;
-  padding-bottom: 6rem;
+  height: 60px;
+
+  padding: 0;
+  margin: 0;
 
   font-size: 4rem;
   font-weight: 400;
-
-  color: transparentize(colors.$text, 0.3);
 }
 
-.web-dev {
-  font-weight: 700;
-  color: colors.$text;
-}
-
-.profile {
+.subheader {
   position: relative;
-  float: right;
-  margin-right: 6rem;
-  width: 333px;
-  height: 333px;
-  object-fit: cover;
-  object-position: center;
-  border: 2px solid colors.$black;
-  border-radius: 33px;
+
+  height: 30px;
+
+  padding: 0;
+  margin: 0;
+
+  font-size: 2rem;
+  font-weight: 400;
 }
 
-@media (max-width: breakpoints.$mobile) {
-  .header {
-    padding: 8rem 2rem;
-    padding-bottom: 1rem;
-    text-align: center;
+.emoji {
+  position: relative;
+
+  display: inline-block;
+  height: 68px;
+  width: 30px;
+
+  color: #ffffff;
+
+  font-size: 3rem;
+  line-height: 6rem;
+
+  vertical-align: top;
+
+  & > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    transition: opacity 10ms ease-in-out;
+
+    user-select: none;
   }
 
-  .full-stack {
-    display: block;
+  & > span:last-child {
+    opacity: 0;
   }
 
-  .profile {
-    width: 30vw;
-    height: 30vw;
-    margin-top: 3rem;
+  &.allow-hidden > span {
+    cursor: pointer;
   }
+
+  &.allow-hidden:hover {
+    & > span:first-child {
+      opacity: 0;
+    }
+
+    & > span:last-child {
+      opacity: 1;
+    }
+  }
+}
+
+.bold {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.description {
+  width: 800px;
+  max-width: 80vw;
+
+  margin: auto;
+  padding-top: 4rem;
+}
+
+.spacer {
+  width: 90vw;
+  height: 30vh;
+}
+
+// @media (max-width: breakpoints.$mobile) {
+//   .header {
+//     text-align: center;
+//   }
+
+//   .full-stack {
+//     display: block;
+//   }
+
+//   .profile {
+//     width: 30vw;
+//     height: 30vw;
+//     margin-top: 3rem;
+//   }
+// }
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }
 
 @media (max-width: 700px) {
-  .web-dev-end {
-    display: none;
+  .spacer {
+    height: 20vh;
   }
+  //   .web-dev-end {
+  //     display: none;
+  //   }
 
-  .profile {
-    float: none;
-    margin: 0;
-    margin-left: 40vw;
-    width: 20vw;
-    height: 20vw;
-  }
+  //   .profile {
+  //     float: none;
+  //     margin: 0;
+  //     margin-left: 40vw;
+  //     width: 20vw;
+  //     height: 20vw;
+  //   }
 }

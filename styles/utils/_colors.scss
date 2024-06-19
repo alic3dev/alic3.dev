@@ -1,12 +1,84 @@
-@import '@catppuccin/palette/scss/mocha';
+@mixin set-color($flavor, $color) {
+  --color-#{$color}: var(--ctp-#{$flavor}-#{$color});
+  --color-#{$color}-rgb: var(--ctp-#{$flavor}-#{$color}-rgb);
+  --color-#{$color}-hsl: var(--ctp-#{$flavor}-#{$color}-hsl);
+  --color-#{$color}-raw: var(--ctp-#{$flavor}-#{$color}-raw);
+}
 
-$dark-base: darken($base, 1%);
+@mixin set-flavor-colors($flavor) {
+  @include set-color($flavor, 'rosewater');
+  @include set-color($flavor, 'flamingo');
+  @include set-color($flavor, 'pink');
+  @include set-color($flavor, 'mauve');
+  @include set-color($flavor, 'red');
+  @include set-color($flavor, 'maroon');
+  @include set-color($flavor, 'peach');
+  @include set-color($flavor, 'yellow');
+  @include set-color($flavor, 'green');
+  @include set-color($flavor, 'teal');
+  @include set-color($flavor, 'sky');
+  @include set-color($flavor, 'sapphire');
+  @include set-color($flavor, 'blue');
+  @include set-color($flavor, 'lavender');
+  @include set-color($flavor, 'text');
+  @include set-color($flavor, 'subtext1');
+  @include set-color($flavor, 'subtext0');
+  @include set-color($flavor, 'overlay2');
+  @include set-color($flavor, 'overlay1');
+  @include set-color($flavor, 'overlay0');
+  @include set-color($flavor, 'surface2');
+  @include set-color($flavor, 'surface1');
+  @include set-color($flavor, 'surface0');
+  @include set-color($flavor, 'crust');
+  @include set-color($flavor, 'mantle');
+  @include set-color($flavor, 'base');
+}
 
-$white: #fff;
-$black: #000;
+@mixin set-base-colors {
+  --color-white: #ffffff;
+  --color-white-rgb: rgb(255, 255, 255);
+  --color-white-hsl: hsl(0, 0%, 100%);
+  --color-white-raw: 255, 255, 255;
 
-$primary-red: #f00;
-$primary-green: #0f0;
-$primary-blue: #00f;
+  --color-black: #000000;
+  --color-black-rgb: rgb(0, 0, 0);
+  --color-black-hsl: hsl(0, 0%, 0%);
+  --color-black-raw: 0, 0, 0;
 
-$textlight: #eaefff;
+  --color-primary-red: #ff0000;
+  --color-primary-red-rgb: rgb(255, 0, 0);
+  --color-primary-red-hsl: hsl(0, 100%, 50%);
+  --color-primary-red-raw: 255, 0, 0;
+
+  --color-primary-green: #00ff00;
+  --color-primary-green-rgb: rgb(0, 255, 0);
+  --color-primary-green-hsl: hsl(120, 100%, 50%);
+  --color-primary-green-raw: 0, 255, 0;
+
+  --color-primary-blue: #0000ff;
+  --color-primary-blue-rgb: rgb(0, 0, 255);
+  --color-primary-blue-hsl: hsl(240, 100%, 50%);
+  --color-primary-blue-raw: 0, 0, 255;
+}
+
+@mixin set-light-colors {
+  :root {
+    @include set-base-colors();
+
+    // @include set-flavor-colors('frappe');
+    @include set-flavor-colors('latte');
+
+    --color-text-light: #eaefff;
+  }
+}
+
+@mixin set-dark-colors {
+  :root {
+    @include set-base-colors();
+
+    // @include set-flavor-colors('mocha');
+    @include set-flavor-colors('macchiato');
+
+    --color-text-light: #eaefff;
+  }
+}

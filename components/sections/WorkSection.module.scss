@@ -1,4 +1,3 @@
-@use '@/styles/utils/colors';
 @use '@/styles/utils/breakpoints';
 
 @use '@/components/sections/Section.module.scss';
@@ -54,10 +53,10 @@
 
 .work-item-seperator {
   background: linear-gradient(
-    colors.$base,
-    colors.$text 5%,
-    colors.$text 95%,
-    colors.$base
+    var(--color-base),
+    var(--color-text) 5%,
+    var(--color-text) 95%,
+    var(--color-base)
   );
 
   width: 1px;

@@ -48,11 +48,11 @@
 
   font-size: 0.75em;
 
-  color: lighten(#a6adc8, 2.5%);
+  color: var(--color-subtext1);
 }
 
 .posted-value {
-  color: lighten(#a6adc8, 10%);
+  color: var(--color-subtext1);
 }
 
 .writing {

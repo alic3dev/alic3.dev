@@ -1,15 +1,13 @@
-@use '@/styles/utils/colors';
-
 @keyframes addborder {
   0% {
-    color: colors.$subtext1;
-    border: 2px solid rgba(colors.$text, 0);
+    color: var(--color-subtext1);
+    border: 2px solid rgba(var(--color-text), 0);
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
   }
   100% {
-    color: colors.$text;
-    border: 2px solid rgba(colors.$text, 0.25);
+    color: var(--color-text);
+    border: 2px solid rgba(var(--color-text), 0.25);
     border-top: 2px solid transparent;
     border-left: 2px solid transparent;
   }
@@ -17,12 +15,12 @@
 
 @keyframes addBeforeborder {
   0% {
-    border: 1px solid rgba(colors.$blue, 0);
+    border: 1px solid rgba(var(--color-blue-raw), 0);
     border-bottom: none;
     border-right: none;
   }
   100% {
-    border: 1px solid rgba(colors.$blue, 1);
+    border: 1px solid rgba(var(--color-blue-raw), 1);
     border-bottom: none;
     border-right: none;
   }
@@ -30,12 +28,12 @@
 
 @keyframes addAfterborder {
   0% {
-    border: 1px solid rgba(colors.$text, 0);
+    border: 1px solid rgba(var(--color-text), 0);
     border-bottom: none;
     border-right: none;
   }
   100% {
-    border: 1px solid rgba(colors.$text, 1);
+    border: 1px solid rgba(var(--color-text), 1);
     border-bottom: none;
     border-right: none;
   }
@@ -61,11 +59,11 @@
   &:focus,
   &:hover {
     text-decoration: none;
-    color: colors.$subtext0;
+    color: var(--color-subtext0);
   }
 
   &:hover {
-    color: colors.$subtext1;
+    color: var(--color-subtext1);
     transition: color 200ms ease-in-out;
   }
 }
@@ -84,7 +82,7 @@
     top: -15px;
     bottom: 1px;
 
-    border: 1px solid rgba(colors.$blue, 0);
+    border: 1px solid rgba(var(--color-blue-raw), 0);
     border-bottom: none;
     border-right: none;
     border-radius: 2px;
@@ -102,7 +100,7 @@
     top: -10px;
     bottom: -3px;
 
-    border: 2px solid rgba(colors.$text, 0);
+    border: 2px solid rgba(var(--color-text), 0);
     border-bottom: none;
     border-right: none;
     border-radius: 2px;
