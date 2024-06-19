@@ -168,10 +168,7 @@ const EducationView = ({
   </View>
 )
 
-const professionalExperience: WorkHistoryCompany[] = [
-  ...jobHistory,
-  ...freelancingHistory,
-].sort(
+const professionalExperience: WorkHistoryCompany[] = [...jobHistory].sort(
   (a: WorkHistoryCompany, b: WorkHistoryCompany): number =>
     b.startDate.valueOf() - a.startDate.valueOf(),
 )
