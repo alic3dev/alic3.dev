@@ -1,4 +1,4 @@
-import { Footer, Header, ConMisc } from '@/components'
+import { Footer, Header } from '@/components'
 import {
   ContactSection,
   HomeSection,
@@ -17,8 +17,6 @@ export default function RootPage(): JSX.Element {
       <Footer />
 
       <Header />
-
-      <ConMisc />
     </main>
   )
 }
