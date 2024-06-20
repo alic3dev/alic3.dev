@@ -30,8 +30,6 @@ function getScrollRelationalLocation(
       return location
   }
 
-  // FIXME: Check for closest location *above* scroll depth
-
   return null
 }
 

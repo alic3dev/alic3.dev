@@ -1,41 +1,29 @@
 @keyframes addborder {
   0% {
     color: var(--color-subtext1);
-    border: 2px solid rgba(var(--color-text), 0);
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
+    border-color: rgba(var(--color-text-raw), 0);
   }
   100% {
     color: var(--color-text);
-    border: 2px solid rgba(var(--color-text), 0.25);
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
+    border-color: rgba(var(--color-text-raw), 0.25);
   }
 }
 
 @keyframes addBeforeborder {
   0% {
-    border: 1px solid rgba(var(--color-blue-raw), 0);
-    border-bottom: none;
-    border-right: none;
+    border-color: rgba(var(--color-blue-raw), 0);
   }
   100% {
-    border: 1px solid rgba(var(--color-blue-raw), 1);
-    border-bottom: none;
-    border-right: none;
+    border-color: rgba(var(--color-blue-raw), 0.5);
   }
 }
 
 @keyframes addAfterborder {
   0% {
-    border: 1px solid rgba(var(--color-text), 0);
-    border-bottom: none;
-    border-right: none;
+    border-color: rgba(var(--color-blue-raw), 0);
   }
   100% {
-    border: 1px solid rgba(var(--color-text), 1);
-    border-bottom: none;
-    border-right: none;
+    border-color: rgba(var(--color-blue-raw), 0.75);
   }
 }
 
@@ -45,8 +33,13 @@
 
   padding: 0.5rem;
 
-  border: 2px solid transparent;
+  border: 1px solid rgba(var(--color-text-raw), 0);
+  border-top: none;
+  border-left: none;
+
   border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 
   font-size: 1.6rem;
   text-transform: capitalize;
@@ -77,19 +70,20 @@
   &::before {
     content: '';
     position: absolute;
-    left: -8px;
-    right: 8px;
-    top: -15px;
-    bottom: 1px;
+    left: -5px;
+    right: 9px;
+    top: -13px;
+    bottom: 2px;
 
     border: 1px solid rgba(var(--color-blue-raw), 0);
     border-bottom: none;
     border-right: none;
+
     border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 
     pointer-events: none;
-
-    opacity: 0.25;
   }
 
   &::after {
@@ -100,14 +94,15 @@
     top: -10px;
     bottom: -3px;
 
-    border: 2px solid rgba(var(--color-text), 0);
+    border: 1px solid rgba(var(--color-blue-raw), 0);
     border-bottom: none;
     border-right: none;
+
     border-radius: 2px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
 
     pointer-events: none;
-
-    opacity: 0.5;
   }
 
   &.active {
