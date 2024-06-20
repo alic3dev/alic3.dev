@@ -1,11 +1,13 @@
 'use client'
 
 import React from 'react'
+
 import { GiDiamondsSmile, GiGluttonousSmile } from 'react-icons/gi'
 import Link from 'next/link'
 
 import { HeaderItem } from '@/components/Header/HeaderItem'
 import { Title } from '@/components/Header/Title'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 import { validLocations } from '@/utils/validLocations'
 
@@ -64,14 +66,16 @@ function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
   )
 
   return {
-    background: `rgba(var(--color-mantle-raw), ${
-      scrollDepthIntroMapped * 0.9
-    })`,
+    background: `linear-gradient(
+      to bottom,
+      rgba(var(--color-mantle-raw), 1),
+      rgba(var(--color-mantle-raw), ${scrollDepthIntroMapped * 0.9})
+    )`,
     boxShadow: `0 -5px 10px rgba(var(--color-crust-raw), ${scrollDepthIntroMapped})`,
   }
 }
 
-export function FullHeader(): JSX.Element {
+export function FullHeader({ noBg = false }: { noBg?: boolean }): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(0)
   const headerStyles = useHeaderStyles(scrollDepth)
 
@@ -120,7 +124,10 @@ export function FullHeader(): JSX.Element {
   )
 
   return (
-    <header className={styles.header} style={headerStyles}>
+    <header
+      className={`${styles.header} ${noBg ? styles.backgroundless : ''}`}
+      style={noBg ? {} : headerStyles}
+    >
       <Title />
 
       <nav className={styles['navigation-header']}>
@@ -160,11 +167,17 @@ export function FullHeader(): JSX.Element {
         <GiDiamondsSmile />
         <GiGluttonousSmile />
       </Link>
+
+      <ThemeToggle />
     </header>
   )
 }
 
-export function MinimalHeader(): JSX.Element {
+export function MinimalHeader({
+  noBg = false,
+}: {
+  noBg?: boolean
+}): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
   const headerStyles = useHeaderStyles(scrollDepth)
 
@@ -174,7 +187,10 @@ export function MinimalHeader(): JSX.Element {
   }, [])
 
   return (
-    <div className={styles['header']} style={headerStyles}>
+    <div
+      className={`${styles.header} ${noBg ? styles.backgroundless : ''}`}
+      style={noBg ? {} : headerStyles}
+    >
       <Title />
     </div>
   )
@@ -182,8 +198,10 @@ export function MinimalHeader(): JSX.Element {
 
 export function Header({
   minimal = false,
+  noBg = false,
 }: {
   minimal?: boolean
+  noBg?: boolean
 }): JSX.Element {
-  return minimal ? <MinimalHeader /> : <FullHeader />
+  return minimal ? <MinimalHeader noBg={noBg} /> : <FullHeader noBg={noBg} />
 }

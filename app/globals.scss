@@ -2,11 +2,21 @@
 
 @import '@catppuccin/palette/style';
 
-@media (prefers-color-scheme: light) {
+:root {
+  @media (prefers-color-scheme: light) {
+    @include colors.set-light-colors;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include colors.set-dark-colors;
+  }
+}
+
+body.light {
   @include colors.set-light-colors;
 }
 
-@media (prefers-color-scheme: dark) {
+body.dark {
   @include colors.set-dark-colors;
 }
 

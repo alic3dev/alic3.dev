@@ -6,12 +6,16 @@ import { Rubik } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
+import { ModalContainer } from '@/components/modals'
+import { NotificationContainer } from '@/components/notifications'
+
 import { AllPolyfills } from '@/polyfills'
 
 import {
-  NotificationContainer,
+  ModalContextWrapper,
   NotificationContextWrapper,
-} from '@/components/notifications'
+  ThemeContextWrapper,
+} from '@/contexts'
 
 import '@/app/globals.scss'
 
@@ -32,9 +36,11 @@ function ContextWrappers({
   children,
 }: React.PropsWithChildren): React.ReactElement {
   return (
-    <ModalContextWrapper>
-      <NotificationContextWrapper>{children}</NotificationContextWrapper>
-    </ModalContextWrapper>
+    <ThemeContextWrapper>
+      <ModalContextWrapper>
+        <NotificationContextWrapper>{children}</NotificationContextWrapper>
+      </ModalContextWrapper>
+    </ThemeContextWrapper>
   )
 }
 

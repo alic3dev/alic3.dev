@@ -19,6 +19,12 @@
   line-height: normal;
 
   z-index: 10;
+
+  &.backgroundless {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
 }
 
 .navigation-header {
@@ -37,6 +43,7 @@ a.header-icon {
 
   padding: 2rem;
   margin: 0;
+  margin-right: 2rem;
 
   background: none;
   border: none;
@@ -90,6 +97,6 @@ a.header-icon {
 
 @media (max-width: 750px) {
   .navigation-header {
-    visibility: hidden;
+    display: none;
   }
 }
