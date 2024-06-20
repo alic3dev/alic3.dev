@@ -35,26 +35,6 @@ function getScrollRelationalLocation(
   return null
 }
 
-function HeaderBackground({
-  scrollDepth,
-}: {
-  scrollDepth: number | null
-}): JSX.Element {
-  const scrollDepthIntroMapped: number = React.useMemo<number>(
-    (): number => Math.min(1, (scrollDepth || 0) / 300),
-    [scrollDepth],
-  )
-
-  return (
-    <div
-      className={styles['header-background']}
-      style={{
-        opacity: scrollDepthIntroMapped,
-      }}
-    />
-  )
-}
-
 function onScroll(run: (scrollY: number) => void): () => void {
   let waitingForAnimationFrame: boolean = false
   let animationFrameHandle: number
@@ -73,14 +53,30 @@ function onScroll(run: (scrollY: number) => void): () => void {
 
   document.addEventListener('scroll', _scrollEventListener)
 
-  return () => {
+  return (): void => {
     document.removeEventListener('scroll', _scrollEventListener)
     window.cancelAnimationFrame(animationFrameHandle)
   }
 }
 
+function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
+  const scrollDepthIntroMapped: number = React.useMemo<number>(
+    (): number => Math.min(1, (scrollDepth || 0) / 300),
+    [scrollDepth],
+  )
+
+  return {
+    background: `rgba(var(--color-mantle-raw), ${
+      scrollDepthIntroMapped * 0.9
+    })`,
+    boxShadow: `0 -5px 10px rgba(var(--color-crust-raw), ${scrollDepthIntroMapped})`,
+  }
+}
+
 export function FullHeader(): JSX.Element {
-  const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
+  const [scrollDepth, setScrollDepth] = React.useState<number | null>(0)
+  const headerStyles = useHeaderStyles(scrollDepth)
+
   const [currentLocation, setCurrentLocation] = React.useState<
     Pages.ValidLocation | undefined
   >()
@@ -126,9 +122,7 @@ export function FullHeader(): JSX.Element {
   )
 
   return (
-    <header className={styles.header}>
-      <HeaderBackground scrollDepth={scrollDepth} />
-
+    <header className={styles.header} style={headerStyles}>
       <Title />
 
       <nav className={styles['navigation-header']}>
@@ -174,6 +168,7 @@ export function FullHeader(): JSX.Element {
 
 export function MinimalHeader(): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
+  const headerStyles = useHeaderStyles(scrollDepth)
 
   React.useEffect((): (() => void) => {
     setScrollDepth(window.scrollY)
@@ -181,9 +176,7 @@ export function MinimalHeader(): JSX.Element {
   }, [])
 
   return (
-    <div className={styles['header']}>
-      <HeaderBackground scrollDepth={scrollDepth} />
-
+    <div className={styles['header']} style={headerStyles}>
       <Title />
     </div>
   )
