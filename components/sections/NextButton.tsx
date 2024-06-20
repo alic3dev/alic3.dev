@@ -32,7 +32,7 @@ export function NextButton({
   return (
     <a
       onClick={onNextClick}
-      className={styles.next}
+      className={`${styles.next} button`}
       aria-label="Next section"
       title="Next section"
       href="#work"
