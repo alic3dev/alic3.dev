@@ -7,7 +7,7 @@ import type { ModalContextInterface } from '@/components/modals'
 import React from 'react'
 import Image from 'next/image'
 
-import { ModalContext } from '@/components/modals'
+import { ModalContext } from '@/contexts/ModalContext'
 import { ModalImage } from '@/components/ModalImage'
 
 import styles from '@/components/ImageWithViewer.module.scss'

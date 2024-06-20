@@ -9,7 +9,7 @@ import { IoIosClose } from 'react-icons/io'
 import { IoAlertCircleSharp } from 'react-icons/io5'
 import { PiCookie } from 'react-icons/pi'
 
-import { NotificationContext } from '@/components/notifications/NotificationContext'
+import { NotificationContext } from '@/contexts/NotificationContext'
 
 import styles from '@/components/notifications/Notification.module.scss'
 

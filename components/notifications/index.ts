@@ -5,4 +5,4 @@ export { NotificationContainer } from '@/components/notifications/NotificationCo
 export {
   NotificationContext,
   NotificationContextWrapper,
-} from '@/components/notifications/NotificationContext'
+} from '@/contexts/NotificationContext'

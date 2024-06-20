@@ -9,7 +9,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import { Notification } from '@/components/notifications/Notification'
-import { NotificationContext } from '@/components/notifications/NotificationContext'
+import { NotificationContext } from '@/contexts/NotificationContext'
 
 import styles from '@/components/notifications/NotificationContainer.module.scss'
 

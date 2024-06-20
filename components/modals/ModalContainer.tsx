@@ -10,7 +10,7 @@ import React from 'react'
 import styles from '@/components/modals/ModalContainer.module.scss'
 
 import { Modal } from '@/components/modals/Modal'
-import { ModalContext } from '@/components/modals/ModalContext'
+import { ModalContext } from '@/contexts/ModalContext'
 
 import { NoPageScroll } from '@/utils/useNoPageScroll'
 
