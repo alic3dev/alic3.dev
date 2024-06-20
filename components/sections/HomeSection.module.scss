@@ -9,7 +9,7 @@
 }
 
 .intro {
-  color: rgba(var(--color-text-raw), 0.7);
+  color: var(--color-text);
 
   width: 270px;
 
@@ -47,7 +47,7 @@
   height: 68px;
   width: 30px;
 
-  color: #ffffff;
+  color: var(--color-white);
 
   font-size: 3rem;
   line-height: 6rem;
@@ -87,7 +87,6 @@
 
 .bold {
   font-weight: 700;
-  color: var(--color-text);
 }
 
 .description {
