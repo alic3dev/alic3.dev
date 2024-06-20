@@ -59,26 +59,21 @@
   --color-primary-blue-rgb: rgb(0, 0, 255);
   --color-primary-blue-hsl: hsl(240, 100%, 50%);
   --color-primary-blue-raw: 0, 0, 255;
+
+  --color-text-light: #eaefff;
 }
 
 @mixin set-light-colors {
   :root {
-    @include set-base-colors();
-
-    // @include set-flavor-colors('frappe');
     @include set-flavor-colors('latte');
-
-    --color-text-light: #eaefff;
+    // @include set-flavor-colors('frappe');
   }
 }
 
 @mixin set-dark-colors {
   :root {
-    @include set-base-colors();
-
+    @include set-flavor-colors('frappe');
+    // @include set-flavor-colors('macchiato');
     // @include set-flavor-colors('mocha');
-    @include set-flavor-colors('macchiato');
-
-    --color-text-light: #eaefff;
   }
 }
