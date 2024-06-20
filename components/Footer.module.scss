@@ -8,9 +8,17 @@
 
   padding: 3rem 10%;
 
-  background: linear-gradient(to top, var(--color-mantle), var(--color-base));
+  background: linear-gradient(
+    to top,
+    var(--color-mantle) 0%,
+    var(--color-base) 90%
+  );
 
   color: rgba(var(--color-text-raw), 0.6);
+
+  &.backgroundless {
+    background: none;
+  }
 }
 
 .footer-item {

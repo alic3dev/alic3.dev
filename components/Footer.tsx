@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import styles from '@/components/Footer.module.scss'
 
-export function Footer(): JSX.Element {
+export function Footer({ noBg = false }: { noBg?: boolean }): JSX.Element {
   const copyrightYear = new Date().getFullYear()
 
   const onBackToTopClick: React.MouseEventHandler =
@@ -14,7 +14,7 @@ export function Footer(): JSX.Element {
     }, [])
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${noBg ? styles.backgroundless : ''}`}>
       <div className={styles['footer-item']}>
         &copy; Alice Grace {copyrightYear > 2023 ? copyrightYear : 2023}
       </div>

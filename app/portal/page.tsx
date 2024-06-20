@@ -23,8 +23,8 @@ export default function PortalPage(): JSX.Element {
 
       <Trip />
 
-      <Header minimal />
-      <Footer />
+      <Header minimal noBg />
+      <Footer noBg />
     </main>
   )
 }
