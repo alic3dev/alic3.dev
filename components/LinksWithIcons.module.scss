@@ -3,11 +3,24 @@
   align-items: center;
   justify-content: center;
 
-  margin-top: 1.5rem;
-
   line-height: normal;
+}
 
-  & > * {
-    margin: 0 1rem;
+.link {
+  margin: 0.25rem;
+  padding: 0.75rem;
+
+  line-height: 0;
+
+  border-radius: 0.5rem;
+
+  background: rgba(var(--color-black-raw), 0);
+
+  color: var(--color-subtext0);
+
+  transition: background 200ms ease-in-out;
+
+  &:hover {
+    background: rgba(var(--color-black-raw), 0.1);
   }
 }
