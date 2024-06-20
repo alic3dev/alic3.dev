@@ -18,9 +18,17 @@
 
   color: var(--color-subtext0);
 
-  transition: background 200ms ease-in-out;
+  transition: color 200ms ease-in-out, background 200ms ease-in-out;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background: rgba(var(--color-black-raw), 0.1);
+
+    color: var(--color-subtext1);
+  }
+
+  &:active {
+    background: rgba(var(--color-black-raw), 0.2);
   }
 }
