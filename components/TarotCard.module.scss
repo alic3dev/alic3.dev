@@ -6,9 +6,9 @@
 
   margin: 2rem;
 
-  background: #333;
+  background: var(--color-surface1);
 
-  border: 1px solid #222;
+  border: 1px solid var(--color-surface0);
   border-radius: 1rem;
 
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.333);
@@ -43,7 +43,7 @@
 
   background: rgba(0, 0, 0, 0.111);
 
-  text-shadow: 0px 0px 2px #000;
+  text-shadow: 0px 0px 2px var(--color-black);
 }
 
 .card-greater-minor-content {
