@@ -123,10 +123,6 @@ button.collapsible-item-info-toggle-minimize {
 
   color: var(--color-text);
 
-  &.minimized {
-    opacity: 0.5;
-  }
-
   &:hover {
     opacity: 0.7;
   }
