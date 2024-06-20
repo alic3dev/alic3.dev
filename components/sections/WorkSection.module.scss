@@ -19,28 +19,31 @@
   margin: 0;
 
   font-size: 2rem;
+
+  color: var(--color-subtext1);
 }
 
 .work-item-company-length {
+  padding-left: 0;
+
   font-size: 1.4rem;
   font-weight: 200;
-  padding-left: 1rem;
+
+  color: var(--color-subtext0);
 
   cursor: pointer;
 
   &-detailed {
+    color: var(--color-overlay2);
+
     opacity: 0;
 
     transition: opacity 200ms ease-in-out;
   }
 
   &:hover &-detailed {
-    opacity: 0.3;
+    opacity: 1;
   }
-}
-
-.work-item-company-length {
-  padding-left: 0;
 }
 
 .work-item-positions {
