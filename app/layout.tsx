@@ -6,7 +6,7 @@ import { Rubik } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import { ModalContainer, ModalContextWrapper } from '@/components/modals'
+import { AllPolyfills } from '@/polyfills'
 
 import {
   NotificationContainer,
@@ -44,6 +44,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={bodyFont.className}>
+        <AllPolyfills />
+
         <ContextWrappers>
           {children}
 
