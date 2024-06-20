@@ -26,6 +26,8 @@
   }
 
   &.rainbow {
+    color: #cad3f5;
+
     animation: letter-fade-in 150ms ease-in-out 0ms 1 forwards,
       letter-rainbow 4000ms ease-in 3500ms infinite;
   }
