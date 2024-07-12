@@ -1,9 +1,10 @@
 .intro {
   position: absolute;
   top: 25%;
-  left: 50%;
+  left: 0;
+  right: 0;
 
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
 }
 
 @keyframes fade-in-opacity {
@@ -16,7 +17,11 @@
 }
 
 .bubble {
+  width: fit-content;
+  max-width: 95%;
+
   padding: 1rem;
+  margin: auto;
 
   background: var(--color-base);
 
