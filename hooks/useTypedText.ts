@@ -1,6 +1,7 @@
 import React from 'react'
 
 interface UseTypedTextOptions {
+  initialDelay: number
   delayTimeMax: number
   delayTimeMin: number
 }
@@ -14,6 +15,7 @@ export function useTypedText(
   )
 
   let options = React.useRef<UseTypedTextOptions>({
+    initialDelay: 0,
     delayTimeMax: 125,
     delayTimeMin: 25,
     ..._options,
@@ -91,8 +93,18 @@ export function useTypedText(
         animationFrameHandle = refObj.current.animationFrameHandle
       }
     }
-    refObj.current.animationFrameHandle = window.requestAnimationFrame(typeText)
-    animationFrameHandle = refObj.current.animationFrameHandle
+
+    const startAnimation = (): void => {
+      refObj.current.animationFrameHandle =
+        window.requestAnimationFrame(typeText)
+      animationFrameHandle = refObj.current.animationFrameHandle
+    }
+
+    if (options.current.initialDelay) {
+      setTimeout(startAnimation, options.current.initialDelay)
+    } else {
+      startAnimation()
+    }
 
     return (): void => {
       window.cancelAnimationFrame(animationFrameHandle)
