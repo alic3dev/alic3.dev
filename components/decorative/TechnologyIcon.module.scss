@@ -13,11 +13,11 @@
   line-height: normal;
   text-align: center;
 
-  background: rgba(var(--color-crust-raw), 0.2);
-  border: 1px solid var(--color-base);
+  background: var(--color-base);
+  border: 1px solid var(--color-crust);
   border-radius: 5px;
 
-  box-shadow: 0px 2px 5px rgba(var(--color-black-raw), 0.2);
+  // box-shadow: 0px 2px 5px rgba(var(--color-black-raw), 0.2);
 
   transition: border 200ms ease-in-out;
 
@@ -32,6 +32,6 @@
   }
 
   &:hover {
-    border: 1px solid var(--color-mauve);
+    border: 1px solid var(--color-blue);
   }
 }

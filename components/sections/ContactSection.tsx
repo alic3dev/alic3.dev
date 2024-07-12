@@ -243,7 +243,7 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           ></textarea>
-          <div className="textarea-counter">
+          <div className={styles['textarea-counter']}>
             {message.length}/{messageMaxLength}
           </div>
         </label>

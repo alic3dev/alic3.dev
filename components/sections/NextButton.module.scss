@@ -15,9 +15,6 @@ a.next {
 
   transform: translateX(-50%);
 
-  &:hover {
-  }
-
   &::before,
   &::after {
     content: '';
@@ -39,11 +36,5 @@ a.next {
 
   &::after {
     transform: translate(calc(-50% + 0.5rem + 1px), -50%) rotate(-45deg);
-  }
-}
-
-@media (max-width: breakpoints.$mobile) {
-  a.next {
-    bottom: 16rem;
   }
 }

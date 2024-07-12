@@ -3,7 +3,17 @@
 @use '@/components/sections/Section.module.scss';
 
 .section {
+  width: fit-content;
+  margin: auto;
+
   margin-bottom: 12rem;
+  padding: 4rem 2rem;
+
+  border-radius: 1rem;
+
+  background: var(--color-base);
+
+  box-shadow: var(--box-shadow-item);
 }
 
 .contact-options {
@@ -104,6 +114,14 @@
 .contact-form-overlay-icon {
   margin: 2rem;
   font-size: 4rem;
+}
+
+.textarea-counter {
+  position: absolute;
+  bottom: 3rem;
+  right: 1rem;
+
+  opacity: 0.2;
 }
 
 @media (max-width: breakpoints.$mobile) {

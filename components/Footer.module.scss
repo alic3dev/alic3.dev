@@ -8,13 +8,9 @@
 
   padding: 3rem 10%;
 
-  background: linear-gradient(
-    to top,
-    var(--color-mantle) 0%,
-    var(--color-base) 90%
-  );
+  background: var(--color-mantle);
 
-  color: rgba(var(--color-text-raw), 0.6);
+  color: var(--color-subtext0);
 
   &.backgroundless {
     background: none;
@@ -36,13 +32,13 @@ a.footer-item {
   background: none;
   box-shadow: none;
 
-  color: rgba(var(--color-text-raw), 0.6);
+  color: var(--color-subtext0);
 
   cursor: pointer;
 
   &:hover,
   &:active {
-    color: rgba(var(--color-text-raw), 0.8);
+    color: var(--color-subtext0);
 
     text-decoration: underline;
 

@@ -15,7 +15,7 @@
 
   background: rgba(var(--color-black-raw), 0.125);
 
-  box-shadow: 0px 2px 4px rgba(var(--color-black-raw), 0.3);
+  box-shadow: var(--box-shadow-item);
 }
 
 a.side-control,
@@ -27,7 +27,6 @@ button.side-control,
 
   background: rgba(var(--color-black-raw), 0.25);
 
-  // box-shadow: 0px 2px 4px rgba(var(--color-black-raw), 0.3);
   box-shadow: none;
 
   border: none;

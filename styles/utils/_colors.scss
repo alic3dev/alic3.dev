@@ -65,11 +65,8 @@
 
 @mixin set-light-colors {
   @include set-flavor-colors('latte');
-  // @include set-flavor-colors('frappe');
 }
 
 @mixin set-dark-colors {
   @include set-flavor-colors('frappe');
-  // @include set-flavor-colors('macchiato');
-  // @include set-flavor-colors('mocha');
 }
