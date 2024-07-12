@@ -9,7 +9,8 @@
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 
-  &:hover .hoverable-hr-rule-title {
+  &:hover .hoverable-hr-rule-title,
+  &.always .hoverable-hr-rule-title {
     opacity: 1;
   }
 }

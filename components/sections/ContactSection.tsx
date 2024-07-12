@@ -11,6 +11,7 @@ import { Section } from '@/components/sections/Section'
 import { Spinner } from '@/components/decorative'
 
 import styles from '@/components/sections/ContactSection.module.scss'
+import { HoverableHR } from '../HoverableHR'
 
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | '',
@@ -145,7 +146,7 @@ export function ContactSection(): JSX.Element {
           Send an email to <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
         </p>
 
-        <div className={styles['contact-options-seperator']}>OR</div>
+        <HoverableHR title="or" always />
 
         <p>Complete and submit the form below with your inquiry</p>
       </div>
