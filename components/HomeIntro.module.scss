@@ -1,10 +1,15 @@
 .intro {
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 0;
   right: 0;
+}
 
-  transform: translateY(-50%);
+.outro {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
 }
 
 @keyframes fade-in-opacity {
@@ -17,11 +22,14 @@
 }
 
 .bubble {
+  position: relative;
+
   width: fit-content;
   max-width: 95%;
 
   padding: 1rem;
   margin: auto;
+  margin-bottom: 1rem;
 
   background: var(--color-base);
 
@@ -31,9 +39,38 @@
 
   opacity: 0;
 
-  &.visible {
-    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
-  }
+  animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+}
+
+.bubble-placeholder {
+  visibility: hidden;
+}
+
+.bubble-text {
+  position: absolute;
+  top: 1rem;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 1rem;
+}
+
+.bubble-divider {
+  width: 1px;
+  height: 2rem;
+
+  margin: auto;
+  margin-bottom: 1rem;
+
+  background: linear-gradient(
+    to bottom,
+    var(--color-crust) 0%,
+    var(--color-base) 25%,
+    var(--color-base) 75%,
+    var(--color-crust) 100%
+  );
+
+  opacity: 0;
+  animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
 }
 
 .emoji {

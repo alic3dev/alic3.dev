@@ -16,8 +16,8 @@ export function useTypedText(
 
   let options = React.useRef<UseTypedTextOptions>({
     initialDelay: 0,
-    delayTimeMax: 125,
     delayTimeMin: 25,
+    delayTimeMax: 125,
     ..._options,
   })
 

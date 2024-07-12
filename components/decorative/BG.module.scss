@@ -22,15 +22,32 @@
   left: 0;
   right: 0;
   bottom: 0;
-  // bottom: -8rem;
 
-  & > canvas {
-    // animation: hue-rotate 20000ms linear 0ms infinite forwards;
+  opacity: 0;
+
+  transition: opacity 1350ms ease-in-out;
+
+  &.visible {
+    opacity: 1;
+
+    .fader {
+      bottom: 100%;
+    }
   }
 
-  & > canvas.invert {
-    filter: invert(1);
-    // animation: hue-rotate-invert 20000ms linear 0ms infinite forwards;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: linear-gradient(
+      to top,
+      var(--color-crust) 0%,
+      rgba(var(--color-crust-raw), 0) 10%
+    );
   }
 }
 
@@ -39,11 +56,14 @@
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0%;
 
-  // background: linear-gradient(
-  //   to top,
-  //   var(--color-base) 0%,
-  //   rgba(0, 0, 0, 0) 100%
-  // );
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--color-crust-raw), 1) 0%,
+    rgba(var(--color-crust-raw), 1) 75%,
+    rgba(var(--color-crust-raw), 0) 100%
+  );
+
+  transition: bottom 2700ms ease-in-out;
 }

@@ -22,7 +22,7 @@ function getRandomDirection(): THREE.Vector3 {
   )
 }
 
-export function BG(): React.ReactNode {
+export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
   const theme = React.useContext(ThemeContext)
   const colorScheme = React.useContext(ColorSchemeContext)
 
@@ -41,11 +41,29 @@ export function BG(): React.ReactNode {
 
     if (renderer.current) {
       renderer.current.setClearColor(themeColors.current.crust)
-      //   if (themeContext.theme === 'light') {
-      //     renderer.current.domElement.classList.add(styles.invert)
-      //   } else {
-      //     renderer.current.domElement.classList.remove(styles.invert)
-      //   }
+    }
+    if (rendererProperties.current) {
+      if (rendererProperties.current.scene.fog) {
+        rendererProperties.current.scene.fog.color = new THREE.Color(
+          themeColors.current.crust,
+        )
+      }
+
+      const material: THREE.MeshBasicMaterial = new THREE.MeshBasicMaterial({
+        color: themeColors.current.base,
+      })
+
+      rendererProperties.current.mesh.material = material
+
+      rendererProperties.current.scene.remove(rendererProperties.current.grid)
+      rendererProperties.current.grid.dispose()
+      rendererProperties.current.grid = new THREE.GridHelper(
+        50,
+        50,
+        themeColors.current.base,
+        themeColors.current.base,
+      )
+      rendererProperties.current.scene.add(rendererProperties.current.grid)
     }
   }, [theme, colorScheme])
 
@@ -56,6 +74,8 @@ export function BG(): React.ReactNode {
   const rendererProperties = React.useRef<{
     scene: THREE.Scene
     camera: THREE.PerspectiveCamera
+    mesh: THREE.Mesh
+    grid: THREE.GridHelper
   }>()
 
   React.useEffect((): (() => void) | void => {
@@ -79,16 +99,17 @@ export function BG(): React.ReactNode {
       )
       renderer.current.setPixelRatio(window.devicePixelRatio)
 
-      renderer.current.shadowMap.enabled = true
-      renderer.current.shadowMap.type = THREE.PCFSoftShadowMap
+      // renderer.current.shadowMap.enabled = true
+      // renderer.current.shadowMap.type = THREE.PCFSoftShadowMap
 
-      renderer.current.setClearColor(themeColors.current.base)
+      renderer.current.setClearColor(themeColors.current.crust)
 
       rendererContainer.current.prepend(renderer.current.domElement)
     }
 
     if (!rendererProperties.current) {
       const scene: THREE.Scene = new THREE.Scene()
+      scene.fog = new THREE.Fog(themeColors.current.crust, 0, 20)
       const camera: THREE.PerspectiveCamera = new THREE.PerspectiveCamera(
         90,
         rendererContainer.current.clientWidth /
@@ -96,12 +117,30 @@ export function BG(): React.ReactNode {
         0.1,
         1000,
       )
-      camera.position.set(-0.5, 4, 5)
-      camera.lookAt(-0.5, 0, 0)
+      camera.position.set(0, 4, 5)
+      camera.lookAt(0, 0, 0)
+
+      const geometry: THREE.BoxGeometry = new THREE.BoxGeometry(1, 1, 1)
+      const material: THREE.MeshBasicMaterial = new THREE.MeshBasicMaterial({
+        color: themeColors.current.base,
+      })
+
+      const mesh: THREE.Mesh = new THREE.Mesh(geometry, material)
+      scene.add(mesh)
+
+      const grid: THREE.GridHelper = new THREE.GridHelper(
+        50,
+        50,
+        themeColors.current.base,
+        themeColors.current.base,
+      )
+      scene.add(grid)
 
       rendererProperties.current = {
         scene,
         camera,
+        mesh,
+        grid,
       }
     }
 
@@ -121,6 +160,10 @@ export function BG(): React.ReactNode {
     const animate: XRFrameRequestCallback = (
       time: DOMHighResTimeStamp,
     ): void => {
+      rendererProperties.current?.mesh.rotateX(0.01 / 2)
+      rendererProperties.current?.mesh.rotateY(0.03 / 2)
+      rendererProperties.current?.mesh.rotateZ(0.0079 / 2)
+
       renderer.current?.render(
         rendererProperties.current!.scene,
         rendererProperties.current!.camera,
@@ -136,7 +179,10 @@ export function BG(): React.ReactNode {
   }, [])
 
   return (
-    <div ref={rendererContainer} className={styles.container}>
+    <div
+      ref={rendererContainer}
+      className={`${styles.container} ${visible ? styles.visible : ''}`}
+    >
       <div className={styles.fader} />
     </div>
   )
