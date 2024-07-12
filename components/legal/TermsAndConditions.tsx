@@ -10,8 +10,7 @@ export function TermsAndConditions(): JSX.Element {
 
       <p>
         These terms and conditions outline the rules and regulations for the use
-        of Alic3dev&apos;s Website, located at{' '}
-        <Link href="https://alic3.dev/">alic3.dev</Link>.
+        of Alic3dev&apos;s Website, located at <Link href="/">alic3.dev</Link>.
       </p>
 
       <p>
