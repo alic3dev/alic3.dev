@@ -13,7 +13,7 @@
 
   padding-top: 2rem;
 
-  background: rgba(var(--color-black-raw), 0.125);
+  background: var(--color-base);
 
   box-shadow: var(--box-shadow-item);
 }
@@ -25,7 +25,7 @@ button.side-control,
   top: 0;
   bottom: 0;
 
-  background: var(--color-crust);
+  background: var(--color-mantle);
 
   box-shadow: none;
 
@@ -37,12 +37,12 @@ button.side-control,
   font-size: 1.6rem;
   font-weight: 400;
 
-  color: var(--color-subtext2);
+  color: var(--color-subtext1);
 
   transform: none;
 
   &:disabled {
-    color: var(--color-subtext0);
+    color: var(--color-overlay0);
   }
 
   &:hover,

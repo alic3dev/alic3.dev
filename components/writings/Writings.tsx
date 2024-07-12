@@ -25,11 +25,11 @@ export function Writings({
         {writingCategoriesData.map(
           (category: WritingCategoryData): React.ReactNode => (
             <div key={category.slug} className={styles.category}>
-              <h2 className={styles['category-title']}>
+              <h3 className={styles['category-title']}>
                 <Link href={`/writings/${category.slug}`}>
                   {category.title}
                 </Link>
-              </h2>
+              </h3>
 
               <ul className={styles.pages}>
                 {category.writings.map(

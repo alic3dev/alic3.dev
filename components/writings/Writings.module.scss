@@ -29,7 +29,9 @@
 
   padding: 2rem;
 
-  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+
+  background: var(--color-base);
 
   box-shadow: var(--box-shadow-item);
 }
