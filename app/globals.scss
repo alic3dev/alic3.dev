@@ -24,6 +24,9 @@ html.dark {
   @include colors.set-base-colors;
 
   --box-shadow-item: 0px 2px 4px rgba(var(--color-black-raw), 0.3);
+  --box-shadow-item-light: 0px 2px 4px rgba(var(--color-black-raw), 0.05);
+  --box-shadow-item-inverted: 0px -2px 4px rgba(var(--color-black-raw), 0.3);
+  --box-shadow-item-light-inverted: 0px -2px 4px rgba(var(--color-black-raw), 0.05);
 }
 
 html {
@@ -86,49 +89,50 @@ label {
   margin-left: 1rem;
 
   color: var(--color-subtext0);
+}
 
-  input[type='text'],
-  input[type='email'],
-  input[type='tel'],
-  textarea {
-    width: 100%;
-    padding: 1rem;
-    margin: 0;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 
-    background: var(--color-white);
+  background: var(--color-white);
 
-    border: 1px solid var(--color-crust);
-    border-radius: 10px;
+  border: 1px solid var(--color-crust);
+  border-radius: 10px;
 
-    color: var(--color-text);
+  color: var(--color-text);
 
-    &:focus,
-    &:focus-visible,
-    &:focus-within {
-      outline: 1px solid var(--color-blue);
-      outline-offset: -1px;
-    }
-
-    &:autofill,
-    &:-internal-autofill-selected,
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      background: red;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: var(--color-text);
-      transition: background-color 5000s ease-in-out 0s;
-      box-shadow: inset 0 0 20px 20px rgba(var(--color-blue-raw), 0.2);
-    }
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: 1px solid var(--color-blue);
+    outline-offset: -1px;
   }
 
-  textarea {
-    height: 12rem;
-    resize: none;
+  &:autofill,
+  &:-internal-autofill-selected,
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    background: red;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--color-text);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px rgba(var(--color-blue-raw), 0.2);
   }
+}
+
+textarea {
+  height: 12rem;
+  resize: none;
 }
 
 fieldset {
