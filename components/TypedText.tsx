@@ -16,7 +16,7 @@ export function TypedText({
       text.split('').map(
         (char: string, index: number): React.ReactNode => (
           <span
-            key={index}
+            key={`${char}${index}`}
             className={`${styles.letter} ${slow ? styles.slow : ''} ${
               rainbow ? styles.rainbow : ''
             }`}
