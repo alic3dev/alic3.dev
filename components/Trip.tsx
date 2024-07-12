@@ -12,8 +12,12 @@ export function Trip(): JSX.Element {
 
   const theme = React.useContext(ThemeContext)
 
-  React.useEffect((): void => {
+  React.useEffect((): (() => void) => {
     theme.lockTheme('dark')
+
+    return (): void => {
+      theme.lockTheme(null)
+    }
   }, [theme])
 
   return (
