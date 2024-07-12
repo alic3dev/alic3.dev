@@ -18,20 +18,16 @@ export function Footer({ noBg = false }: { noBg?: boolean }): JSX.Element {
       <div className={styles['footer-item']}>
         &copy; Alice Grace {copyrightYear > 2023 ? copyrightYear : 2023}
       </div>
-      <Link href="/privacy" target="_blank" className={styles['footer-item']}>
+      <Link href="/privacy" className={styles['footer-item']}>
         Privacy Policy
       </Link>
-      <Link href="/terms" target="_blank" className={styles['footer-item']}>
+      <Link href="/terms" className={styles['footer-item']}>
         Terms of Service
       </Link>
-      <Link
-        href="/disclaimer"
-        target="_blank"
-        className={styles['footer-item']}
-      >
+      <Link href="/disclaimer" className={styles['footer-item']}>
         Disclaimer
       </Link>
-      <Link href="/cookies" target="_blank" className={styles['footer-item']}>
+      <Link href="/cookies" className={styles['footer-item']}>
         Cookies
       </Link>
 
