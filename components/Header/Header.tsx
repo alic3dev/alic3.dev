@@ -71,7 +71,9 @@ function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
       rgba(var(--color-mantle-raw), 1),
       rgba(var(--color-mantle-raw), ${scrollDepthIntroMapped * 0.9})
     )`,
-    boxShadow: `0 -5px 10px rgba(var(--color-crust-raw), ${scrollDepthIntroMapped})`,
+    boxShadow: `0px 2px 4px rgba(var(--color-black-raw), ${
+      scrollDepthIntroMapped * 0.05
+    })`,
   }
 }
 

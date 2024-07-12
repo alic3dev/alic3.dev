@@ -14,7 +14,7 @@
   background: rgba(var(--color-mantle-raw), 0.9);
   backdrop-filter: blur(4px);
 
-  box-shadow: 0 -5px 10px var(--color-crust);
+  box-shadow: var(--box-shadow-item-light);
 
   line-height: normal;
 

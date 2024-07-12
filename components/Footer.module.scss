@@ -10,10 +10,13 @@
 
   background: var(--color-mantle);
 
+  box-shadow: var(--box-shadow-item-light-inverted);
+
   color: var(--color-subtext0);
 
   &.backgroundless {
     background: none;
+    box-shadow: none;
   }
 }
 
