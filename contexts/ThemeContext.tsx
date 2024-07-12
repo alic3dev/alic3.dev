@@ -6,20 +6,41 @@ export type Theme = 'light' | 'dark'
 
 const selectedThemeLocalStorageKey = 'alic3:selected-theme'
 
+function getCurrentTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'light'
+  }
+
+  const localStorageValue: string | null = window.localStorage.getItem(
+    selectedThemeLocalStorageKey,
+  )
+
+  if (
+    localStorageValue === 'dark' ||
+    (localStorageValue !== 'light' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    return 'dark'
+  }
+
+  return 'light'
+}
+
 interface ThemeContextInterface {
   theme: Theme
   toggle: () => void
 }
 
 export const ThemeContext = React.createContext<ThemeContextInterface>({
-  theme: 'dark',
+  theme: getCurrentTheme(),
   toggle: (): void => {},
 })
 
 export function ThemeContextWrapper({
   children,
 }: React.PropsWithChildren): JSX.Element {
-  const [theme, setTheme] = React.useState<Theme>('dark')
+  const [theme, setTheme] = React.useState<Theme>(getCurrentTheme)
 
   const themeContextValue = React.useMemo<ThemeContextInterface>(
     (): ThemeContextInterface => ({
@@ -76,8 +97,10 @@ export function ThemeContextWrapper({
   React.useEffect((): void => {
     if (hasSetFromLocalStorageRef.current.value) {
       if (hasSetFromLocalStorageRef.current.loop) {
-        document.body.classList.add(theme)
-        document.body.classList.remove(theme === 'dark' ? 'light' : 'dark')
+        document.documentElement.classList.add(theme)
+        document.documentElement.classList.remove(
+          theme === 'dark' ? 'light' : 'dark',
+        )
 
         window.localStorage.setItem(selectedThemeLocalStorageKey, theme)
       }
