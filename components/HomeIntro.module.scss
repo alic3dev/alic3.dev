@@ -1,0 +1,84 @@
+.intro {
+  position: absolute;
+  top: 9rem;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+@keyframes fade-in-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bubble {
+  padding: 1rem;
+
+  background: var(--color-base);
+
+  border-radius: 10px;
+
+  box-shadow: var(--box-shadow-item);
+
+  opacity: 0;
+
+  &.visible {
+    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+  }
+}
+
+.emoji {
+  position: relative;
+  display: inline-block;
+
+  font-size: 1em;
+
+  width: 1em;
+  height: 1em;
+
+  vertical-align: middle;
+
+  opacity: 0;
+
+  pointer-events: none;
+  cursor: none;
+
+  &.visible {
+    pointer-events: all;
+    cursor: pointer;
+
+    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+  }
+
+  & > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    line-height: 0;
+
+    transform: translate(-50%, -50%);
+  }
+
+  & > span:first-child {
+    opacity: 1;
+  }
+
+  & > span:last-child {
+    opacity: 0;
+  }
+
+  &:hover {
+    & > span:first-child {
+      opacity: 0;
+    }
+
+    & > span:last-child {
+      opacity: 1;
+    }
+  }
+}

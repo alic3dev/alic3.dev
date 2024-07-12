@@ -1,0 +1,49 @@
+@keyframes hue-rotate {
+  from {
+    filter: hue-rotate(0deg) invert(0);
+  }
+  to {
+    filter: hue-rotate(360deg) invert(0);
+  }
+}
+
+@keyframes hue-rotate-invert {
+  from {
+    filter: hue-rotate(0deg) invert(1);
+  }
+  to {
+    filter: hue-rotate(360deg) invert(1);
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // bottom: -8rem;
+
+  & > canvas {
+    // animation: hue-rotate 20000ms linear 0ms infinite forwards;
+  }
+
+  & > canvas.invert {
+    filter: invert(1);
+    // animation: hue-rotate-invert 20000ms linear 0ms infinite forwards;
+  }
+}
+
+.fader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  // background: linear-gradient(
+  //   to top,
+  //   var(--color-base) 0%,
+  //   rgba(0, 0, 0, 0) 100%
+  // );
+}
