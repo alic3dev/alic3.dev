@@ -3,10 +3,18 @@
 import React from 'react'
 import Link from 'next/link'
 
+import { ThemeContext } from '@/contexts'
+
 import styles from '@/components/Trip.module.scss'
 
 export function Trip(): JSX.Element {
   const [tripping, setTripping] = React.useState<boolean>(false)
+
+  const theme = React.useContext(ThemeContext)
+
+  React.useEffect((): void => {
+    theme.lockTheme('dark')
+  }, [theme])
 
   return (
     <div className={`${styles.content} ${tripping ? styles.tripping : ''}`}>

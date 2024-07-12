@@ -30,28 +30,33 @@ function getCurrentTheme(): Theme {
 interface ThemeContextInterface {
   theme: Theme
   toggle: () => void
+  lockTheme: (lockedTheme: Theme | null) => void
 }
 
 export const ThemeContext = React.createContext<ThemeContextInterface>({
   theme: getCurrentTheme(),
   toggle: (): void => {},
+  lockTheme: (): void => {},
 })
 
 export function ThemeContextWrapper({
   children,
 }: React.PropsWithChildren): JSX.Element {
   const [theme, setTheme] = React.useState<Theme>(getCurrentTheme)
+  const [permaTheme, setPermaTheme] = React.useState<Theme | null>(null)
 
   const themeContextValue = React.useMemo<ThemeContextInterface>(
     (): ThemeContextInterface => ({
-      theme,
+      theme: permaTheme ?? theme,
       toggle: (): void =>
         setTheme(
           (prevTheme: Theme): Theme =>
             prevTheme === 'dark' ? 'light' : 'dark',
         ),
+      lockTheme: (lockedTheme: Theme | null): void =>
+        setPermaTheme(lockedTheme),
     }),
-    [theme],
+    [theme, permaTheme],
   )
 
   const hasSetFromLocalStorageRef = React.useRef<{
@@ -97,9 +102,9 @@ export function ThemeContextWrapper({
   React.useEffect((): void => {
     if (hasSetFromLocalStorageRef.current.value) {
       if (hasSetFromLocalStorageRef.current.loop) {
-        document.documentElement.classList.add(theme)
+        document.documentElement.classList.add(themeContextValue.theme)
         document.documentElement.classList.remove(
-          theme === 'dark' ? 'light' : 'dark',
+          themeContextValue.theme === 'dark' ? 'light' : 'dark',
         )
 
         window.localStorage.setItem(selectedThemeLocalStorageKey, theme)
@@ -107,7 +112,7 @@ export function ThemeContextWrapper({
 
       hasSetFromLocalStorageRef.current.loop = true
     }
-  }, [theme])
+  }, [theme, themeContextValue])
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
