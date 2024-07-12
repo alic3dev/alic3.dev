@@ -12,6 +12,7 @@ import { NotificationContainer } from '@/components/notifications'
 import { AllPolyfills } from '@/polyfills'
 
 import {
+  ColorSchemeContextWrapper,
   ModalContextWrapper,
   NotificationContextWrapper,
   ThemeContextWrapper,
@@ -37,9 +38,11 @@ function ContextWrappers({
 }: React.PropsWithChildren): React.ReactElement {
   return (
     <ThemeContextWrapper>
-      <ModalContextWrapper>
-        <NotificationContextWrapper>{children}</NotificationContextWrapper>
-      </ModalContextWrapper>
+      <ColorSchemeContextWrapper>
+        <ModalContextWrapper>
+          <NotificationContextWrapper>{children}</NotificationContextWrapper>
+        </ModalContextWrapper>
+      </ColorSchemeContextWrapper>
     </ThemeContextWrapper>
   )
 }

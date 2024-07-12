@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-type Theme = 'light' | 'dark'
+export type Theme = 'light' | 'dark'
 
 const selectedThemeLocalStorageKey = 'alic3:selected-theme'
 
