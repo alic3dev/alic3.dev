@@ -3,15 +3,39 @@ import type {
   WorkHistoryCompany,
 } from './workHistory.types'
 
+import Image from 'next/image'
+
 export const experienceSummaries: ExperienceSummaries = {
   full: 'Dynamic and detail-oriented Full Stack Developer with over five years of experience in developing and maintaining high-quality web applications. Proficient in TypeScript, React, and Node.js, with a strong background in creating and maintaining REST APIs, enhancing video streaming technologies, and improving developer experiences. Demonstrated ability to lead vulnerability triage and resolution, upgrade payment processors, and develop mobile apps. Adept at translating design files into functional web pages and optimizing code for performance and maintainability. Proven track record of increasing supporter conversion rates and adhering to modern development standards. Seeking to leverage my technical expertise and innovative problem-solving skills in a challenging development role.',
   condensed:
     'Experienced Full Stack Developer with 5+ years in TypeScript, React, and Node.js. Skilled in developing and maintaining REST APIs, enhancing video streaming, and improving developer experiences. Proven success in increasing supporter conversion rates and resolving security vulnerabilities. Seeking a challenging role to apply my technical expertise and innovative problem-solving skills.',
 }
 
+const imageSizes: string = "sizes='400px'"
+
 export const jobHistory: WorkHistoryCompany[] = [
   {
     name: 'The Humane League',
+
+    logoLight: (
+      <Image
+        src={'/thl-logo.light.png'}
+        alt="The Humane League"
+        sizes={imageSizes}
+        fill
+        suppressHydrationWarning
+      />
+    ),
+
+    logoDark: (
+      <Image
+        src={'/thl-logo.dark.png'}
+        alt="The Humane League"
+        sizes={imageSizes}
+        fill
+        suppressHydrationWarning
+      />
+    ),
 
     length: '8 Months',
     detailedLength: 'Jan 2022 - Sep 2022',
@@ -44,6 +68,15 @@ export const jobHistory: WorkHistoryCompany[] = [
   },
   {
     name: 'Osmosis - Knowledge Diffusion',
+
+    logo: (
+      <Image
+        src="/osmosis-full.webp"
+        alt="Osmosis from ELSEVIER"
+        sizes={imageSizes}
+        fill
+      />
+    ),
 
     length: '3 Years 5 Months',
     detailedLength: 'Jan 2018 - Jun 2021',
@@ -123,6 +156,8 @@ export const freelancingHistory: WorkHistoryCompany[] = [
   {
     name: 'Clean Lines Lawn Care',
 
+    logo: <></>,
+
     length: '2 Months',
     detailedLength: 'Aug 2021 - Sep 2021',
     startDate: new Date('Aug 2021'),
@@ -155,6 +190,8 @@ export const freelancingHistory: WorkHistoryCompany[] = [
   },
   {
     name: 'Clean Lines Lawn Care',
+
+    logo: <></>,
 
     length: '2 Months',
     detailedLength: 'Mar 2017 - Apr 2017',
@@ -191,6 +228,15 @@ export const freelancingHistory: WorkHistoryCompany[] = [
 export const educationHistory: WorkHistoryCompany[] = [
   {
     name: 'ECPI University',
+
+    logo: (
+      <Image
+        src="/ecpi-logo.svg"
+        alt="ECPI University"
+        sizes={imageSizes}
+        fill
+      />
+    ),
 
     length: '2 Years',
     detailedLength: '2014 - 2016',
