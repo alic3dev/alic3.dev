@@ -15,7 +15,7 @@ const introText: string[] = [
   "Hi, I'm ",
   'Alice ',
   'XXX',
-  'A developer focused on interactive experiences',
+  'A developer focused on experiences',
   'XXXXXX',
   'Lets create together!',
 ]
