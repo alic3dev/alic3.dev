@@ -51,6 +51,7 @@ a.footer-item {
 @media (max-width: breakpoints.$mobile) {
   .footer {
     flex-wrap: wrap;
+    justify-content: center;
 
     padding: 3rem 5%;
     padding-top: 1.5rem;
