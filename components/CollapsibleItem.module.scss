@@ -15,6 +15,10 @@
   box-shadow: var(--box-shadow-item);
 
   border-radius: 10px;
+
+  &.marginless {
+    margin-bottom: 0;
+  }
 }
 
 .collapsible-item-info {
@@ -152,6 +156,14 @@ button.collapsible-item-info-toggle-minimize {
 
     & + .collapsible-item {
       margin-top: 4rem;
+    }
+
+    &.marginless {
+      margin-bottom: 0;
+
+      & + .collapsible-item {
+        margin-top: 0;
+      }
     }
   }
 

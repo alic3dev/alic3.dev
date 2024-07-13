@@ -12,12 +12,14 @@ export function CollapsibleItem({
   title,
   subTitle,
   detailedTitle,
+  noMargins = false,
   children,
 }: React.PropsWithChildren<{
   id?: string
   title: React.ReactNode
   subTitle?: React.ReactNode
   detailedTitle?: React.ReactNode
+  noMargins?: boolean
 }>): React.ReactNode {
   const [minimized, setMinimized] = React.useState<boolean>(false)
 
@@ -85,7 +87,11 @@ export function CollapsibleItem({
   )
 
   return (
-    <div className={styles['collapsible-item']}>
+    <div
+      className={`${styles['collapsible-item']} ${
+        noMargins ? styles.marginless : ''
+      }`}
+    >
       <div
         className={`${styles['collapsible-item-info']} ${
           minimized ? styles['minimized'] : ''
