@@ -19,7 +19,7 @@ export function NextButton({
       if (!workSectionElement) return
 
       window.scrollTo({
-        top: workSectionElement.offsetTop - 100,
+        top: workSectionElement.offsetTop,
         behavior: 'smooth',
       })
 

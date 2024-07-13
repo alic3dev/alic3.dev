@@ -12,7 +12,7 @@ export function HomeSection(): JSX.Element {
     <Section name="home" className={styles.section}>
       <HomeIntro />
 
-      <NextButton scrollToId="work" />
+      <NextButton scrollToId="projects" />
     </Section>
   )
 }

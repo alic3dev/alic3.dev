@@ -140,13 +140,13 @@ export function FullHeader({ noBg = false }: { noBg?: boolean }): JSX.Element {
         />
 
         <HeaderItem
-          location="work"
+          location="projects"
           align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
         <HeaderItem
-          location="projects"
+          location="work"
           align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}

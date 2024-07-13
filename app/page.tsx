@@ -10,8 +10,8 @@ export default function RootPage(): JSX.Element {
   return (
     <main id="home">
       <HomeSection />
-      <WorkSection />
       <ProjectsSection />
+      <WorkSection />
       <ContactSection />
 
       <Footer />
