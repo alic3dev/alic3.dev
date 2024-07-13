@@ -8,11 +8,53 @@
 }
 
 @keyframes letter-rainbow {
-  from {
-    filter: hue-rotate(0deg);
+  0% {
+    color: var(--color-rosewater);
   }
-  to {
-    filter: hue-rotate(360deg);
+  6.666666666666667% {
+    color: var(--color-flamingo);
+  }
+  13.333333333333334% {
+    color: var(--color-pink);
+  }
+  20% {
+    color: var(--color-mauve);
+  }
+  26.666666666666668% {
+    color: var(--color-red);
+  }
+  33.33333333333333% {
+    color: var(--color-maroon);
+  }
+  40% {
+    color: var(--color-pink);
+  }
+  46.666666666666664% {
+    color: var(--color-peach);
+  }
+  53.333333333333336% {
+    color: var(--color-yellow);
+  }
+  60% {
+    color: var(--color-green);
+  }
+  66.66666666666666% {
+    color: var(--color-teal);
+  }
+  73.33333333333333% {
+    color: var(--color-sky);
+  }
+  80% {
+    color: var(--color-sapphire);
+  }
+  86.66666666666667% {
+    color: var(--color-blue);
+  }
+  93.33333333333333% {
+    color: var(--color-lavender);
+  }
+  100% {
+    color: var(--color-rosewater);
   }
 }
 
@@ -26,9 +68,9 @@
   }
 
   &.rainbow {
-    color: #bbbbff;
+    color: var(--color-rosewater);
 
     animation: letter-fade-in 150ms ease-in-out 0ms 1 forwards,
-      letter-rainbow 4000ms ease-in 0ms infinite;
+      letter-rainbow 10000ms ease-in 0ms infinite;
   }
 }
