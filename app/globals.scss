@@ -1,3 +1,4 @@
+@use '@/styles/utils/breakpoints';
 @use '@/styles/utils/colors';
 
 @import '@catppuccin/palette/style';
@@ -234,5 +235,12 @@ input[type='submit'] {
     &:active {
       box-shadow: none;
     }
+  }
+}
+
+@media (max-width: breakpoints.$mobile) {
+  html,
+  body {
+    font-size: 8px;
   }
 }
