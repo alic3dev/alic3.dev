@@ -13,7 +13,7 @@ export function ProjectsSection(): JSX.Element {
   return (
     <Section name="projects" className={styles.section}>
       <div className={styles['section-header']}>
-        <h2>Personal Projects</h2>
+        <h2>Projects</h2>
       </div>
 
       <div className={styles.projects}>
