@@ -256,19 +256,21 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           />{' '}
-          I have read and agree to the{' '}
-          <Link href="/privacy" target="_blank">
-            privacy policy
-          </Link>
-          ,{' '}
-          <Link href="/terms" target="blank">
-            terms of service
-          </Link>
-          , and{' '}
-          <Link href="/disclaimer" target="_blank">
-            disclaimer
-          </Link>
-          .
+          <span>
+            I have read and agree to the{' '}
+            <Link href="/privacy" target="_blank">
+              privacy policy
+            </Link>
+            ,{' '}
+            <Link href="/terms" target="blank">
+              terms of service
+            </Link>
+            , and{' '}
+            <Link href="/disclaimer" target="_blank">
+              disclaimer
+            </Link>
+            .
+          </span>
         </label>
 
         <label className={styles['contact-checkbox']}>
@@ -278,7 +280,9 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           />{' '}
-          I consent to being contacted in regards to the information provided.
+          <span>
+            I consent to being contacted in regards to the information provided.
+          </span>
         </label>
 
         <div className={styles['contact-form-controls']}>

@@ -6,6 +6,8 @@
   width: fit-content;
   max-width: 95%;
 
+  min-height: 0;
+
   margin: auto;
   margin-bottom: 12rem;
 
@@ -16,6 +18,10 @@
   background: var(--color-base);
 
   box-shadow: var(--box-shadow-item);
+}
+
+.section-header {
+  margin-bottom: 4rem;
 }
 
 .contact-options {
@@ -82,7 +88,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.contact-checkbox {
+  display: flex;
+  align-items: baseline;
+
+  width: 95%;
+
+  margin-bottom: 1rem;
 }
 
 .contact-form-overlay {
@@ -151,7 +167,6 @@
   }
 
   .contact-checkbox {
-    width: 85%;
     margin: auto;
     margin-bottom: 2rem;
     padding-left: 2rem;
