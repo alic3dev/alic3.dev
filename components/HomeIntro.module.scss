@@ -70,7 +70,10 @@
   );
 
   opacity: 0;
-  animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+
+  &.visible {
+    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+  }
 }
 
 .emoji {
