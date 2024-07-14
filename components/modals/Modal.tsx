@@ -6,7 +6,7 @@ import type {
 import React from 'react'
 import { IoIosClose } from 'react-icons/io'
 
-import { ModalContext } from '@/components/modals/ModalContext'
+import { ModalContext } from '@/contexts/ModalContext'
 
 import styles from '@/components/modals/Modal.module.scss'
 

@@ -1,46 +1,32 @@
-@use '@/styles/utils/colors';
 @use '@/styles/utils/breakpoints';
 
 .project {
   position: relative;
 
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  max-width: 100%;
-  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .visualization {
   position: relative;
 
-  width: 38%;
+  width: 100%;
 
-  margin: 0;
+  margin: auto;
 
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-
-  &.mobile {
-    display: none;
-    text-align: center;
-  }
 }
 
 .links {
-  &.desktop {
-    display: block;
-  }
-
-  &.mobile {
-    display: none;
-  }
+  display: block;
 }
 
 .info {
-  width: 60%;
+  width: 100%;
 }
 
 .project-title {
@@ -49,39 +35,4 @@
 
 .description {
   margin-top: 1.5rem;
-  padding: 2rem;
-}
-
-@media (max-width: breakpoints.$mobile) {
-  .project {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    width: 95%;
-  }
-
-  .visualization {
-    &.desktop {
-      display: none;
-    }
-
-    &.mobile {
-      display: inline;
-    }
-  }
-
-  .links {
-    &.desktop {
-      display: none;
-    }
-
-    &.mobile {
-      display: block;
-    }
-  }
-
-  .info {
-    width: 100%;
-  }
 }

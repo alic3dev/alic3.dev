@@ -1,16 +1,19 @@
 'use client'
 
+import type { NextFont } from 'next/dist/compiled/@next/font'
+
 import Link from 'next/link'
-import { NextFont } from 'next/dist/compiled/@next/font'
+import { Exo_2 } from 'next/font/google'
 import { Inconsolata } from 'next/font/google'
 
 import styles from '@/components/Header/Title.module.scss'
 
+const titleFont: NextFont = Exo_2({ subsets: ['latin'] })
 const titleMainStartFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
 export function Title(): JSX.Element {
   return (
-    <h1 className={styles.title}>
+    <h1 className={`${titleFont.className} ${styles.title}`}>
       <Link className={styles['title-header']} href="/">
         <div className={styles['title-main']}>
           <span

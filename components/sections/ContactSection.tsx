@@ -11,6 +11,7 @@ import { Section } from '@/components/sections/Section'
 import { Spinner } from '@/components/decorative'
 
 import styles from '@/components/sections/ContactSection.module.scss'
+import { HoverableHR } from '../HoverableHR'
 
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | '',
@@ -145,7 +146,7 @@ export function ContactSection(): JSX.Element {
           Send an email to <a href="mailto:alice@alic3.dev">alice@alic3.dev</a>
         </p>
 
-        <div className={styles['contact-options-seperator']}>OR</div>
+        <HoverableHR title="or" always />
 
         <p>Complete and submit the form below with your inquiry</p>
       </div>
@@ -243,7 +244,7 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           ></textarea>
-          <div className="textarea-counter">
+          <div className={styles['textarea-counter']}>
             {message.length}/{messageMaxLength}
           </div>
         </label>
@@ -255,19 +256,21 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           />{' '}
-          I have read and agree to the{' '}
-          <Link href="/privacy" target="_blank">
-            privacy policy
-          </Link>
-          ,{' '}
-          <Link href="/terms" target="blank">
-            terms of service
-          </Link>
-          , and{' '}
-          <Link href="/disclaimer" target="_blank">
-            disclaimer
-          </Link>
-          .
+          <span>
+            I have read and agree to the{' '}
+            <Link href="/privacy" target="_blank">
+              privacy policy
+            </Link>
+            ,{' '}
+            <Link href="/terms" target="blank">
+              terms of service
+            </Link>
+            , and{' '}
+            <Link href="/disclaimer" target="_blank">
+              disclaimer
+            </Link>
+            .
+          </span>
         </label>
 
         <label className={styles['contact-checkbox']}>
@@ -277,7 +280,9 @@ export function ContactSection(): JSX.Element {
             disabled={submitting}
             required
           />{' '}
-          I consent to being contacted in regards to the information provided.
+          <span>
+            I consent to being contacted in regards to the information provided.
+          </span>
         </label>
 
         <div className={styles['contact-form-controls']}>
@@ -324,7 +329,7 @@ export function ContactSection(): JSX.Element {
                 className={styles['contact-form-overlay-icon']}
               />
 
-              <p>Your messsage has been sent, I&aposll be in contact soon</p>
+              <p>Your messsage has been sent, I&apos;ll be in contact soon</p>
             </>
           )}
         </div>

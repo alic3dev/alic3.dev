@@ -13,16 +13,27 @@ export function LinksWithIcons({ links }: { links: Links }): React.ReactNode {
   return (
     <nav className={styles.links}>
       {links.external && links.external.startsWith('/') ? (
-        <Link href={links.external} aria-label="Open" title="Open">
+        <Link
+          className={styles.link}
+          href={links.external}
+          aria-label="Open"
+          title="Open"
+        >
           <FaExternalLinkAlt aria-label="Open" />
         </Link>
       ) : (
-        <a href={links.external} aria-label="Open" title="Open">
+        <a
+          className={styles.link}
+          href={links.external}
+          aria-label="Open"
+          title="Open"
+        >
           <FaExternalLinkAlt aria-label="Open" />
         </a>
       )}
       {links.github && (
         <a
+          className={styles.link}
           href={links.github}
           aria-label="Github Repository"
           title="Github Repository"

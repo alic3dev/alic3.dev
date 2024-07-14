@@ -1,0 +1,129 @@
+.intro {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  right: 0;
+}
+
+.outro {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+}
+
+@keyframes fade-in-opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.bubble {
+  position: relative;
+
+  width: fit-content;
+  max-width: 95%;
+
+  padding: 1rem;
+  margin: auto;
+  margin-bottom: 1rem;
+
+  background: var(--color-base);
+
+  border-radius: 10px;
+
+  box-shadow: var(--box-shadow-item);
+
+  opacity: 0;
+
+  animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+}
+
+.bubble-placeholder {
+  visibility: hidden;
+}
+
+.bubble-text {
+  position: absolute;
+  top: 1rem;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 1rem;
+}
+
+.bubble-divider {
+  width: 1px;
+  height: 2rem;
+
+  margin: auto;
+  margin-bottom: 1rem;
+
+  background: linear-gradient(
+    to bottom,
+    var(--color-crust) 0%,
+    var(--color-base) 25%,
+    var(--color-base) 75%,
+    var(--color-crust) 100%
+  );
+
+  opacity: 0;
+
+  &.visible {
+    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+  }
+}
+
+.emoji {
+  position: relative;
+  display: inline-block;
+
+  font-size: 1em;
+
+  width: 1em;
+  height: 1em;
+
+  vertical-align: middle;
+
+  opacity: 0;
+
+  pointer-events: none;
+  cursor: none;
+
+  &.visible {
+    pointer-events: all;
+    cursor: pointer;
+
+    animation: fade-in-opacity 900ms ease-in-out 0ms 1 forwards;
+  }
+
+  & > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    line-height: 0;
+
+    transform: translate(-50%, -50%);
+  }
+
+  & > span:first-child {
+    opacity: 1;
+  }
+
+  & > span:last-child {
+    opacity: 0;
+  }
+
+  &:hover {
+    & > span:first-child {
+      opacity: 0;
+    }
+
+    & > span:last-child {
+      opacity: 1;
+    }
+  }
+}

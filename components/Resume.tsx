@@ -1,45 +1,26 @@
 'use client'
 
-import type { ResumeInfo, PDFViewerType } from '@/components/Resume.types'
+import type { PDFViewerType } from '@/components/Resume.types'
 import type {
   WorkHistoryCompany,
   WorkHistoryPosition,
-} from '@/data/workHistory'
+} from '@/data/workHistory.types'
 
 import React from 'react'
 import dynamic from 'next/dynamic'
 
 import { Font, Document, Page, Text, View, Link } from '@react-pdf/renderer'
 
+import { personalInfo } from '@/data/personalInfo'
 import {
   jobHistory,
   educationHistory,
   skills,
-  freelancingHistory,
+  experienceSummaries,
 } from '@/data/workHistory'
 
 import { icons } from '@/utils/resumeIcons'
 import { styles } from '@/styles/resumeStyles'
-
-const resumeInfo: ResumeInfo = {
-  name: 'Alice Grace',
-  title: 'Full Stack Developer',
-  location: 'Fork Union, VA',
-  contact: {
-    email: 'alice@alic3.dev',
-    phone: '+1 (434) 207-1336',
-  },
-  links: {
-    github: {
-      href: 'https://github.com/alic3dev',
-      name: 'github.com/alic3dev',
-    },
-    portfolio: {
-      href: 'https://alic3.dev',
-      name: 'alic3.dev',
-    },
-  },
-}
 
 const PDFViewer: PDFViewerType = dynamic<PDFViewerType>(
   (): PDFViewerType =>
@@ -168,10 +149,7 @@ const EducationView = ({
   </View>
 )
 
-const professionalExperience: WorkHistoryCompany[] = [
-  ...jobHistory,
-  ...freelancingHistory,
-].sort(
+const professionalExperience: WorkHistoryCompany[] = [...jobHistory].sort(
   (a: WorkHistoryCompany, b: WorkHistoryCompany): number =>
     b.startDate.valueOf() - a.startDate.valueOf(),
 )
@@ -185,20 +163,26 @@ export function Resume(): JSX.Element {
     >
       <Document
         language="en"
-        author={resumeInfo.name}
-        subject={`${resumeInfo.title} Resume`}
-        title={`${resumeInfo.name} - Resume`}
+        author={personalInfo.name}
+        subject={`${personalInfo.title} Resume`}
+        title={`${personalInfo.name} - Resume`}
         keywords="Contact 'Work Experience' Education Skills"
         pageLayout="singlePage"
       >
         <Page size="A4" wrap={true} style={styles.page}>
           <View style={styles.header}>
-            <Text style={styles.headerName}>{resumeInfo.name}</Text>
-            <Text style={styles.headerTitle}>{resumeInfo.title}</Text>
+            <Text style={styles.headerName}>{personalInfo.name}</Text>
+            <Text style={styles.headerTitle}>{personalInfo.title}</Text>
           </View>
 
           <View style={styles.contentContainer}>
             <View style={styles.mainContent}>
+              <Text style={[styles.heading, styles.experience]}>Summary</Text>
+
+              <Text style={styles.summary}>
+                {experienceSummaries.condensed}
+              </Text>
+
               <Text style={[styles.heading, styles.experience]}>
                 Professional Experience
               </Text>
@@ -216,21 +200,21 @@ export function Resume(): JSX.Element {
                 <View style={styles.textContainer}>
                   {icons.email}
                   <Text style={styles.sideContentText}>
-                    {resumeInfo.contact.email}
+                    {personalInfo.contact.email}
                   </Text>
                 </View>
 
                 <View style={styles.textContainer}>
                   {icons.phone}
                   <Text style={styles.sideContentText}>
-                    {resumeInfo.contact.phone}
+                    {personalInfo.contact.phone}
                   </Text>
                 </View>
 
                 <View style={styles.textContainer}>
                   {icons.location}
                   <Text style={styles.sideContentText}>
-                    {resumeInfo.location}
+                    {personalInfo.location}
                   </Text>
                 </View>
 
@@ -238,10 +222,10 @@ export function Resume(): JSX.Element {
                   {icons.browser}
                   <Link
                     style={[styles.sideContentText, styles.link]}
-                    src={resumeInfo.links.portfolio.href}
+                    src={personalInfo.links.portfolio.href}
                   >
-                    {resumeInfo.links.portfolio.name ||
-                      resumeInfo.links.portfolio.href}
+                    {personalInfo.links.portfolio.name ||
+                      personalInfo.links.portfolio.href}
                   </Link>
                 </View>
 
@@ -249,10 +233,10 @@ export function Resume(): JSX.Element {
                   {icons.github}
                   <Link
                     style={[styles.sideContentText, styles.link]}
-                    src={resumeInfo.links.github.href}
+                    src={personalInfo.links.github.href}
                   >
-                    {resumeInfo.links.github.name ||
-                      resumeInfo.links.github.href}
+                    {personalInfo.links.github.name ||
+                      personalInfo.links.github.href}
                   </Link>
                 </View>
               </View>

@@ -1,0 +1,69 @@
+@keyframes hue-rotate {
+  from {
+    filter: hue-rotate(0deg) invert(0);
+  }
+  to {
+    filter: hue-rotate(360deg) invert(0);
+  }
+}
+
+@keyframes hue-rotate-invert {
+  from {
+    filter: hue-rotate(0deg) invert(1);
+  }
+  to {
+    filter: hue-rotate(360deg) invert(1);
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  opacity: 0;
+
+  transition: opacity 1350ms ease-in-out;
+
+  &.visible {
+    opacity: 1;
+
+    .fader {
+      bottom: 100%;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: linear-gradient(
+      to top,
+      var(--color-crust) 0%,
+      rgba(var(--color-crust-raw), 0) 10%
+    );
+  }
+}
+
+.fader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0%;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--color-crust-raw), 1) 0%,
+    rgba(var(--color-crust-raw), 1) 75%,
+    rgba(var(--color-crust-raw), 0) 100%
+  );
+
+  transition: bottom 2700ms ease-in-out;
+}

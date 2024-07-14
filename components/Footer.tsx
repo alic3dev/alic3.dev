@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import styles from '@/components/Footer.module.scss'
 
-export function Footer(): JSX.Element {
+export function Footer({ noBg = false }: { noBg?: boolean }): JSX.Element {
   const copyrightYear = new Date().getFullYear()
 
   const onBackToTopClick: React.MouseEventHandler =
@@ -14,24 +14,20 @@ export function Footer(): JSX.Element {
     }, [])
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${noBg ? styles.backgroundless : ''}`}>
       <div className={styles['footer-item']}>
         &copy; Alice Grace {copyrightYear > 2023 ? copyrightYear : 2023}
       </div>
-      <Link href="/privacy" target="_blank" className={styles['footer-item']}>
+      <Link href="/privacy" className={styles['footer-item']}>
         Privacy Policy
       </Link>
-      <Link href="/terms" target="_blank" className={styles['footer-item']}>
+      <Link href="/terms" className={styles['footer-item']}>
         Terms of Service
       </Link>
-      <Link
-        href="/disclaimer"
-        target="_blank"
-        className={styles['footer-item']}
-      >
+      <Link href="/disclaimer" className={styles['footer-item']}>
         Disclaimer
       </Link>
-      <Link href="/cookies" target="_blank" className={styles['footer-item']}>
+      <Link href="/cookies" className={styles['footer-item']}>
         Cookies
       </Link>
 

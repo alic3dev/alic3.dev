@@ -20,21 +20,11 @@ export function Project({
       key={title}
       id={`project|${title}`}
       title={title}
-      subTitle={
-        <div className={`${styles.links} ${styles.desktop}`}>
-          <LinksWithIcons links={links} />
-        </div>
-      }
+      noMargins
     >
       <div className={styles.project}>
-        <figure className={`${styles.visualization} ${styles.desktop}`}>
-          {visual}
-        </figure>
-
         <div className={styles.info}>
-          <figure className={`${styles.visualization} ${styles.mobile}`}>
-            {visual}
-          </figure>
+          <figure className={styles.visualization}>{visual}</figure>
 
           <div className={`${styles.links} ${styles.mobile}`}>
             <LinksWithIcons links={links} />

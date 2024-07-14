@@ -1,11 +1,13 @@
 'use client'
 
 import React from 'react'
+
 import { GiDiamondsSmile, GiGluttonousSmile } from 'react-icons/gi'
 import Link from 'next/link'
 
 import { HeaderItem } from '@/components/Header/HeaderItem'
 import { Title } from '@/components/Header/Title'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 import { validLocations } from '@/utils/validLocations'
 
@@ -30,29 +32,7 @@ function getScrollRelationalLocation(
       return location
   }
 
-  // FIXME: Check for closest location *above* scroll depth
-
   return null
-}
-
-function HeaderBackground({
-  scrollDepth,
-}: {
-  scrollDepth: number | null
-}): JSX.Element {
-  const scrollDepthIntroMapped: number = React.useMemo<number>(
-    (): number => Math.min(1, (scrollDepth || 0) / 300),
-    [scrollDepth],
-  )
-
-  return (
-    <div
-      className={styles['header-background']}
-      style={{
-        opacity: scrollDepthIntroMapped,
-      }}
-    />
-  )
 }
 
 function onScroll(run: (scrollY: number) => void): () => void {
@@ -73,14 +53,34 @@ function onScroll(run: (scrollY: number) => void): () => void {
 
   document.addEventListener('scroll', _scrollEventListener)
 
-  return () => {
+  return (): void => {
     document.removeEventListener('scroll', _scrollEventListener)
     window.cancelAnimationFrame(animationFrameHandle)
   }
 }
 
-export function FullHeader(): JSX.Element {
-  const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
+function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
+  const scrollDepthIntroMapped: number = React.useMemo<number>(
+    (): number => Math.min(1, (scrollDepth || 0) / 300),
+    [scrollDepth],
+  )
+
+  return {
+    background: `linear-gradient(
+      to bottom,
+      rgba(var(--color-mantle-raw), 1),
+      rgba(var(--color-mantle-raw), ${scrollDepthIntroMapped * 0.9})
+    )`,
+    boxShadow: `0px 2px 4px rgba(var(--color-black-raw), ${
+      scrollDepthIntroMapped * 0.05
+    })`,
+  }
+}
+
+export function FullHeader({ noBg = false }: { noBg?: boolean }): JSX.Element {
+  const [scrollDepth, setScrollDepth] = React.useState<number | null>(0)
+  const headerStyles = useHeaderStyles(scrollDepth)
+
   const [currentLocation, setCurrentLocation] = React.useState<
     Pages.ValidLocation | undefined
   >()
@@ -126,9 +126,10 @@ export function FullHeader(): JSX.Element {
   )
 
   return (
-    <header className={styles.header}>
-      <HeaderBackground scrollDepth={scrollDepth} />
-
+    <header
+      className={`${styles.header} ${noBg ? styles.backgroundless : ''}`}
+      style={noBg ? {} : headerStyles}
+    >
       <Title />
 
       <nav className={styles['navigation-header']}>
@@ -139,13 +140,13 @@ export function FullHeader(): JSX.Element {
         />
 
         <HeaderItem
-          location="work"
+          location="projects"
           align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
         />
         <HeaderItem
-          location="projects"
+          location="work"
           align={'right'}
           currentLocation={currentLocation}
           navigateToLocation={navigateToLocation}
@@ -168,12 +169,19 @@ export function FullHeader(): JSX.Element {
         <GiDiamondsSmile />
         <GiGluttonousSmile />
       </Link>
+
+      <ThemeToggle />
     </header>
   )
 }
 
-export function MinimalHeader(): JSX.Element {
+export function MinimalHeader({
+  noBg = false,
+}: {
+  noBg?: boolean
+}): JSX.Element {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
+  const headerStyles = useHeaderStyles(scrollDepth)
 
   React.useEffect((): (() => void) => {
     setScrollDepth(window.scrollY)
@@ -181,9 +189,10 @@ export function MinimalHeader(): JSX.Element {
   }, [])
 
   return (
-    <div className={styles['header']}>
-      <HeaderBackground scrollDepth={scrollDepth} />
-
+    <div
+      className={`${styles.header} ${noBg ? styles.backgroundless : ''}`}
+      style={noBg ? {} : headerStyles}
+    >
       <Title />
     </div>
   )
@@ -191,8 +200,10 @@ export function MinimalHeader(): JSX.Element {
 
 export function Header({
   minimal = false,
+  noBg = false,
 }: {
   minimal?: boolean
+  noBg?: boolean
 }): JSX.Element {
-  return minimal ? <MinimalHeader /> : <FullHeader />
+  return minimal ? <MinimalHeader noBg={noBg} /> : <FullHeader noBg={noBg} />
 }

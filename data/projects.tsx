@@ -35,7 +35,9 @@ export const projects: Project[] = [
       <ImageWithViewer
         imageProps={{
           className: styles.image,
-          src: '/23u5i3.png',
+          src: '/23u5i3.light.png',
+          srcdark: '/23u5i3.dark.png',
+          srclight: '/23u5i3.light.png',
           alt: 'ZER0 screenshot',
           width: 3620,
           height: 2336,

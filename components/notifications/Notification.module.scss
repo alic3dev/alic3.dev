@@ -11,7 +11,7 @@
 
   margin-top: 1rem;
 
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(var(--color-surface0-raw), 0.8);
 
   backdrop-filter: blur(4px);
 
@@ -54,19 +54,24 @@
 
   text-align: center;
 
-  border: none;
   background: none;
 
+  box-shadow: none;
+
   transform: none;
+
+  color: var(--color-text);
 
   &:hover,
   &:active {
     background: none;
-    border-bottom: none;
+    box-shadow: none;
+
+    color: var(--color-text);
   }
 
   &:active {
     background: none;
-    border-bottom: none;
+    box-shadow: none;
   }
 }

@@ -13,14 +13,13 @@ export function Disclaimer(): JSX.Element {
 
       <h2>Disclaimers for Alic3dev</h2>
       <p>
-        All the information on this website -{' '}
-        <Link href="https://alic3.dev/">alic3.dev</Link> - is published in good
-        faith and for general information purpose only. Alic3dev does not make
-        any warranties about the completeness, reliability and accuracy of this
-        information. Any action you take upon the information you find on this
-        website (Alic3dev), is strictly at your own risk. Alic3dev will not be
-        liable for any losses and/or damages in connection with the use of our
-        website.
+        All the information on this website - <Link href="/">alic3.dev</Link> -
+        is published in good faith and for general information purpose only.
+        Alic3dev does not make any warranties about the completeness,
+        reliability and accuracy of this information. Any action you take upon
+        the information you find on this website (Alic3dev), is strictly at your
+        own risk. Alic3dev will not be liable for any losses and/or damages in
+        connection with the use of our website.
       </p>
 
       <p>

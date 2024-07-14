@@ -68,7 +68,7 @@
   width: 100%;
 
   & > :first-child {
-    border-bottom-color: #ff0033;
+    border-bottom-color: var(--color-red);
   }
 
   button {

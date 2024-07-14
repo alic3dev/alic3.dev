@@ -1,17 +1,11 @@
 import type { Style } from '@react-pdf/types'
 
+import type { ResumeColors, ResumeFonts } from './resumeStyles.types'
+
 import { StyleSheet } from '@react-pdf/renderer'
 
 import { variants } from '@catppuccin/palette'
 const { latte } = variants
-
-interface ResumeColors {
-  background: string
-
-  text: string
-  textLight: string
-  textLighter: string
-}
 
 export const colors: ResumeColors = {
   background: '#ffffff',
@@ -19,11 +13,7 @@ export const colors: ResumeColors = {
   text: latte.text.hex,
   textLight: latte.subtext1.hex,
   textLighter: latte.overlay0.hex,
-}
-
-interface ResumeFonts {
-  body: string
-  heading: string
+  textDark: '#000',
 }
 
 const fonts: ResumeFonts = {
@@ -64,6 +54,23 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontSize: '14pt',
   },
 
+  summary: {
+    paddingLeft: '20pt',
+    // paddingRight: '20pt',
+    paddingBottom: '20pt',
+    color: colors.textDark,
+    fontSize: '10pt',
+  },
+
+  summaryT: {
+    paddingTop: '10pt',
+    paddingLeft: '33pt',
+    paddingRight: '33pt',
+    paddingBottom: '10pt',
+    color: colors.textDark,
+    fontSize: '10pt',
+  },
+
   contentContainer: {
     flexDirection: 'row',
     alignItems: 'start',
@@ -76,7 +83,8 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
 
     padding: '20pt',
     paddingLeft: '10pt',
-    paddingBottom: '0',
+    paddingRight: '10pt',
+    paddingBottom: '0pt',
   },
   sideContent: {
     alignSelf: 'baseline',
@@ -160,10 +168,10 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
   },
 
   companyPositionDescription: {
-    padding: '5pt 20pt',
+    padding: '5pt',
     paddingLeft: '0pt',
 
-    color: '#000',
+    color: colors.textDark,
     fontSize: '10pt',
   },
 

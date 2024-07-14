@@ -4,6 +4,8 @@
   left: 0;
   right: 0;
   bottom: 0;
+
+  background: var(--color-black);
 }
 
 @keyframes lively {
@@ -19,6 +21,8 @@
 .images-container {
   height: 100%;
   width: 100%;
+
+  filter: hue-rotate(0deg) blur(50px);
 
   animation: lively 10s linear infinite forwards alternate;
 }

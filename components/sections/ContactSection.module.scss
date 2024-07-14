@@ -1,10 +1,27 @@
-@use '@/styles/utils/colors';
 @use '@/styles/utils/breakpoints';
 
 @use '@/components/sections/Section.module.scss';
 
 .section {
+  width: fit-content;
+  max-width: 95%;
+
+  min-height: 0;
+
+  margin: auto;
   margin-bottom: 12rem;
+
+  padding: 4rem 2rem;
+
+  border-radius: 1rem;
+
+  background: var(--color-base);
+
+  box-shadow: var(--box-shadow-item);
+}
+
+.section-header {
+  margin-bottom: 4rem;
 }
 
 .contact-options {
@@ -38,7 +55,7 @@
 
       height: 1px;
 
-      background: colors.$text;
+      background: var(--color-text);
 
       transform: translateY(-50%);
     }
@@ -52,7 +69,7 @@
 
       height: 1px;
 
-      background: colors.$text;
+      background: var(--color-text);
 
       transform: translateY(-50%);
     }
@@ -71,14 +88,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
 
-  & > input,
-  & > input[type='reset'],
-  & > input[type='submit'] {
-    flex: 1;
-    margin-left: 25%;
-  }
+.contact-checkbox {
+  display: flex;
+  align-items: baseline;
+
+  width: 95%;
+
+  margin-bottom: 1rem;
 }
 
 .contact-form-overlay {
@@ -114,6 +134,14 @@
   font-size: 4rem;
 }
 
+.textarea-counter {
+  position: absolute;
+  bottom: 3rem;
+  right: 1rem;
+
+  opacity: 0.2;
+}
+
 @media (max-width: breakpoints.$mobile) {
   .section {
     margin-bottom: 6rem;
@@ -139,7 +167,6 @@
   }
 
   .contact-checkbox {
-    width: 85%;
     margin: auto;
     margin-bottom: 2rem;
     padding-left: 2rem;
@@ -156,8 +183,6 @@
     & > input,
     & > input[type='reset'],
     & > input[type='submit'] {
-      flex: 1;
-      max-width: 45%;
       margin: 0;
       transform: none;
     }

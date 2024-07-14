@@ -1,20 +1,26 @@
 import type { Metadata, Viewport } from 'next'
 
 import React from 'react'
-import { Exo_2 } from 'next/font/google'
+import { Rubik } from 'next/font/google'
+
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import { ModalContainer, ModalContextWrapper } from '@/components/modals'
+import { ModalContainer } from '@/components/modals'
+import { NotificationContainer } from '@/components/notifications'
+
+import { AllPolyfills } from '@/polyfills'
 
 import {
-  NotificationContainer,
+  ColorSchemeContextWrapper,
+  ModalContextWrapper,
   NotificationContextWrapper,
-} from '@/components/notifications'
+  ThemeContextWrapper,
+} from '@/contexts'
 
 import '@/app/globals.scss'
 
-const bodyFont = Exo_2({ subsets: ['latin'] })
+const bodyFont = Rubik({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Alic3.Dev',
@@ -31,9 +37,13 @@ function ContextWrappers({
   children,
 }: React.PropsWithChildren): React.ReactElement {
   return (
-    <ModalContextWrapper>
-      <NotificationContextWrapper>{children}</NotificationContextWrapper>
-    </ModalContextWrapper>
+    <ThemeContextWrapper>
+      <ColorSchemeContextWrapper>
+        <ModalContextWrapper>
+          <NotificationContextWrapper>{children}</NotificationContextWrapper>
+        </ModalContextWrapper>
+      </ColorSchemeContextWrapper>
+    </ThemeContextWrapper>
   )
 }
 
@@ -43,6 +53,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={bodyFont.className}>
+        <AllPolyfills />
+
         <ContextWrappers>
           {children}
 

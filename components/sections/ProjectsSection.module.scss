@@ -1,16 +1,33 @@
-@use '@/styles/utils/colors';
+@use '@/styles/utils/breakpoints';
+
 @use '@/components/sections/Section.module.scss';
 
 .section {
-  margin-top: -8rem;
-  margin-bottom: 10rem;
   padding-top: 10rem;
-  padding-bottom: 10rem;
-  background: rgba(colors.$black, 0.111);
-  box-shadow: inset 0px 0px 5px rgba(colors.$black, 0.15);
 }
 
 .projects {
-  max-width: 90%;
+  display: grid;
+  align-items: start;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, calc(33% - 2rem));
+  column-gap: 2rem;
+  row-gap: 4rem;
+
+  max-width: 95%;
   margin: auto;
+}
+
+@media (max-width: breakpoints.$mobile) {
+  .projects {
+    grid-template-columns: repeat(auto-fill, calc(50% - 1rem));
+
+    column-gap: 2rem;
+  }
+}
+
+@media (max-width: breakpoints.$mobile-small) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
 }
