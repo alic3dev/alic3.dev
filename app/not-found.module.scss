@@ -1,0 +1,43 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: max-content;
+  max-width: 95vw;
+  max-height: 95vh;
+
+  background: var(--color-base);
+
+  box-shadow: var(--box-shadow-item);
+
+  padding: 2rem 4rem;
+  border-radius: var(--border-radius-item);
+
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  font-size: 1.25rem;
+}
+
+.icon {
+  margin: 2rem 0;
+
+  font-size: 3rem;
+
+  color: var(--color-red);
+}
+
+.content {
+  margin-bottom: 4rem;
+}
