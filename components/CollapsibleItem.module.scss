@@ -14,7 +14,7 @@
 
   box-shadow: var(--box-shadow-item);
 
-  border-radius: 10px;
+  border-radius: var(--border-radius-item);
 
   &.marginless {
     margin-bottom: 0;
