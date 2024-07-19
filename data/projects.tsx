@@ -77,6 +77,58 @@ export const projects: Project[] = [
     technologies: ['qwik', 'ts', 'sass'],
   },
   {
+    title: 'Three Showcase',
+    links: {
+      external: 'https://three-show-case.alic3.dev/',
+      github: 'https://github.com/alic3dev/three-show-case',
+    },
+    description: (
+      <>
+        A collection of example applications made with{' '}
+        <a href="https://threejs.org/">Three.js</a>.
+      </>
+    ),
+    visual: (
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/667678c1-f966-4bd7-b0a4-f974af4402a2.light.png',
+          srcdark: '/667678c1-f966-4bd7-b0a4-f974af4402a2.dark.png',
+          srclight: '/667678c1-f966-4bd7-b0a4-f974af4402a2.light.png',
+          alt: 'Three Showcase Screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
+      />
+    ),
+    technologies: ['three', 'tf', 'vite', 'react', 'ts'],
+  },
+
+  {
+    title: 'Sweep',
+    links: {
+      external: 'https://sweep.alic3.dev/',
+      github: 'https://github.com/alic3dev/sweep',
+    },
+    description: <>Minesweeper with Svelte + TypeScript.</>,
+    visual: (
+      <ImageWithViewer
+        imageProps={{
+          className: styles.image,
+          src: '/763a4047-a8f2-43a6-a478-dc4520cd4e1b.light.png',
+          srclight: '/763a4047-a8f2-43a6-a478-dc4520cd4e1b.light.png',
+          srcdark: '/763a4047-a8f2-43a6-a478-dc4520cd4e1b.dark.png',
+          alt: 'Sweep Screenshot',
+          width: 3620,
+          height: 2336,
+          quality: 60,
+        }}
+      />
+    ),
+    technologies: ['svelte', 'vite', 'ts'],
+  },
+  {
     title: 'Nature of Code',
     links: {
       external: 'https://nature-of-code.alic3.dev/',
