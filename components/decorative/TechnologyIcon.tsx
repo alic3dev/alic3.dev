@@ -9,6 +9,9 @@ import {
   SiMariadb,
   SiPostgresql,
   SiPug,
+  SiSvelte,
+  SiTensorflow,
+  SiThreedotjs,
   SiQwik,
 } from 'react-icons/si'
 import {
@@ -47,6 +50,9 @@ export type TechnologyName =
   | 'jquery'
   | 'vite'
   | 'qwik'
+  | 'three'
+  | 'tf'
+  | 'svelte'
 
 interface Technology {
   icon: IconType
@@ -133,6 +139,18 @@ const technologyLookup: Record<TechnologyName, Technology> = {
   qwik: {
     icon: SiQwik,
     title: 'Qwik',
+  },
+  three: {
+    icon: SiThreedotjs,
+    title: 'Three.js',
+  },
+  tf: {
+    icon: SiTensorflow,
+    title: 'TensorFlow',
+  },
+  svelte: {
+    icon: SiSvelte,
+    title: 'Svelte',
   },
 }
 
