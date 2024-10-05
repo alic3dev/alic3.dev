@@ -13,6 +13,10 @@ export function useNoPageScroll(): void {
         body,
         :root {
           overflow: hidden;
+
+          min-height: 100svh;
+          height: 100svh;
+          max-height: 100svh;
         }
       `)
     }
