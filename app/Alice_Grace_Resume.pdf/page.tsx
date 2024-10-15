@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 
-import { Resume } from '@/components'
+import React from 'react'
+
+import dynamic from 'next/dynamic'
+
+import { Resume as _Resume } from '@/components'
 import { NoPageScroll } from '@/utils/useNoPageScroll'
 
 export const metadata: Metadata = {
@@ -8,7 +12,9 @@ export const metadata: Metadata = {
   description: 'A resume for Alice Grace',
 }
 
-export default function AliceGraceResumePDF(): JSX.Element {
+const Resume = dynamic(() => Promise.resolve(_Resume), { ssr: false })
+
+export default function AliceGraceResumePDF(): React.ReactNode {
   return (
     <>
       <NoPageScroll />

@@ -35,6 +35,44 @@ export const styles: { [className: string]: Style } = StyleSheet.create({
     fontFamily: fonts.body,
   },
 
+  coverLetterPage: {
+    flexDirection: 'column',
+
+    maxHeight: '100vh',
+
+    padding: '40pt',
+    paddingTop: '0pt',
+    paddingBottom: '0pt',
+
+    backgroundColor: colors.background,
+    color: colors.text,
+
+    fontSize: '12pt',
+    fontWeight: 400,
+    fontFamily: fonts.body,
+  },
+
+  personalInfo: {
+    color: colors.textLight,
+    fontSize: '10pt',
+    paddingTop: '10pt',
+    paddingBottom: '10pt',
+  },
+
+  coverLetterParagraph: {
+    paddingTop: '5pt',
+    paddingBottom: '5pt',
+  },
+
+  coverLetterOpening: {
+    paddingTop: '10pt',
+    paddingBottom: '20pt',
+  },
+
+  coverLetterEnding: {
+    paddingTop: '20pt',
+  },
+
   header: {
     width: '100%',
 
