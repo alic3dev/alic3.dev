@@ -1,15 +1,21 @@
 'use client'
 
-import type { PDFViewerType } from '@/components/Resume.types'
 import type {
   WorkHistoryCompany,
   WorkHistoryPosition,
 } from '@/data/workHistory.types'
 
 import React from 'react'
-import dynamic from 'next/dynamic'
 
-import { Font, Document, Page, Text, View, Link } from '@react-pdf/renderer'
+import {
+  PDFViewer,
+  Font,
+  Document,
+  Page,
+  Text,
+  View,
+  Link,
+} from '@react-pdf/renderer'
 
 import { personalInfo } from '@/data/personalInfo'
 import {
@@ -22,31 +28,6 @@ import {
 import { icons } from '@/utils/resumeIcons'
 import { styles } from '@/styles/resumeStyles'
 
-const PDFViewer: PDFViewerType = dynamic<PDFViewerType>(
-  (): PDFViewerType =>
-    import('@react-pdf/renderer').then<PDFViewerType>(
-      (mod: { PDFViewer: PDFViewerType }): PDFViewerType => mod.PDFViewer,
-    ),
-  {
-    ssr: false,
-
-    loading: (): React.ReactElement => {
-      return (
-        <h1
-          style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          Rendering...
-        </h1>
-      )
-    },
-  },
-)
-
 const hyphenationCallback = (word: string): string[] => [word]
 Font.registerHyphenationCallback(hyphenationCallback)
 Font.register({
@@ -58,7 +39,7 @@ Font.register({
   src: '/fonts/NotoSans-Bold.ttf',
 })
 
-const SkillView = ({ skill }: { skill: string }): JSX.Element => (
+const SkillView = ({ skill }: { skill: string }): React.ReactElement => (
   <View style={styles.textContainer}>
     {icons[skill.toLowerCase()]}
     <Text style={styles.skillsText}>{skill}</Text>
@@ -73,7 +54,7 @@ const CompanyPositionView = ({
   position: WorkHistoryPosition
   company: WorkHistoryCompany
   isLast: boolean
-}): JSX.Element => (
+}): React.ReactElement => (
   <View style={isLast ? styles.companyPositionLast : styles.companyPosition}>
     <View style={styles.companyPositionInfo}>
       <Text style={styles.companyPositionName}>{position.name}</Text>
@@ -100,7 +81,7 @@ const CompanyView = ({
   company,
 }: {
   company: WorkHistoryCompany
-}): JSX.Element => {
+}): React.ReactElement => {
   return (
     <View style={styles.company}>
       {company.positions.map((position, index) => (
@@ -121,7 +102,7 @@ const EducationPositionView = ({
 }: {
   education: WorkHistoryCompany
   position: WorkHistoryPosition
-}): JSX.Element => (
+}): React.ReactElement => (
   <View key={position.name} style={styles.companyPosition}>
     <Text style={styles.educationShortName}>{position.shortName}</Text>
     <Text style={styles.educationName}>{education.name}</Text>
@@ -135,10 +116,10 @@ const EducationView = ({
   education,
 }: {
   education: WorkHistoryCompany
-}): JSX.Element => (
+}): React.ReactElement => (
   <View>
     {education.positions.map(
-      (position: WorkHistoryPosition): JSX.Element => (
+      (position: WorkHistoryPosition): React.ReactElement => (
         <EducationPositionView
           key={position.name}
           education={education}
@@ -154,133 +135,139 @@ const professionalExperience: WorkHistoryCompany[] = [...jobHistory].sort(
     b.startDate.valueOf() - a.startDate.valueOf(),
 )
 
-export function Resume(): JSX.Element {
-  return (
-    <PDFViewer
-      height="100%"
-      width="100%"
-      style={{ border: 'none', height: '100vh' }}
-    >
-      <Document
-        language="en"
-        author={personalInfo.name}
-        subject={`${personalInfo.title} Resume`}
-        title={`${personalInfo.name} - Resume`}
-        keywords="Contact 'Work Experience' Education Skills"
-        pageLayout="singlePage"
+export function Resume(): React.ReactElement {
+  return React.useMemo<React.ReactElement>(
+    (): React.ReactElement => (
+      <PDFViewer
+        height="100%"
+        width="100%"
+        style={{ border: 'none', height: '100vh' }}
       >
-        <Page size="A4" wrap={true} style={styles.page}>
-          <View style={styles.header}>
-            <Text style={styles.headerName}>{personalInfo.name}</Text>
-            <Text style={styles.headerTitle}>{personalInfo.title}</Text>
-          </View>
-
-          <View style={styles.contentContainer}>
-            <View style={styles.mainContent}>
-              <Text style={[styles.heading, styles.experience]}>Summary</Text>
-
-              <Text style={styles.summary}>
-                {experienceSummaries.condensed}
-              </Text>
-
-              <Text style={[styles.heading, styles.experience]}>
-                Professional Experience
-              </Text>
-              {professionalExperience.map(
-                (company: WorkHistoryCompany): JSX.Element => (
-                  <CompanyView key={company.name} company={company} />
-                ),
-              )}
+        <Document
+          language="en"
+          author={personalInfo.name}
+          subject={`${personalInfo.title} Resume`}
+          title={`${personalInfo.name} - Resume`}
+          keywords="Contact 'Work Experience' Education Skills"
+          pageLayout="singlePage"
+        >
+          <Page size="A4" wrap={true} style={styles.page}>
+            <View style={styles.header}>
+              <Text style={styles.headerName}>{personalInfo.name}</Text>
+              <Text style={styles.headerTitle}>{personalInfo.title}</Text>
             </View>
 
-            <View style={styles.sideContent}>
-              <View style={styles.contentSection}>
-                <Text style={styles.heading}>Contact</Text>
+            <View style={styles.contentContainer}>
+              <View style={styles.mainContent}>
+                <Text style={[styles.heading, styles.experience]}>Summary</Text>
 
-                <View style={styles.textContainer}>
-                  {icons.email}
-                  <Text style={styles.sideContentText}>
-                    {personalInfo.contact.email}
-                  </Text>
-                </View>
+                <Text style={styles.summary}>
+                  {experienceSummaries.condensed}
+                </Text>
 
-                <View style={styles.textContainer}>
-                  {icons.phone}
-                  <Text style={styles.sideContentText}>
-                    {personalInfo.contact.phone}
-                  </Text>
-                </View>
-
-                <View style={styles.textContainer}>
-                  {icons.location}
-                  <Text style={styles.sideContentText}>
-                    {personalInfo.location}
-                  </Text>
-                </View>
-
-                <View style={styles.textContainer}>
-                  {icons.browser}
-                  <Link
-                    style={[styles.sideContentText, styles.link]}
-                    src={personalInfo.links.portfolio.href}
-                  >
-                    {personalInfo.links.portfolio.name ||
-                      personalInfo.links.portfolio.href}
-                  </Link>
-                </View>
-
-                <View style={styles.textContainer}>
-                  {icons.github}
-                  <Link
-                    style={[styles.sideContentText, styles.link]}
-                    src={personalInfo.links.github.href}
-                  >
-                    {personalInfo.links.github.name ||
-                      personalInfo.links.github.href}
-                  </Link>
-                </View>
-              </View>
-
-              <View style={styles.contentSection}>
-                <Text style={styles.heading}>Skills</Text>
-
-                <Text style={styles.subHeadingCompact}>Languages</Text>
-                {skills.languages.map(
-                  (language: string): JSX.Element => (
-                    <SkillView key={language} skill={language} />
-                  ),
-                )}
-
-                <Text style={styles.subHeading}>Libraries/Frameworks</Text>
-                {skills.librariesAndFrameworks.map(
-                  (libraryOrFramework: string): JSX.Element => (
-                    <SkillView
-                      key={libraryOrFramework}
-                      skill={libraryOrFramework}
-                    />
-                  ),
-                )}
-
-                <Text style={styles.subHeading}>Development Software</Text>
-                {skills.software.map(
-                  (software: string): JSX.Element => (
-                    <SkillView key={software} skill={software} />
+                <Text style={[styles.heading, styles.experience]}>
+                  Professional Experience
+                </Text>
+                {professionalExperience.map(
+                  (company: WorkHistoryCompany): React.ReactElement => (
+                    <CompanyView key={company.name} company={company} />
                   ),
                 )}
               </View>
 
-              <View style={styles.contentSection}>
-                <Text style={styles.heading}>Education</Text>
-                {educationHistory.map(
-                  (education: WorkHistoryCompany): JSX.Element => (
-                    <EducationView key={education.name} education={education} />
-                  ),
-                )}
+              <View style={styles.sideContent}>
+                <View style={styles.contentSection}>
+                  <Text style={styles.heading}>Contact</Text>
+
+                  <View style={styles.textContainer}>
+                    {icons.email}
+                    <Text style={styles.sideContentText}>
+                      {personalInfo.contact.email}
+                    </Text>
+                  </View>
+
+                  <View style={styles.textContainer}>
+                    {icons.phone}
+                    <Text style={styles.sideContentText}>
+                      {personalInfo.contact.phone}
+                    </Text>
+                  </View>
+
+                  <View style={styles.textContainer}>
+                    {icons.location}
+                    <Text style={styles.sideContentText}>
+                      {personalInfo.location}
+                    </Text>
+                  </View>
+
+                  <View style={styles.textContainer}>
+                    {icons.browser}
+                    <Link
+                      style={[styles.sideContentText, styles.link]}
+                      src={personalInfo.links.portfolio.href}
+                    >
+                      {personalInfo.links.portfolio.name ||
+                        personalInfo.links.portfolio.href}
+                    </Link>
+                  </View>
+
+                  <View style={styles.textContainer}>
+                    {icons.github}
+                    <Link
+                      style={[styles.sideContentText, styles.link]}
+                      src={personalInfo.links.github.href}
+                    >
+                      {personalInfo.links.github.name ||
+                        personalInfo.links.github.href}
+                    </Link>
+                  </View>
+                </View>
+
+                <View style={styles.contentSection}>
+                  <Text style={styles.heading}>Skills</Text>
+
+                  <Text style={styles.subHeadingCompact}>Languages</Text>
+                  {skills.languages.map(
+                    (language: string): React.ReactElement => (
+                      <SkillView key={language} skill={language} />
+                    ),
+                  )}
+
+                  <Text style={styles.subHeading}>Libraries/Frameworks</Text>
+                  {skills.librariesAndFrameworks.map(
+                    (libraryOrFramework: string): React.ReactElement => (
+                      <SkillView
+                        key={libraryOrFramework}
+                        skill={libraryOrFramework}
+                      />
+                    ),
+                  )}
+
+                  <Text style={styles.subHeading}>Development Software</Text>
+                  {skills.software.map(
+                    (software: string): React.ReactElement => (
+                      <SkillView key={software} skill={software} />
+                    ),
+                  )}
+                </View>
+
+                <View style={styles.contentSection}>
+                  <Text style={styles.heading}>Education</Text>
+                  {educationHistory.map(
+                    (education: WorkHistoryCompany): React.ReactElement => (
+                      <EducationView
+                        key={education.name}
+                        education={education}
+                      />
+                    ),
+                  )}
+                </View>
               </View>
             </View>
-          </View>
-        </Page>
-      </Document>
-    </PDFViewer>
+          </Page>
+        </Document>
+      </PDFViewer>
+    ),
+    [],
   )
 }

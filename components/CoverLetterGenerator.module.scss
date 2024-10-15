@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+
+  height: 100vh;
+}
+
+.form {
+  flex: 50%;
+  flex-shrink: 0;
+
+  padding: 2rem;
+}
+
+.cover-letter {
+  position: relative;
+
+  flex: 50%;
+}

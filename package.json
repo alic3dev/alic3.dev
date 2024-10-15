@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@catppuccin/palette": "^0.2.0",
-    "@react-pdf/renderer": "^3.4.4",
-    "@react-pdf/types": "^2.5.0",
+    "@react-pdf/renderer": "^4.0.0",
+    "@react-pdf/types": "^2.7.0",
     "@types/grecaptcha": "^3.0.9",
     "@types/node": "22.0.0",
     "@types/react": "18.3.3",
