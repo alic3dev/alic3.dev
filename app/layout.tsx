@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 
 import React from 'react'
-import { Rubik } from 'next/font/google'
 
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -11,6 +10,8 @@ import { NotificationContainer } from '@/components/notifications'
 
 import { AllPolyfills } from '@/polyfills'
 
+import { rubik } from '@/styles/fonts'
+
 import {
   ColorSchemeContextWrapper,
   ModalContextWrapper,
@@ -19,8 +20,6 @@ import {
 } from '@/contexts'
 
 import '@/app/globals.scss'
-
-const bodyFont = Rubik({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Alic3.Dev',
@@ -52,7 +51,7 @@ export default function RootLayout({
 }: React.PropsWithChildren): JSX.Element {
   return (
     <html lang="en">
-      <body className={bodyFont.className}>
+      <body className={rubik.className}>
         <AllPolyfills />
 
         <ContextWrappers>
