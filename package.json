@@ -11,7 +11,7 @@
     "email": "bug@alic3.dev"
   },
   "homepage": "https://alic3.dev",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "license": "ISC",
   "private": true,
   "scripts": {
