@@ -5,6 +5,7 @@ import type { NextRequest } from 'next/server'
 
 import { NextResponse } from 'next/server'
 import { Ratelimit } from '@upstash/ratelimit'
+import { ipAddress } from '@vercel/functions'
 import { createKysely } from '@vercel/postgres-kysely'
 import { kv } from '@vercel/kv'
 
@@ -43,7 +44,7 @@ const escapeHTML = (unsafe: string): string => {
 
 export const POST = async (req: NextRequest) => {
   const clientIp: string =
-    req.ip ||
+    ipAddress(req) ||
     req.headers.get('X-Real-IP') ||
     req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
     '127.0.0.1'
