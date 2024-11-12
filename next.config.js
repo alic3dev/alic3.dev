@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['@react-pdf/renderer'],
+  serverExternalPackages: ['@react-pdf/renderer'],
+
+  sassOptions: {
+    silenceDeprecations: ['legacy-js-api'],
   },
 
   async redirects() {
