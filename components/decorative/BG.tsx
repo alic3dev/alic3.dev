@@ -16,13 +16,13 @@ interface ThemeColors extends ColorScheme {
   progressCubeMaterialColor: () => keyof ColorScheme
 }
 
-function getRandomDirection(): THREE.Vector3 {
-  return new THREE.Vector3(
-    (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
-    0,
-    (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
-  )
-}
+// function getRandomDirection(): THREE.Vector3 {
+//   return new THREE.Vector3(
+//     (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
+//     0,
+//     (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
+//   )
+// }
 
 export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
   const theme = React.useContext(ThemeContext)
@@ -149,7 +149,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
         window.WebGLRenderingContext &&
         (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
       )
-    } catch (e) {
+    } catch {
       webGLSupported.current.value = false
     }
 
@@ -262,9 +262,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
     }
     window.addEventListener('resize', onResize)
 
-    const animate: XRFrameRequestCallback = (
-      time: DOMHighResTimeStamp,
-    ): void => {
+    const animate: XRFrameRequestCallback = (): void => {
       if (
         !rendererProperties.current ||
         !rendererContainer.current ||

@@ -31,7 +31,7 @@ export function defaultGematriaStateInitializer(
 
   try {
     if (localStorageOfflineValue) {
-      const localStorageOfflineJSONValue: any = JSON.parse(
+      const localStorageOfflineJSONValue: unknown = JSON.parse(
         localStorageOfflineValue,
       )
 

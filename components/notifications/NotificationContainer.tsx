@@ -67,7 +67,7 @@ export function NotificationContainer(): JSX.Element {
 
     if (cookieNoticeStored) {
       try {
-        const parsedCookieNoticeStored: any = JSON.parse(cookieNoticeStored)
+        const parsedCookieNoticeStored: unknown = JSON.parse(cookieNoticeStored)
 
         if (typeof parsedCookieNoticeStored === 'boolean') {
           cookieNoticeRef.current.agreedToCookieNotice =

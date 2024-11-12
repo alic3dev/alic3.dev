@@ -47,7 +47,7 @@ export function FocusSection(): JSX.Element {
 
   React.useEffect((): (() => void) => {
     let flip: boolean = true
-    let randomColorInterval: number = window.setInterval(() => {
+    const randomColorInterval: number = window.setInterval(() => {
       if (flip) setRandomColorIndexs(getRandomColorIndexs())
       else setRandomColorIndexs([])
 
