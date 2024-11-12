@@ -16,12 +16,16 @@ interface WritingPageParams {
   slug: string
 }
 
+type WritingPageServerParams = Promise<WritingPageParams>
+
 export async function generateMetadata({
   params,
 }: {
-  params: WritingPageParams
+  params: WritingPageServerParams
 }): Promise<Metadata> {
   'use server'
+
+  const paramsValue: WritingPageParams = await params
 
   const db = createKysely<Database.Alic3Dev>()
 
@@ -36,8 +40,8 @@ export async function generateMetadata({
         'writings_categories.id',
       )
       .select(['writings.title'])
-      .where('writings.slug', '=', params.slug)
-      .where('writings_categories.slug', '=', params.category)
+      .where('writings.slug', '=', paramsValue.slug)
+      .where('writings_categories.slug', '=', paramsValue.category)
       .executeTakeFirst()
 
     if (data?.title) {
@@ -93,15 +97,17 @@ async function getWritingPageData(
 export default async function WritingsPageWithCategoryAndSlug({
   params,
 }: {
-  params: WritingPageParams
+  params: WritingPageServerParams
 }): Promise<React.JSX.Element> {
+  const paramsValue: WritingPageParams = await params
+
   const writingPageData: WritingPageData | undefined = await getWritingPageData(
-    params.category,
-    params.slug,
+    paramsValue.category,
+    paramsValue.slug,
   )
 
   if (!writingPageData) {
-    return redirect(`/writings/${params.category}`)
+    return redirect(`/writings/${paramsValue.category}`)
   }
 
   return (

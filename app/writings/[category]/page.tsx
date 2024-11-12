@@ -15,12 +15,16 @@ interface CategoryParams {
   category: string
 }
 
+type CategoryServerParams = Promise<CategoryParams>
+
 export async function generateMetadata({
   params,
 }: {
-  params: CategoryParams
+  params: CategoryServerParams
 }): Promise<Metadata> {
   'use server'
+
+  const paramsVal: CategoryParams = await params
 
   const db = createKysely<Database.Alic3Dev>()
 
@@ -31,7 +35,7 @@ export async function generateMetadata({
     const data: { title: string; description: string } | undefined = await db
       .selectFrom('writings_categories')
       .select(['title', 'description'])
-      .where('slug', '=', params.category)
+      .where('slug', '=', paramsVal.category)
       .executeTakeFirst()
 
     if (data?.title) {
@@ -107,10 +111,12 @@ async function getCategoryData(
 export default async function WritingsPageCategory({
   params,
 }: {
-  params: CategoryParams
+  params: CategoryServerParams
 }): Promise<React.JSX.Element> {
+  const paramsVal: CategoryParams = await params
+
   const writingCategoryData: WritingCategoryData | undefined =
-    await getCategoryData(params.category)
+    await getCategoryData(paramsVal.category)
 
   if (!writingCategoryData) {
     return redirect('/writings')
