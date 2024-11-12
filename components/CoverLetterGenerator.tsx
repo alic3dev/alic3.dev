@@ -3,6 +3,7 @@
 import type { CoverLetterParameters } from '@/reducers/coverLetterParametersReducer.types'
 
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 import { CoverLetter } from '@/components/CoverLetter'
 
@@ -170,3 +171,8 @@ export function CoverLetterGenerator(): React.ReactNode {
     </div>
   )
 }
+
+export const CoverLetterGeneratorDynamic = dynamic(
+  () => Promise.resolve(CoverLetterGenerator),
+  { ssr: false },
+)
