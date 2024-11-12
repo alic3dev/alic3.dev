@@ -16,7 +16,7 @@ export function Footer({ noBg = false }: { noBg?: boolean }): JSX.Element {
   return (
     <footer className={`${styles.footer} ${noBg ? styles.backgroundless : ''}`}>
       <div className={styles['footer-item']}>
-        &copy; Alice Grace {copyrightYear > 2023 ? copyrightYear : 2023}
+        &copy; Alice Grace {copyrightYear > 2024 ? copyrightYear : 2024}
       </div>
       <Link href="/privacy" className={styles['footer-item']}>
         Privacy Policy
