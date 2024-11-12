@@ -7,12 +7,10 @@ import type { DecodeOptions } from '@/utils/gematria'
 
 import { NextResponse } from 'next/server'
 import { Ratelimit } from '@upstash/ratelimit'
-// import { createKysely } from '@vercel/postgres-kysely'
+import { ipAddress } from '@vercel/functions'
 import { kv } from '@vercel/kv'
 
 import { decode, defaultDecodeOptions } from '@/utils/gematria'
-
-// import type { Transaction } from 'kysely'
 
 export const runtime: ServerRuntime = 'edge'
 
@@ -32,7 +30,7 @@ const ratelimit: { [type: string]: Ratelimit } = {
 
 export const POST = async (req: NextRequest) => {
   const clientIp: string =
-    req.ip ||
+    ipAddress(req) ||
     req.headers.get('X-Real-IP') ||
     req.headers.get('X-Forwarded-For')?.replace(/\s/g, '').split(',').pop() ||
     '127.0.0.1'
@@ -93,39 +91,3 @@ export const POST = async (req: NextRequest) => {
     success: true,
   })
 }
-
-// const db = createKysely<Database.Alic3Dev>()
-// try {
-//   await db
-//     .transaction()
-//     .setIsolationLevel('serializable')
-//     .execute(async (trx: Transaction<Database.Alic3Dev>): Promise<void> => {
-//       // trx.selectFrom('gematria').selectAll().where('text')
-//       await db.updateTable('gematria').executeTakeFirstOrThrow()
-//       await db.insertInto('gematria').executeTakeFirstOrThrow()
-
-//       await db.insertInto('gematria_submission').values({
-//         client_ip: '',
-//         gematria_id: 32,
-//       })
-//     })
-
-//   // await db
-//   //   .insertInto('gematria')
-//   //   .values({
-//   //     // name: contactData.name as string,
-//   //     // contact_method: contactData.contactMethod as Api.Contact.Method,
-//   //     // email: (contactData.email as string) || null,
-//   //     // phone: (contactData.phone as string) || null,
-//   //     // message: contactData.message as string,
-//   //     // terms_privacy_disclaimer_agreement:
-//   //     //   contactData.termsPrivacyDisclaimerAgreement === 'on',
-//   //     // contact_consent: contactData.contactConsent === 'on',
-//   //     client_ip: clientIp,
-//   //   })
-//   //   .executeTakeFirstOrThrow()
-// } catch {
-//   return NextResponse.json({}, { status: 500 })
-// } finally {
-//   db.destroy()
-// }

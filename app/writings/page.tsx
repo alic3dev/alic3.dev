@@ -42,7 +42,7 @@ async function getWritingCategoriesData(): Promise<
     if (returnedCategoriesData && returnedCategoriesData.length) {
       const dataByCategory: Record<number, WritingCategoryData> = {}
 
-      for (let categoryData of returnedCategoriesData) {
+      for (const categoryData of returnedCategoriesData) {
         const categoryId: number = categoryData.id as unknown as number
 
         const writings: WritingCategoryPageData[] = await db

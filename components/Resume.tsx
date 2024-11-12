@@ -6,6 +6,7 @@ import type {
 } from '@/data/workHistory.types'
 
 import React from 'react'
+import dynamic from 'next/dynamic'
 
 import {
   PDFViewer,
@@ -271,3 +272,7 @@ export function Resume(): React.ReactElement {
     [],
   )
 }
+
+export const ResumeDynamic = dynamic(() => Promise.resolve(Resume), {
+  ssr: false,
+})

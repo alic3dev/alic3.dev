@@ -2,25 +2,27 @@
 
 import type { Theme } from './ThemeContext'
 
-import type { AlphaColor, Color, Labels, Variants } from '@catppuccin/palette'
+import type { ColorName, FlavorName } from '@catppuccin/palette'
 
 import React from 'react'
-import palette from '@catppuccin/palette'
+import * as palette from '@catppuccin/palette'
 
 import { ThemeContext } from './ThemeContext'
 
-export type ColorScheme = Labels<string, string>
+export type ColorScheme = Record<ColorName, string>
 
 interface IntermediaryColorSchemeExtraction {
-  label: string
+  label: ColorName
   hex: string
 }
 
-const defaultColorScheme: ColorScheme = Object.keys(palette.variants.latte)
+const defaultColorScheme: ColorScheme = Object.keys(
+  palette.flavors.latte.colors,
+)
   .map((label: string): IntermediaryColorSchemeExtraction => {
     return {
-      label,
-      hex: palette.variants.latte[label as keyof Labels<Color, AlphaColor>].hex,
+      label: label as ColorName,
+      hex: palette.flavors.latte.colors[label as ColorName].hex,
     }
   })
   .reduce<Partial<ColorScheme>>(
@@ -28,7 +30,7 @@ const defaultColorScheme: ColorScheme = Object.keys(palette.variants.latte)
       prev: Partial<ColorScheme>,
       cur: IntermediaryColorSchemeExtraction,
     ): Partial<ColorScheme> => {
-      prev[cur.label as keyof Labels<Color, AlphaColor>] = cur.hex
+      prev[cur.label as ColorName] = cur.hex
 
       return prev
     },
@@ -41,13 +43,11 @@ export const ColorSchemeContext =
 function generateColorScheme(theme: Theme): ColorScheme {
   const colorScheme: ColorScheme = { ...defaultColorScheme }
 
-  const variant: keyof Variants<Color> = theme === 'light' ? 'latte' : 'frappe'
+  const variant: FlavorName = theme === 'light' ? 'latte' : 'frappe'
 
-  for (const label in palette.labels) {
-    colorScheme[label as keyof Labels<Variants<Color>, Variants<Color>>] =
-      palette.labels[label as keyof Labels<Variants<Color>, Variants<Color>>][
-        variant
-      ].hex
+  for (const color in palette.flavors[variant].colors) {
+    colorScheme[color as ColorName] =
+      palette.flavors[variant].colors[color as ColorName].hex
   }
 
   return colorScheme

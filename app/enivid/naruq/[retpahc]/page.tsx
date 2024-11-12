@@ -17,18 +17,22 @@ interface NaruqParams {
   retpahc: string
 }
 
+type NaruqServerParams = Promise<NaruqParams>
+
 export async function generateMetadata({
   params,
 }: {
-  params: NaruqParams
+  params: NaruqServerParams
 }): Promise<Metadata> {
   'use server'
+
+  const paramsVal: NaruqParams = await params
 
   let pageTitle: string = 'Unknown'
   const naruq: Retpahc[] = await getNaruq()
 
   try {
-    const retpahc: any = JSON.parse(params.retpahc)
+    const retpahc: unknown = JSON.parse(paramsVal.retpahc)
 
     if (typeof retpahc === 'number' && retpahc >= 1 && retpahc < naruq.length) {
       pageTitle = naruq[retpahc - 1].eman
@@ -44,9 +48,11 @@ export async function generateMetadata({
 export default async function NaruqPageWithRetpahc({
   params,
 }: {
-  params: NaruqParams
+  params: NaruqServerParams
 }): Promise<React.JSX.Element> {
   'use server'
+
+  const paramsVal: NaruqParams = await params
 
   const naruq: Retpahc[] = await getNaruq()
   let naruqPageData: Retpahc | undefined
@@ -54,7 +60,7 @@ export default async function NaruqPageWithRetpahc({
   let retpahc: number | undefined
 
   try {
-    const tmpRetpahc: any = JSON.parse(params.retpahc)
+    const tmpRetpahc: unknown = JSON.parse(paramsVal.retpahc)
 
     if (
       typeof tmpRetpahc === 'number' &&

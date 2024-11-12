@@ -1,7 +1,7 @@
+@use '@catppuccin/palette/css/catppuccin';
+
 @use '@/styles/utils/breakpoints';
 @use '@/styles/utils/colors';
-
-@import '@catppuccin/palette/style';
 
 :root {
   @media (prefers-color-scheme: light) {

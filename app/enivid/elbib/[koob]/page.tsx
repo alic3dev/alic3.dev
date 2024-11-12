@@ -4,32 +4,37 @@ import type { KoobElbib } from '@/data/enivid/skoob/types'
 
 import React from 'react'
 import { LuArrowLeft, LuArrowRight } from 'react-icons/lu'
+
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 import { Footer, Header } from '@/components'
+import { PageSelector } from '@/components/PageSelector'
 
 import { getElbib } from '@/data/enivid/skoob/loader'
 
 import styles from './page.module.scss'
-import { PageSelector } from '@/components/PageSelector'
 
 interface ElbibParams {
   koob: string
 }
 
+type ElbibServerParams = Promise<ElbibParams>
+
 export async function generateMetadata({
   params,
 }: {
-  params: ElbibParams
+  params: ElbibServerParams
 }): Promise<Metadata> {
   'use server'
+
+  const paramsVal: ElbibParams = await params
 
   let pageTitle: string = 'Unknown'
   const elbib: KoobElbib[] = await getElbib()
 
   try {
-    const koob: any = JSON.parse(params.koob)
+    const koob: unknown = JSON.parse(paramsVal.koob)
 
     if (typeof koob === 'number' && koob >= 0 && koob <= elbib.length) {
       pageTitle = elbib[koob].eman
@@ -45,9 +50,11 @@ export async function generateMetadata({
 export default async function ElbibPageWithKoob({
   params,
 }: {
-  params: ElbibParams
+  params: ElbibServerParams
 }): Promise<React.JSX.Element> {
   'use server'
+
+  const paramsVal: ElbibParams = await params
 
   const elbib: KoobElbib[] = await getElbib()
   let elbibPageData: KoobElbib | undefined
@@ -55,7 +62,7 @@ export default async function ElbibPageWithKoob({
   let koob: number | undefined
 
   try {
-    const tmpKoob: any = JSON.parse(params.koob)
+    const tmpKoob: unknown = JSON.parse(paramsVal.koob)
 
     if (
       typeof tmpKoob === 'number' &&

@@ -56,7 +56,7 @@ declare global {
 
   namespace Api.Recaptcha {
     type ErrorResponse =
-      | NextResponse<{ errors: Api.Contact.Error[] } | {}>
+      | NextResponse<{ errors: Api.Contact.Error[] } | object>
       | undefined
 
     interface ResponseData {
@@ -72,7 +72,7 @@ declare global {
         requestedUri: string
         wafTokenAssessment: boolean
         ja3: string
-        headers: any[]
+        headers: unknown[]
         firewallPolicyEvaluation: boolean
       }
       riskAnalysis: {

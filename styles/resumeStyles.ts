@@ -4,15 +4,15 @@ import type { ResumeColors, ResumeFonts } from './resumeStyles.types'
 
 import { StyleSheet } from '@react-pdf/renderer'
 
-import { variants } from '@catppuccin/palette'
-const { latte } = variants
+import { flavors } from '@catppuccin/palette'
+const { latte } = flavors
 
 export const colors: ResumeColors = {
   background: '#ffffff',
 
-  text: latte.text.hex,
-  textLight: latte.subtext1.hex,
-  textLighter: latte.overlay0.hex,
+  text: latte.colors.text.hex,
+  textLight: latte.colors.subtext1.hex,
+  textLighter: latte.colors.overlay0.hex,
   textDark: '#000',
 }
 
