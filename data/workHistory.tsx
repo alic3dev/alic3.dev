@@ -270,7 +270,14 @@ export const skills: {
   librariesAndFrameworks: string[]
   software: string[]
 } = {
-  languages: ['TypeScript', 'HTML5', 'CSS3', 'Sass', 'PostgreSQL'],
+  languages: [
+    'JavaScript',
+    'TypeScript',
+    'HTML5',
+    'CSS3',
+    'Sass',
+    'PostgreSQL',
+  ],
   librariesAndFrameworks: ['React', 'Next.js', 'Vite', 'Node.js'],
   software: ['Figma', 'Trello', 'Asana', 'Jira'],
 }

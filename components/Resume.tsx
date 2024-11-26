@@ -21,9 +21,10 @@ import {
 import { personalInfo } from '@/data/personalInfo'
 import {
   jobHistory,
+  freelancingHistory,
   educationHistory,
   skills,
-  experienceSummaries,
+  // experienceSummaries,
 } from '@/data/workHistory'
 
 import { icons } from '@/utils/resumeIcons'
@@ -87,7 +88,7 @@ const CompanyView = ({
     <View style={styles.company}>
       {company.positions.map((position, index) => (
         <CompanyPositionView
-          key={position.name}
+          key={position.name + index}
           position={position}
           company={company}
           isLast={index + 1 === company.positions.length}
@@ -131,7 +132,10 @@ const EducationView = ({
   </View>
 )
 
-const professionalExperience: WorkHistoryCompany[] = [...jobHistory].sort(
+const professionalExperience: WorkHistoryCompany[] = [
+  ...jobHistory,
+  ...freelancingHistory,
+].sort(
   (a: WorkHistoryCompany, b: WorkHistoryCompany): number =>
     b.startDate.valueOf() - a.startDate.valueOf(),
 )
@@ -160,18 +164,21 @@ export function Resume(): React.ReactElement {
 
             <View style={styles.contentContainer}>
               <View style={styles.mainContent}>
-                <Text style={[styles.heading, styles.experience]}>Summary</Text>
+                {/* <Text style={[styles.heading, styles.experience]}>Summary</Text>
 
                 <Text style={styles.summary}>
                   {experienceSummaries.condensed}
-                </Text>
+                </Text> */}
 
                 <Text style={[styles.heading, styles.experience]}>
                   Professional Experience
                 </Text>
                 {professionalExperience.map(
-                  (company: WorkHistoryCompany): React.ReactElement => (
-                    <CompanyView key={company.name} company={company} />
+                  (
+                    company: WorkHistoryCompany,
+                    index: number,
+                  ): React.ReactElement => (
+                    <CompanyView key={company.name + index} company={company} />
                   ),
                 )}
               </View>
