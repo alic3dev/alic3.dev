@@ -1,0 +1,20 @@
+.quote {
+  background: var(--demandment-color-foreground);
+
+  font-size: 1.6rem;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  border: 1rem solid var(--demandment-color-background);
+  border-left-width: 1rem;
+  border-right-width: 1rem;
+  border-bottom: none;
+}
+
+.content {
+  display: inline-block;
+  margin: 0.5rem 0rem;
+  padding: 0 1rem;
+  background: var(--demandment-color-background);
+}

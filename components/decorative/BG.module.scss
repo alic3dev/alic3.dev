@@ -46,7 +46,7 @@
     background: linear-gradient(
       to top,
       var(--color-crust) 0%,
-      rgba(var(--color-crust-raw), 0) 10%
+      rgba(var(--color-crust-rgb) / 0) 10%
     );
   }
 }
@@ -60,9 +60,9 @@
 
   background: linear-gradient(
     to bottom,
-    rgba(var(--color-crust-raw), 1) 0%,
-    rgba(var(--color-crust-raw), 1) 75%,
-    rgba(var(--color-crust-raw), 0) 100%
+    rgba(var(--color-crust-rgb) / 1) 0%,
+    rgba(var(--color-crust-rgb) / 1) 75%,
+    rgba(var(--color-crust-rgb) / 0) 100%
   );
 
   transition: bottom 2700ms ease-in-out;

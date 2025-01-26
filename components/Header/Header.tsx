@@ -68,10 +68,10 @@ function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
   return {
     background: `linear-gradient(
       to bottom,
-      rgba(var(--color-mantle-raw), 1),
-      rgba(var(--color-mantle-raw), ${scrollDepthIntroMapped * 0.9})
+      rgba(var(--color-mantle-rgb) / 1),
+      rgba(var(--color-mantle-rgb) / ${scrollDepthIntroMapped * 0.9})
     )`,
-    boxShadow: `0px 2px 4px rgba(var(--color-black-raw), ${
+    boxShadow: `0px 2px 4px rgba(var(--color-black-rgb) / ${
       scrollDepthIntroMapped * 0.05
     })`,
   }

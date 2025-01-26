@@ -12,6 +12,7 @@ import { Spinner } from '@/components/decorative'
 
 import styles from '@/components/sections/ContactSection.module.scss'
 import { HoverableHR } from '../HoverableHR'
+import { expectedActions } from '@/utils/recaptchaActions'
 
 const setDefaultContactMethod = (
   prevValue: Api.Contact.Method | '',
@@ -60,7 +61,7 @@ export function ContactSection(): JSX.Element {
             const recaptchaToken: string = await grecaptcha.enterprise.execute(
               process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
               {
-                action: 'SUBMIT_CONTACT_FORM',
+                action: expectedActions.SUBMIT_CONTACT_FORM,
               },
             )
             body.append('recaptcha-token', recaptchaToken)

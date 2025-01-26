@@ -10,17 +10,17 @@ export function ConMisc(): React.ReactNode {
 
     console.log(`
       ⛤⛧⛤
-      ⛧⛤    602
+      ⛧⛤    6<2
       ⛤      ⛧      ⛤
 
       Lost epiphanies,
       If only to see,
       What is to be,
       In this symphony.
-      ...🖊️
+      ___/
 
       ⛧      ⛤      ⛧
-      ⛤⛧    172
+      ⛤⛧    1>2
       ⛧⛤⛧
     `)
 

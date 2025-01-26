@@ -1,0 +1,11 @@
+.content {
+  padding: 0 1rem;
+}
+
+.main {
+  padding: 2rem;
+
+  border-left: 1rem solid var(--demandment-color-foreground);
+  border-right: 1rem solid var(--demandment-color-foreground);
+  border-bottom: 1rem solid var(--demandment-color-foreground);
+}

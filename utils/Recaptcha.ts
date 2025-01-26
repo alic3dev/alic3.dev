@@ -2,9 +2,7 @@ import 'server-only'
 
 import { NextResponse } from 'next/server'
 
-export const expectedActions: Record<string, string> = {
-  SUBMIT_CONTACT_FORM: 'SUBMIT_CONTACT_FORM',
-}
+import { expectedActions } from '@/utils/recaptchaActions'
 
 /**
  * verifyRecaptcha() - `production` only

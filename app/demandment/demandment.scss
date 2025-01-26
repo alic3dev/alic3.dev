@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Geostar&family=Geostar+Fill&display=swap');
+
+:root {
+  @media (prefers-color-scheme: light) {
+    --demandment-color-background: var(--color-white);
+    --demandment-color-foreground: var(--color-black);
+
+    --demandment-color-inverse-background: var(--color-black);
+    --demandment-color-inverse-foreground: var(--color-white);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --demandment-color-background: var(--color-black);
+    --demandment-color-foreground: var(--color-white);
+
+    --demandment-color-inverse-background: var(--color-white);
+    --demandment-color-inverse-foreground: var(--color-black);
+  }
+}
+
+html,
+body {
+  background: var(--demandment-color-background);
+  background-color: var(--demandment-color-background);
+
+  color: var(--demandment-color-foreground);
+}
+
+html,
+body,
+main {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+main {
+  width: 900px;
+  max-width: 900px;
+
+  margin: auto;
+}
+
+header {
+  padding: 0.25rem 1rem;
+
+  border-bottom: 1px solid var(--demandment-color-foreground);
+
+  h1 {
+    display: inline;
+
+    margin-right: 1rem;
+  }
+}
+
+a {
+  color: var(--demandment-color-foreground);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-family: 'Geostar', serif;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: normal;
+}

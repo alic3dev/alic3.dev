@@ -1,11 +1,8 @@
 import {
-  Rubik,
   Cormorant_Garamond,
   Geostar,
   Geostar_Fill,
 } from 'next/font/google'
-
-export const rubik = Rubik({ subsets: ['latin'] })
 
 export const cormorantGaramond = Cormorant_Garamond({
   style: ['normal', 'italic'],
@@ -24,5 +21,3 @@ export const geostarFill = Geostar_Fill({
   style: 'normal',
   subsets: ['latin'],
 })
-
-// TODO: Make a '@/fonts' shorthand for imports.
