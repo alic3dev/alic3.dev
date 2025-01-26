@@ -56,8 +56,7 @@ export default function DemandmentAdminPage(): React.ReactElement {
           />
         )}
 
-      <h1>Hello, I&apos;m your admin :) ~ Alic3</h1>
-
+      <h1>H#LL0.//--{}}}}\\\\\>><><>//..........\\\\\\\||>?>?>.....<>>>??"":":"00000</h1>
       <br />
 
       <form onSubmit={onFormSubmit}>
