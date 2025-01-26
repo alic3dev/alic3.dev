@@ -1,0 +1,6 @@
+export { CW } from '@/components/demandment/CW'
+export { Eye } from '@/components/demandment/Eye'
+export { Header } from '@/components/demandment/Header'
+export { Footer } from '@/components/demandment/Footer'
+export { Quote } from '@/components/demandment/Quote'
+export { InlineTitle } from '@/components/demandment/InlineTitle'

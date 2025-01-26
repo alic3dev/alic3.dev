@@ -16,14 +16,6 @@ interface ThemeColors extends ColorScheme {
   progressCubeMaterialColor: () => keyof ColorScheme
 }
 
-// function getRandomDirection(): THREE.Vector3 {
-//   return new THREE.Vector3(
-//     (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
-//     0,
-//     (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 0.01 + 0.005),
-//   )
-// }
-
 export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
   const theme = React.useContext(ThemeContext)
   const colorScheme = React.useContext(ColorSchemeContext)
@@ -83,6 +75,8 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
     ...colorScheme,
   })
 
+  console.log(themeColors.current);
+
   const mousePosition = React.useRef<THREE.Vector2>(new THREE.Vector2(-1, -1))
   const mousedDownPosition = React.useRef<THREE.Vector2 | null>(null)
 
@@ -134,8 +128,8 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
       rendererProperties.current.grid = new THREE.GridHelper(
         50,
         50,
-        themeColors.current.base,
-        themeColors.current.base,
+        themeColors.current.text,
+        themeColors.current.text,
       )
       rendererProperties.current.grid.position.setY(-1)
       rendererProperties.current.scene.add(rendererProperties.current.grid)
@@ -166,7 +160,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
       // renderer.current.shadowMap.enabled = true
       // renderer.current.shadowMap.type = THREE.PCFSoftShadowMap
 
-      renderer.current.setClearColor(themeColors.current.crust)
+      renderer.current.setClearColor('#ff0000');//themeColors.current.crust)
 
       rendererContainer.current.prepend(renderer.current.domElement)
     }
@@ -196,7 +190,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
 
       const cubeEdges = new THREE.EdgesGeometry(cubeGeometry)
       const cubeLinesMaterial = new THREE.LineBasicMaterial({
-        color: themeColors.current[themeColors.current.cubeLinesMaterialColor],
+        color: '#FFFFFF' //themeColors.current[themeColors.current.cubeLinesMaterialColor],
       })
       const cubeLines = new THREE.LineSegments(cubeEdges, cubeLinesMaterial)
 

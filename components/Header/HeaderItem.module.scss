@@ -1,29 +1,29 @@
 @keyframes addborder {
   0% {
     color: var(--color-subtext1);
-    border-color: rgba(var(--color-text-raw), 0);
+    border-color: rgba(var(--color-text-rgb) / 0);
   }
   100% {
     color: var(--color-text);
-    border-color: rgba(var(--color-text-raw), 0.25);
+    border-color: rgba(var(--color-text-rgb) / 0.25);
   }
 }
 
 @keyframes addBeforeborder {
   0% {
-    border-color: rgba(var(--color-blue-raw), 0);
+    border-color: rgba(var(--color-blue-rgb) / 0);
   }
   100% {
-    border-color: rgba(var(--color-blue-raw), 0.5);
+    border-color: rgba(var(--color-blue-rgb) / 0.5);
   }
 }
 
 @keyframes addAfterborder {
   0% {
-    border-color: rgba(var(--color-blue-raw), 0);
+    border-color: rgba(var(--color-blue-rgb) / 0);
   }
   100% {
-    border-color: rgba(var(--color-blue-raw), 0.75);
+    border-color: rgba(var(--color-blue-rgb) / 0.75);
   }
 }
 
@@ -33,7 +33,7 @@
 
   padding: 0.5rem;
 
-  border: 1px solid rgba(var(--color-text-raw), 0);
+  border: 1px solid rgba(var(--color-text-rgb) / 0);
   border-top: none;
   border-left: none;
 
@@ -75,7 +75,7 @@
     top: -13px;
     bottom: 2px;
 
-    border: 1px solid rgba(var(--color-blue-raw), 0);
+    border: 1px solid rgba(var(--color-blue-rgb) / 0);
     border-bottom: none;
     border-right: none;
 
@@ -94,7 +94,7 @@
     top: -10px;
     bottom: -3px;
 
-    border: 1px solid rgba(var(--color-blue-raw), 0);
+    border: 1px solid rgba(var(--color-blue-rgb) / 0);
     border-bottom: none;
     border-right: none;
 

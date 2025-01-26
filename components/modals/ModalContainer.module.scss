@@ -7,7 +7,7 @@
 
   padding: 2rem;
 
-  background: rgba(var(--color-overlay0-raw), 0);
+  background: rgba(var(--color-overlay0-rgb) / 0);
   backdrop-filter: blur(0px);
 
   pointer-events: none;
@@ -19,7 +19,7 @@
   &.with-content {
     pointer-events: all;
 
-    background: rgba(var(--color-overlay0-raw), 0.3);
+    background: rgba(var(--color-overlay0-rgb) / 0.3);
     backdrop-filter: blur(4px);
   }
 }

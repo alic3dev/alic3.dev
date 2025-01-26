@@ -10,8 +10,6 @@ import { NotificationContainer } from '@/components/notifications'
 
 import { AllPolyfills } from '@/polyfills'
 
-import { rubik } from '@/styles/fonts'
-
 import {
   ColorSchemeContextWrapper,
   ModalContextWrapper,
@@ -51,7 +49,7 @@ export default function RootLayout({
 }: React.PropsWithChildren): JSX.Element {
   return (
     <html lang="en">
-      <body className={rubik.className}>
+      <body>
         <AllPolyfills />
 
         <ContextWrappers>

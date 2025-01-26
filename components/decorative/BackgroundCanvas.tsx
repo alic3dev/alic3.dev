@@ -27,10 +27,6 @@ export function BackgroundCanvas() {
 
     canvasValuesRef.current.size = 1200
 
-    // canvasValuesRef.current.size = Math.max(
-    //   900,
-    //   900
-    // )
     canvasValuesRef.current.sizeDpiAdjusted =
       canvasValuesRef.current.size * window.devicePixelRatio
 
@@ -38,14 +34,6 @@ export function BackgroundCanvas() {
     canvasRef.current.height = canvasValuesRef.current.sizeDpiAdjusted
     canvasRef.current.style.width = `${canvasValuesRef.current.size}px`
     canvasRef.current.style.height = `${canvasValuesRef.current.size}px`
-
-    // if (900 < 900) {
-    //   canvasRef.current.style.width = `75vw`
-    //   canvasRef.current.style.height = `75vw`
-    // } else {
-    //   canvasRef.current.style.width = `75vh`
-    //   canvasRef.current.style.height = `75vh`
-    // }
 
     const ctx: CanvasRenderingContext2D | null =
       canvasRef.current.getContext('2d')
@@ -86,30 +74,6 @@ export function BackgroundCanvas() {
     const strokeAlpha = 0.1
 
     ctx.strokeStyle = `rgba(${invBlueAm}, ${invBlueAm}, ${blueAm}, ${strokeAlpha})`
-    // ctx.beginPath()
-
-    // ctx.arc(0, (Math.random() * 900) / 2, 100, 0, 2 * Math.PI)
-    // ctx.arc(
-    //   -900 / 10,
-    //   (Math.random() * 900) / 2 - 900 / 10,
-    //   100,
-    //   0,
-    //   2 * Math.PI
-    // )
-    // ctx.arc(0, 0, 100, 0, 2 * Math.PI)
-    // ctx.arc(100, Math.random() * -50, 100, 0, 2 * Math.PI)
-    // ctx.arc(Math.random() * -100, 50, 100, 0, 2 * Math.PI)
-    // ctx.arc(Math.random() * 50, -100, 100, 0, 2 * Math.PI)
-    // ctx.arc(Math.random() * -50, Math.random() * 100, 100, 0, 2 * Math.PI)
-    // ctx.arc(0, (Math.random() * -900) / 2, 100, 0, 2 * Math.PI)
-    // ctx.arc(
-    //   (Math.random() * 900) / 10,
-    //   -900 / 2 + 900 / 10,
-    //   100,
-    //   0,
-    //   2 * Math.PI
-    // )
-    // ctx.stroke()
 
     ctx.beginPath()
 
