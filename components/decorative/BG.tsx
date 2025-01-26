@@ -75,8 +75,6 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
     ...colorScheme,
   })
 
-  console.log(themeColors.current);
-
   const mousePosition = React.useRef<THREE.Vector2>(new THREE.Vector2(-1, -1))
   const mousedDownPosition = React.useRef<THREE.Vector2 | null>(null)
 

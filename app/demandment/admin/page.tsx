@@ -56,7 +56,6 @@ export default function DemandmentAdminPage(): React.ReactElement {
           />
         )}
 
-      <h1>H#LL0.//--{}}}}\\\\\>><><>//..........\\\\\\\||>?>?>.....<>>>??"":":"00000</h1>
       <br />
 
       <form onSubmit={onFormSubmit}>
