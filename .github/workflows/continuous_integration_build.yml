@@ -32,5 +32,8 @@ jobs:
       - name: pnpm_lint
         run: pnpm lint
 
+      - name: pnpm_check_types
+        run: pnpm check-types
+
       - name: pnpm_build
         run: pnpm build
