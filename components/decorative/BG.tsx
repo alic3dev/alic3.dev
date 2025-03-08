@@ -80,8 +80,8 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
 
   const webGLSupported = React.useRef<{ value: boolean }>({ value: true })
 
-  const renderer = React.useRef<THREE.WebGLRenderer>()
-  const rendererContainer = React.useRef<HTMLDivElement>(null)
+  const renderer = React.useRef<THREE.WebGLRenderer | null>(null)
+  const rendererContainer = React.useRef<HTMLDivElement | null>(null)
   const rendererProperties = React.useRef<{
     scene: THREE.Scene
     camera: THREE.PerspectiveCamera
@@ -90,7 +90,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
     cubeMesh: THREE.Mesh
     cubeLines: THREE.LineSegments
     grid: THREE.GridHelper
-  }>()
+  } | null>(null)
 
   React.useEffect((): void => {
     themeColors.current.theme = theme.theme
