@@ -1,4 +1,7 @@
-export type { ColorScheme } from '@/contexts/ColorSchemeContext'
+export type {
+  ColorScheme,
+  color_name_extended,
+} from '@/contexts/ColorSchemeContext'
 export type { Theme } from '@/contexts/ThemeContext'
 
 export {

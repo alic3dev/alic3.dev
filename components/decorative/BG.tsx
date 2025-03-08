@@ -1,6 +1,6 @@
 'use client'
 
-import type { ColorScheme, Theme } from '@/contexts'
+import type { color_name_extended, ColorScheme, Theme } from '@/contexts'
 
 import React from 'react'
 
@@ -22,7 +22,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
 
   const themeColors = React.useRef<ThemeColors>({
     theme: theme.theme,
-    cubeLinesMaterialColor: 'blue',
+    cubeLinesMaterialColor: 'mauve',
     progressCubeMaterialColor: (): keyof ColorScheme => {
       switch (themeColors.current.cubeLinesMaterialColor) {
         case 'blue':
@@ -65,8 +65,52 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
           themeColors.current.cubeLinesMaterialColor = 'sapphire'
           break
         case 'sapphire':
-        default:
           themeColors.current.cubeLinesMaterialColor = 'blue'
+          break
+        case '!blue':
+          themeColors.current.cubeLinesMaterialColor = '!lavender'
+          break
+        case '!lavender':
+          themeColors.current.cubeLinesMaterialColor = '!rosewater'
+          break
+        case '!rosewater':
+          themeColors.current.cubeLinesMaterialColor = '!flamingo'
+          break
+        case '!flamingo':
+          themeColors.current.cubeLinesMaterialColor = '!pink'
+          break
+        case '!pink':
+          themeColors.current.cubeLinesMaterialColor = '!mauve'
+          break
+        case '!mauve':
+          themeColors.current.cubeLinesMaterialColor = '!red'
+          break
+        case '!red':
+          themeColors.current.cubeLinesMaterialColor = '!maroon'
+          break
+        case '!maroon':
+          themeColors.current.cubeLinesMaterialColor = '!peach'
+          break
+        case '!peach':
+          themeColors.current.cubeLinesMaterialColor = '!yellow'
+          break
+        case '!yellow':
+          themeColors.current.cubeLinesMaterialColor = '!green'
+          break
+        case '!green':
+          themeColors.current.cubeLinesMaterialColor = '!teal'
+          break
+        case '!teal':
+          themeColors.current.cubeLinesMaterialColor = '!sky'
+          break
+        case '!sky':
+          themeColors.current.cubeLinesMaterialColor = '!sapphire'
+          break
+        case '!sapphire':
+          themeColors.current.cubeLinesMaterialColor = '!blue'
+          break
+        default:
+          themeColors.current.cubeLinesMaterialColor = 'mauve'
           break
       }
 
@@ -158,7 +202,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
       // renderer.current.shadowMap.enabled = true
       // renderer.current.shadowMap.type = THREE.PCFSoftShadowMap
 
-      renderer.current.setClearColor('#ff0000');//themeColors.current.crust)
+      renderer.current.setClearColor(themeColors.current.crust)
 
       rendererContainer.current.prepend(renderer.current.domElement)
     }
@@ -188,7 +232,7 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
 
       const cubeEdges = new THREE.EdgesGeometry(cubeGeometry)
       const cubeLinesMaterial = new THREE.LineBasicMaterial({
-        color: '#FFFFFF' //themeColors.current[themeColors.current.cubeLinesMaterialColor],
+        color: '#FFFFFF',
       })
       const cubeLines = new THREE.LineSegments(cubeEdges, cubeLinesMaterial)
 
@@ -280,7 +324,22 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
       if (intersects && intersects[0]) {
         rendererContainer.current.style.cursor = 'pointer'
 
-        rendererProperties.current.cubeGroup.scale.set(1.5, 1.5, 1.5)
+        rendererProperties.current.cubeGroup.scale.set(
+          Math.min(1.5, rendererProperties.current.cubeGroup.scale.x + 0.025),
+          Math.min(1.5, rendererProperties.current.cubeGroup.scale.y + 0.025),
+          Math.min(1.5, rendererProperties.current.cubeGroup.scale.z + 0.025),
+        )
+
+        if (!themeColors.current.cubeLinesMaterialColor.startsWith('!')) {
+          themeColors.current.cubeLinesMaterialColor =
+            `!${themeColors.current.cubeLinesMaterialColor}` as color_name_extended
+
+          rendererProperties.current.cubeLines.material =
+            new THREE.LineBasicMaterial({
+              color:
+                themeColors.current[themeColors.current.cubeLinesMaterialColor],
+            })
+        }
       } else {
         rendererContainer.current.style.cursor = 'unset'
 
@@ -293,13 +352,35 @@ export function BG({ visible = true }: { visible: boolean }): React.ReactNode {
             ),
           ) / 0.5
 
-        const scaleValue: number = (1 - mouseDistanceFromCenter) * 0.25
+        const scaleValue: number = 1 + (1 - mouseDistanceFromCenter) * 0.25
 
         rendererProperties.current.cubeGroup.scale.set(
-          1 + scaleValue,
-          1 + scaleValue,
-          1 + scaleValue,
+          Math.max(
+            scaleValue,
+            rendererProperties.current.cubeGroup.scale.x - 0.025,
+          ),
+          Math.max(
+            scaleValue,
+            rendererProperties.current.cubeGroup.scale.y - 0.025,
+          ),
+          Math.max(
+            scaleValue,
+            rendererProperties.current.cubeGroup.scale.z - 0.025,
+          ),
         )
+
+        if (themeColors.current.cubeLinesMaterialColor.startsWith('!')) {
+          themeColors.current.cubeLinesMaterialColor =
+            themeColors.current.cubeLinesMaterialColor.substring(
+              1,
+            ) as color_name_extended
+
+          rendererProperties.current.cubeLines.material =
+            new THREE.LineBasicMaterial({
+              color:
+                themeColors.current[themeColors.current.cubeLinesMaterialColor],
+            })
+        }
       }
 
       if (mousedDownPosition.current) {
