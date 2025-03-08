@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Gematria',
 }
 
-export default function GematriaPage(): JSX.Element {
+export default function GematriaPage(): React.ReactElement {
   return (
     <main>
       <NoPageScroll />

@@ -7,7 +7,7 @@ import { NextButton } from '@/components/sections/NextButton'
 
 import styles from '@/components/sections/HomeSection.module.scss'
 
-export function HomeSection(): JSX.Element {
+export function HomeSection(): React.ReactElement {
   return (
     <Section name="home" className={styles.section}>
       <HomeIntro />

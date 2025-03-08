@@ -112,7 +112,7 @@ export default async function WritingsPageCategory({
   params,
 }: {
   params: CategoryServerParams
-}): Promise<React.JSX.Element> {
+}): Promise<React.ReactElement> {
   const paramsVal: CategoryParams = await params
 
   const writingCategoryData: WritingCategoryData | undefined =

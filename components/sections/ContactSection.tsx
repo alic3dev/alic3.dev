@@ -21,7 +21,7 @@ const setDefaultContactMethod = (
 const messageMaxLength: number = 5000
 const messageSentLocalStorageKey: string = 'root:contact-section:message-sent'
 
-export function ContactSection(): JSX.Element {
+export function ContactSection(): React.ReactElement {
   const [contactMethod, setContactMethod] = React.useState<
     Api.Contact.Method | ''
   >('')

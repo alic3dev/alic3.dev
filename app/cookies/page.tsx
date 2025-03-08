@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Cookie policy for alic3.dev',
 }
 
-export default function PrivacyPage(): JSX.Element {
+export default function PrivacyPage(): React.ReactElement {
   return (
     <main>
       <LegalPageWrapper>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: '🂡🂱🃁🃑T0🂡🂱🃁🃑R🂡🂱🃁🃑4T🂡🂱🃁🃑',
 }
 
-export default function TarotPage(): JSX.Element {
+export default function TarotPage(): React.ReactElement {
   return (
     <main>
       <NoPageScroll />

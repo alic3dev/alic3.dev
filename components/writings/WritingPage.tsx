@@ -8,7 +8,7 @@ import { cascadingDifferenceDisplay } from '@/utils/dates'
 
 function parseContent(content: string): React.ReactNode {
   const splitContent: string[] = content.replaceAll('&apos;', "'").split('\\n')
-  const parsedContent: React.JSX.Element[] = []
+  const parsedContent: React.ReactElement[] = []
 
   for (const contentString of splitContent) {
     parsedContent.push(<p>{contentString}</p>)
@@ -17,7 +17,7 @@ function parseContent(content: string): React.ReactNode {
   return (
     <>
       {parsedContent.map(
-        (elem: React.JSX.Element): React.JSX.Element => (
+        (elem: React.ReactElement): React.ReactElement => (
           <React.Fragment key={crypto.randomUUID()}>{elem}</React.Fragment>
         ),
       )}

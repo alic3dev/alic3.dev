@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Disclaimer for alic3.dev',
 }
 
-export default function DisclaimerPage(): JSX.Element {
+export default function DisclaimerPage(): React.ReactElement {
   return (
     <main>
       <LegalPageWrapper>

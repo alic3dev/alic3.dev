@@ -57,7 +57,7 @@ export const ModalContext = React.createContext<ModalContextInterface>({
 
 export function ModalContextWrapper({
   children,
-}: React.PropsWithChildren): JSX.Element {
+}: React.PropsWithChildren): React.ReactElement {
   const [modals, setModals] = React.useState<ModalInterface[]>([])
 
   const [modalManager] = React.useState<ModalManager>(

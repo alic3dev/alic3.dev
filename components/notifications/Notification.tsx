@@ -25,7 +25,7 @@ export function Notification({
   icon,
   length,
   content,
-}: NotificationInterface): JSX.Element {
+}: NotificationInterface): React.ReactElement {
   const [closing, setClosing] = React.useState<boolean>(false)
   const elapsedTimeMS = React.useRef<number>(0)
 

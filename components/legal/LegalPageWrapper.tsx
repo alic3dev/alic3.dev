@@ -3,7 +3,7 @@ import styles from '@/components/legal/LegalPageWrapper.module.scss'
 export function LegalPageWrapper({
   children,
 }: {
-  children: JSX.Element
-}): JSX.Element {
+  children: React.ReactElement
+}): React.ReactElement {
   return <div className={styles.wrapper}>{children}</div>
 }

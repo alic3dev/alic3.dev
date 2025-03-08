@@ -8,7 +8,7 @@ export function ScanLines({
   resolution = { x: 2560, y: 2560 },
 }: {
   resolution?: { x: number; y: number }
-}): JSX.Element {
+}): React.ReactElement {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
 
   React.useEffect(() => {

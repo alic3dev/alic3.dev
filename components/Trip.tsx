@@ -7,7 +7,7 @@ import { ThemeContext } from '@/contexts'
 
 import styles from '@/components/Trip.module.scss'
 
-export function Trip(): JSX.Element {
+export function Trip(): React.ReactElement {
   const [tripping, setTripping] = React.useState<boolean>(false)
 
   const theme = React.useContext(ThemeContext)

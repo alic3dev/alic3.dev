@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export function TermsAndConditions(): JSX.Element {
+export function TermsAndConditions(): React.ReactElement {
   return (
     <div>
       <h2>Terms and Conditions</h2>

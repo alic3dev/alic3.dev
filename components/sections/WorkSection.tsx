@@ -15,7 +15,7 @@ import { jobHistory as workHistory } from '@/data/workHistory'
 import styles from '@/components/sections/WorkSection.module.scss'
 import { WorkItemLogo } from '../WorkItemLogo'
 
-export function WorkSection(): JSX.Element {
+export function WorkSection(): React.ReactElement {
   return (
     <Section name="work">
       <div className={styles['section-header']}>

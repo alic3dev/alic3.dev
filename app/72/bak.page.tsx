@@ -45,7 +45,7 @@ export default async function SevenTwoPage({
   searchParams,
 }: {
   searchParams?: { [key: string]: string | string[] | undefined }
-}): Promise<JSX.Element> {
+}): Promise<React.ReactElement> {
   'use server'
 
   let selectedPage: number =

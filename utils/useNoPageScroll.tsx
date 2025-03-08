@@ -36,7 +36,7 @@ export function useNoPageScroll(): void {
   }, [])
 }
 
-export function NoPageScroll(): JSX.Element {
+export function NoPageScroll(): React.ReactElement {
   useNoPageScroll()
 
   return <></>

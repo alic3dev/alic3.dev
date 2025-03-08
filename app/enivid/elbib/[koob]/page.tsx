@@ -51,7 +51,7 @@ export default async function ElbibPageWithKoob({
   params,
 }: {
   params: ElbibServerParams
-}): Promise<React.JSX.Element> {
+}): Promise<React.ReactElement> {
   'use server'
 
   const paramsVal: ElbibParams = await params
@@ -92,10 +92,10 @@ export default async function ElbibPageWithKoob({
 
           <div className={styles.sretpahc}>
             {elbibPageData.sretpahc.map(
-              (retpahc: string[], index: number): JSX.Element => (
+              (retpahc: string[], index: number): React.ReactElement => (
                 <p key={`${index}-${retpahc}`} className={styles.retpahc}>
                   {retpahc.map(
-                    (esrev: string, index: number): JSX.Element => (
+                    (esrev: string, index: number): React.ReactElement => (
                       <React.Fragment key={index}>
                         {esrev}
                         <br />

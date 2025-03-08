@@ -98,7 +98,7 @@ export default async function WritingsPageWithCategoryAndSlug({
   params,
 }: {
   params: WritingPageServerParams
-}): Promise<React.JSX.Element> {
+}): Promise<React.ReactElement> {
   const paramsValue: WritingPageParams = await params
 
   const writingPageData: WritingPageData | undefined = await getWritingPageData(

@@ -40,7 +40,7 @@ const getRandomColorIndexs = (): RandomColorIndex[] => {
   return randomColorIndexs
 }
 
-export function FocusSection(): JSX.Element {
+export function FocusSection(): React.ReactElement {
   const [randomColorIndexs, setRandomColorIndexs] = React.useState<
     RandomColorIndex[]
   >([])
@@ -83,7 +83,7 @@ export function FocusSection(): JSX.Element {
         </span>
         <span className={styles.add}>
           {new Array(9).fill(null).map(
-            (_v: null, i: number): JSX.Element => (
+            (_v: null, i: number): React.ReactElement => (
               <LuBinary
                 className={(() => {
                   const randomColorIndex = randomColorIndexs.find(

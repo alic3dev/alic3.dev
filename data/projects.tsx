@@ -11,8 +11,8 @@ import styles from '@/data/projects.module.scss'
 export interface Project {
   title: string
   links?: Links
-  description: JSX.Element | JSX.Element[]
-  visual: JSX.Element
+  description: React.ReactElement | React.ReactElement[]
+  visual: React.ReactElement
   technologies: TechnologyName[]
 }
 

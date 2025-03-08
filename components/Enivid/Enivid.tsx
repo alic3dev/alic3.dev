@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-export function Enivid(): JSX.Element {
+export function Enivid(): React.ReactElement {
   return (
     <>
       <Link href={'/enivid/elbib'}>

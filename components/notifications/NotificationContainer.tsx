@@ -19,7 +19,7 @@ function CookieNoticeContent({
   onGotIt,
 }: {
   onGotIt?: () => void
-}): JSX.Element {
+}): React.ReactElement {
   return (
     <div className={styles['cookie-notice']}>
       <div className={styles['cookie-notice-content']}>
@@ -42,7 +42,7 @@ function CookieNoticeContent({
   )
 }
 
-export function NotificationContainer(): JSX.Element {
+export function NotificationContainer(): React.ReactElement {
   const notificationContext =
     React.useContext<NotificationContextInterface>(NotificationContext)
 
@@ -112,7 +112,7 @@ export function NotificationContainer(): JSX.Element {
   return (
     <div className={styles['notification-container']}>
       {notificationContext.notifications.map(
-        (notification: NotificationInterface): JSX.Element => (
+        (notification: NotificationInterface): React.ReactElement => (
           <Notification
             key={notification.id ?? crypto.randomUUID()}
             {...notification}

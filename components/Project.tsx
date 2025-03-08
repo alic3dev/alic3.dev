@@ -14,7 +14,7 @@ export function Project({
   description,
   technologies,
   visual,
-}: Project): JSX.Element {
+}: Project): React.ReactElement {
   return (
     <CollapsibleItem
       key={title}
@@ -33,7 +33,7 @@ export function Project({
           <div className={styles.description}>
             {Array.isArray(description) ? (
               description.map(
-                (descriptionElement: JSX.Element): React.ReactNode =>
+                (descriptionElement: React.ReactElement): React.ReactNode =>
                   descriptionElement.type ? (
                     <div key={descriptionElement.key}>{descriptionElement}</div>
                   ) : (

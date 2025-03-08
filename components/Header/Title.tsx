@@ -11,7 +11,7 @@ import styles from '@/components/Header/Title.module.scss'
 const titleFont: NextFont = Exo_2({ subsets: ['latin'] })
 const titleMainStartFont: NextFont = Inconsolata({ subsets: ['latin'] })
 
-export function Title(): JSX.Element {
+export function Title(): React.ReactElement {
   return (
     <h1 className={`${titleFont.className} ${styles.title}`}>
       <Link className={styles['title-header']} href="/">

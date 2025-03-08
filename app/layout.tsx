@@ -46,7 +46,7 @@ function ContextWrappers({
 
 export default function RootLayout({
   children,
-}: React.PropsWithChildren): JSX.Element {
+}: React.PropsWithChildren): React.ReactElement {
   return (
     <html lang="en">
       <body>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Terms and Conditions for alic3.dev',
 }
 
-export default function TermsPage(): JSX.Element {
+export default function TermsPage(): React.ReactElement {
   return (
     <main>
       <LegalPageWrapper>

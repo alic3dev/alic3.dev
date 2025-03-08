@@ -77,7 +77,11 @@ function useHeaderStyles(scrollDepth: number | null): React.CSSProperties {
   }
 }
 
-export function FullHeader({ noBg = false }: { noBg?: boolean }): JSX.Element {
+export function FullHeader({
+  noBg = false,
+}: {
+  noBg?: boolean
+}): React.ReactElement {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(0)
   const headerStyles = useHeaderStyles(scrollDepth)
 
@@ -179,7 +183,7 @@ export function MinimalHeader({
   noBg = false,
 }: {
   noBg?: boolean
-}): JSX.Element {
+}): React.ReactElement {
   const [scrollDepth, setScrollDepth] = React.useState<number | null>(null)
   const headerStyles = useHeaderStyles(scrollDepth)
 
@@ -204,6 +208,6 @@ export function Header({
 }: {
   minimal?: boolean
   noBg?: boolean
-}): JSX.Element {
+}): React.ReactElement {
   return minimal ? <MinimalHeader noBg={noBg} /> : <FullHeader noBg={noBg} />
 }

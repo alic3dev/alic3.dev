@@ -192,10 +192,16 @@ const majorIcons: React.FunctionComponent[] = [
   ), // 'The World',
 ]
 
-export function TarotCard({ card }: { card: CardWithInfo }): JSX.Element {
+export function TarotCard({
+  card,
+}: {
+  card: CardWithInfo
+}): React.ReactElement {
   const content = React.useMemo(() => {
     if (card.card instanceof MinorArcanaCard) {
-      let iconToUse: JSX.Element = <GiD4 className={styles['card-icon']} />
+      let iconToUse: React.ReactElement = (
+        <GiD4 className={styles['card-icon']} />
+      )
 
       switch (card.card.suitNumber) {
         case 0:
@@ -226,7 +232,7 @@ export function TarotCard({ card }: { card: CardWithInfo }): JSX.Element {
           break
       }
 
-      let content: JSX.Element = <></>
+      let content: React.ReactElement = <></>
 
       if (card.card.valueNumber > 9) {
         let suitIconToUse = <GiMountedKnight className={styles['card-icon']} />
@@ -257,7 +263,7 @@ export function TarotCard({ card }: { card: CardWithInfo }): JSX.Element {
         )
           .fill(0)
           .map(
-            (_v: CardWithInfo, i: number): JSX.Element => (
+            (_v: CardWithInfo, i: number): React.ReactElement => (
               <React.Fragment key={i}>{iconToUse}</React.Fragment>
             ),
           )

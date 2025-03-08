@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'A portal to unknowns',
 }
 
-export default function PortalPage(): JSX.Element {
+export default function PortalPage(): React.ReactElement {
   return (
     <main className={styles.page}>
       <NoPageScroll />

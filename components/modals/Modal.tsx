@@ -10,7 +10,7 @@ import { ModalContext } from '@/contexts/ModalContext'
 
 import styles from '@/components/modals/Modal.module.scss'
 
-export function Modal({ id, content }: ModalInterface): JSX.Element {
+export function Modal({ id, content }: ModalInterface): React.ReactElement {
   const [closing, setClosing] = React.useState<boolean>(false)
 
   const modalContext = React.useContext<ModalContextInterface>(ModalContext)
