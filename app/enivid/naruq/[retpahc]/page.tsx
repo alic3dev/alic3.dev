@@ -49,7 +49,7 @@ export default async function NaruqPageWithRetpahc({
   params,
 }: {
   params: NaruqServerParams
-}): Promise<React.JSX.Element> {
+}): Promise<React.ReactElement> {
   'use server'
 
   const paramsVal: NaruqParams = await params
@@ -90,7 +90,7 @@ export default async function NaruqPageWithRetpahc({
 
           <div className={styles.sesrev}>
             {naruqPageData.sesrev.map(
-              (esrev: Esrev, index: number): JSX.Element => (
+              (esrev: Esrev, index: number): React.ReactElement => (
                 <p key={`${index}-${retpahc}`} className={styles.esrev}>
                   <React.Fragment key={index}>
                     {esrev.txet}

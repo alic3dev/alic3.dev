@@ -9,7 +9,7 @@ import { TarotDeck, Card } from '@/utils/TarotDeck'
 
 import styles from '@/components/Tarot.module.scss'
 
-export function Tarot(): JSX.Element {
+export function Tarot(): React.ReactElement {
   const tarotDeck: TarotDeck = useTarotDeck()
   const [drawnCards, setDrawnCards] = React.useState<CardWithInfo[]>([])
 
@@ -52,7 +52,7 @@ export function Tarot(): JSX.Element {
     <div className={styles.tarot}>
       <div className={styles.content}>
         {drawnCards.map(
-          (card: CardWithInfo): JSX.Element => (
+          (card: CardWithInfo): React.ReactElement => (
             <TarotCard key={card.id} card={card} />
           ),
         )}

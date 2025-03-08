@@ -9,7 +9,7 @@ export function Section({
   name: Pages.ValidLocation
   className?: string
   containerClassName?: string
-}>): JSX.Element {
+}>): React.ReactElement {
   return (
     <section
       id={name !== 'home' ? name : undefined}

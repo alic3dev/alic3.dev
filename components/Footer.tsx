@@ -5,7 +5,11 @@ import Link from 'next/link'
 
 import styles from '@/components/Footer.module.scss'
 
-export function Footer({ noBg = false }: { noBg?: boolean }): JSX.Element {
+export function Footer({
+  noBg = false,
+}: {
+  noBg?: boolean
+}): React.ReactElement {
   const copyrightYear = new Date().getFullYear()
 
   const onBackToTopClick: React.MouseEventHandler =

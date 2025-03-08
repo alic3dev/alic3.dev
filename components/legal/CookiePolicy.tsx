@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export function CookiePolicy(): JSX.Element {
+export function CookiePolicy(): React.ReactElement {
   return (
     <div>
       <h1>Cookie Policy for Alic3dev</h1>

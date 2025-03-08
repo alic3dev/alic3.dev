@@ -18,10 +18,11 @@ import * as gematria from '@/utils/gematria'
 
 import styles from '@/components/Gematria/Gematria.module.scss'
 
-export function Gematria(): JSX.Element {
+export function Gematria(): React.ReactElement {
   const [state, dispatch] = React.useReducer<
-    React.Reducer<GematriaState, GematriaAction>,
-    GematriaState
+    GematriaState,
+    GematriaState,
+    [action: GematriaAction]
   >(gematriaStateReducer, defaultGematriaState, defaultGematriaStateInitializer)
 
   const onFormSubmit: React.FormEventHandler<HTMLFormElement> =

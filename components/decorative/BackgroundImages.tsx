@@ -16,7 +16,7 @@ export function BackgroundImages({
   images = defaultImages,
 }: {
   images?: string[]
-}): JSX.Element {
+}): React.ReactElement {
   const imagesLoadedRef = React.useRef<Set<string>>(new Set())
   const [allImagesLoaded, setAllImagesLoaded] = React.useState<boolean>(
     !images || !images.length,
@@ -55,7 +55,7 @@ export function BackgroundImages({
   return (
     <div className={styles.background}>
       {images.map(
-        (image: string, index: number): JSX.Element => (
+        (image: string, index: number): React.ReactElement => (
           <Image
             key={`${image}-${index}`}
             className={`${styles.image} ${

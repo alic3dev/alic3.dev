@@ -6,7 +6,7 @@ import {
   WorkSection,
 } from '@/components/sections'
 
-export default function RootPage(): JSX.Element {
+export default function RootPage(): React.ReactElement {
   return (
     <main id="home">
       <HomeSection />

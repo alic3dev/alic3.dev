@@ -24,9 +24,9 @@ export interface WorkHistoryCompany {
   links?: Links
   positions: WorkHistoryPosition[]
 
-  logo?: JSX.Element
-  logoLight?: JSX.Element
-  logoDark?: JSX.Element
+  logo?: React.ReactElement
+  logoLight?: React.ReactElement
+  logoDark?: React.ReactElement
 }
 
 export type ExperienceSummary = string

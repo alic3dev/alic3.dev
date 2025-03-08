@@ -14,7 +14,7 @@ import { ModalContext } from '@/contexts/ModalContext'
 
 import { NoPageScroll } from '@/utils/useNoPageScroll'
 
-export function ModalContainer(): JSX.Element {
+export function ModalContainer(): React.ReactElement {
   const modalContext = React.useContext<ModalContextInterface>(ModalContext)
 
   const closeTop = React.useCallback<React.MouseEventHandler<HTMLDivElement>>(
@@ -41,7 +41,7 @@ export function ModalContainer(): JSX.Element {
       onClick={closeTop}
     >
       {modalContext.modals.map(
-        (modal: ModalInterface): JSX.Element => (
+        (modal: ModalInterface): React.ReactElement => (
           <Modal key={modal.id ?? crypto.randomUUID()} {...modal} />
         ),
       )}

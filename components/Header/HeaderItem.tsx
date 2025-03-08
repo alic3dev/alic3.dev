@@ -16,7 +16,7 @@ export function HeaderItem({
   currentLocation?: Pages.ValidLocation
   navigateToLocation: (location: Pages.ValidLocation) => void
   children?: React.ReactNode
-}): JSX.Element {
+}): React.ReactElement {
   const isActive = React.useMemo<boolean>(
     (): boolean =>
       location === currentLocation && currentLocation !== undefined,

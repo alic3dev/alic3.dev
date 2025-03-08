@@ -68,7 +68,7 @@ export const NotificationContext =
 
 export function NotificationContextWrapper({
   children,
-}: React.PropsWithChildren): JSX.Element {
+}: React.PropsWithChildren): React.ReactElement {
   const [notifications, setNotifications] = React.useState<
     NotificationInterface[]
   >([])

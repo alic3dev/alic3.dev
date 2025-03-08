@@ -5,7 +5,7 @@ import { styles, colors } from '@/styles/resumeStyles'
 const IconSvgWrapper = ({
   children,
   small,
-}: React.PropsWithChildren<{ small?: boolean }>): JSX.Element => (
+}: React.PropsWithChildren<{ small?: boolean }>): React.ReactElement => (
   <Svg
     height={small ? 8 : 12}
     width={small ? 8 : 12}
@@ -34,7 +34,7 @@ const inverseStrokeFillDefaults: IconStrokeFillProperties = {
   strokeWidth: strokeFillDefaults.strokeWidth,
 }
 
-export const icons: { [icon: string]: JSX.Element } = {
+export const icons: { [icon: string]: React.ReactElement } = {
   /////////////
   // Contact //
   /////////////

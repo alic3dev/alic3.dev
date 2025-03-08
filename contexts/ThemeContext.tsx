@@ -41,7 +41,7 @@ export const ThemeContext = React.createContext<ThemeContextInterface>({
 
 export function ThemeContextWrapper({
   children,
-}: React.PropsWithChildren): JSX.Element {
+}: React.PropsWithChildren): React.ReactElement {
   const [theme, setTheme] = React.useState<Theme>(getCurrentTheme)
   const [permaTheme, setPermaTheme] = React.useState<Theme | null>(null)
 

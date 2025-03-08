@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export function PrivacyPolicy(): JSX.Element {
+export function PrivacyPolicy(): React.ReactElement {
   return (
     <div>
       <h1>Privacy Policy for alic3.dev</h1>

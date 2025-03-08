@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-export function Disclaimer(): JSX.Element {
+export function Disclaimer(): React.ReactElement {
   return (
     <div>
       <h1>Disclaimer for Alic3dev</h1>

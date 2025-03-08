@@ -7,7 +7,7 @@ import { ScanLines } from '@/components/decorative'
 
 import styles from '@/components/decorative/PortalBackground.module.scss'
 
-export function PortalBackground(): JSX.Element {
+export function PortalBackground(): React.ReactElement {
   const [imagesLoaded, setImagesLoaded] = React.useState<number>(0)
 
   const allImagesLoaded: boolean = imagesLoaded >= 3

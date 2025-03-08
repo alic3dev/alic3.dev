@@ -9,7 +9,7 @@ import { projects } from '@/data/projects'
 
 import styles from '@/components/sections/ProjectsSection.module.scss'
 
-export function ProjectsSection(): JSX.Element {
+export function ProjectsSection(): React.ReactElement {
   return (
     <Section name="projects" className={styles.section}>
       <div className={styles['section-header']}>

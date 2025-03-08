@@ -41,10 +41,10 @@ const recentArticles: ArticleMetaData[] = [
   {
     name: 日 ? '日一山尸戈丑伙尸人山中尸' : 'A musing of souls',
     release: 0,
-  }, 
+  },
 ]
 
-export default function DemandmentPage(): JSX.Element {
+export default function DemandmentPage(): React.ReactElement {
   return (
     <>
       <Header />

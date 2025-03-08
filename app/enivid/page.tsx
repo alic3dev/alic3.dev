@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: 'Enivid - Elbib | Naruq',
 }
 
-export default function EnividPage(): JSX.Element {
+export default function EnividPage(): React.ReactElement {
   return (
     <main>
       <NoPageScroll />

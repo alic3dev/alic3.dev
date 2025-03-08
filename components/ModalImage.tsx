@@ -18,7 +18,7 @@ export function ModalImage({
 }: {
   id: string
   imageProps: ImageProps
-}): JSX.Element {
+}): React.ReactElement {
   const modalContext = React.useContext<ModalContextInterface>(ModalContext)
   const [modalLoading, setModalLoading] = React.useState<boolean>(true)
 
