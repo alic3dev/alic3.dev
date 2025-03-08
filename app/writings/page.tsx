@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import React from 'react'
+// import { Pool } from '@neondatabase/serverless'
 import { createKysely } from '@vercel/postgres-kysely'
 
 import { Footer, Header } from '@/components'
@@ -88,7 +89,7 @@ async function getWritingCategoriesData(): Promise<
   return data
 }
 
-export default async function WritingsPage(): Promise<React.JSX.Element> {
+export default async function WritingsPage(): Promise<React.ReactElement> {
   const writingCategoriesData: WritingCategoryData[] | undefined =
     await getWritingCategoriesData()
 

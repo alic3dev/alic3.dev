@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 // In your shadow, I grapple with conflicting emotions,
 // Torn between gratitude for your existence and the pain you've bestowed upon me.
 
-export default function DemandmentPage(): JSX.Element {
+export default function DemandmentPage(): React.ReactElement {
   return (
     <>
       <Header />
